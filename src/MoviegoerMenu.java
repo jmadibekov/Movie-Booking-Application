@@ -1,5 +1,3 @@
-package V1;
-
 import java.util.Stack;
 
 public class MoviegoerMenu extends MenuList{
@@ -19,7 +17,7 @@ public class MoviegoerMenu extends MenuList{
 				+ "(3) Book and purchase ticket\n"
 				+ "(4) View booking history\n"
 				+ "(5) View Top 5 movies by ticket sales\n"
-				+ "(6) View Top 5 movies by overall reviewers’ ratings");
+				+ "(6) View Top 5 movies by overall reviewersï¿½ ratings");
 		while (loop) {
 			int input = super.getChoice();
 			switch (input) {

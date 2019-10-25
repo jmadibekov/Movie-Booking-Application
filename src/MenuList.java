@@ -1,5 +1,3 @@
-package V1;
-
 import java.util.Stack;
 
 public class MenuList extends Navigation{
@@ -83,7 +81,7 @@ public class MenuList extends Navigation{
 			 break;
 			 
 		 default: 
-			 System.out.println("Program terminating ….");
+			 System.out.println("Program terminating ï¿½.");
 			 break;
 		}
 	}

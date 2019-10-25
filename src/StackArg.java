@@ -1,5 +1,3 @@
-package V1;
-
 public class StackArg {
 	
 	private String menuListVal;
