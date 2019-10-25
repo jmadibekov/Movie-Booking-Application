@@ -14,7 +14,7 @@ public class MenuList extends Navigation{
 			 MoviegoerMenu moviegoerMenu = new MoviegoerMenu();
 			 moviegoerMenu.display(stackArg, stack);
 			 break;
-			 
+		/*
 		 case "emailVerification": 
 			 EmailVerification emailVerification = new EmailVerification();
 			 emailVerification.display(stackArg, stack);
@@ -79,7 +79,9 @@ public class MenuList extends Navigation{
 			 ChooseShowtime chooseShowtime = new ChooseShowtime();
 			 chooseShowtime.display(stackArg, stack);
 			 break;
-			 
+
+			*/
+
 		 default: 
 			 System.out.println("Program terminating �.");
 			 break;
