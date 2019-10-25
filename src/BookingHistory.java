@@ -1,5 +1,3 @@
-package V1;
-
 import java.util.Stack;
 
 public class BookingHistory extends Navigation{

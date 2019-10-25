@@ -1,11 +1,8 @@
-package V1;
-
 import java.util.Stack;
 
 public class ChooseCineplex extends Navigation{
 
 	public ChooseCineplex() {
-		
 	}
 	
 	public void display(StackArg stackArg, Stack<StackArg> stack) {

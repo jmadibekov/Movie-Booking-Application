@@ -1,5 +1,4 @@
 public class StackArg {
-	
 	private String menuListVal;
 	private int userType; //0 - Admin, 1 - Customer
 	
@@ -23,5 +22,4 @@ public class StackArg {
 	public int getUserType() {
 		return userType;
 	}
-
 }

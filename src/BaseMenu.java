@@ -2,10 +2,11 @@ import java.util.Stack;
 
 public class BaseMenu extends MenuList{
 	public BaseMenu() {
-		
+
 	}
 	public void display(StackArg stackArg, Stack<StackArg> stack) {
-		System.out.println("=====================================\n"
+		System.out.println(
+				  "=====================================\n"
 				+ "---------Welcome to MOBLIMA!---------\n"
 				+ "=====================================\n"
 				+ "(1) Admin\n"
@@ -14,6 +15,7 @@ public class BaseMenu extends MenuList{
 		while (true) {
 			int input = super.getChoice();
 			if (input == 1) {
+				stack
 				break;
 			}
 			else if (input == 2) {
