@@ -14,8 +14,9 @@ public class Top5Sales extends Navigation{
 				+ "=====================================\n"
 				+ "(0) Back\n");
 		//function to get top 5 movies
-		int input = super.getChoice();
+
 		while (true) {
+			int input = super.getChoice();
 			if (input == 0) {
 				super.goBack(stack);
 				break;
