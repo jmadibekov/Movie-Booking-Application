@@ -4,7 +4,7 @@ public class BaseMenu extends MenuList{
 	public BaseMenu() {
 
 	}
-	public void display(StackArg stackArg, Stack<StackArg> stack) {
+	public void display(StackArg stackArg, Stack < StackArg > stack) {
 		System.out.println(
 				  "=====================================\n"
 				+ "---------Welcome to MOBLIMA!---------\n"
@@ -15,11 +15,14 @@ public class BaseMenu extends MenuList{
 		while (true) {
 			int input = super.getChoice();
 			if (input == 1) {
-				stack
+				stackArg.setMenuListVal("adminMenu");
+				stackArg.setUserType(1);
+				super.goTo(stackArg, stack);
 				break;
 			}
 			else if (input == 2) {
 				stackArg.setMenuListVal("moviegoerMenu");
+				stackArg.setUserType(0);
 				super.goTo(stackArg, stack);
 				break;
 			}

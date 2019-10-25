@@ -10,6 +10,11 @@ public class MenuList extends Navigation {
 				baseMenu.display(stackArg, stack);
 				break;
 
+			case "adminMenu":
+				AdminMenu adminMenu = new AdminMenu();
+				adminMenu.display(stackArg, stack);
+				break;
+
 			case "moviegoerMenu":
 				MoviegoerMenu moviegoerMenu = new MoviegoerMenu();
 				moviegoerMenu.display(stackArg, stack);
