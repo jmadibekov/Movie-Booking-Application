@@ -20,83 +20,86 @@ public class Movie {
 		this.movieId = movieId;
 		this.noOfShowtime = noOfShowtime;
 		this.showtimeList = new ArrayList<Showtime>();
-		
+
+		boolean a = movieId == 1 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+		boolean b = movieId == 2 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+		boolean c = movieId == 3 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
 		if (cinemaId == 1) {
-			if (movieId == 1 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
+			if (a) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A1234", "Regular");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "Blockbuster", "A5678", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A5678", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A1234", "Regular");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A1234", "Regular");
 				showtimeList.add(showtimeC);
 			}
-			else if (movieId == 2 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
-				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "Blockbuster", "A5678", "Platinum");
+			else if (b) {
+				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A5678", "Platinum");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "Blockbuster", "A5678", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A5678", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A3456", "Gold");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A3456", "Gold");
 				showtimeList.add(showtimeC);
 			}
-			else if (movieId == 3 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
+			else if (c) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A1234", "Regular");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "Blockbuster", "A5678", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A5678", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A1234", "Regular");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A1234", "Regular");
 				showtimeList.add(showtimeC);
 			}
 		}
 		
 		else if (cinemaId == 2) {
-			if (movieId == 1 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
+			if (a) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345", "Regular");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "Blockbuster", "A56789", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A12345", "Regular");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A12345", "Regular");
 				showtimeList.add(showtimeC);
 			}
-			else if (movieId == 2 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
-				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "Blockbuster", "A56789", "Platinum");
+			else if (b) {
+				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A56789", "Platinum");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "Blockbuster", "A56789", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A34567", "Gold");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A34567", "Gold");
 				showtimeList.add(showtimeC);
 			}
-			else if (movieId == 3 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
+			else if (c) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345", "Regular");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "Blockbuster", "A56789", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A12345", "Regular");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A12345", "Regular");
 				showtimeList.add(showtimeC);
 			}
 		}
-		else if (cinemaId == 3 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
-			if (movieId == 1) {
+		else if (cinemaId == 3) {
+			if (a) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456", "Regular");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "Blockbuster", "A56789", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A123456", "Regular");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A123456", "Regular");
 				showtimeList.add(showtimeC);
 			}
-			else if (movieId == 2 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
-				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "Blockbuster", "A345678", "Gold");
+			else if (b) {
+				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A345678", "Gold");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "Blockbuster", "A56789", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A345678", "Gold");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A345678", "Gold");
 				showtimeList.add(showtimeC);
 			}
-			else if (movieId == 3 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"))) {
+			else if (c) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456", "Regular");
 				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "Blockbuster", "A56789", "Platinum");
+				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789", "Platinum");
 				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "3D", "A123456", "Regular");
+				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A123456", "Regular");
 				showtimeList.add(showtimeC);
 			}
 		}

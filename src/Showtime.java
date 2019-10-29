@@ -97,46 +97,10 @@ public class Showtime {
 	public int[][] getSeatLayout() {
 		return seatLayout;
 	}
-	public void setSeatLayout(String theatreType) {
-		if (theatreType.contentEquals("Regular")) {
-			seatLayout = new int[numRows][numCols];
-			for (int i=0;i<numRows;i++) {
-				for (int j=0;j<numCols;j++) {
-					if (j < numCols-3 && j > 1) {
-						seatLayout[i][j] = 0;
-					}
-					else {
-						seatLayout[i][j] = 2;
-					}
-				}
-			}
-		}
-		else if (theatreType.contentEquals("Gold")) {
-			seatLayout = new int[numRows][numCols];
-			for (int i=0;i<numRows;i++) {
-				for (int j=0;j<numCols;j++) {
-					if (j < numCols-4 && j > 2) {
-						seatLayout[i][j] = 0;
-					}
-					else {
-						seatLayout[i][j] = 2;
-					}
-				}
-			}
-		}
-		else if (theatreType.contentEquals("Platinum")) {
-			seatLayout = new int[numRows][numCols];
-			for (int i=0;i<numRows;i++) {
-				for (int j=0;j<numCols;j++) {
-					if (j < numCols-5 && j > 3) {
-						seatLayout[i][j] = 0;
-					}
-					else {
-						seatLayout[i][j] = 2;
-					}
-				}
-			}
-		}
+	public void setSeatLayout(int[][] seatLayout) {
+		for(int i=0; i<seatLayout.length; i++)
+			for(int j=0; j<seatLayout[i].length; j++)
+				this.seatLayout[i][j]=seatLayout[i][j];
 	}
 	public void printSeatLayout() {
 		System.out.println("                Screen\n");

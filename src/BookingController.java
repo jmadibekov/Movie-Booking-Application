@@ -100,7 +100,41 @@ public class BookingController {
 				+ "0 - Available Slots\n"
 				+ "1 - Occupied Slots\n");
 	}
-	
-	
+
+	public String getTheatreType(String theatreId) {
+		for (int i=0;i<cinema.getTheatreList().size();i++) {
+			if (theatreId.contentEquals(cinema.getTheatreList().get(i).getTheatreId())) {
+				return cinema.getTheatreList().get(i).getTheatreType();
+			}
+		}
+		return "Error";
+	}
+
+	public double calcPrice() {
+		double basePrice = cinema.getBaseTicketCost();
+		if (showtime.getType().contentEquals("IMAX")) {
+			basePrice += 5;
+		}
+		else if (showtime.getType().contentEquals("3D")) {
+			basePrice += 3;
+		}
+		if (getTheatreType(showtime.getTheatreId()).contentEquals("Platinum")) {
+			basePrice += 5;
+		}
+		else if (getTheatreType(showtime.getTheatreId()).contentEquals("Gold")) {
+			basePrice += 3;
+		}
+		if (seat.get(0) == 1) {
+			basePrice += 2;
+		}
+		else if (seat.get(0) == 2) {
+			basePrice += 1;
+		}
+		if (showtime.getTime() >= 1800) {
+			basePrice += 2;
+		}
+		totalPrice += basePrice;
+		return basePrice;
+	}
 
 }
