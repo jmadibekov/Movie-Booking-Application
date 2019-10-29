@@ -17,8 +17,10 @@ public class ChooseSeats extends ChooseShowtime{
 		
 		while (true) {
 			stack.peek().getBookingCtrl().setTotalPrice(0);
+			stack.peek().getBookingCtrl().setNoOfSeats(0);
 			System.out.print("Input number of seats: ");
 			int input = super.getIntInput();
+			stack.peek().getBookingCtrl().setNoOfSeats(input);
 			if (input == 0) {
 				super.goBack(stack);
 			}
@@ -31,14 +33,13 @@ public class ChooseSeats extends ChooseShowtime{
 					while (true) {
 						stack.peek().getBookingCtrl().clearSeat();
 						//stack.peek().getBookingCtrl().clearSeatSelected();
-						System.out.println("Seat " + i);
-						System.out.println("(0) Choose number of seats again");
-						System.out.print("Input ticket type (1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
+						System.out.println("Seat " + (i+1));
+						System.out.print("Input ticket type (0 - Choose Seats again, 1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
 						int ticketType = super.getIntInput();
-						if (ticketType == 0 && i == 0) {
+						if (ticketType == 0) {
 							i = input;
 							break;
-						} else if (input > 3 || input < 0) {
+						} else if (ticketType > 3 || ticketType < 0) {
 							System.out.println("Please enter a valid input");
 						} else {
 							while (true) {
@@ -74,6 +75,10 @@ public class ChooseSeats extends ChooseShowtime{
 					System.out.println("Input 1 to confirm your booking: ");
 					int confirm = getIntInput();
 					if (confirm == 1) {
+						stack.peek().getBookingCtrl().getShowtime().setSeatLayout(stack.peek().getBookingCtrl().getSeatLayout());
+						stackArg.setMenuListVal("enterParticulars");
+						stackArg.setBookingCtrl(stack.peek().getBookingCtrl());
+						super.goTo(stackArg, stack);
 						break;
 					}
 				}

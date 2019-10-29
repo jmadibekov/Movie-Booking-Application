@@ -10,7 +10,7 @@ public class Customer {
 		this.email = email;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		bookingList = null;
+		bookingList = new ArrayList<Booking>();
 	}
 	
 	public String getEmail() {

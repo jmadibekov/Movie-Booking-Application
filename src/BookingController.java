@@ -10,6 +10,7 @@ public class BookingController {
 	private int[][] seatLayout = new int[8][14];
 	private ArrayList<Integer> seat;
 	private Stack<ArrayList<Integer>> seatSelected;
+	private int noOfSeats;
 	
 	public BookingController() {
 		totalPrice = 0;
@@ -73,6 +74,13 @@ public class BookingController {
 	public void clearSeat() {
 		seat.clear();
 	}
+	public int getNoOfSeats() {
+		return noOfSeats;
+	}
+	public void setNoOfSeats(int noOfSeats) {
+		this.noOfSeats = noOfSeats;
+	}
+
 	public ArrayList<Movie> getMoviesList() {
 		return cinema.getMovieList();
 	}
@@ -135,6 +143,12 @@ public class BookingController {
 		}
 		totalPrice += basePrice;
 		return basePrice;
+	}
+
+	public Booking createBooking(String email) {
+		Booking booking = new Booking(email, showtime.getDate(), cinema.getCinemaId(),
+				noOfSeats, getTheatreType(showtime.getTheatreId()), totalPrice);
+		return booking;
 	}
 
 }

@@ -6,9 +6,9 @@ public class Booking {
 	private String TID;
 	private int noOfSeats;
 	private String theatreClass;
-	private float totalCost;
+	private double totalPrice;
 	
-	public Booking(String email, String date, String cinemaId, int noOfSeats, String theatreClass) {
+	public Booking(String email, String date, int cinemaId, int noOfSeats, String theatreClass, double totalPrice) {
 		this.email = email;
 		this.date = date;
 		Calendar now = Calendar.getInstance();
@@ -18,16 +18,16 @@ public class Booking {
 		int hour = now.get(Calendar.HOUR_OF_DAY);
 		int minute = now.get(Calendar.MINUTE);
 		if (month < 10) {
-			TID = cinemaId + Integer.toString(year) + "0" + Integer.toString(month) + 
+			TID = Integer.toString(cinemaId) + Integer.toString(year) + "0" + Integer.toString(month) +
 					Integer.toString(day) + Integer.toString(hour) + Integer.toString(minute);
 		}
 		else {
-			TID = cinemaId + Integer.toString(year) + Integer.toString(month) + 
+			TID = Integer.toString(cinemaId) + Integer.toString(year) + Integer.toString(month) +
 					Integer.toString(day) + Integer.toString(hour) + Integer.toString(minute);
 		}
 		this.noOfSeats = noOfSeats;
 		this.theatreClass = theatreClass;
-		this.totalCost = noOfSeats * 2; // BaseCost TBC
+		this.totalPrice = totalPrice;
 	}
 	
 	public String getEmail() {
@@ -60,11 +60,11 @@ public class Booking {
 	public void setTheatreClass(String theatreClass) {
 		this.theatreClass = theatreClass;
 	}
-	public float getTotalCost() {
-		return totalCost;
+	public double getTotalPrice() {
+		return totalPrice;
 	}
-	public void setTotalCost(float totalCost) {
-		this.totalCost = totalCost;
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
 	}
 	
 	

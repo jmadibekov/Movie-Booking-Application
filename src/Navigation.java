@@ -8,7 +8,7 @@ public class Navigation extends StackArg{
      */
     
 	protected Stack<StackArg> stack;
-	public static MainModel model = new MainModel(3);
+	public static MainModel model = new MainModel(3, 0);
 
     /**
      * Creates the navigation history by initializing an empty stack.

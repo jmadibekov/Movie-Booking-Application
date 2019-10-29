@@ -79,7 +79,12 @@ public class MenuList extends Navigation{
 			 ChooseSeats chooseSeats = new ChooseSeats();
 			 chooseSeats.display(stackArg, stack);
 			 break;
-			 
+
+		 case "enterParticulars":
+		 	 EnterParticulars enterParticulars = new EnterParticulars();
+		 	 enterParticulars.display(stackArg, stack);
+		 	 break;
+
 		 default: 
 			 System.out.println("Program terminating �.");
 			 break;
