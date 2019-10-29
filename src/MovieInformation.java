@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class MovieInformation extends Navigation{
+public class MovieInformation extends AllMoviesList {
 
 	public MovieInformation() {
 		

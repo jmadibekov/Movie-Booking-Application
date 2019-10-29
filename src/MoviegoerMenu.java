@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class MoviegoerMenu extends MenuList{
+public class MoviegoerMenu extends BaseMenu {
 	
 	public MoviegoerMenu() {
 		

@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class EmailVerification extends Navigation{
+public class EmailVerification extends MoviegoerMenu{
 	
 	public EmailVerification() {
 		

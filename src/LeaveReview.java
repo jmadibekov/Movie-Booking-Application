@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class LeaveReview extends Navigation {
+public class LeaveReview extends MovieInformation {
 
 	public LeaveReview() {
 		

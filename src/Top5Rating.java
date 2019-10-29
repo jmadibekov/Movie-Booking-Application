@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class Top5Rating extends Navigation{
+public class Top5Rating extends MoviegoerMenu {
 
 	public Top5Rating() {
 		

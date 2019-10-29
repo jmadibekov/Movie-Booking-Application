@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Stack;
 
-public class SearchMovie extends Navigation{
+public class SearchMovie extends MoviegoerMenu{
 
 	public SearchMovie() {
 		

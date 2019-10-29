@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class ReviewList extends Navigation{
+public class ReviewList extends MovieInformation{
 	
 	public ReviewList() {
 		

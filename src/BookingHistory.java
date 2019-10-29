@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class BookingHistory extends Navigation{
+public class BookingHistory extends EmailVerification{
 	
 	public BookingHistory() {
 		

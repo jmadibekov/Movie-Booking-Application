@@ -1,6 +1,6 @@
 import java.util.Stack;
 
-public class AllMoviesList extends Navigation{
+public class AllMoviesList extends MoviegoerMenu {
 	
 	public AllMoviesList() {
 		
