@@ -18,7 +18,8 @@ public class ChooseShowtime extends ChooseMovie{
 			System.out.println("("+stack.peek().getBookingCtrl().getShowtimesList().get(i).getShowtimeId()+") "+
 			stack.peek().getBookingCtrl().getShowtimesList().get(i).getDate()+", "+
 			stack.peek().getBookingCtrl().getShowtimesList().get(i).getTime()+", Type: "+
-			stack.peek().getBookingCtrl().getShowtimesList().get(i).getType());
+			stack.peek().getBookingCtrl().getShowtimesList().get(i).getType() +", CinemaClass: "+
+			stack.peek().getBookingCtrl().getCinemaClass(stack.peek().getBookingCtrl().getShowtimesList().get(i).getCinemaId()));
 			gotShowtimes++;
 		}
 		if (gotShowtimes == 0) {
@@ -37,7 +38,6 @@ public class ChooseShowtime extends ChooseMovie{
 					stackArg.setMenuListVal("chooseSeats");
 					stackArg.setBookingCtrl(stack.peek().getBookingCtrl());
 					stackArg.getBookingCtrl().setShowtime(stack.peek().getBookingCtrl().getShowtimesList().get(i));
-					stackArg.getBookingCtrl().setSeatLayout(stackArg.getBookingCtrl().getShowtimesList().get(i).getSeatLayout());
 					super.goTo(stackArg, stack);
 					break;
 				}

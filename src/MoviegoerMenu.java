@@ -25,33 +25,18 @@ public class MoviegoerMenu extends BaseMenu {
 				 loop = false;
 				 break;
 				 
-				 case 1: stackArg.setMenuListVal("allMoviesList");
-					super.goTo(stackArg, stack);
+				 case 1:
+				 case 2:
+				 case 3:
+				 case 5:
+				 case 6: stackArg.setMenuListVal("chooseCineplex");
+				 stackArg.setLastInput(input);
+				 super.goTo(stackArg, stack);
 				 loop = false;
 				 break;
-				 
-				 case 2: stackArg.setMenuListVal("searchMovie");
-					super.goTo(stackArg, stack);
-				 loop = false;
-				 break;
-				 
-				 case 3: stackArg.setMenuListVal("chooseCineplex");
-					super.goTo(stackArg, stack);
-				 loop = false;
-				 break;
-				 
+
 				 case 4: stackArg.setMenuListVal("emailVerification");
-					super.goTo(stackArg, stack);
-				 loop = false;
-				 break;
-				 
-				 case 5: stackArg.setMenuListVal("top5Sales");
-					super.goTo(stackArg, stack);
-				 loop = false;
-				 break;
-				 
-				 case 6: stackArg.setMenuListVal("top5Rating");
-					super.goTo(stackArg, stack);
+				 super.goTo(stackArg, stack);
 				 loop = false;
 				 break;
 				 

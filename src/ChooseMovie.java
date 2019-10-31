@@ -10,7 +10,7 @@ public class ChooseMovie extends ChooseCineplex {
 		System.out.println("=====================================\n"
 				+ "-------Booking: Choose a Movie-------\n"
 				+ "=====================================\n\n"
-				+ stack.peek().getBookingCtrl().getCinema().getCinemaName()
+				+ stack.peek().getBookingCtrl().getCineplex().getCinemaName()
 				+ "\n\n(0) Back");
 		//function to get movie based on cineplex chosen
 		int gotMovies = 0;
@@ -24,6 +24,7 @@ public class ChooseMovie extends ChooseCineplex {
 				gotMovies++;
 			}
 		}
+		System.out.print("\n");
 		if (gotMovies == 0) {
 			System.out.println("No movies are currently showing. Please try another cineplex location");
 		}

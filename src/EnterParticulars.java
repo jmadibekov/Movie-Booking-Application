@@ -119,7 +119,10 @@ public class EnterParticulars extends ChooseSeats{
                     Navigation.model.addCustomer(customer);
                 }
             }
+            stack.peek().getBookingCtrl().getMovie().addTicketSales(stack.peek().getBookingCtrl().getNoOfSeats());
+            stack.peek().getBookingCtrl().getShowtime().setSeatLayout(stack.peek().getBookingCtrl().getSeatLayout());
             System.out.println("Thank you for your purchase. You will now be redirected to the main menu");
+            //System.out.println(Navigation.model.getCustomerList().get(0).getBookList().get(0).getTID());
             super.goBackMainMenu(stack);
         }
         else {

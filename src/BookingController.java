@@ -5,9 +5,9 @@ public class BookingController {
 	
 	private Showtime showtime;
 	private Movie movie;
-	private Cinema cinema;
+	private Cineplex cineplex;
 	private double totalPrice;
-	private int[][] seatLayout = new int[8][14];
+	private int[][] seatLayout = new int[8][9];
 	private ArrayList<Integer> seat;
 	private Stack<ArrayList<Integer>> seatSelected;
 	private int noOfSeats;
@@ -30,11 +30,11 @@ public class BookingController {
 	public void setMovie(Movie movie) {
 		this.movie = movie;
 	}
-	public Cinema getCinema() {
-		return cinema;
+	public Cineplex getCineplex() {
+		return cineplex;
 	}
-	public void setCinema(Cinema cinema) {
-		this.cinema = cinema;
+	public void setCineplex(Cineplex cineplex) {
+		this.cineplex = cineplex;
 	}
 	public double getTotalPrice() {
 		return totalPrice;
@@ -82,7 +82,7 @@ public class BookingController {
 	}
 
 	public ArrayList<Movie> getMoviesList() {
-		return cinema.getMovieList();
+		return cineplex.getMovieList();
 	}
 	public ArrayList<Showtime> getShowtimesList() {
 		return movie.getShowtimeList();
@@ -90,46 +90,42 @@ public class BookingController {
 	public void printSeatLayout() {
 		System.out.println("                Screen\n");
 		for (int i=0;i<8;i++) {
-			for (int j=0;j<14;j++) {
-				if (seatLayout[i][j] == 2) {
-					System.out.print("   ");
-				}
-				else {
-					System.out.print("[");
-					System.out.print(seatLayout[i][j]);
-					System.out.print("]");
-				}
+			System.out.print("      ");
+			for (int j=0;j<9;j++) {
+				System.out.print("[");
+				System.out.print(seatLayout[i][j]);
+				System.out.print("]");
 			}
-			System.out.print(i+1 + "\n");
+			System.out.print("  "+ (i+1) + "\n");
 		}
-		System.out.println(" 1  2  3  4  5  6  7  8  9  10 11 12 13 14\n");
-		System.out.println("\n                Entrance\n");
+		System.out.println("       1  2  3  4  5  6  7  8  9\n");
+		System.out.println("                Entrance\n");
 		System.out.println("Legend: \n"
 				+ "0 - Available Slots\n"
 				+ "1 - Occupied Slots\n");
 	}
 
-	public String getTheatreType(String theatreId) {
-		for (int i=0;i<cinema.getTheatreList().size();i++) {
-			if (theatreId.contentEquals(cinema.getTheatreList().get(i).getTheatreId())) {
-				return cinema.getTheatreList().get(i).getTheatreType();
+	public String getCinemaClass(String cinemaId) {
+		for (int i = 0; i< cineplex.getCinemaList().size(); i++) {
+			if (cinemaId.contentEquals(cineplex.getCinemaList().get(i).getCinemaId())) {
+				return cineplex.getCinemaList().get(i).getCinemaClass();
 			}
 		}
 		return "Error";
 	}
 
 	public double calcPrice() {
-		double basePrice = cinema.getBaseTicketCost();
+		double basePrice = cineplex.getBaseTicketCost();
 		if (showtime.getType().contentEquals("IMAX")) {
 			basePrice += 5;
 		}
 		else if (showtime.getType().contentEquals("3D")) {
 			basePrice += 3;
 		}
-		if (getTheatreType(showtime.getTheatreId()).contentEquals("Platinum")) {
+		if (getCinemaClass(showtime.getCinemaId()).contentEquals("Platinum")) {
 			basePrice += 5;
 		}
-		else if (getTheatreType(showtime.getTheatreId()).contentEquals("Gold")) {
+		else if (getCinemaClass(showtime.getCinemaId()).contentEquals("Gold")) {
 			basePrice += 3;
 		}
 		if (seat.get(0) == 1) {
@@ -146,8 +142,8 @@ public class BookingController {
 	}
 
 	public Booking createBooking(String email) {
-		Booking booking = new Booking(email, showtime.getDate(), cinema.getCinemaId(),
-				noOfSeats, getTheatreType(showtime.getTheatreId()), totalPrice);
+		Booking booking = new Booking(email, showtime.getDate(), cineplex.getCineplexId(),
+				noOfSeats, getCinemaClass(showtime.getCinemaId()), totalPrice);
 		return booking;
 	}
 

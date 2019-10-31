@@ -3,33 +3,33 @@ import java.util.ArrayList;
 public class MainModel {
 	private int noOfCinema;
 	private int noOfCustomer;
-	private ArrayList<Cinema> cinemaList;
+	private ArrayList<Cineplex> cineplexList;
 	private ArrayList<Customer> customerList;
 	
 	public MainModel(int noOfCinema, int noOfCustomer) {
 		this.noOfCinema = noOfCinema;
 		this.noOfCustomer = noOfCustomer;
-		cinemaList = new ArrayList<Cinema>();
+		cineplexList = new ArrayList<Cineplex>();
 		customerList = new ArrayList<Customer>();
-		Cinema JurongPointCinema = new Cinema(3, 3, 3, "Jurong Point Cinema", 1, 10.0);
-		cinemaList.add(JurongPointCinema);
-		Cinema PayaLebarCinema = new Cinema(3, 3, 3, "Paya Lebar Cinema", 2, 8.0);
-		cinemaList.add(PayaLebarCinema);
-		Cinema VivoCityCinema = new Cinema(3, 3, 3, "Vivo City Cinema", 3, 12.0);
-		cinemaList.add(VivoCityCinema);
+		Cineplex jurongPointCineplex = new Cineplex(3, 3, 3, "Jurong Point Cinema", 1, 10.0);
+		cineplexList.add(jurongPointCineplex);
+		Cineplex payaLebarCineplex = new Cineplex(3, 3, 3, "Paya Lebar Cinema", 2, 8.0);
+		cineplexList.add(payaLebarCineplex);
+		Cineplex vivoCityCineplex = new Cineplex(3, 3, 3, "Vivo City Cinema", 3, 12.0);
+		cineplexList.add(vivoCityCineplex);
 		
 	}
 
-	public ArrayList<Cinema> getCinemaList() {
-		return cinemaList;
+	public ArrayList<Cineplex> getCineplexList() {
+		return cineplexList;
 	}
 
-	public void setCinemaList(ArrayList<Cinema> cinemaList) {
-		this.cinemaList = cinemaList;
+	public void setCineplexList(ArrayList<Cineplex> cineplexList) {
+		this.cineplexList = cineplexList;
 	}
 	
-	public void addCinema(Cinema cinema) {
-		cinemaList.add(cinema);
+	public void addCinema(Cineplex cineplex) {
+		cineplexList.add(cineplex);
 		noOfCinema++;
 	}
 

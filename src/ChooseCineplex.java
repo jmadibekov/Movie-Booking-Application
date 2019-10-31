@@ -22,46 +22,29 @@ public class ChooseCineplex extends MovieInformation{
 			switch (input) {
 				case 0: super.goBack(stack);
 				break;
-				case 1: checkprevious = stack.pop();
-				stackArg.getBookingCtrl().setCinema(Navigation.model.getCinemaList().get(input-1));
-				if (stack.peek().getMenuListVal().contentEquals("movieInformation")) {
-					stack.push(checkprevious);
-					stackArg.setMenuListVal("chooseShowtime");
+				case 1:
+				case 2:
+				case 3: if (stack.peek().getLastInput() == 1) {
+					stackArg.getBookingCtrl().setCineplex(Navigation.model.getCineplexList().get(input-1));
+					stackArg.setMenuListVal("allMoviesList");
 					super.goTo(stackArg, stack);
 				}
-				else if (stack.peek().getMenuListVal().contentEquals("moviegoerMenu")) {
-					stack.push(checkprevious);
+				else if (stack.peek().getLastInput() == 2) {
+					stackArg.getBookingCtrl().setCineplex(Navigation.model.getCineplexList().get(input-1));
+					stackArg.setMenuListVal("searchMovie");
+					super.goTo(stackArg, stack);
+				}
+				else if (stack.peek().getLastInput() == 3) {
+					stackArg.getBookingCtrl().setCineplex(Navigation.model.getCineplexList().get(input-1));
 					stackArg.setMenuListVal("chooseMovie");
 					super.goTo(stackArg, stack);
 				}
-				loop = false;
-				break;
-				
-				case 2: checkprevious = stack.pop();
-				stackArg.getBookingCtrl().setCinema(Navigation.model.getCinemaList().get(input-1));
-				if (stack.peek().getMenuListVal().contentEquals("movieInformation")) {
-					stack.push(checkprevious);
-					stackArg.setMenuListVal("chooseShowtime");
+				else if (stack.peek().getLastInput() == 5) {
+					stackArg.setMenuListVal("top5Sales");
 					super.goTo(stackArg, stack);
 				}
-				else if (stack.peek().getMenuListVal().contentEquals("moviegoerMenu")) {
-					stack.push(checkprevious);
-					stackArg.setMenuListVal("chooseMovie");
-					super.goTo(stackArg, stack);
-				}
-				loop = false;
-				break;
-				
-				case 3: checkprevious = stack.pop();
-				stackArg.getBookingCtrl().setCinema(Navigation.model.getCinemaList().get(input-1));
-				if (stack.peek().getMenuListVal().contentEquals("movieInformation")) {
-					stack.push(checkprevious);
-					stackArg.setMenuListVal("chooseShowtime");
-					super.goTo(stackArg, stack);
-				}
-				else if (stack.peek().getMenuListVal().contentEquals("moviegoerMenu")) {
-					stack.push(checkprevious);
-					stackArg.setMenuListVal("chooseMovie");
+				else if (stack.peek().getLastInput() == 6) {
+					stackArg.setMenuListVal("top5Rating");
 					super.goTo(stackArg, stack);
 				}
 				loop = false;

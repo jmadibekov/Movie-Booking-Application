@@ -10,9 +10,13 @@ public class ChooseSeats extends ChooseShowtime{
 		System.out.println("=====================================\n"
 				+ "------Booking: Choose your Seat-----\n"
 				+ "=====================================\n\n"
-				+ stack.peek().getBookingCtrl().getMovie().getTitle()
+				+ stack.peek().getBookingCtrl().getMovie().getTitle() +"\n"
+				+ stack.peek().getBookingCtrl().getShowtime().getDate() + ", "
+				+ stack.peek().getBookingCtrl().getShowtime().getTime() + ", "
+				+ stack.peek().getBookingCtrl().getShowtime().getType() + ", "
+				+ stack.peek().getBookingCtrl().getCinemaClass(stack.peek().getBookingCtrl().getShowtime().getCinemaId())
 				+ "\n\n(0) Back");
-		
+		stack.peek().getBookingCtrl().setSeatLayout(stack.peek().getBookingCtrl().getShowtime().getSeatLayout());
 		stack.peek().getBookingCtrl().printSeatLayout();
 		
 		while (true) {
@@ -48,7 +52,7 @@ public class ChooseSeats extends ChooseShowtime{
 								int row = super.getIntInput();
 								System.out.print("Input column: ");
 								int col = super.getIntInput();
-								if (col > 0 && row > 0 && row < 9 && col < 15) {
+								if (col > 0 && row > 0 && row < 9 && col < 10) {
 									if (stack.peek().getBookingCtrl().getSeatLayout()[row - 1][col - 1] == 0) {
 										stack.peek().getBookingCtrl().getSeatLayout()[row - 1][col - 1] = 1;
 										stack.peek().getBookingCtrl().addSeat(row - 1);
@@ -75,7 +79,6 @@ public class ChooseSeats extends ChooseShowtime{
 					System.out.println("Input 1 to confirm your booking: ");
 					int confirm = getIntInput();
 					if (confirm == 1) {
-						stack.peek().getBookingCtrl().getShowtime().setSeatLayout(stack.peek().getBookingCtrl().getSeatLayout());
 						stackArg.setMenuListVal("enterParticulars");
 						stackArg.setBookingCtrl(stack.peek().getBookingCtrl());
 						super.goTo(stackArg, stack);
