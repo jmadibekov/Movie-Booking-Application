@@ -1,12 +1,11 @@
 package moblima.controller;
 
+import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Stack;
+import java.util.*;
+
 import moblima.model.*;
 
 public class BookingController {
@@ -71,6 +70,21 @@ public class BookingController {
 	}
 
 	public static ArrayList < Movie > getAllMovies() {
+		ArrayList < Cineplex > curCineplexes = MainModel.getCineplexList();
+
+		Map < Integer, Movie > tmp = new HashMap < Integer, Movie > ();
+
+		for (Cineplex i : curCineplexes) {
+			ArrayList < Movie > curMovies = i.getMovieList();
+			for (Movie j : curMovies) {
+				tmp.put(j.getMovieId(), j);
+			}
+		}
+
+		for (Movie i : tmp.values()) {
+			i.outputMovieInfo();
+		}
+
 		// ********* NEEDS TO BE UPDATED USING MOVIE MODEL *********
 		ArrayList<Movie> allMovies = new ArrayList<Movie>();
 		String[] directorC = new String[]{"Moham", "Faz"};

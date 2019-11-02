@@ -19,10 +19,10 @@ public class BaseMenu {
 		while (true) {
 			int input = navigation.getChoice("Please select an option: ");
 			if (input == 1) {
-				navigation.goTo(new StackArg("adminMenu", curView.getUserType()));
+				navigation.goTo(new StackArg("adminMenu", 0));
 				break;
 			} else if (input == 2) {
-				navigation.goTo(new StackArg("moviegoerMenu", curView.getUserType()));
+				navigation.goTo(new StackArg("moviegoerMenu", 1));
 				break;
 			} else if (input == 3) {
 				navigation.exit();

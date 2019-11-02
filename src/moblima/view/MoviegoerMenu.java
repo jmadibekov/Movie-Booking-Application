@@ -25,18 +25,18 @@ public class MoviegoerMenu {
 			int input = navigation.getChoice("Please select an option: ");
 			switch (input) {
 				 case 0:
-				 	navigation.goBack();
-				 	loop = false;
-				 	break;
+				 	 navigation.goBack();
+				 	 loop = false;
+				 	 break;
 
 				 case 1:
-				 	navigation.goTo(new StackArg("allMoviesList", curView.getUserType()));
-				 	loop = false;
-				 	break;
+				 	 navigation.goTo(new StackArg("allMoviesList", curView.getUserType()));
+				 	 loop = false;
+				 	 break;
 
 				 case 2:
-				 	// add stuff
-					break;
+				 	 // add stuff
+					 break;
 
 				 case 3:
 					 navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "chooseMovie"));
@@ -49,14 +49,14 @@ public class MoviegoerMenu {
 					 break;
 
 				 case 6:
-					navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "top5Rating"));
-					loop = false;
-					break;
+					 navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "top5Rating"));
+					 loop = false;
+					 break;
 
 				 case 4:
-				 	navigation.goTo(new StackArg("emailVerification", curView.getUserType()));
-					loop = false;
-					break;
+				 	 navigation.goTo(new StackArg("emailVerification", curView.getUserType()));
+					 loop = false;
+					 break;
 
 				 default:
 				 	System.out.println("\nPlease enter a valid input!\n");
