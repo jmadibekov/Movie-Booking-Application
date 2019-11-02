@@ -1,0 +1,3 @@
+alpha@email.com|Alpha|90000001
+bravo@email.com|Bravo|90000002
+charlie@email.com|Charlie|90000003

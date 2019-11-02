@@ -6,11 +6,18 @@ public class Booking {
 	private String email;
 	private String date;
 	private String TID;
-	private int noOfSeats;
+	private String[] choosenSeats;
 	private String theatreClass;
 	private double totalPrice;
-	
-	public Booking(String email, String date, int cinemaId, int noOfSeats, String theatreClass, double totalPrice) {
+	private String cineplexId;
+	private String movieId;
+	private String cinemaId;
+
+	public Booking(String email, String date, String[] choosenSeats, String theatreClass, double totalPrice, String cineplexId,
+				   String movieId, String cinemaId) {
+		this.cineplexId = cineplexId;
+		this.movieId = movieId;
+		this.cinemaId = cinemaId;
 		this.email = email;
 		this.date = date;
 		Calendar now = Calendar.getInstance();
@@ -20,18 +27,31 @@ public class Booking {
 		int hour = now.get(Calendar.HOUR_OF_DAY);
 		int minute = now.get(Calendar.MINUTE);
 		if (month < 10) {
-			TID = Integer.toString(cinemaId) + Integer.toString(year) + "0" + Integer.toString(month) +
+			TID = cinemaId + Integer.toString(year) + "0" + Integer.toString(month) +
 					Integer.toString(day) + Integer.toString(hour) + Integer.toString(minute);
 		}
 		else {
-			TID = Integer.toString(cinemaId) + Integer.toString(year) + Integer.toString(month) +
+			TID = cinemaId + Integer.toString(year) + Integer.toString(month) +
 					Integer.toString(day) + Integer.toString(hour) + Integer.toString(minute);
 		}
-		this.noOfSeats = noOfSeats;
+		this.choosenSeats = choosenSeats;
 		this.theatreClass = theatreClass;
 		this.totalPrice = totalPrice;
 	}
-	
+
+	public Booking(String TID, String email, String date, String[] choosenSeats, String theatreClass, double totalPrice, String cineplexId,
+				   String movieId, String cinemaId) {
+		this.cineplexId = cineplexId;
+		this.movieId = movieId;
+		this.cinemaId = cinemaId;
+		this.TID = TID;
+		this.email = email;
+		this.date = date;
+		this.choosenSeats = choosenSeats;
+		this.theatreClass = theatreClass;
+		this.totalPrice = totalPrice;
+	}
+
 	public String getEmail() {
 		return email;
 	}
@@ -50,12 +70,6 @@ public class Booking {
 	public void setTID(String tID) {
 		TID = tID;
 	}
-	public int getNoOfSeats() {
-		return noOfSeats;
-	}
-	public void setNoOfSeats(int noOfSeats) {
-		this.noOfSeats = noOfSeats;
-	}
 	public String getTheatreClass() {
 		return theatreClass;
 	}
@@ -68,6 +82,6 @@ public class Booking {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-	
-	
+
+
 }

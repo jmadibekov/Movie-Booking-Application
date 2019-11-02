@@ -3,12 +3,12 @@ package moblima.model;
 public class Staff {
 	private String user;
 	private String password;
-	private String cineplex;
-	
-	public Staff(String user, String password, String cineplex) {
+	private String cineplexId;
+
+	public Staff(String user, String password, String cineplexId) {
 		this.user = user;
 		this.password = password;
-		this.cineplex = cineplex;
+		this.cineplexId= cineplexId;
 	}
 
 	public String getUser() {
@@ -27,11 +27,7 @@ public class Staff {
 		this.password = password;
 	}
 
-	public String getCineplex() {
-		return cineplex;
-	}
+	public String getCineplexId() { return cineplexId; }
 
-	public void setCineplex(String cineplex) {
-		this.cineplex = cineplex;
-	}
+	public void setCineplexId(String cineplexId) { this.cineplexId = cineplexId; }
 }

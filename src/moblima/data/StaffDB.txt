@@ -1,0 +1,3 @@
+001|staffA|password1
+002|staffB|password2
+003|staffC|password3

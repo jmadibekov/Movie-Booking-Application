@@ -1,0 +1,5 @@
+Avengers: Endgame|Iron Man Dies|Fazli|Swa, James|Now Showing|12|20|99|3|Review 1, Review 2
+Back To The Future|Travel Back To The Past and Hope You Don't Screw Things Up|Michael Bay|Swa, James|Now Showing|12|25|100|4|Review 1, Review 2, Review 3
+Inception|Dream Hacking|Christopher Nolan|Swa, James|Now Showing|18|30|150|5|Review 1, Review 2, Review 3
+Lion King|Roar Roar|Benedict|Swa, James|Now Showing|5|15|45|2|Review 1, Review 2, Review 3, Review 4
+Frozen|Let It Go|Nick|Swa, James|Now Showing|0|5|9|1|Review 1

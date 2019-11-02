@@ -3,9 +3,10 @@ package moblima.model;
 import java.util.ArrayList;
 
 public class Movie {
-	
+
 	private ArrayList<Showtime> showtimeList;
-	private int movieId;
+	private String movieId;
+	private String cineplexId;
 	private int userCount;
 	private int ticketSales;
 	private String showingStatus;
@@ -16,22 +17,20 @@ public class Movie {
 	private double overallRating;
 	private String ageRequirement;
 	private int noOfShowtime;
-	
-	public Movie(int noOfShowtime, int userCount, String showingStatus, String title, 
-			String synopsis, String[] director, String[] cast,
-			double overallRating, String ageRequirement, int cinemaId, int movieId, int ticketSales) {
+
+	public Movie(int noOfShowtime, int userCount, String showingStatus, String title,
+				 String synopsis, String[] director, String[] cast,
+				 double overallRating, String ageRequirement, int ticketSales, String cineplexId, String movieId) {
 		this.movieId = movieId;
+		this.cineplexId = cineplexId;
 		this.noOfShowtime = noOfShowtime;
 		this.ticketSales = ticketSales;
 		this.showtimeList = new ArrayList<Showtime>();
 
-		boolean a = movieId == 1 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		boolean b = movieId == 2 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		boolean c = movieId == 3 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		boolean d = movieId == 4 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		boolean e = movieId == 5 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		boolean f = movieId == 6 && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		if (cinemaId == 1) {
+		boolean a = movieId == "001" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+		boolean b = movieId == "002" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+		boolean c = movieId == "003" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+		if (cineplexId == "001") {
 			if (a) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A1234");
 				showtimeList.add(showtimeA);
@@ -57,8 +56,8 @@ public class Movie {
 				showtimeList.add(showtimeC);
 			}
 		}
-		
-		else if (cinemaId == 2) {
+
+		else if (cineplexId == "002") {
 			if (a) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345");
 				showtimeList.add(showtimeA);
@@ -67,7 +66,7 @@ public class Movie {
 				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A12345");
 				showtimeList.add(showtimeC);
 			}
-			else if (d) {
+			else if (b) {
 				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A56789");
 				showtimeList.add(showtimeA);
 				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789");
@@ -75,7 +74,7 @@ public class Movie {
 				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A34567");
 				showtimeList.add(showtimeC);
 			}
-			else if (e) {
+			else if (c) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345");
 				showtimeList.add(showtimeA);
 				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
@@ -84,8 +83,8 @@ public class Movie {
 				showtimeList.add(showtimeC);
 			}
 		}
-		else if (cinemaId == 3) {
-			if (b) {
+		else if (cineplexId == "003") {
+			if (a) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456");
 				showtimeList.add(showtimeA);
 				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
@@ -93,7 +92,7 @@ public class Movie {
 				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A123456");
 				showtimeList.add(showtimeC);
 			}
-			else if (d) {
+			else if (b) {
 				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A345678");
 				showtimeList.add(showtimeA);
 				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789");
@@ -101,7 +100,7 @@ public class Movie {
 				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A345678");
 				showtimeList.add(showtimeC);
 			}
-			else if (f) {
+			else if (c) {
 				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456");
 				showtimeList.add(showtimeA);
 				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
@@ -110,7 +109,7 @@ public class Movie {
 				showtimeList.add(showtimeC);
 			}
 		}
-		
+
 		this.userCount = userCount;
 		this.showingStatus = showingStatus;
 		this.title = title;
@@ -121,12 +120,6 @@ public class Movie {
 		this.ageRequirement = ageRequirement;
 	}
 
-	public void outputMovieInfo() {
-		// ********* NEEDS TO BE UPDATED *********
-		System.out.printf("Title of the movie: %s\n", title);
-		System.out.printf("Showing status of the movie: %s\n", showingStatus);
-	}
-	
 	public ArrayList<Showtime> getShowtimeList() {
 		return showtimeList;
 	}
@@ -134,88 +127,88 @@ public class Movie {
 	public void setShowtimeList(ArrayList<Showtime> showtimeList) {
 		this.showtimeList = showtimeList;
 	}
-	
+
 	public void addShowtime(Showtime showtime) {
 		showtimeList.add(showtime);
 		noOfShowtime++;
 	}
-	
-	public int getMovieId() {
+
+	public String getMovieId() {
 		return movieId;
 	}
-	
-	public void setMovieId(int movieId) {
+
+	public void setMovieId(String movieId) {
 		this.movieId = movieId;
 	}
-	
+
 	public int getUserCount() {
 		return userCount;
 	}
-	
+
 	public void setUserCount(int userCount) {
 		this.userCount = userCount;
 	}
-	
+
 	public String getShowingStatus() {
 		return showingStatus;
 	}
-	
+
 	public void setShowingStatus(String showingStatus) {
 		this.showingStatus = showingStatus;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getSynopsis() {
 		return synopsis;
 	}
-	
+
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	
+
 	public String[] getDirector() {
-	    return director;
+		return director;
 	}
 
 	public void setDirector(String[] director) {
-	    this.director = director;
+		this.director = director;
 	}
-	
+
 	public String[] getCast() {
-	    return cast;
+		return cast;
 	}
 
 	public void setCast(String[] cast) {
-	    this.cast = cast;
+		this.cast = cast;
 	}
-	
+
 	public double getOverallRating() {
 		return overallRating;
 	}
-	
+
 	public void setOverallRating(double overallRating) {
 		this.overallRating = overallRating;
 	}
-	
+
 	public String getAgeRequirement() {
 		return ageRequirement;
 	}
-	
+
 	public void setAgeRequirement(String ageRequirement) {
 		this.ageRequirement = ageRequirement;
 	}
-	
+
 	public int getNoOfShowtime() {
 		return noOfShowtime;
 	}
-	
+
 	public void setNoOfShowtime(int noOfShowtime) {
 		this.noOfShowtime = noOfShowtime;
 	}
@@ -231,5 +224,8 @@ public class Movie {
 	public void setTicketSales(int ticketSales) {
 		this.ticketSales = ticketSales;
 	}
-	
+
+	public String getCinemaId() {return cineplexId;}
+
+	public void setCinemaId(String cinemaId) {this.cineplexId = cinemaId;}
 }

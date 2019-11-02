@@ -7,14 +7,14 @@ public class Customer {
 	private String name;
 	private String phoneNumber;
 	private ArrayList<Booking> bookingList;
-	
+
 	public Customer(String email, String name, String phoneNumber) {
 		this.email = email;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
 		bookingList = new ArrayList<Booking>();
 	}
-	
+
 	public String getEmail() {
 		return email;
 	}

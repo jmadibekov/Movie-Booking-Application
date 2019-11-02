@@ -1,0 +1,9 @@
+001|001|Regular
+001|002|Gold
+001|003|Platinum
+002|001|Regular
+002|002|Gold
+002|003|Platinum
+003|001|Regular
+003|002|Gold
+003|003|Platinum
