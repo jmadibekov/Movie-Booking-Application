@@ -1,9 +1,9 @@
-// Static class used for functionality
+/*
+Static class used for functionality
+*/
 
 package moblima.view;
 import moblima.model.StackArg;
-
-import java.util.Stack;
 
 public class MenuList {
 	public static void goToNext(Navigation navigation) {
@@ -18,17 +18,17 @@ public class MenuList {
 			 MoviegoerMenu moviegoerMenu = new MoviegoerMenu();
 			 moviegoerMenu.display(navigation);
 			 break;
-//
-//		 case "emailVerification":
-//			 EmailVerification emailVerification = new EmailVerification();
-//			 emailVerification.display(stackArg, stack);
-//			 break;
-//
-//		 case "bookingHistory":
-//			 BookingHistory bookingHistory = new BookingHistory();
-//			 bookingHistory.display(stackArg, stack);
-//			 break;
-//
+
+		 case "emailVerification":
+			 EmailVerification emailVerification = new EmailVerification();
+			 emailVerification.display(navigation);
+			 break;
+
+		 case "bookingHistory":
+			 BookingHistory bookingHistory = new BookingHistory();
+			 bookingHistory.display(navigation);
+			 break;
+
 		 case "allMoviesList":
 			 AllMoviesList allMoviesList = new AllMoviesList();
 			 allMoviesList.display(navigation);
@@ -48,21 +48,21 @@ public class MenuList {
 			 LeaveReview leaveReview = new LeaveReview();
 			 leaveReview.display(navigation);
 			 break;
-//
-//		 case "searchMovie":
-//			 SearchMovie searchMovie = new SearchMovie();
-//			 searchMovie.display(stackArg, stack);
-//			 break;
-//
-//		 case "top5Sales":
-//			 Top5Sales top5Sales = new Top5Sales();
-//			 top5Sales.display(stackArg, stack);
-//			 break;
-//
-//		 case "top5Rating":
-//			 Top5Rating top5Rating = new Top5Rating();
-//			 top5Rating.display(stackArg, stack);
-//			 break;
+
+		 case "searchMovie":
+			 SearchMovie searchMovie = new SearchMovie();
+			 searchMovie.display(navigation);
+			 break;
+
+		 case "top5Sales":
+			 Top5Sales top5Sales = new Top5Sales();
+			 top5Sales.display(navigation);
+			 break;
+
+		 case "top5Rating":
+			 Top5Rating top5Rating = new Top5Rating();
+			 top5Rating.display(navigation);
+			 break;
 
 		 case "chooseCineplex":
 			 ChooseCineplex chooseCineplex = new ChooseCineplex();
@@ -84,10 +84,10 @@ public class MenuList {
 			 chooseSeats.display(navigation);
 			 break;
 
-//		 case "enterParticulars":
-//		 	 EnterParticulars enterParticulars = new EnterParticulars();
-//		 	 enterParticulars.display(stackArg, stack);
-//		 	 break;
+		 case "enterParticulars":
+		 	 EnterParticulars enterParticulars = new EnterParticulars();
+		 	 enterParticulars.display(navigation);
+		 	 break;
 
 		 default: 
 			 System.out.println("Something went wrong! The program is terminating.");

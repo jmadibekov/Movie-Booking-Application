@@ -1,6 +1,6 @@
-package moblima.view;
-import moblima.model.MainModel;
-import moblima.model.StackArg;
+package moblima;
+import moblima.model.*;
+import moblima.view.*;
 
 public class MOBLIMA {
 	public static void main(String[] args) {

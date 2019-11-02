@@ -59,12 +59,12 @@ public class Navigation {
 		return choice;
 	}
 
-    protected void exit() {
+    public void exit() {
         System.out.println("Thank you for using MOBLIMA. Goodbye!!!");
         System.exit(1); 
 	}
     
-    protected void goTo(StackArg goToView) {
+    public void goTo(StackArg goToView) {
 		stack.push(goToView);
         MenuList.goToNext(this);
     }
