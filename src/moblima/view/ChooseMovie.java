@@ -51,7 +51,7 @@ public class ChooseMovie {
 
 			boolean found = false;
 			for (Movie i: movieList) {
-				if (input == i.getMovieId()
+				if (Integer.toString(input) == i.getMovieId()
 						&& (i.getShowingStatus().contentEquals("NowShowing") || i.getShowingStatus().contentEquals("Preview"))) {
 					BookingController.setChosenMovie(i);
 					navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));

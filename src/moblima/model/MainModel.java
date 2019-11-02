@@ -13,11 +13,11 @@ public class MainModel {
 		MainModel.noOfCustomer = noOfCustomer;
 		cineplexList = new ArrayList<Cineplex>();
 		customerList = new ArrayList<Customer>();
-		Cineplex jurongPointCineplex = new Cineplex(3, 3, 3, "Jurong Point Cinema", 1, 10.0);
+		Cineplex jurongPointCineplex = new Cineplex(3, 3, 3, "Jurong Point Cinema", "001", 10.0);
 		cineplexList.add(jurongPointCineplex);
-		Cineplex payaLebarCineplex = new Cineplex(3, 3, 3, "Paya Lebar Cinema", 2, 8.0);
+		Cineplex payaLebarCineplex = new Cineplex(3, 3, 3, "Paya Lebar Cinema", "002", 8.0);
 		cineplexList.add(payaLebarCineplex);
-		Cineplex vivoCityCineplex = new Cineplex(3, 3, 3, "Vivo City Cinema", 3, 12.0);
+		Cineplex vivoCityCineplex = new Cineplex(3, 3, 3, "Vivo City Cinema", "003", 12.0);
 		cineplexList.add(vivoCityCineplex);
 	}
 

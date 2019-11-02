@@ -124,23 +124,26 @@ public class DBController {
             // get individual 'fields' of the string separated by SEPARATOR
             StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
 
-            String cineplexId = star.nextToken().trim();
-            String movieId = star.nextToken(). trim();
+            String cineplexId = star.nextToken(). trim();
+            String movieId = star.nextToken().trim();
+            int numReview = Integer.parseInt(star.nextToken().trim());
+            int ticketSales = Integer.parseInt(star.nextToken().trim());
+            String  showingStatus = star.nextToken().trim();
             String  title = star.nextToken().trim();
             String  synopsis = star.nextToken().trim();
             String  directorTemp = star.nextToken().trim();
             String[] director = convertToStringArray(directorTemp);
             String  castTemp = star.nextToken().trim();
             String[] cast = convertToStringArray(castTemp);
-            String  showingStatus = star.nextToken().trim();
-            String  ageRequirement = star.nextToken().trim();
-            int numReview = Integer.parseInt(star.nextToken().trim());
             double overallRating = Double.parseDouble(star.nextToken().trim());
-            int ticketSales = Integer.parseInt(star.nextToken().trim());
+            String  ageRequirement = star.nextToken().trim();
+            int duration = Integer.parseInt(star.nextToken().trim());
+
+
 
             // create Movie object from file data
             Movie movie = new Movie(0, numReview, showingStatus, title, synopsis,
-                    director, cast, overallRating, ageRequirement, ticketSales, cineplexId, movieId);
+                    director, cast, overallRating, ageRequirement, ticketSales, cineplexId, movieId, duration);
             // add to Movie list
             alr.add(movie) ;
         }

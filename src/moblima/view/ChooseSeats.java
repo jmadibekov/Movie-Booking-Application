@@ -1,6 +1,7 @@
 package moblima.view;
 
 import moblima.controller.BookingController;
+import moblima.model.Booking;
 import moblima.model.StackArg;
 
 public class ChooseSeats {
@@ -19,6 +20,8 @@ public class ChooseSeats {
 				+ BookingController.getChosenShowtime().getType() + ", "
 				+ BookingController.getCinemaClass(BookingController.getChosenShowtime().getCinemaId())
 				+ "\n\n(0) Back");
+
+		BookingController.getChosenShowtime().getSeatLayout();
 
 		BookingController.setSeatLayout(BookingController.getChosenShowtime().getSeatLayout());
 
@@ -59,15 +62,15 @@ public class ChooseSeats {
 								int col = navigation.getChoice("Input column: ");
 
 								if (col > 0 && row > 0 && row < 9 && col < 10) {
-									if (BookingController.getSeatLayout()[row - 1][col - 1] == 0) {
-										BookingController.getSeatLayout()[row - 1][col - 1] = 1;
+									if (BookingController.getSeatLayout()[row - 1][col - 1].contentEquals("0")) {
+										BookingController.getSeatLayout()[row - 1][col - 1] = "1";
 										BookingController.addSeat(row - 1);
 										BookingController.addSeat(col - 1);
 										BookingController.printSeatLayout();
 										System.out.println("Price for that seat: $" + BookingController.calcPrice());
 										//stack.peek().getBookingCtrl().addSeatSelected(stack.peek().getBookingCtrl().getSeat());
 										break;
-									} else if (BookingController.getSeatLayout()[row - 1][col - 1] == 1) {
+									} else if (BookingController.getSeatLayout()[row - 1][col - 1].contentEquals("1")) {
 										System.out.println("Seat is occupied. PLease input a different row and column");
 									} else {
 										System.out.println("Please enter a valid input");

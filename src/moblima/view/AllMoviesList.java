@@ -33,7 +33,7 @@ public class AllMoviesList {
 				navigation.goTo(new StackArg("movieInformation", curView.getUserType()));
 				break;
 			} else {
-				System.out.println("\nPlease enter a valid input\n");
+				System.out.println("\nPlease enter a valid input!\n");
 			}
 		}
 	}	

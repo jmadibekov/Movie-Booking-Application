@@ -14,7 +14,7 @@ public class BookingController {
 	private static Cineplex chosenCineplex;
 
 	private static double totalPrice = 0;
-	private static int[][] seatLayout = new int[8][9];
+	private static String[][] seatLayout = new String[8][9];
 	private static ArrayList < Integer > seat = new ArrayList <Integer> ();
 	private static Stack<ArrayList<Integer>> seatSelected = new Stack<ArrayList<Integer>>();
 	private static int noOfSeats;
@@ -59,41 +59,31 @@ public class BookingController {
 		BookingController.noOfSeats = noOfSeats;
 	}
 
-	public static int[][] getSeatLayout() {
+	public static String[][] getSeatLayout() {
 		return seatLayout;
 	}
 
-	public static void setSeatLayout(int[][] seatLayout) {
+	public static void setSeatLayout(String[][] seatLayout) {
 		for(int i=0; i<seatLayout.length; i++)
 			for(int j=0; j<seatLayout[i].length; j++)
-				BookingController.seatLayout[i][j]=seatLayout[i][j];
+				BookingController.seatLayout[i][j] = seatLayout[i][j];
 	}
 
 	public static ArrayList < Movie > getAllMovies() {
 		ArrayList < Cineplex > curCineplexes = MainModel.getCineplexList();
-
-		Map < Integer, Movie > tmp = new HashMap < Integer, Movie > ();
-
+		Map < String, Movie > tmp = new HashMap < String, Movie> ();
 		for (Cineplex i : curCineplexes) {
 			ArrayList < Movie > curMovies = i.getMovieList();
 			for (Movie j : curMovies) {
 				tmp.put(j.getMovieId(), j);
 			}
 		}
-
+		ArrayList < Movie > res = new ArrayList < Movie> ();
 		for (Movie i : tmp.values()) {
-			i.outputMovieInfo();
+			res.add(i);
 		}
-
-		// ********* NEEDS TO BE UPDATED USING MOVIE MODEL *********
-		ArrayList<Movie> allMovies = new ArrayList<Movie>();
-		String[] directorC = new String[]{"Moham", "Faz"};
-		String[] castC = new String[]{"Faz", "Moham"};
-		Movie movieC = new Movie(0, 0, "NowShowing", "Mulan", "fgh", directorC, castC, 4.0, "M18", 1, 3, 4);
-		allMovies.add(movieC);
-		return allMovies;
+		return res;
 	}
-
 
 	public void addSeatSelected(ArrayList<Integer> seat) {
 		seatSelected.push(seat);
@@ -193,8 +183,9 @@ public class BookingController {
 	}
 
 	public static Booking createBooking(String email) {
-		Booking booking = new Booking(email, chosenShowtime.getDate(), chosenCineplex.getCineplexId(),
-				noOfSeats, getCinemaClass(chosenShowtime.getCinemaId()), totalPrice);
+//		Booking booking = new Booking(email, chosenShowtime.getDate(), chosenCineplex.getCineplexId(),
+//				noOfSeats, getCinemaClass(chosenShowtime.getCinemaId()), totalPrice);
+		Booking booking = null;
 		return booking;
 	}
 

@@ -1,5 +1,8 @@
 package moblima.model;
 
+import moblima.controller.DBController;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Movie {
@@ -17,98 +20,106 @@ public class Movie {
 	private double overallRating;
 	private String ageRequirement;
 	private int noOfShowtime;
+	private int duration;
 
 	public Movie(int noOfShowtime, int userCount, String showingStatus, String title,
 				 String synopsis, String[] director, String[] cast,
-				 double overallRating, String ageRequirement, int ticketSales, String cineplexId, String movieId) {
+				 double overallRating, String ageRequirement, int ticketSales, String cineplexId, String movieId, int duration) {
 		this.movieId = movieId;
 		this.cineplexId = cineplexId;
 		this.noOfShowtime = noOfShowtime;
 		this.ticketSales = ticketSales;
 		this.showtimeList = new ArrayList<Showtime>();
+		this.duration = duration;
 
-		boolean a = movieId == "001" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		boolean b = movieId == "002" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		boolean c = movieId == "003" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
-		if (cineplexId == "001") {
-			if (a) {
-				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A1234");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A5678");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A1234");
-				showtimeList.add(showtimeC);
-			}
-			else if (b) {
-				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A5678");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A5678");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A3456");
-				showtimeList.add(showtimeC);
-			}
-			else if (c) {
-				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A1234");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A5678");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A1234");
-				showtimeList.add(showtimeC);
-			}
+		try {
+			this.showtimeList = DBController.readShowtime("src/moblima/data/CinemaDB.txt", cineplexId, movieId);
+		} catch (IOException e) {
+			System.out.println("IOException > " + e.getMessage());
 		}
 
-		else if (cineplexId == "002") {
-			if (a) {
-				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A12345");
-				showtimeList.add(showtimeC);
-			}
-			else if (b) {
-				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A56789");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A34567");
-				showtimeList.add(showtimeC);
-			}
-			else if (c) {
-				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A12345");
-				showtimeList.add(showtimeC);
-			}
-		}
-		else if (cineplexId == "003") {
-			if (a) {
-				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A123456");
-				showtimeList.add(showtimeC);
-			}
-			else if (b) {
-				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A345678");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A345678");
-				showtimeList.add(showtimeC);
-			}
-			else if (c) {
-				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456");
-				showtimeList.add(showtimeA);
-				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
-				showtimeList.add(showtimeB);
-				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A123456");
-				showtimeList.add(showtimeC);
-			}
-		}
+//		boolean a = movieId == "001" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+//		boolean b = movieId == "002" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+//		boolean c = movieId == "003" && (showingStatus.contentEquals("NowShowing") || showingStatus.contentEquals("Preview"));
+//		if (cineplexId == "001") {
+//			if (a) {
+//				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A1234");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A5678");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A1234");
+//				showtimeList.add(showtimeC);
+//			}
+//			else if (b) {
+//				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A5678");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A5678");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A3456");
+//				showtimeList.add(showtimeC);
+//			}
+//			else if (c) {
+//				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A1234");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A5678");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A1234");
+//				showtimeList.add(showtimeC);
+//			}
+//		}
+//
+//		else if (cineplexId == "002") {
+//			if (a) {
+//				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A12345");
+//				showtimeList.add(showtimeC);
+//			}
+//			else if (b) {
+//				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A56789");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A34567");
+//				showtimeList.add(showtimeC);
+//			}
+//			else if (c) {
+//				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A12345");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A12345");
+//				showtimeList.add(showtimeC);
+//			}
+//		}
+//		else if (cineplexId == "003") {
+//			if (a) {
+//				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A123456");
+//				showtimeList.add(showtimeC);
+//			}
+//			else if (b) {
+//				Showtime showtimeA = new Showtime(1, 1100, "30/10/2019", "3D", "A345678");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "02/11/2019", "IMAX", "A56789");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A345678");
+//				showtimeList.add(showtimeC);
+//			}
+//			else if (c) {
+//				Showtime showtimeA = new Showtime(1, 1100, "31/10/2019", "3D", "A123456");
+//				showtimeList.add(showtimeA);
+//				Showtime showtimeB = new Showtime(2, 1400, "01/11/2019", "IMAX", "A56789");
+//				showtimeList.add(showtimeB);
+//				Showtime showtimeC = new Showtime(3, 2100, "03/11/2019", "Digital", "A123456");
+//				showtimeList.add(showtimeC);
+//			}
+//		}
 
 		this.userCount = userCount;
 		this.showingStatus = showingStatus;
@@ -118,6 +129,10 @@ public class Movie {
 		this.cast = cast;;
 		this.overallRating = overallRating;
 		this.ageRequirement = ageRequirement;
+	}
+
+	public void outputMovieInfo() {
+		System.out.println("Shit, updated needed");
 	}
 
 	public ArrayList<Showtime> getShowtimeList() {

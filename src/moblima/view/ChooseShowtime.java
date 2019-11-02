@@ -25,8 +25,8 @@ public class ChooseShowtime{
 		ArrayList< Showtime > showtimesList = BookingController.getShowtimesList();
 
 		for (Showtime i : showtimesList) {
-			System.out.printf("(%d) %s, %d, Type: %s, CinemaClass: %s\n", i.getShowtimeId(), i.getDate(), i.getTime(),
-					i.getType(), BookingController.getCinemaClass(i.getCinemaId()));
+			System.out.printf("%s, %s, Type: %s, CinemaClass: %s\n", i.getDate(), i.getTime(), i.getType(),
+					BookingController.getCinemaClass(i.getCinemaId()));
 			gotShowtimes++;
 		}
 
@@ -46,7 +46,7 @@ public class ChooseShowtime{
 
 			boolean found = false;
 			for (Showtime i : showtimesList) {
-				if (input == i.getShowtimeId()) {
+				if (input == -1) {
 					BookingController.setChosenShowtime(i);
 					BookingController.setSeatLayout(i.getSeatLayout());
 					navigation.goTo(new StackArg("chooseSeats", curView.getUserType()));
