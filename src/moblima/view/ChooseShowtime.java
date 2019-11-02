@@ -27,11 +27,6 @@ public class ChooseShowtime{
 		for (Showtime i : showtimesList) {
 			System.out.printf("(%d) %s, %d, Type: %s, CinemaClass: %s\n", i.getShowtimeId(), i.getDate(), i.getTime(),
 					i.getType(), BookingController.getCinemaClass(i.getCinemaId()));
-//			System.out.println("("+stack.peek().getBookingCtrl().getShowtimesList().get(i).getShowtimeId()+") "+
-//					stack.peek().getBookingCtrl().getShowtimesList().get(i).getDate()+", "+
-//					stack.peek().getBookingCtrl().getShowtimesList().get(i).getTime()+", Type: "+
-//					stack.peek().getBookingCtrl().getShowtimesList().get(i).getType() +", CinemaClass: "+
-//					stack.peek().getBookingCtrl().getCinemaClass(stack.peek().getBookingCtrl().getShowtimesList().get(i).getCinemaId()));
 			gotShowtimes++;
 		}
 
