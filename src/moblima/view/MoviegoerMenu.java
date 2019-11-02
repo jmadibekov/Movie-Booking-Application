@@ -59,7 +59,7 @@ public class MoviegoerMenu {
 					break;
 
 				 default:
-				 	System.out.println("\nPlease enter a valid input\n");
+				 	System.out.println("\nPlease enter a valid input!\n");
 			}
 		}
 	}

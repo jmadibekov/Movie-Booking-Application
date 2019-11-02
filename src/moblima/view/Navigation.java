@@ -17,11 +17,6 @@ public class Navigation {
         stack = new Stack < StackArg > ();
     }
 
-    private void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-    
     protected int getChoice(String toAsk) {
     	Scanner sc = new Scanner(System.in);
     	int choice = 0;
@@ -36,20 +31,18 @@ public class Navigation {
 	    	    loop = false;
 	    	    return choice;
 	    	} catch (NumberFormatException ex) {
-	    		System.out.println("Number entered is not an integer!");
+	    		System.out.println("The number entered is not an integer!");
 	    	}
     	}
     	return choice;
     }
 
     protected void goTo(StackArg goToView) {
-		this.clearScreen();
     	stack.push(goToView);
         MenuList.goToNext(this);
     }
 
     protected void goBack() {
-		this.clearScreen();
     	stack.pop();
 		MenuList.goToNext(this);
     }
@@ -59,7 +52,7 @@ public class Navigation {
 	}
 
     protected void goBackMainMenu() {
-    	while (!stack.peek().getMenuListVal().contentEquals("baseMenu")) {
+    	while (!this.getLastView().getMenuListVal().contentEquals("baseMenu")) {
     		stack.pop();
     	}
 		MenuList.goToNext(this);

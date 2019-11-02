@@ -7,7 +7,6 @@ public class BaseMenu {
 	}
 
 	public void display(Navigation navigation) {
-		StackArg curView = navigation.getLastView();
 		System.out.println(
 				  "=====================================\n"
 				+ "---------Welcome to MOBLIMA!---------\n"
@@ -15,10 +14,12 @@ public class BaseMenu {
 				+ "(1) Admin\n"
 				+ "(2) Movie-goer\n"
 				+ "(3) Quit");
+
+		StackArg curView = navigation.getLastView();
 		while (true) {
 			int input = navigation.getChoice("Please select an option: ");
 			if (input == 1) {
-				// IMPLEMENT ADMIN
+				navigation.goTo(new StackArg("adminMenu", curView.getUserType()));
 				break;
 			} else if (input == 2) {
 				navigation.goTo(new StackArg("moviegoerMenu", curView.getUserType()));
@@ -26,7 +27,7 @@ public class BaseMenu {
 			} else if (input == 3) {
 				navigation.exit();
 			} else {
-				System.out.println("\nPlease enter a valid input\n");
+				System.out.println("\nPlease enter a valid input!\n");
 			}
 		}
 	}

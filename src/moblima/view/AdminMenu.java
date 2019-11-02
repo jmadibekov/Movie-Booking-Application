@@ -8,7 +8,7 @@ public class AdminMenu {
 
     public AdminMenu() { }
 
-    public void display() {
+    public void display(Navigation navigation) {
         boolean loop = true;
         System.out.println(
                   "=====================================\n"

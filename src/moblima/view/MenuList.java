@@ -13,8 +13,13 @@ public class MenuList {
 			 BaseMenu baseMenu = new BaseMenu();
 			 baseMenu.display(navigation);
 			 break;
-			 
-		 case "moviegoerMenu":
+
+		 case "adminMenu":
+		 	 AdminMenu adminMenu = new AdminMenu();
+		 	 adminMenu.display(navigation);
+		 	 break;
+
+		case "moviegoerMenu":
 			 MoviegoerMenu moviegoerMenu = new MoviegoerMenu();
 			 moviegoerMenu.display(navigation);
 			 break;
