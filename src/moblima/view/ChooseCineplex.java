@@ -34,6 +34,8 @@ public class ChooseCineplex {
 				case 2:
 				case 3:
 					BookingController.setChosenCineplex(MainModel.getCineplexList().get(input - 1));
+					//Top5Controller.setChosenCineplex(MainModel.getCineplexList().get(input - 1));
+					//Top5Controller.getTop5Movies();
 					navigation.goTo(new StackArg(curView.getGoNextView(), curView.getUserType()));
 					loop = false;
 					break;

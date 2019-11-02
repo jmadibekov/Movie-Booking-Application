@@ -89,7 +89,7 @@ public class BookingController {
 		ArrayList<Movie> allMovies = new ArrayList<Movie>();
 		String[] directorC = new String[]{"Moham", "Faz"};
 		String[] castC = new String[]{"Faz", "Moham"};
-		Movie movieC = new Movie(0, 0, "NowShowing", "Mulan", "fgh", directorC, castC, 4.0, "M18", 1, 3);
+		Movie movieC = new Movie(0, 0, "NowShowing", "Mulan", "fgh", directorC, castC, 4.0, "M18", 1, 3, 4);
 		allMovies.add(movieC);
 		return allMovies;
 	}

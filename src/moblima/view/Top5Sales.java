@@ -1,5 +1,6 @@
 package moblima.view;
 
+import moblima.controller.Top5Controller;
 import moblima.model.StackArg;
 
 public class Top5Sales {
@@ -15,6 +16,7 @@ public class Top5Sales {
 				+ "=====================================\n"
 				+ "(0) Back\n");
 		//function to get top 5 movies
+		Top5Controller.getTop5Movies();
 		int input = navigation.getChoice("Please select an option: ");
 
 		while (true) {
