@@ -9,17 +9,11 @@ public class BookingController {
 	private static Movie chosenMovie;
 	private static Cineplex chosenCineplex;
 
-	private static double totalPrice;
+	private static double totalPrice = 0;
 	private static int[][] seatLayout = new int[8][9];
-	private static ArrayList < Integer > seat;
-	private static Stack<ArrayList<Integer>> seatSelected;
+	private static ArrayList < Integer > seat = new ArrayList <Integer> ();
+	private static Stack<ArrayList<Integer>> seatSelected = new Stack<ArrayList<Integer>>();
 	private static int noOfSeats;
-
-	public BookingController() {
-		totalPrice = 0;
-		seatSelected = new Stack<ArrayList<Integer>>();
-		seat = new ArrayList<Integer>();
-	}
 
 	public static Movie getChosenMovie() {
 		return chosenMovie;
@@ -94,12 +88,12 @@ public class BookingController {
 	public ArrayList<Integer> getSeat() {
 		return seat;
 	}
-	public void setSeat(ArrayList<Integer> seat) {
-		this.seat = seat;
+	public void setSeat(ArrayList<Integer> newSeat) {
+		seat = newSeat;
 	}
 
-	public static void addSeat(int seat) {
-		BookingController.seat.add(seat);
+	public static void addSeat(int newSeat) {
+			BookingController.seat.add(newSeat);
 	}
 
 	public void removeSeat() {

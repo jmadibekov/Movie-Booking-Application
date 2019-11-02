@@ -53,6 +53,7 @@ public class ChooseShowtime{
 			for (Showtime i : showtimesList) {
 				if (input == i.getShowtimeId()) {
 					BookingController.setChosenShowtime(i);
+					BookingController.setSeatLayout(i.getSeatLayout());
 					navigation.goTo(new StackArg("chooseSeats", curView.getUserType()));
 					found = true;
 					break;
