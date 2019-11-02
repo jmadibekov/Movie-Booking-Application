@@ -1,6 +1,11 @@
 package moblima.controller;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Stack;
 import moblima.model.*;
 
@@ -140,6 +145,14 @@ public class BookingController {
 
 	public static double calcPrice() {
 		double basePrice = chosenCineplex.getBaseTicketCost();
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.setTime(getDateFormat(chosenShowtime.getDate()));
+		int day = calendar.get(Calendar.DAY_OF_WEEK);
+		if(day == 1 || day == 7)
+		{
+			basePrice += 3;
+		}
 		if (chosenShowtime.getType().contentEquals("IMAX")) {
 			basePrice += 5;
 		}
@@ -169,6 +182,19 @@ public class BookingController {
 		Booking booking = new Booking(email, chosenShowtime.getDate(), chosenCineplex.getCineplexId(),
 				noOfSeats, getCinemaClass(chosenShowtime.getCinemaId()), totalPrice);
 		return booking;
+	}
+
+	public static Date getDateFormat(String dateString) {
+		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
+		Date date = null;
+		try {
+			date = formatter.parse(dateString);
+			return date;
+		}
+		catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return date;
 	}
 
 }
