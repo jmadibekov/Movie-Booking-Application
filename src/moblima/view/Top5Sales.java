@@ -23,9 +23,9 @@ public class Top5Sales {
 		for (Movie i: movieList) {
 			System.out.printf("(%s) %s, TicketSales: %s, ShowingStatus: %s\n",
 					index, i.getTitle(), i.getTicketSales(), i.getShowingStatus());
-			index++;
 			if (index == 5)
 				break;
+			index++;
 		}
 
 		StackArg curView = navigation.getLastView();
