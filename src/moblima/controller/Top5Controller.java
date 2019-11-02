@@ -17,16 +17,22 @@ public class Top5Controller {
         Top5Controller.chosenCineplex = chosenCineplex;
     }
 
-    public static void getTop5Movies() {
+    public static ArrayList<Movie> getTop5MoviesSales() {
         chosenCineplex.getMovieList().sort(Comparator.comparingInt(Movie::getTicketSales).reversed());
-        for (int i = 0;i<chosenCineplex.getMovieList().size();i++) {
-            System.out.println(chosenCineplex.getMovieList().get(i).getTitle() + ", TicketSales: " +
-                    chosenCineplex.getMovieList().get(i).getTicketSales());
-            if (i == 5) {
-                break;
-            }
-        }
+        return chosenCineplex.getMovieList();
+    }
 
+    public static ArrayList<Movie> getTop5MoviesRating() {
+        chosenCineplex.getMovieList().sort(Comparator.comparingDouble(Movie::getOverallRating).reversed());
+        return chosenCineplex.getMovieList();
+    }
+
+    public static void undoTop5Movies() {
+        chosenCineplex.getMovieList().sort(Comparator.comparing(Movie::getMovieId));
+    }
+
+    public static ArrayList < Movie > getMovies() {
+        return chosenCineplex.getMovieList();
     }
 
 }
