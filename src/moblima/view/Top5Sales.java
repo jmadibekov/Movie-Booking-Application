@@ -15,7 +15,8 @@ public class Top5Sales {
 				+ "=====================================\n"
 				+ "(0) Back\n");
 		//function to get top 5 movies
-		int input = navigation.getChoice();
+		int input = navigation.getChoice("Please select an option: ");
+
 		while (true) {
 			if (input == 0) {
 				navigation.goBack();

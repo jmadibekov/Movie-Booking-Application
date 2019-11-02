@@ -98,8 +98,7 @@ public class EnterParticulars {
         return s.replaceAll("\\s", "");
     }
     public void getConfirmation(Navigation navigation) {
-        System.out.print("Input 1 to confirm payment, 0 to go back: ");
-        int input = navigation.getIntInput();
+        int input = navigation.getChoice("Input 1 to confirm payment, 0 to go back: ");
         if (input == 0) {
             getPhone(navigation);
         }

@@ -22,7 +22,7 @@ public class MoviegoerMenu {
 		StackArg curView = navigation.getLastView();
 		boolean loop = true;
 		while (loop) {
-			int input = navigation.getChoice();
+			int input = navigation.getChoice("Please select an option: ");
 			switch (input) {
 				 case 0:
 				 	navigation.goBack();

@@ -27,9 +27,8 @@ public class ChooseSeats {
 		while (true) {
 			BookingController.setTotalPrice(0);
 			BookingController.setNoOfSeats(0);
-			System.out.print("Input number of seats: ");
 
-			int input = navigation.getIntInput();
+			int input = navigation.getChoice("Input number of seats: ");
 			BookingController.setNoOfSeats(input);
 
 			if (input == 0) {
@@ -47,8 +46,7 @@ public class ChooseSeats {
 						BookingController.clearSeat();
 						//stack.peek().getBookingCtrl().clearSeatSelected();
 						System.out.println("Seat " + (i+1));
-						System.out.print("Input ticket type (0 - Choose Seats again, 1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
-						int ticketType = navigation.getIntInput();
+						int ticketType = navigation.getChoice("Input ticket type (0 - Choose Seats again, 1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
 						if (ticketType == 0) {
 							i = input;
 							break;
@@ -57,10 +55,8 @@ public class ChooseSeats {
 						} else {
 							while (true) {
 								BookingController.addSeat(ticketType);
-								System.out.print("Input row: ");
-								int row = navigation.getIntInput();
-								System.out.print("Input column: ");
-								int col = navigation.getIntInput();
+								int row = navigation.getChoice("Input row: ");
+								int col = navigation.getChoice("Input column: ");
 
 								if (col > 0 && row > 0 && row < 9 && col < 10) {
 									if (BookingController.getSeatLayout()[row - 1][col - 1] == 0) {
@@ -86,8 +82,7 @@ public class ChooseSeats {
 				}
 				if (i == input) {
 					System.out.println("The total price of booking: $" + BookingController.getTotalPrice());
-					System.out.println("Input 1 to confirm your booking: ");
-					int confirm = navigation.getIntInput();
+					int confirm = navigation.getChoice("Input 1 to confirm your booking: ");
 					if (confirm == 1) {
 						navigation.goTo(new StackArg("enterParticulars", navigation.getLastView().getUserType()));
 						break;

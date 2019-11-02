@@ -24,7 +24,7 @@ public class AllMoviesList {
 		}
 		
 		while (true) {
-			int input = navigation.getChoice();
+			int input = navigation.getChoice("Please select an option: ");
 			if (input == 0) {
 				navigation.goBack();
 				break;

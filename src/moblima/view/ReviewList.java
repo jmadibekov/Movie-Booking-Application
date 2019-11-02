@@ -15,7 +15,7 @@ public class ReviewList {
 		//function to get booking history
 		while (true) {
 			System.out.println("(0) Back");
-			int input = navigation.getChoice();
+			int input = navigation.getChoice("Please select an option: ");
 			if (input == 0) {
 				navigation.goBack();
 				break;

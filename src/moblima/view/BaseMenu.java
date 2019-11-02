@@ -16,7 +16,7 @@ public class BaseMenu {
 				+ "(2) Movie-goer\n"
 				+ "(3) Quit");
 		while (true) {
-			int input = navigation.getChoice();
+			int input = navigation.getChoice("Please select an option: ");
 			if (input == 1) {
 				// IMPLEMENT ADMIN
 				break;

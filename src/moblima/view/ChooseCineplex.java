@@ -24,7 +24,7 @@ public class ChooseCineplex {
 
 		boolean loop = true;
 		while (loop) {
-			int input = navigation.getChoice();
+			int input = navigation.getChoice("Please select an option: ");
 			switch (input) {
 				case 0:
 					navigation.goBack();

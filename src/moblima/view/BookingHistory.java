@@ -17,7 +17,7 @@ public class BookingHistory {
 				+ "(0) Back\n");
 		//function to get booking history
 		while (true) {
-			int input = navigation.getChoice();
+			int input = navigation.getChoice("Please select an option: ");
 			if (input == 0) {
 				navigation.goBack();
 				break;
