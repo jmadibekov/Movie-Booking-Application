@@ -37,6 +37,26 @@ public class Navigation {
     	return choice;
     }
 
+	public double getDouble(String toAsk) {
+		Scanner sc = new Scanner(System.in);
+		double choice = 0;
+		boolean loop = true;
+		while (loop) {
+			try {
+				if (toAsk != null) {
+					System.out.print(toAsk);
+				}
+				double input = Double.parseDouble(sc.nextLine());
+				choice = input;
+				loop = false;
+				return choice;
+			} catch (NumberFormatException ignore) {
+				System.out.println("Invalid input");
+			}
+		}
+		return choice;
+	}
+
     protected void goTo(StackArg goToView) {
     	stack.push(goToView);
         MenuList.goToNext(this);

@@ -10,6 +10,7 @@ public class ChooseMovie {
 	}
 	
 	public void display(Navigation navigation) {
+		StackArg curView = navigation.getLastView();
 		System.out.println(
 				  "=====================================\n"
 				+ "-------Booking: Choose a Movie-------\n"
@@ -23,14 +24,16 @@ public class ChooseMovie {
 		ArrayList < Movie > movieList = BookingController.getMovies();
 
 		for (Movie i: movieList) {
-			if (i.getShowingStatus().contentEquals("NowShowing") || i.getShowingStatus().contentEquals("Preview")) {
-				System.out.printf("(%s) %s, Rating: %s, ShowingStatus: %s\n", i.getMovieId(), i.getTitle(), i.getOverallRating(), i.getShowingStatus());
-
-//				System.out.println("("+stack.peek().getBookingCtrl().getMoviesList().get(i).getMovieId()+") "+
-//				stack.peek().getBookingCtrl().getMoviesList().get(i).getTitle()+", Rating: "+
-//				stack.peek().getBookingCtrl().getMoviesList().get(i).getOverallRating()+", ShowingStatus: "+
-//				stack.peek().getBookingCtrl().getMoviesList().get(i).getShowingStatus());
-
+			if (curView.getUserType() == 1) {
+				if (i.getShowingStatus().contentEquals("NowShowing") || i.getShowingStatus().contentEquals("Preview")) {
+					System.out.printf("(%s) %s, Rating: %s, ShowingStatus: %s\n",
+							i.getMovieId(), i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+					gotMovies++;
+				}
+			}
+			else {
+				System.out.printf("(%s) %s, Rating: %s, ShowingStatus: %s\n",
+						i.getMovieId(), i.getTitle(), i.getOverallRating(), i.getShowingStatus());
 				gotMovies++;
 			}
 		}
@@ -39,8 +42,6 @@ public class ChooseMovie {
 		if (gotMovies == 0) {
 			System.out.println("No movies are currently showing. Please try another cineplex location");
 		}
-
-		StackArg curView = navigation.getLastView();
 
 		while (true) {
 			int input = navigation.getChoice("Please select an option: ");
@@ -51,12 +52,21 @@ public class ChooseMovie {
 
 			boolean found = false;
 			for (Movie i: movieList) {
-				if (Integer.toString(input) == i.getMovieId()
-						&& (i.getShowingStatus().contentEquals("NowShowing") || i.getShowingStatus().contentEquals("Preview"))) {
-					BookingController.setChosenMovie(i);
-					navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));
-					found = true;
-					break;
+				if (curView.getUserType() == 1) {
+					if (Integer.parseInt(i.getMovieId()) == input
+							&& (i.getShowingStatus().contentEquals("NowShowing") || i.getShowingStatus().contentEquals("Preview"))) {
+						BookingController.setChosenMovie(i);
+						navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));
+						found = true;
+						break;
+					}
+				}
+				else {
+					if (Integer.parseInt(i.getMovieId()) == input) {
+						navigation.goTo(new StackArg(curView.getGoNextView(), curView.getUserType()));
+						found = true;
+						break;
+					}
 				}
 			}
 
