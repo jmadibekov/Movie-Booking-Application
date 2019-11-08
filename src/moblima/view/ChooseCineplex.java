@@ -42,7 +42,7 @@ public class ChooseCineplex {
 		}
 
 		while (true) {
-			int input = navigation.getChoice("Please select an option: ");
+			int input = navigation.getChoice("Please select a cineplex: ");
 			if (input == 0) {
 				navigation.goBack();
 				break;

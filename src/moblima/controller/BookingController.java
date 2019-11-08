@@ -70,7 +70,7 @@ public class BookingController {
 				BookingController.seatLayout[i][j] = seatLayout[i][j];
 	}
 
-	public static ArrayList < Movie > getAllMovies() {
+	public static ArrayList < String > getAllMovies() {
 		ArrayList < Cineplex > curCineplexes = MainModel.getCineplexList();
 		Map < String, Movie > tmp = new HashMap < String, Movie > ();
 		for (Cineplex i : curCineplexes) {
@@ -79,10 +79,11 @@ public class BookingController {
 				tmp.put(j.getMovieId(), j);
 			}
 		}
-		ArrayList < Movie > res = new ArrayList < Movie > ();
+		ArrayList < String > res = new ArrayList < String > ();
 		for (Movie i : tmp.values()) {
-			res.add(i);
+			res.add(i.getTitle());
 		}
+		Collections.sort(res);
 		return res;
 	}
 

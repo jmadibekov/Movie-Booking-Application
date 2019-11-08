@@ -14,48 +14,53 @@ public class MovieInformation {
 				+ "----------Movie Information----------\n"
 				+ "=====================================");
 
-		if (BookingController.getChosenMovie() == null) {
+		if (BookingController.getChosenMovie() == null
+				|| BookingController.getChosenMovie().getTitle().compareTo(BookingController.getChosenTitle()) != 0) {
 			Movie actualMovie = BookingController.getChosenCineplex().getMovieWithTitle(BookingController.getChosenTitle());
 			BookingController.setChosenMovie(actualMovie);
 		}
 
 		BookingController.getChosenMovie().output();
+		System.out.println();
 
-		if (BookingController.getChosenMovie().getShowingStatus() == "Now Showing") {
-			System.out.println(
-				"(0) Back\n"
-			  + "(1) Book movie\n"
-			  + "(2) See all reviews\n"
-			  + "(3) Leave a review\n");
+		System.out.println(
+			"(0) Back\n"
+		  + "(1) Book movie\n"
+		  + "(2) See all reviews\n"
+		  + "(3) Leave a review");
 
-			StackArg curView = navigation.getLastView();
-			boolean loop = true;
-			while (loop) {
-				int input = navigation.getChoice("Please select an option: ");
-				switch (input) {
-					case 0:
-						navigation.goBack();
-						loop = false;
+		StackArg curView = navigation.getLastView();
+		boolean loop = true;
+		while (loop) {
+			int input = navigation.getChoice("Please select an option: ");
+			switch (input) {
+				case 0:
+					navigation.goBack();
+					loop = false;
+					break;
+
+				case 1:
+					if (BookingController.getChosenMovie().getShowingStatus().compareTo("Now Showing") != 0) {
+						System.out.println("Sorry, this movie is not showing yet");
 						break;
+					}
 
-					case 1:
-						navigation.goTo(new StackArg("chooseCineplex", curView.getUserType()));
-						loop = false;
-						break;
+					navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));
+					loop = false;
+					break;
 
-					case 2:
-						navigation.goTo(new StackArg("reviewList", curView.getUserType()));
-						loop = false;
-						break;
+				case 2:
+					navigation.goTo(new StackArg("reviewList", curView.getUserType()));
+					loop = false;
+					break;
 
-					case 3:
-						navigation.goTo(new StackArg("leaveReview", curView.getUserType()));
-						loop = false;
-						break;
+				case 3:
+					navigation.goTo(new StackArg("leaveReview", curView.getUserType()));
+					loop = false;
+					break;
 
-					default:
-						System.out.println("\nPlease enter a valid input\n");
-				}
+				default:
+					System.out.println("\nPlease enter a valid input\n");
 			}
 		}
 	}

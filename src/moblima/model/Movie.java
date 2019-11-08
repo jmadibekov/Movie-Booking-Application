@@ -4,6 +4,7 @@ import moblima.controller.DBController;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Movie {
 	private ArrayList < Showtime > showtimeList;
@@ -52,9 +53,15 @@ public class Movie {
 		System.out.printf("Title: %s\n", title);
 		System.out.printf("Showing status: %s, Rating: %.2f\n", showingStatus, overallRating);
 		System.out.printf("Age requirement: %s\n", ageRequirement);
-		System.out.printf("Duration: %d\n", duration);
+		System.out.printf("Number of ticket sales: %d\n", ticketSales);
+		System.out.printf("Duration: %d minutes\n", duration);
 		System.out.printf("Synopsis: %s\n", synopsis);
 
+		System.out.printf("Cast: ");
+		System.out.println(Arrays.toString(cast));
+
+		System.out.printf("Director(s): ");
+		System.out.println(Arrays.toString(director));
 	}
 
 	public ArrayList<Showtime> getShowtimeList() {

@@ -15,11 +15,11 @@ public class AllMoviesList {
 				+ "=====================================\n"
 				+ "(0) Back");
 
-		ArrayList < Movie > curList = BookingController.getAllMovies();
+		ArrayList < String > curList = BookingController.getAllMovies();
 		int ptr = 0;
-		for (Movie i : curList) {
+		for (String i : curList) {
 			ptr++;
-			System.out.printf("(%d) '%s'\n", ptr, i.getTitle());
+			System.out.printf("(%d) '%s'\n", ptr, i);
 		}
 
 		StackArg curView = navigation.getLastView();
@@ -29,7 +29,7 @@ public class AllMoviesList {
 				navigation.goBack();
 				break;
 			} else if (input > 0 && input <= curList.size()) {
-				BookingController.setChosenTitle(curList.get(input - 1).getTitle());
+				BookingController.setChosenTitle(curList.get(input - 1));
 				navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "movieInformation"));
 				break;
 			} else {
