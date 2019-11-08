@@ -32,6 +32,8 @@ public class Cineplex {
 		System.out.printf("Name: %s, Id: %s\n", cinemaName, cineplexId);
 		System.out.printf("Movies:\n");
 		for (Movie i : movieList) {
+			System.out.println("===============");
+			System.out.printf("%s %s\n", i.getMovieId(), i.getCineplexId());
 			i.output();
 		}
 	}

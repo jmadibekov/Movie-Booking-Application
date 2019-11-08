@@ -25,6 +25,8 @@ public class MainModel {
 	public static void output() {
 		for (Cineplex i : cineplexList) {
 			i.output();
+			System.out.println("======================");
+			System.out.println("======================");
 		}
 	}
 
