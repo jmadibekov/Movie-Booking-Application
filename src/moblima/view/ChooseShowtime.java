@@ -24,20 +24,19 @@ public class ChooseShowtime{
 
 		int gotShowtimes = 0;
 		int index = 1;
-		ArrayList< Showtime > showtimesList = BookingController.getShowtimesList();
+		ArrayList< Showtime > showtimesList = BookingController.getShowtimeSortedByDate();
+
 		HashMap<Integer, Showtime> uniqueShowtimes = new HashMap<Integer, Showtime>();
-
-		for (Showtime i : showtimesList) {
-			System.out.printf("(%s) %s, %s, Type: %s, CinemaClass: %s\n",index, i.getDate(), i.getTime(), i.getType(),
-					BookingController.getCinemaClass(i.getCinemaId()));
-			uniqueShowtimes.put(index, i);
-			index++;
-			gotShowtimes++;
-		}
-
-		if (gotShowtimes == 0) {
+		if (showtimesList.isEmpty()) {
 			System.out.println("No showtimes available. Please try another movie");
 			navigation.goBack();
+		}
+		for (Showtime i : showtimesList) {
+			System.out.printf("(%s) %s, %s:%s%s, CinemaClass: %s, Type: %s\n",index, i.getDate(),
+					i.getTime()/100, (i.getTime()/10)%10, i.getTime()%10,
+					BookingController.getCinemaClass(i.getCinemaId()), i.getType());
+			uniqueShowtimes.put(index, i);
+			index++;
 		}
 
 		StackArg curView = navigation.getLastView();

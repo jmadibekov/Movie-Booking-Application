@@ -1,6 +1,5 @@
 package moblima.controller;
 
-import java.lang.reflect.Array;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -212,4 +211,9 @@ public class BookingController {
 		return date;
 	}
 
+	public static ArrayList<Showtime> getShowtimeSortedByDate() {
+		chosenMovie.getShowtimeList().sort(Comparator.comparing(Showtime::getDate).
+				thenComparingInt(Showtime::getTime).thenComparing(Showtime::getCinemaId));
+		return chosenMovie.getShowtimeList();
+	}
 }
