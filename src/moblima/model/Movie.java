@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Movie {
-
 	private ArrayList < Showtime > showtimeList;
 	private String movieId;
 	private String cineplexId;
@@ -30,7 +29,7 @@ public class Movie {
 		this.duration = duration;
 
 		try {
-			this.showtimeList = DBController.readShowtime("src/moblima/data/CinemaDB.txt", cineplexId, movieId);
+			this.showtimeList = DBController.readShowtime("src/moblima/data/ShowtimeDB.txt", cineplexId, movieId);
 		} catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}
@@ -46,7 +45,10 @@ public class Movie {
 	}
 
 	public void output() {
-		System.out.printf("Title: %s, Id: %s\n", title, movieId);
+		System.out.printf("Title: %s\n", title);
+		System.out.printf("Showing status: %s, Rating: %.2f\n", showingStatus, overallRating);
+		System.out.printf("Age requirement: %s", ageRequirement);
+
 	}
 
 	public ArrayList<Showtime> getShowtimeList() {

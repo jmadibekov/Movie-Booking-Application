@@ -101,8 +101,8 @@ public class DBController {
             String movieDBId = star.nextToken().trim();
             if (cineplexDBId.compareTo(cineplexId) != 0 && movieDBId.compareTo(movieId) != 0){
                 String cinemaId = star.nextToken().trim();
-                String date = star.nextToken().trim();
                 int time = Integer.parseInt(star.nextToken().trim());
+                String date = star.nextToken().trim();
                 String type = star.nextToken().trim();
                 String[][] seatLayout = new String[8][];
                 for (int j = 0; j < 8; j++) {

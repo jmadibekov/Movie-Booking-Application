@@ -18,7 +18,7 @@ public class Cineplex {
 		this.cineplexId = cineplexId;
 
 		try {
-			this.movieList = DBController.readMovies("src/moblima/data/MovieDB.txt");
+			this.movieList = DBController.readMovies("src/moblima/data/MovieDB.txt", cineplexId);
 			this.staffList = DBController.readStaff("src/moblima/data/StaffDB.txt", cineplexId);
 			this.cinemaList = DBController.readCinema("src/moblima/data/CinemaDB.txt", cineplexId);
 		} catch (IOException e) {
