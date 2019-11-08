@@ -29,10 +29,10 @@ public class Cineplex {
 	}
 
 	void output() {
-		System.out.printf("Id: %s, Name: %s\n", cineplexId, cinemaName);
-
+		System.out.printf("Name: %s, Id: %s\n", cinemaName, cineplexId);
+		System.out.printf("Movies:\n");
 		for (Movie i : movieList) {
-
+			i.output();
 		}
 	}
 

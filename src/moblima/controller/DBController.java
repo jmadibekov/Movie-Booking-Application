@@ -142,7 +142,7 @@ public class DBController {
 
 
             // create Movie object from file data
-            Movie movie = new Movie(0, numReview, showingStatus, title, synopsis,
+            Movie movie = new Movie(numReview, showingStatus, title, synopsis,
                     director, cast, overallRating, ageRequirement, ticketSales, cineplexId, movieId, duration);
             // add to Movie list
             alr.add(movie) ;

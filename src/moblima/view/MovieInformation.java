@@ -14,7 +14,7 @@ public class MovieInformation {
 				+ "----------Movie Information----------\n"
 				+ "=====================================");
 
-		BookingController.getChosenMovie().outputMovieInfo();
+		BookingController.getChosenMovie().output();
 
 		if (BookingController.getChosenMovie().getShowingStatus() == "NowShowing") {
 			System.out.println(
