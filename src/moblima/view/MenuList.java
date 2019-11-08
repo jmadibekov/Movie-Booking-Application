@@ -94,35 +94,35 @@ public class MenuList {
 		 	 enterParticulars.display(navigation);
 		 	 break;
 
-		 case "loginVerification":
-			 LoginVerification loginVerification = new LoginVerification();
-			 loginVerification.display(navigation);
-			 break;
-
-		 case "updateMovie":
-			 UpdateMovie updateMovie = new UpdateMovie();
-			 updateMovie.display(navigation);
-			 break;
-
-		 case "addMovie":
-			 AddMovie addMovie = new AddMovie();
-			 addMovie.display(navigation);
-			 break;
-
-		 case "addShowtime":
-			 AddShowtime addShowtime = new AddShowtime();
-			 addShowtime.display(navigation);
-			 break;
-
-		 case "editBaseTicketPrice":
-			 EditBaseTicketPrice editBaseTicketPrice = new EditBaseTicketPrice();
-			 editBaseTicketPrice.display(navigation);
-			 break;
-
-		 case "addHoliday":
-			 AddHoliday addHoliday = new AddHoliday();
-			 addHoliday.display(navigation);
-			 break;
+//		 case "loginVerification":
+//			 LoginVerification loginVerification = new LoginVerification();
+//			 loginVerification.display(navigation);
+//			 break;
+//
+//		 case "updateMovie":
+//			 UpdateMovie updateMovie = new UpdateMovie();
+//			 updateMovie.display(navigation);
+//			 break;
+//
+//		 case "addMovie":
+//			 AddMovie addMovie = new AddMovie();
+//			 addMovie.display(navigation);
+//			 break;
+//
+//		 case "addShowtime":
+//			 AddShowtime addShowtime = new AddShowtime();
+//			 addShowtime.display(navigation);
+//			 break;
+//
+//		 case "editBaseTicketPrice":
+//			 EditBaseTicketPrice editBaseTicketPrice = new EditBaseTicketPrice();
+//			 editBaseTicketPrice.display(navigation);
+//			 break;
+//
+//		 case "addHoliday":
+//			 AddHoliday addHoliday = new AddHoliday();
+//			 addHoliday.display(navigation);
+//			 break;
 
 		 default: 
 			 System.out.println("Something went wrong! The program is terminating.");

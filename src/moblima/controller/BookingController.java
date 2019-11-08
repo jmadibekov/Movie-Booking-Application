@@ -71,14 +71,17 @@ public class BookingController {
 
 	public static ArrayList < Movie > getAllMovies() {
 		ArrayList < Cineplex > curCineplexes = MainModel.getCineplexList();
-		Map < String, Movie > tmp = new HashMap < String, Movie> ();
+		Map < String, Movie > tmp = new HashMap < String, Movie > ();
 		for (Cineplex i : curCineplexes) {
 			ArrayList < Movie > curMovies = i.getMovieList();
+			System.out.printf("Cineplex %s has movies: \n", i.getCinemaName());
 			for (Movie j : curMovies) {
+				System.out.printf("%s %s\n", j.getMovieId(), j.getTitle());
+
 				tmp.put(j.getMovieId(), j);
 			}
 		}
-		ArrayList < Movie > res = new ArrayList < Movie> ();
+		ArrayList < Movie > res = new ArrayList < Movie > ();
 		for (Movie i : tmp.values()) {
 			res.add(i);
 		}

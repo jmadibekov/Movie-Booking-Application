@@ -7,7 +7,10 @@ public class MOBLIMA {
 	public static void main(String[] args) {
 		// Initialization
 		Navigation navigation = new Navigation();
-		MainModel.init(3, 0);
+		MainModel.init();
+
+		// To double-check
+		MainModel.output();
 
 		// The program starts here
 		navigation.start();
