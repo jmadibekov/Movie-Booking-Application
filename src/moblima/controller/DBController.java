@@ -27,7 +27,7 @@ public class DBController {
 
             String cineplexDBId = star.nextToken().trim();
             String movieDBId = star.nextToken().trim();
-            if (cineplexDBId.compareTo(cineplexId) != 0 && movieDBId.compareTo(movieId) != 0) {
+            if (cineplexDBId.compareTo(cineplexId) == 0 && movieDBId.compareTo(movieId) == 0) {
                 String userName = star.nextToken().trim();
                 String reviewTitle = star.nextToken().trim();
                 String reviewBody = star.nextToken().trim();
@@ -53,7 +53,7 @@ public class DBController {
             StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
 
             String cineplexDBId = star.nextToken().trim();
-            if (cineplexDBId.compareTo(cineplexId) != 0) {
+            if (cineplexDBId.compareTo(cineplexId) == 0) {
                 String userName = star.nextToken().trim();
                 String password = star.nextToken().trim();
                 // create Staff object from file data
@@ -99,7 +99,7 @@ public class DBController {
 
             String cineplexDBId = star.nextToken().trim();
             String movieDBId = star.nextToken().trim();
-            if (cineplexDBId.compareTo(cineplexId) != 0 && movieDBId.compareTo(movieId) != 0){
+            if (cineplexDBId.compareTo(cineplexId) == 0 && movieDBId.compareTo(movieId) == 0){
                 String cinemaId = star.nextToken().trim();
                 int time = Integer.parseInt(star.nextToken().trim());
                 String date = star.nextToken().trim();
@@ -131,7 +131,7 @@ public class DBController {
             StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
 
             String cineplexDBId = star.nextToken().trim();
-            if (cineplexDBId.compareTo(cineplexId) != 0) {
+            if (cineplexDBId.compareTo(cineplexId) == 0) {
                 String cinemaId = star.nextToken().trim();
                 String cinemaClass = star.nextToken().trim();
                 // create Cinema object from file data
@@ -154,7 +154,7 @@ public class DBController {
             StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
 
             String cineplexDBId = star.nextToken().trim();
-            if (cineplexDBId.compareTo(cineplexId) != 0) {
+            if (cineplexDBId.compareTo(cineplexId) == 0) {
                 String movieId = star.nextToken().trim();
                 int numReview = Integer.parseInt(star.nextToken().trim());
                 int ticketSales = Integer.parseInt(star.nextToken().trim());

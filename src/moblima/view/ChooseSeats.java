@@ -5,6 +5,8 @@ import moblima.model.Booking;
 import moblima.model.StackArg;
 
 public class ChooseSeats {
+
+	private int noOfSeats;
 	
 	public ChooseSeats() {
 	}
@@ -27,6 +29,26 @@ public class ChooseSeats {
 
 		BookingController.printSeatLayout();
 		
+		/*getNoOfSeats(navigation);
+
+		private void getNoOfSeats(Navigation navigation) {
+			BookingController.setTotalPrice(0);
+			BookingController.setNoOfSeats(0);
+
+			int input = navigation.getChoice("Input number of seats: ");
+			BookingController.setNoOfSeats(input);
+
+			if (input == 0) {
+				navigation.goBack();
+			}
+
+			else if (input > 3) {
+				System.out.println("Maximum 3 seats allowed");
+			}
+
+			else if (input > 0) {
+		}*/
+
 		while (true) {
 			BookingController.setTotalPrice(0);
 			BookingController.setNoOfSeats(0);
