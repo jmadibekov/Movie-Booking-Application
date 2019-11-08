@@ -28,6 +28,14 @@ public class Review {
 		this.rating = rating;
 	}
 
+	public Review(String name, String title, String body, String date, int rating) {
+	    this.name = name;
+	    this.title = title;
+	    this.body = body;
+	    this.date = date;
+	    this.rating = rating;
+    }
+
 	public String getName() {
 		return name;
 	}

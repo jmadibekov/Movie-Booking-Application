@@ -145,7 +145,11 @@ public class Movie {
 		this.ticketSales = ticketSales;
 	}
 
-	public String getCinemaId() {return cineplexId;}
+	public String getCineplexId() { return cineplexId; }
 
-	public void setCinemaId(String cinemaId) {this.cineplexId = cinemaId;}
+	public void setCineplexId(String cinemaId) { this.cineplexId = cinemaId; }
+
+	public int getDuration() { return duration; }
+
+	public void setDuration(int duration) { this.duration = duration; }
 }
