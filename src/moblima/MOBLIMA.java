@@ -10,7 +10,7 @@ public class MOBLIMA {
 		MainModel.init();
 
 		// To double-check
-//		MainModel.output();
+		MainModel.output();
 
 		// The program starts here
 		navigation.start();
