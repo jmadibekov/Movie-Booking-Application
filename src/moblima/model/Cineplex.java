@@ -38,6 +38,20 @@ public class Cineplex {
 		}
 	}
 
+	public boolean hasMovieWithTitle(String chosenTitle) {
+		for (Movie i : movieList)
+			if (i.getTitle().compareTo(chosenTitle) == 0)
+				return true;
+		return false;
+	}
+
+	public Movie getMovieWithTitle(String chosenTitle) {
+		for (Movie i : movieList)
+			if (i.getTitle().compareTo(chosenTitle) == 0)
+				return i;
+		return null;
+	}
+
 	public String getCinemaName() {
 		return cinemaName;
 	}

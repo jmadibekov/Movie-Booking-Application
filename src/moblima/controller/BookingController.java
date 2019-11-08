@@ -10,6 +10,7 @@ import moblima.model.*;
 
 public class BookingController {
 	private static Showtime chosenShowtime;
+	private static String chosenTitle;
 	private static Movie chosenMovie;
 	private static Cineplex chosenCineplex;
 
@@ -83,6 +84,14 @@ public class BookingController {
 			res.add(i);
 		}
 		return res;
+	}
+
+	public static String getChosenTitle() {
+		return chosenTitle;
+	}
+
+	public static void setChosenTitle(String chosenTitle) {
+		BookingController.chosenTitle = chosenTitle;
 	}
 
 	public void addSeatSelected(ArrayList<Integer> seat) {

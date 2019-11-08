@@ -14,9 +14,14 @@ public class MovieInformation {
 				+ "----------Movie Information----------\n"
 				+ "=====================================");
 
+		if (BookingController.getChosenMovie() == null) {
+			Movie actualMovie = BookingController.getChosenCineplex().getMovieWithTitle(BookingController.getChosenTitle());
+			BookingController.setChosenMovie(actualMovie);
+		}
+
 		BookingController.getChosenMovie().output();
 
-		if (BookingController.getChosenMovie().getShowingStatus() == "NowShowing") {
+		if (BookingController.getChosenMovie().getShowingStatus() == "Now Showing") {
 			System.out.println(
 				"(0) Back\n"
 			  + "(1) Book movie\n"

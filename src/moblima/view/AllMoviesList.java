@@ -15,22 +15,22 @@ public class AllMoviesList {
 				+ "=====================================\n"
 				+ "(0) Back");
 
-		StackArg curView = navigation.getLastView();
 		ArrayList < Movie > curList = BookingController.getAllMovies();
 		int ptr = 0;
 		for (Movie i : curList) {
 			ptr++;
 			System.out.printf("(%d) '%s'\n", ptr, i.getTitle());
 		}
-		
+
+		StackArg curView = navigation.getLastView();
 		while (true) {
-			int input = navigation.getChoice("Please select an option: ");
+			int input = navigation.getChoice("Please select a movie: ");
 			if (input == 0) {
 				navigation.goBack();
 				break;
 			} else if (input > 0 && input <= curList.size()) {
-				BookingController.setChosenMovie(curList.get(input - 1));
-				navigation.goTo(new StackArg("movieInformation", curView.getUserType()));
+				BookingController.setChosenTitle(curList.get(input - 1).getTitle());
+				navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "movieInformation"));
 				break;
 			} else {
 				System.out.println("\nPlease enter a valid input!\n");

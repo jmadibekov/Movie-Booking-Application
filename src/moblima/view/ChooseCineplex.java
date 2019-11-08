@@ -3,6 +3,8 @@ package moblima.view;
 import moblima.controller.*;
 import moblima.model.*;
 
+import java.util.ArrayList;
+
 public class ChooseCineplex {
 
 	public ChooseCineplex() {
@@ -13,35 +15,45 @@ public class ChooseCineplex {
 
 		System.out.println(
 				  "=====================================\n"
-				+ "-Booking: Choose a Cineplex Location-\n"
+				+ "------Choose a Cineplex Location-----\n"
 				+ "=====================================");
 
-		System.out.println(
-				  "(0) Back\n"
-				+ "(1) JurongPoint Cineplex\n"
-				+ "(2) PayaLebar Cineplex\n"
-				+ "(3) VivoCity Cineplex\n");
+		System.out.println("(0) Back");
 
-		boolean loop = true;
-		while (loop) {
+		ArrayList < Cineplex > curCineplex;
+
+		if (BookingController.getChosenTitle() != null) {
+			// If movie was chosen already
+			curCineplex = new ArrayList < Cineplex > ();
+			String chosenTitle = BookingController.getChosenTitle();
+			for (Cineplex i : MainModel.getCineplexList()) {
+				if (i.hasMovieWithTitle(chosenTitle)) {
+					curCineplex.add(i);
+				}
+			}
+		} else {
+			curCineplex = MainModel.getCineplexList();
+		}
+
+		int ptr = 0;
+		for (Cineplex i : curCineplex) {
+			ptr++;
+			System.out.printf("(%d) '%s'\n", ptr, i.getCinemaName());
+		}
+
+		while (true) {
 			int input = navigation.getChoice("Please select an option: ");
-			switch (input) {
-				case 0:
-					navigation.goBack();
-					loop = false;
-					break;
-				case 1:
-				case 2:
-				case 3:
-					BookingController.setChosenCineplex(MainModel.getCineplexList().get(input - 1));
-					Top5Controller.setChosenCineplex(MainModel.getCineplexList().get(input - 1));
-					navigation.goTo(new StackArg(curView.getGoNextView(), curView.getUserType()));
-					loop = false;
-					break;
-				default:
-					System.out.println("\nPlease enter a valid input\n");
+			if (input == 0) {
+				navigation.goBack();
+				break;
+			} else if (input > 0 && input <= curCineplex.size()) {
+				BookingController.setChosenCineplex(curCineplex.get(input - 1));
+				Top5Controller.setChosenCineplex(curCineplex.get(input - 1));
+				navigation.goTo(new StackArg(curView.getGoNextView(), curView.getUserType()));
+				break;
+			} else {
+				System.out.println("\nPlease enter a valid input!\n");
 			}
 		}
 	}
-	
 }

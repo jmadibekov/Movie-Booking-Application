@@ -8,15 +8,19 @@ import java.util.ArrayList;
 public class Movie {
 	private ArrayList < Showtime > showtimeList;
 	private String movieId;
+
+	// Specific to Cineplex
 	private String cineplexId;
 	private int userCount;
 	private int ticketSales;
 	private String showingStatus;
+	private double overallRating;
+	// --------
+
 	private String title;
 	private String synopsis;
 	private String[] director;
 	private String[] cast;
-	private double overallRating;
 	private String ageRequirement;
 	private int duration;
 
@@ -48,6 +52,8 @@ public class Movie {
 		System.out.printf("Title: %s\n", title);
 		System.out.printf("Showing status: %s, Rating: %.2f\n", showingStatus, overallRating);
 		System.out.printf("Age requirement: %s\n", ageRequirement);
+		System.out.printf("Duration: %d\n", duration);
+		System.out.printf("Synopsis: %s\n", synopsis);
 
 	}
 

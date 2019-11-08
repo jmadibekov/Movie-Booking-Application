@@ -35,7 +35,8 @@ public class MoviegoerMenu {
 				 	 break;
 
 				 case 2:
-				 	 // add stuff
+					 navigation.goTo(new StackArg("searchMovie", curView.getUserType()));
+					 loop = false;
 					 break;
 
 				 case 3:
