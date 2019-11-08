@@ -25,6 +25,7 @@ public class BookingController {
 
 	public static void setChosenMovie(Movie chosenMovie) {
 		BookingController.chosenMovie = chosenMovie;
+		BookingController.chosenTitle = chosenMovie.getTitle();
 	}
 
 	public static Cineplex getChosenCineplex() {

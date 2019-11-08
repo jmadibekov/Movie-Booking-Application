@@ -19,7 +19,7 @@ public class AllMoviesList {
 		int ptr = 0;
 		for (String i : curList) {
 			ptr++;
-			System.out.printf("(%d) '%s'\n", ptr, i);
+			System.out.printf("(%d) %s\n", ptr, i);
 		}
 
 		StackArg curView = navigation.getLastView();
