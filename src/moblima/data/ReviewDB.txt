@@ -1,0 +1,3 @@
+CineplexId|MovieId|Name|Title|Body|Date|Rating
+001|001|Alpha|Best Movie of the Year|The Largest Cross-Over|31/10/2019|3.0
+002|002|Bravo|Brings Back Great Memories|Back To The Future was a movie me and my wife watch on our first date. Great to see it back on the big screen.|30/10/2019|5.0
