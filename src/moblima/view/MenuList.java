@@ -6,10 +6,18 @@ package moblima.view;
 import moblima.model.StackArg;
 
 public class MenuList {
+
+	/*public enum menuView {
+		baseMenu, adminMenu, moviegoerMenu, emailVerification, bookingHistory, allMoviesList, movieInformation,
+		reviewList, leaveReview, searchMovie, top5Sales, top5Rating, chooseCineplex, chooseMovie, chooseShowtime,
+		chooseSeats, enterParticulars, loginVerification, updateMovie, addMovie, addShowtime, editBaseTicketPrice,
+		addHoliday;
+	}*/
+
 	public static void goToNext(Navigation navigation) {
 		StackArg curView = navigation.getLastView();
 		switch (curView.getMenuListVal()) {
-		 case "baseMenu": 
+		 case "baseMenu":
 			 BaseMenu baseMenu = new BaseMenu();
 			 baseMenu.display(navigation);
 			 break;
