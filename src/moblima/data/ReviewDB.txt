@@ -1,3 +1,5 @@
 CineplexId|MovieId|Name|Title|Body|Date|Rating
 001|001|Alpha|Best Movie of the Year|The Largest Cross-Over|31/10/2019|3.0
-002|002|Bravo|Brings Back Great Memories|Back To The Future was a movie me and my wife watch on our first date. Great to see it back on the big screen.|30/10/2019|5.0
+001|001|Bravo|Awesome Movie of the Year|Amazing action scenes|01/11/2019|4.2
+002|002|Charlie|Brings Back Great Memories|Back To The Future was a movie me and my wife watch on our first date. Great to see it back on the big screen.|30/10/2019|5.0
+002|002|Delta|Memories of first girlfriend|Back To The Future was a movie that scored me a girlfriend in the past and that person is now my wife|31/10/2019|4.8

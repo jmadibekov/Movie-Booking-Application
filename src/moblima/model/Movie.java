@@ -8,6 +8,7 @@ import java.util.Arrays;
 
 public class Movie {
 	private ArrayList < Showtime > showtimeList;
+	private ArrayList < Review > reviewList;
 	private String movieId;
 
 	// Specific to Cineplex
@@ -38,7 +39,11 @@ public class Movie {
 		} catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}
-
+		try {
+			this.reviewList = DBController.readReview("src/moblima/data/ReviewDB.txt", cineplexId, movieId);
+		} catch (IOException e) {
+			System.out.println("IOException > " + e.getMessage());
+		}
 		this.userCount = userCount;
 		this.showingStatus = showingStatus;
 		this.title = title;
@@ -74,6 +79,18 @@ public class Movie {
 
 	public void addShowtime(Showtime showtime) {
 		showtimeList.add(showtime);
+	}
+
+	public ArrayList<Review> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(ArrayList<Review> reviewList) {
+		this.reviewList = reviewList;
+	}
+
+	public void addReview(Review review) {
+		reviewList.add(review);
 	}
 
 	public String getMovieId() {

@@ -14,9 +14,11 @@ public class MovieInformation {
 				+ "----------Movie Information----------\n"
 				+ "=====================================\n");
 
-		if (BookingController.getChosenTitle() != null) {
+		if (BookingController.getChosenMovie() == null
+				|| BookingController.getChosenMovie().getTitle().compareTo(BookingController.getChosenTitle()) != 0) {
 			Movie actualMovie = BookingController.getChosenCineplex().getMovieWithTitle(BookingController.getChosenTitle());
 			BookingController.setChosenMovie(actualMovie);
+			ReviewController.setChosenMovie(actualMovie);
 		}
 
 		BookingController.getChosenMovie().output();
@@ -39,8 +41,8 @@ public class MovieInformation {
 					break;
 
 				case 1:
-					String showingStatus = BookingController.getChosenMovie().getShowingStatus();
-					if (!showingStatus.contentEquals("Now Showing") && !showingStatus.contentEquals("Preview")) {
+					if (BookingController.getChosenMovie().getShowingStatus().contentEquals("Coming Soon") ||
+							BookingController.getChosenMovie().getShowingStatus().contentEquals("End of Showing")) {
 						System.out.println("Sorry, this movie is not showing yet");
 						break;
 					}

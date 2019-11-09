@@ -59,6 +59,10 @@ public class ChooseSeats {
 			if (input == 0) {
 				navigation.goBack();
 			}
+			else if (input > BookingController.getNoOfSeatsLeft(BookingController.getChosenShowtime())) {
+				System.out.println("Unable to book seats as number of seats exceeded number of seats left");
+				System.out.println("No. of seats left: " + BookingController.getNoOfSeatsLeft(BookingController.getChosenShowtime()));
+			}
 
 			else if (input > 3) {
 				System.out.println("Maximum 3 seats allowed");

@@ -79,6 +79,7 @@ public class ChooseMovie {
 				}
 			} else if (input == 2) {
 				BookingController.setChosenMovie(curMovie);
+				ReviewController.setChosenMovie(curMovie);
 				navigation.goTo(new StackArg("movieInformation", curView.getUserType()));
 				return true;
 			} else {

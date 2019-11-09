@@ -49,13 +49,17 @@ public class ChooseShowtime{
 				break;
 			}
 			else if (input <= uniqueShowtimes.size()) {
-				if (curView.getUserType() == 1) {
+				if (curView.getUserType() == 1 && BookingController.getNoOfSeatsLeft(uniqueShowtimes.get(input)) != 0) {
 					BookingController.setChosenShowtime(uniqueShowtimes.get(input));
 					navigation.goTo(new StackArg("chooseSeats", curView.getUserType()));
 					found = true;
-				} else {
+				}
+				else if (curView.getUserType() == 0) {
 					BookingController.setChosenShowtime(uniqueShowtimes.get(input));
 					break;
+				}
+				else {
+					System.out.println("No seats available for that showtime. Please input another showtime");
 				}
 			}
 			if (found)

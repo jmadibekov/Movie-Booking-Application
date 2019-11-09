@@ -31,7 +31,7 @@ public class DBController {
                 String reviewTitle = star.nextToken().trim();
                 String reviewBody = star.nextToken().trim();
                 String date = star.nextToken().trim();
-                int rating = Integer.parseInt(star.nextToken().trim());
+                double rating = Double.parseDouble(star.nextToken().trim());
                 // create Review object from file data
                 Review review = new Review(userName, reviewTitle, reviewBody, date, rating);
                 // add to Review list

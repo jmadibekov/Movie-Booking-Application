@@ -8,7 +8,6 @@ public class Showtime {
 	private int numRows = 8;
 	private int numCols = 9;
 	private String[][] seatLayout;
-	//private int noOfSeatsLeft;
 
 	public Showtime(int time, String date, String type, String cinemaId, String[][] seatLayout) {
 		this.time = time;

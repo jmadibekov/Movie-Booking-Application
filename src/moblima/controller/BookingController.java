@@ -217,4 +217,17 @@ public class BookingController {
 				thenComparingInt(Showtime::getTime).thenComparing(Showtime::getCinemaId));
 		return chosenMovie.getShowtimeList();
 	}
+
+	public static int getNoOfSeatsLeft(Showtime showtime) {
+		int noOfSeatsLeft = 0;
+		for (int i=0;i<8;i++) {
+			for (int j=0;j<9;j++) {
+				if (showtime.getSeatLayout()[i][j].contentEquals("0")) {
+					noOfSeatsLeft++;
+				}
+			}
+		}
+		return noOfSeatsLeft;
+	}
+
 }

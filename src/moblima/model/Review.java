@@ -7,9 +7,9 @@ public class Review {
 	private String title;
 	private String body;
 	private String date;
-	private int rating;
+	private double rating;
 	
-	public Review(String name, String title, String body, int rating) {
+	public Review(String name, String title, String body, double rating) {
 		this.name = name;
 		this.title = title;
 		this.body = body;
@@ -28,13 +28,21 @@ public class Review {
 		this.rating = rating;
 	}
 
-	public Review(String name, String title, String body, String date, int rating) {
+	public Review(String name, String title, String body, String date, double rating) {
 	    this.name = name;
 	    this.title = title;
 	    this.body = body;
 	    this.date = date;
 	    this.rating = rating;
     }
+
+    public void output() {
+		System.out.printf("Date of review: %s\n", date);
+		System.out.printf("Name: %s\n", name);
+		System.out.printf("Review Rating: %.2f\n", rating);
+		System.out.printf("Title: %s\n", title);
+		System.out.printf("Body: %s\n\n", body);
+	}
 
 	public String getName() {
 		return name;
@@ -68,11 +76,11 @@ public class Review {
 		this.date = date;
 	}
 
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 
-	public void setRating(int rating) {
+	public void setRating(double rating) {
 		this.rating = rating;
 	}
 }

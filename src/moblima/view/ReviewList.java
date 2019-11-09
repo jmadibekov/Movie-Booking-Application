@@ -1,6 +1,9 @@
 package moblima.view;
 
-import moblima.model.StackArg;
+import moblima.controller.ReviewController;
+import moblima.model.*;
+
+import java.util.ArrayList;
 
 public class ReviewList {
 	
@@ -13,16 +16,25 @@ public class ReviewList {
 				+ "-------------All Reviews-------------\n"
 				+ "=====================================\n");
 		//function to get booking history
+		ArrayList< Review > reviewList = ReviewController.getChosenMovie().getReviewList();
+		if (reviewList.isEmpty()) {
+			System.out.println("No reviews available. Please try another movie");
+			navigation.goBack();
+		}
+		for (Review i : reviewList) {
+			i.output();
+		}
 		while (true) {
-			System.out.println("(0) Back");
+			System.out.println("(0) Back\n"
+			+ "(1) Leave a Review");
 			int input = navigation.getChoice("Please select an option: ");
 			if (input == 0) {
 				navigation.goBack();
 				break;
 			}
-
-			else {
-				System.out.println("\nPlease enter a valid input\n");
+			else if (input == 1) {
+				navigation.goTo(new StackArg("leaveReview", navigation.getLastView().getUserType()));
+				break;
 			}
 		}
 	}
