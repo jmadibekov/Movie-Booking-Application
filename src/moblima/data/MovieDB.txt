@@ -1,5 +1,5 @@
 001|001|3|20|Now Showing|Avengers: Endgame|Iron Man Dies...|Fazli|Swa, James|4.3|PG13|150
-001|002|3|22|Now Showing|Back To The Future|Travel back to the past and hope you don't screw things up!|Michael Bay|Swa, James|4.4|PG13|150
+001|002|4|22|Now Showing|Back To The Future|Travel back to the past and hope you don't screw things up!|Michael Bay|Swa, James|4.3|PG13|150
 001|003|4|18|Now Showing|Inception|Dream Hacking|Christopher Nolan.|Person A, Person B|4.9|NC16|120
 001|004|5|63|Now Showing|Lion King|Nala is Simba's sister.|Benedict|Bendict, Swa, Jamie, Nic|5.0|R21|120
 001|005|2|34|Preview|Frozen 2|You'll get sick of the song before the movie even debuts.|Fazli|Fazli, Nic|2.5|PG13|90

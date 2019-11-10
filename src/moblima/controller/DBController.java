@@ -99,8 +99,8 @@ public class DBController {
             String movieDBId = star.nextToken().trim();
             if (cineplexDBId.compareTo(cineplexId) == 0 && movieDBId.compareTo(movieId) == 0){
                 String cinemaId = star.nextToken().trim();
-                int time = Integer.parseInt(star.nextToken().trim());
                 String date = star.nextToken().trim();
+                int time = Integer.parseInt(star.nextToken().trim());
                 String type = star.nextToken().trim();
                 String[][] seatLayout = new String[8][];
                 for (int j = 0; j < 8; j++) {
@@ -242,6 +242,7 @@ public class DBController {
     }
 
     public static void saveReview(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
+        System.out.println("Saving Review");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -266,6 +267,7 @@ public class DBController {
     }
 
     public static void saveBookingHistory(String filename, List al, String email, Boolean append) throws IOException {
+        System.out.println("Saving Booking History");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -282,6 +284,8 @@ public class DBController {
             st.append(book.getCineplexId().trim());
             st.append(SEPARATOR);
             st.append(book.getMovieId().trim());
+            st.append(SEPARATOR);
+            st.append(book.getCinemaId().trim());
             st.append(SEPARATOR);
             st.append(book.getTID().trim());
             st.append(SEPARATOR);
@@ -308,6 +312,7 @@ public class DBController {
     }
 
     public static void saveHoliday(String filename, List al, Boolean append) throws IOException {
+        System.out.println("Saving Holiday");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -320,6 +325,7 @@ public class DBController {
     }
 
     public static void saveStaff(String filename, List al, String cineplexId, Boolean append) throws IOException {
+        System.out.println("Saving Staff");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -336,6 +342,7 @@ public class DBController {
     }
 
     public static void saveCustomer(String filename, List al, Boolean append) throws IOException {
+        System.out.println("Saving Customer");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -352,6 +359,7 @@ public class DBController {
     }
 
     public static void saveShowtime(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
+        System.out.println("Saving Showtime");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -382,6 +390,7 @@ public class DBController {
     }
 
     public static void saveCinema(String filename, List al, String cineplexId, Boolean append) throws IOException {
+        System.out.println("Saving Cinema");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -398,6 +407,7 @@ public class DBController {
     }
 
     public static void saveMovies(String filename, List al, Boolean append) throws IOException {
+        System.out.println("Saving Movie");
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {

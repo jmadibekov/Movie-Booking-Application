@@ -26,8 +26,8 @@ public class MainModel {
 
 	public static void endProgramWriteBack() {
 		try {
-			DBController.saveCustomer("CustomerDB.txt", customerList, false);
-			DBController.saveHoliday("HolidayDB.txt", holidayList, false);
+			DBController.saveCustomer("src/moblima/data/CustomerDB.txt", customerList, false);
+			DBController.saveHoliday("src/moblima/data/HolidayDB.txt", holidayList, false);
 			for (int i = 0; i < cineplexList.size(); i++) {
 				Cineplex cineplex = cineplexList.get(i);
 				ArrayList<Movie> movieList = cineplex.getMovieList();
@@ -35,37 +35,37 @@ public class MainModel {
 				ArrayList<Staff> staffList = cineplex.getStaffList();
 
 				if (i == 0) {
-					DBController.saveMovies("MovieDB.txt", movieList, false);
-					DBController.saveCinema("CinemaDB.txt", cinemaList, cineplex.getCineplexId(), false);
-					DBController.saveStaff("StaffDB.txt", staffList, cineplex.getCineplexId(), false);
+					DBController.saveMovies("src/moblima/data/MovieDB.txt", movieList, false);
+					DBController.saveCinema("src/moblima/data/CinemaDB.txt", cinemaList, cineplex.getCineplexId(), false);
+					DBController.saveStaff("src/moblima/data/StaffDB.txt", staffList, cineplex.getCineplexId(), false);
 				}
 				else {
-					DBController.saveMovies("MovieDB.txt", movieList, true);
-					DBController.saveCinema("CinemaDB.txt", cinemaList, cineplex.getCineplexId(), true);
-					DBController.saveStaff("StaffDB.txt", staffList, cineplex.getCineplexId(), true);
+					DBController.saveMovies("src/moblima/data/MovieDB.txt", movieList, true);
+					DBController.saveCinema("src/moblima/data/CinemaDB.txt", cinemaList, cineplex.getCineplexId(), true);
+					DBController.saveStaff("src/moblima/data/StaffDB.txt", staffList, cineplex.getCineplexId(), true);
 				}
-				for (int j = 0; j < movieList.size(); i++) {
+				for (int j = 0; j < movieList.size(); j++) {
 					Movie movie = movieList.get(j);
 					ArrayList<Showtime> showtimeList = movie.getShowtimeList();
 					ArrayList<Review> reviewList = movie.getReviewList();
 					if (i == 0 && j == 0) {
-						DBController.saveShowtime("ShowtimeDB.txt", showtimeList, movie.getCineplexId(), movie.getMovieId(), false);
-						DBController.saveReview("ReviewDB.txt", reviewList, movie.getCineplexId(), movie.getMovieId(), false);
+						DBController.saveShowtime("src/moblima/data/ShowtimeDB.txt", showtimeList, movie.getCineplexId(), movie.getMovieId(), false);
+						DBController.saveReview("src/moblima/data/ReviewDB.txt", reviewList, movie.getCineplexId(), movie.getMovieId(), false);
 					}
 					else {
-						DBController.saveShowtime("ShowtimeDB.txt", showtimeList, movie.getCineplexId(), movie.getMovieId(), true);
-						DBController.saveReview("ReviewDB.txt", reviewList, movie.getCineplexId(), movie.getMovieId(), true);
+						DBController.saveShowtime("src/moblima/data/ShowtimeDB.txt", showtimeList, movie.getCineplexId(), movie.getMovieId(), true);
+						DBController.saveReview("src/moblima/data/ReviewDB.txt", reviewList, movie.getCineplexId(), movie.getMovieId(), true);
 					}
 				}
 			}
-			for (int j = 0; j < customerList.size(); j++) {
-				Customer customer = customerList.get(j);
+			for (int k = 0; k < customerList.size(); k++) {
+				Customer customer = customerList.get(k);
 				ArrayList<Booking> bookingList = customer.getBookList();
-				if (j == 0) {
-					DBController.saveBookingHistory("BookingHistoryDB.txt", bookingList, customer.getEmail(), false);
+				if (k == 0) {
+					DBController.saveBookingHistory("src/moblima/data/BookingHistoryDB.txt", bookingList, customer.getEmail(), false);
 				}
 				else {
-					DBController.saveBookingHistory("BookingHistoryDB.txt", bookingList, customer.getEmail(), true);
+					DBController.saveBookingHistory("src/moblima/data/BookingHistoryDB.txt", bookingList, customer.getEmail(), true);
 				}
 			}
 		} catch (IOException e) {

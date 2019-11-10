@@ -84,6 +84,7 @@ public class Navigation {
 
 	public void exit() {
 		System.out.println("Thank you for using MOBLIMA. Goodbye!!!");
+		MainModel.endProgramWriteBack();
 		System.exit(1);
 	}
 }
