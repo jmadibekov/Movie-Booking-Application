@@ -6,9 +6,10 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.FileInputStream;
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
 
 public class DBController {
     public static final String SEPARATOR = "|";
@@ -137,24 +138,16 @@ public class DBController {
                 String movieId = star.nextToken().trim();
                 String cinemaId = star.nextToken().trim();
                 String TID = star.nextToken().trim();
-                String chosenSeats = star.nextToken().trim();
-                ArrayList<ArrayList<Integer>> seats = new ArrayList<ArrayList<Integer>>();
-                ArrayList<String> aList =
-                        Stream.of(chosenSeats.split(","))
-                                .collect(Collectors.toCollection(ArrayList<String>::new));
-                for (int j = 0;j<aList.size();j++) {
-                    ArrayList<String> bList =
-                            Stream.of(aList.get(j).split("/"))
-                                    .collect(Collectors.toCollection(ArrayList<String>::new));
-                    ArrayList<Integer> seat = new ArrayList<Integer>();
-                    seat.add(Integer.parseInt(bList.get(0)));
-                    seat.add(Integer.parseInt(bList.get(1)));
-                    seat.add(Integer.parseInt(bList.get(2)));
-                    seats.add(seat);
+                String[][] seatLayout = new String[8][];
+                for (int j = 0; j < 8; j++) {
+                    String rowTemp = star.nextToken().trim();
+                    String[] row = convertToStringArray(rowTemp);
+                    seatLayout[j] = row;
                 }
+
                 // create Showtime object from file data
                 Booking booking = new Booking(emailDB, date, theatreClass, totalPrice, cineplexId,
-                        movieId, cinemaId, TID, seats);
+                        movieId, cinemaId, TID);
                 // add to Showtime list
                 alr.add(booking) ;
             }
@@ -221,7 +214,7 @@ public class DBController {
         return alr ;
     }
 
-    public static void saveReview(String filename, List al, String cineplexId, String movieId) throws IOException {
+    public static void saveReview(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -242,10 +235,10 @@ public class DBController {
             st.append(review.getRating());
             alw.add(st.toString()) ;
         }
-        write(filename,alw);
+        write(filename, alw, append);
     }
 
-    public static void saveStaff(String filename, List al, String cineplexId) throws IOException {
+    public static void saveStaff(String filename, List al, String cineplexId, Boolean append) throws IOException {
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -258,10 +251,10 @@ public class DBController {
             st.append(sta.getPassword().trim());
             alw.add(st.toString()) ;
         }
-        write(filename,alw);
+        write(filename, alw, append);
     }
 
-    public static void saveCustomer(String filename, List al) throws IOException {
+    public static void saveCustomer(String filename, List al, Boolean append) throws IOException {
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -274,10 +267,10 @@ public class DBController {
             st.append(cus.getPhoneNumber().trim());
             alw.add(st.toString()) ;
         }
-        write(filename,alw);
+        write(filename, alw, append);
     }
 
-    public static void saveShowtime(String filename, List al, String cineplexId, String movieId) throws IOException {
+    public static void saveShowtime(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -304,10 +297,10 @@ public class DBController {
             }
             alw.add(st.toString()) ;
         }
-        write(filename,alw);
+        write(filename, alw, append);
     }
 
-    public static void saveCinema(String filename, List al, String cineplexId) throws IOException {
+    public static void saveCinema(String filename, List al, String cineplexId, Boolean append) throws IOException {
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -320,10 +313,10 @@ public class DBController {
             st.append(cinema.getCinemaClass().trim());
             alw.add(st.toString()) ;
         }
-        write(filename,alw);
+        write(filename, alw, append);
     }
 
-    public static void saveMovies(String filename, List al) throws IOException {
+    public static void saveMovies(String filename, List al, Boolean append) throws IOException {
         List alw = new ArrayList() ;
 
         for (int i = 0 ; i < al.size() ; i++) {
@@ -354,7 +347,7 @@ public class DBController {
             st.append(movie.getDuration());
             alw.add(st.toString()) ;
         }
-        write(filename,alw);
+        write(filename, alw, append);
     }
 
     /** Read the contents of the given file. */
@@ -373,8 +366,8 @@ public class DBController {
     }
 
     /** Write fixed content to the given file. */
-    private static void write(String fileName, List data) throws IOException  {
-        PrintWriter out = new PrintWriter(new FileWriter(fileName));
+    private static void write(String fileName, List data, Boolean append) throws IOException  {
+        PrintWriter out = new PrintWriter(new FileWriter(fileName, append));
         try {
             for (int i =0; i < data.size() ; i++) {
                 out.println((String)data.get(i));
