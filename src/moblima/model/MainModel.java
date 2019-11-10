@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class MainModel {
 	private static ArrayList < Cineplex > cineplexList;
 	private static ArrayList < Customer > customerList;
+	private static ArrayList < Holiday > holidayList;
 	
 	public static void init() {
 		ArrayList< Cineplex > cineplexList = new ArrayList < Cineplex > ();
@@ -17,6 +18,7 @@ public class MainModel {
 
 		try {
 			customerList = DBController.readCustomer("src/moblima/data/CustomerDB.txt");
+			holidayList = DBController.readHoliday("src/moblima/data/HolidayDB.txt");
 		} catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}
@@ -87,5 +89,17 @@ public class MainModel {
 
 	public static void addCustomer(Customer customer) {
 		customerList.add(customer);
+	}
+
+	public ArrayList < Holiday > getHolidayList() {
+		return holidayList;
+	}
+
+	public void setHolidayList(ArrayList < Holiday > staffList) {
+		this.holidayList = holidayList;
+	}
+
+	public void addHoliday(Holiday holiday) {
+		holidayList.add(holiday);
 	}
 }

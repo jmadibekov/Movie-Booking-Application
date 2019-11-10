@@ -185,7 +185,7 @@ public class DBController {
         return alr ;
     }
 
-    public static ArrayList readHoliday(String filename, String cineplexId) throws IOException {
+    public static ArrayList readHoliday(String filename) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
         ArrayList alr = new ArrayList() ;// to store Holiday data
@@ -195,16 +195,12 @@ public class DBController {
             // get individual 'fields' of the string separated by SEPARATOR
             StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
 
-            String cineplexDBId = star.nextToken().trim();
+            String holidayDate = star.nextToken().trim();
 
-            if (cineplexDBId.compareTo(cineplexId) == 0) {
-                String holidayDate = star.nextToken().trim();
-
-                // create Holiday object from file data
-                Holiday holiday = new Holiday(holidayDate);
-                // add to Holiday list
-                alr.add(holiday) ;
-            }
+            // create Holiday object from file data
+            Holiday holiday = new Holiday(holidayDate);
+            // add to Holiday list
+            alr.add(holiday);
         }
         return alr ;
     }
