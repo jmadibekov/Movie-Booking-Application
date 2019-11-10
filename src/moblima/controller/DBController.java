@@ -6,10 +6,9 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.FileInputStream;
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DBController {
     public static final String SEPARATOR = "|";
@@ -138,17 +137,25 @@ public class DBController {
                 String movieId = star.nextToken().trim();
                 String cinemaId = star.nextToken().trim();
                 String TID = star.nextToken().trim();
-                String[][] seatLayout = new String[8][];
-                for (int j = 0; j < 8; j++) {
-                    String rowTemp = star.nextToken().trim();
-                    String[] row = convertToStringArray(rowTemp);
-                    seatLayout[j] = row;
+                String chosenSeats = star.nextToken().trim();
+                ArrayList<ArrayList<Integer>> seats = new ArrayList<ArrayList<Integer>>();
+                ArrayList<String> aList =
+                        Stream.of(chosenSeats.split(","))
+                                .collect(Collectors.toCollection(ArrayList<String>::new));
+                for (int j = 0;j<aList.size();j++) {
+                    ArrayList<String> bList =
+                            Stream.of(aList.get(j).split("/"))
+                                    .collect(Collectors.toCollection(ArrayList<String>::new));
+                    ArrayList<Integer> seat = new ArrayList<Integer>();
+                    seat.add(Integer.parseInt(bList.get(0)));
+                    seat.add(Integer.parseInt(bList.get(1)));
+                    seat.add(Integer.parseInt(bList.get(2)));
+                    seats.add(seat);
                 }
-
-                // create Showtime object from file data
+                // create Booking object from file data
                 Booking booking = new Booking(emailDB, date, theatreClass, totalPrice, cineplexId,
-                        movieId, cinemaId, TID);
-                // add to Showtime list
+                        movieId, cinemaId, TID, seats);
+                // add to Booking list
                 alr.add(booking) ;
             }
         }
@@ -173,6 +180,30 @@ public class DBController {
                 Cinema cinema = new Cinema(cinemaId, cinemaClass);
                 // add to Cinema list
                 alr.add(cinema);
+            }
+        }
+        return alr ;
+    }
+
+    public static ArrayList readHoliday(String filename, String cineplexId) throws IOException {
+        // read String from text file
+        ArrayList stringArray = (ArrayList)read(filename);
+        ArrayList alr = new ArrayList() ;// to store Holiday data
+
+        for (int i = 0 ; i < stringArray.size() ; i++) {
+            String st = (String)stringArray.get(i);
+            // get individual 'fields' of the string separated by SEPARATOR
+            StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
+
+            String cineplexDBId = star.nextToken().trim();
+
+            if (cineplexDBId.compareTo(cineplexId) == 0) {
+                String holidayDate = star.nextToken().trim();
+
+                // create Holiday object from file data
+                Holiday holiday = new Holiday(holidayDate);
+                // add to Holiday list
+                alr.add(holiday) ;
             }
         }
         return alr ;

@@ -11,6 +11,7 @@ public class Cineplex {
 	private ArrayList < Movie > movieList;
 	private ArrayList < Cinema > cinemaList;
 	private ArrayList < Staff > staffList;
+	private ArrayList< Holiday > holidayList;
 	private double baseTicketCost;
 
 	public Cineplex(String cinemaName, String cineplexId, double baseTicketCost) {
@@ -21,10 +22,10 @@ public class Cineplex {
 			this.movieList = DBController.readMovies("src/moblima/data/MovieDB.txt", cineplexId);
 			this.staffList = DBController.readStaff("src/moblima/data/StaffDB.txt", cineplexId);
 			this.cinemaList = DBController.readCinema("src/moblima/data/CinemaDB.txt", cineplexId);
+			this.holidayList = DBController.readHoliday("src/moblima/data/HolidayDB.txt", cineplexId);
 		} catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}
-
 		this.baseTicketCost = baseTicketCost;
 	}
 
@@ -102,6 +103,18 @@ public class Cineplex {
 
 	public void addStaff(Staff staff) {
 		staffList.add(staff);
+	}
+
+	public ArrayList < Holiday > getHolidayList() {
+		return holidayList;
+	}
+
+	public void setHolidayList(ArrayList < Holiday > staffList) {
+		this.holidayList = holidayList;
+	}
+
+	public void addHoliday(Holiday holiday) {
+		holidayList.add(holiday);
 	}
 
 	public double getBaseTicketCost() {
