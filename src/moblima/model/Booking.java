@@ -1,20 +1,21 @@
 package moblima.model;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class Booking {
 	private String email;
 	private String date;
 	private String TID;
-	private String[] choosenSeats;
+	private ArrayList<ArrayList<Integer>> chosenSeats;
 	private String theatreClass;
 	private double totalPrice;
 	private String cineplexId;
 	private String movieId;
 	private String cinemaId;
 
-	public Booking(String email, String date, String[] choosenSeats, String theatreClass, double totalPrice, String cineplexId,
-				   String movieId, String cinemaId) {
+	public Booking(String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String theatreClass,
+				   double totalPrice, String cineplexId, String movieId, String cinemaId) {
 		this.cineplexId = cineplexId;
 		this.movieId = movieId;
 		this.cinemaId = cinemaId;
@@ -34,20 +35,20 @@ public class Booking {
 			TID = cinemaId + Integer.toString(year) + Integer.toString(month) +
 					Integer.toString(day) + Integer.toString(hour) + Integer.toString(minute);
 		}
-		this.choosenSeats = choosenSeats;
+		this.chosenSeats = chosenSeats;
 		this.theatreClass = theatreClass;
 		this.totalPrice = totalPrice;
 	}
 
-	public Booking(String TID, String email, String date, String[] choosenSeats, String theatreClass, double totalPrice, String cineplexId,
-				   String movieId, String cinemaId) {
+	public Booking(String TID, String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String theatreClass,
+				   double totalPrice, String cineplexId, String movieId, String cinemaId) {
 		this.cineplexId = cineplexId;
 		this.movieId = movieId;
 		this.cinemaId = cinemaId;
 		this.TID = TID;
 		this.email = email;
 		this.date = date;
-		this.choosenSeats = choosenSeats;
+		this.chosenSeats = chosenSeats;
 		this.theatreClass = theatreClass;
 		this.totalPrice = totalPrice;
 	}
@@ -82,6 +83,27 @@ public class Booking {
 	public void setTotalPrice(double totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-
+	public String getCineplexId() {
+		return cineplexId;
+	}
+	public void setCineplexId(String cineplexId) {
+		this.cineplexId = cineplexId;
+	}
+	public String getMovieId() {
+		return movieId;
+	}
+	public void setMovieId(String movieId) {
+		this.movieId = movieId;
+	}
+	public String getCinemaId() {
+		return cinemaId;
+	}
+	public void setCinemaId(String movieId) {
+		this.cinemaId = cinemaId;
+	}
+	public ArrayList<ArrayList<Integer>> getChosenSeats() { return chosenSeats; }
+	public void setChosenSeats(ArrayList<ArrayList<Integer>> movieId) {
+		this.chosenSeats = chosenSeats;
+	}
 
 }

@@ -22,7 +22,7 @@ public class EnterParticulars {
                 + "------Booking: Enter Particulars-----\n"
                 + "=====================================\n\n"
                 + BookingController.getChosenMovie().getTitle()
-                + "Total booking price: $" + BookingController.getTotalPrice()
+                + "\nTotal booking price: $" + BookingController.getTotalPrice()
                 + "\n\n(0) Back");
 
         getEmail(navigation);
@@ -30,7 +30,7 @@ public class EnterParticulars {
 
     }
 
-    public void getEmail(Navigation navigation) {
+    private void getEmail(Navigation navigation) {
         System.out.print("Please input your email address (Input 0 to go back): ");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
@@ -53,7 +53,7 @@ public class EnterParticulars {
         sc.close();
     }
 
-    public void getName(Navigation navigation) {
+    private void getName(Navigation navigation) {
         System.out.print("Please input your name (Input 0 to go back): ");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
@@ -68,7 +68,7 @@ public class EnterParticulars {
         sc.close();
     }
 
-    public void getPhone(Navigation navigation) {
+    private void getPhone(Navigation navigation) {
         System.out.print("Please input your 8-digit phone number (Input 0 to go back): ");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
@@ -84,20 +84,20 @@ public class EnterParticulars {
             getPhone(navigation);
         }
     }
-    public boolean isValidPhone(String mobile) {
+    private boolean isValidPhone(String mobile) {
         if (mobile == null || mobile.trim().length() <= 0) {
             return false;
         }
         mobile = removeAllSpace(mobile);
-        Pattern pattern = Pattern.compile("[7-9][0-9]{7}");
+        Pattern pattern = Pattern.compile("[8-9][0-9]{7}");
         Matcher matcher = pattern.matcher(mobile);
         return matcher.matches();
     }
-    public String removeAllSpace(String s) {
+    private String removeAllSpace(String s) {
         if (s == null) return "";
         return s.replaceAll("\\s", "");
     }
-    public void getConfirmation(Navigation navigation) {
+    private void getConfirmation(Navigation navigation) {
         int input = navigation.getChoice("Input 1 to confirm payment, 0 to go back: ");
         if (input == 0) {
             getPhone(navigation);
@@ -126,7 +126,7 @@ public class EnterParticulars {
             BookingController.getChosenMovie().addTicketSales(BookingController.getNoOfSeats());
             BookingController.getChosenShowtime().setSeatLayout(BookingController.getSeatLayout());
             System.out.println("Thank you for your purchase. You will now be redirected to the main menu");
-            //System.out.println(Navigation.model.getCustomerList().get(0).getBookList().get(0).getTID());
+            System.out.println(MainModel.getCustomerList().get(0).getBookList().get(0).getTID());
             navigation.goBackMainMenu();
         }
         else {
