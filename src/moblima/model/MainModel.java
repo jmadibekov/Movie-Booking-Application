@@ -91,15 +91,15 @@ public class MainModel {
 		customerList.add(customer);
 	}
 
-	public ArrayList < Holiday > getHolidayList() {
+	public static ArrayList < Holiday > getHolidayList() {
 		return holidayList;
 	}
 
-	public void setHolidayList(ArrayList < Holiday > staffList) {
-		this.holidayList = holidayList;
+	public static void setHolidayList(ArrayList < Holiday > staffList) {
+		MainModel.holidayList = holidayList;
 	}
 
-	public void addHoliday(Holiday holiday) {
+	public static void addHoliday(Holiday holiday) {
 		holidayList.add(holiday);
 	}
 }

@@ -168,6 +168,14 @@ public class BookingController {
 		{
 			basePrice += 3;
 		}
+		else {
+			for (int i=0;i<MainModel.getHolidayList().size();i++) {
+				if (MainModel.getHolidayList().get(i).getHolidayDate().contentEquals(chosenShowtime.getDate())) {
+					basePrice += 3;
+					break;
+				}
+			}
+		}
 		if (chosenShowtime.getType().contentEquals("IMAX")) {
 			basePrice += 5;
 		}
