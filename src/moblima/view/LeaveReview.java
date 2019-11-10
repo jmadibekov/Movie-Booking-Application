@@ -55,9 +55,13 @@ public class LeaveReview {
 
 	private void getRating(Navigation navigation) {
 		Scanner sc = new Scanner(System.in);
-		double inputRating = navigation.getDouble("Please enter your desired rating: ");
+		double inputRating = navigation.getDouble("Please enter your desired rating (1.00 - 5.00): ");
 		if (inputRating == 0) {
 			getSubjectTitle(navigation);
+		}
+		else if (inputRating < 1 || inputRating > 5) {
+			System.out.println("Please input a number between 1.00 to 5.00");
+			getRating(navigation);
 		}
 		else if (checkOneDecimal(inputRating)) {
 			rating = inputRating;
@@ -94,6 +98,7 @@ public class LeaveReview {
 			String date = sdf.format(todayDate);
 			Review review = new Review(name, title, body, date, rating);
 			ReviewController.getChosenMovie().addReview(review);
+			ReviewController.setAvgRating(rating);
 			navigation.goBack();
 		}
 		else {

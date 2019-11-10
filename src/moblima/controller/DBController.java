@@ -286,6 +286,22 @@ public class DBController {
             st.append(book.getTID().trim());
             st.append(SEPARATOR);
             // Fazli Added Here
+
+            ArrayList<ArrayList<Integer>> chosenSeats = new ArrayList<ArrayList<Integer>>();
+            chosenSeats = book.getChosenSeats();
+            StringBuilder chosenSeatsStr = new StringBuilder();
+            for (int j = 0; j < chosenSeats.size(); j++) {
+                for (int k = 0; k < 3; k++) {
+                    chosenSeatsStr.append(String.valueOf(chosenSeats.get(j).get(k)));
+                    if (k != 2)
+                        chosenSeatsStr.append("/");
+                }
+                if (j != chosenSeats.size() - 1)
+                    chosenSeatsStr.append(",");
+            }
+            st.append(chosenSeatsStr);
+
+            // Fazli Added Here
             alw.add(st.toString()) ;
         }
         write(filename, alw, append);

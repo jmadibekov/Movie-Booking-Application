@@ -14,7 +14,8 @@ public class MOBLIMA {
 		// To check chosen seats is stored correctly in bookingList
 //		System.out.println(MainModel.getCustomerList().get(0).getBookList().get(0).getChosenSeats());
 
-		// The program starts here
+		// The program starts here1
+
 		navigation.start();
 		navigation.exit();
 	}
