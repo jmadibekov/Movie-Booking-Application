@@ -1,5 +1,8 @@
 package moblima.model;
 
+import moblima.controller.DBController;
+
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Customer {
@@ -12,7 +15,11 @@ public class Customer {
 		this.email = email;
 		this.name = name;
 		this.phoneNumber = phoneNumber;
-		bookingList = new ArrayList<Booking>();
+		try {
+			this.bookingList = DBController.readBookingHistory("src/moblima/data/BookingHistoryDB.txt", email);
+		} catch (IOException e) {
+			System.out.println("IOException > " + e.getMessage());
+		}
 	}
 
 	public String getEmail() {

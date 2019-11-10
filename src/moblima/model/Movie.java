@@ -36,10 +36,6 @@ public class Movie {
 
 		try {
 			this.showtimeList = DBController.readShowtime("src/moblima/data/ShowtimeDB.txt", cineplexId, movieId);
-		} catch (IOException e) {
-			System.out.println("IOException > " + e.getMessage());
-		}
-		try {
 			this.reviewList = DBController.readReview("src/moblima/data/ReviewDB.txt", cineplexId, movieId);
 		} catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());

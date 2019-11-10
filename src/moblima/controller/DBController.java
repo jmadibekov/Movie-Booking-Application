@@ -119,6 +119,42 @@ public class DBController {
         return alr ;
     }
 
+    public static ArrayList readBookingHistory(String filename, String email) throws IOException {
+        // read String from text file
+        ArrayList stringArray = (ArrayList)read(filename);
+        ArrayList alr = new ArrayList() ;// to store bookingHistory data
+
+        for (int i = 0 ; i < stringArray.size() ; i++) {
+            String st = (String)stringArray.get(i);
+            // get individual 'fields' of the string separated by SEPARATOR
+            StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
+
+            String emailDB = star.nextToken().trim();
+            if (emailDB.compareTo(email) == 0){
+                String date = star.nextToken().trim();
+                String theatreClass = star.nextToken().trim();
+                double totalPrice = Double.parseDouble(star.nextToken().trim());
+                String cineplexId = star.nextToken().trim();
+                String movieId = star.nextToken().trim();
+                String cinemaId = star.nextToken().trim();
+                String TID = star.nextToken().trim();
+                String[][] seatLayout = new String[8][];
+                for (int j = 0; j < 8; j++) {
+                    String rowTemp = star.nextToken().trim();
+                    String[] row = convertToStringArray(rowTemp);
+                    seatLayout[j] = row;
+                }
+
+                // create Showtime object from file data
+                Booking booking = new Booking(emailDB, date, theatreClass, totalPrice, cineplexId,
+                        movieId, cinemaId, TID);
+                // add to Showtime list
+                alr.add(booking) ;
+            }
+        }
+        return alr ;
+    }
+
     public static ArrayList readCinema(String filename, String cineplexId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);

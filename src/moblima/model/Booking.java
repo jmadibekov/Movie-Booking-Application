@@ -40,15 +40,15 @@ public class Booking {
 		this.totalPrice = totalPrice;
 	}
 
-	public Booking(String TID, String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String theatreClass,
-				   double totalPrice, String cineplexId, String movieId, String cinemaId) {
+	public Booking(String email, String date, String theatreClass, double totalPrice, String cineplexId,
+				   String movieId, String cinemaId, String TID) {
 		this.cineplexId = cineplexId;
 		this.movieId = movieId;
 		this.cinemaId = cinemaId;
 		this.TID = TID;
 		this.email = email;
 		this.date = date;
-		this.chosenSeats = chosenSeats;
+		//this.chosenSeats = chosenSeats;
 		this.theatreClass = theatreClass;
 		this.totalPrice = totalPrice;
 	}
