@@ -12,9 +12,9 @@ public class MainModel {
 	
 	public static void init() {
 		try {
+			cineplexList = DBController.readCineplex("src/moblima/data/CineplexDB.txt");
 			customerList = DBController.readCustomer("src/moblima/data/CustomerDB.txt");
 			holidayList = DBController.readHoliday("src/moblima/data/HolidayDB.txt");
-			cineplexList = DBController.readCineplex("src/moblima/data/CineplexDB.txt");
 		} catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}
@@ -22,6 +22,7 @@ public class MainModel {
 
 	public static void endProgramWriteBack() {
 		try {
+			DBController.saveCineplex("src/moblima/data/CineplexDB.txt", cineplexList, false);
 			DBController.saveCustomer("src/moblima/data/CustomerDB.txt", customerList, false);
 			DBController.saveHoliday("src/moblima/data/HolidayDB.txt", holidayList, false);
 			for (int i = 0; i < cineplexList.size(); i++) {

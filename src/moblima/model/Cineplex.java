@@ -6,15 +6,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Cineplex {
-	private String cinemaName;
+	private String cineplexName;
 	private String cineplexId;
 	private ArrayList < Movie > movieList;
 	private ArrayList < Cinema > cinemaList;
 	private ArrayList < Staff > staffList;
 	private double baseTicketCost;
 
-	public Cineplex(String cinemaName, String cineplexId, double baseTicketCost) {
-		this.cinemaName = cinemaName;
+	public Cineplex(String cineplexName, String cineplexId, double baseTicketCost) {
+		this.cineplexName = cineplexName;
 		this.cineplexId = cineplexId;
 
 		try {
@@ -28,7 +28,7 @@ public class Cineplex {
 	}
 
 	void output() {
-		System.out.printf("Name: %s, Id: %s\n", cinemaName, cineplexId);
+		System.out.printf("Name: %s, Id: %s\n", cineplexName, cineplexId);
 		System.out.printf("Movies:\n");
 		for (Movie i : movieList) {
 			System.out.println("===============");
@@ -51,12 +51,12 @@ public class Cineplex {
 		return null;
 	}
 
-	public String getCinemaName() {
-		return cinemaName;
+	public String getCineplexName() {
+		return cineplexName;
 	}
 
-	public void setCinemaName(String cinemaName) {
-		this.cinemaName = cinemaName;
+	public void setCineplexName(String cineplexName) {
+		this.cineplexName = cineplexName;
 	}
 
 	public String getCineplexId() {

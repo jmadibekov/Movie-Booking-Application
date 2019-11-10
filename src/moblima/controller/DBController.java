@@ -160,11 +160,12 @@ public class DBController {
                 String cinemaId = star.nextToken().trim();
                 String TID = star.nextToken().trim();
                 String chosenSeats = star.nextToken().trim();
+
                 ArrayList<ArrayList<Integer>> seats = new ArrayList<ArrayList<Integer>>();
                 ArrayList<String> aList =
                         Stream.of(chosenSeats.split(","))
                                 .collect(Collectors.toCollection(ArrayList<String>::new));
-                for (int j = 0;j<aList.size();j++) {
+                for (int j = 0 ; j<aList.size() ; j++) {
                     ArrayList<String> bList =
                             Stream.of(aList.get(j).split("/"))
                                     .collect(Collectors.toCollection(ArrayList<String>::new));
@@ -174,6 +175,7 @@ public class DBController {
                     seat.add(Integer.parseInt(bList.get(2)));
                     seats.add(seat);
                 }
+
                 // create Booking object from file data
                 Booking booking = new Booking(emailDB, date, theatreClass, totalPrice, cineplexId,
                         movieId, cinemaId, TID, seats);
@@ -263,6 +265,23 @@ public class DBController {
         return alr ;
     }
 
+    public static void saveCineplex(String filename, List al, Boolean append) throws IOException {
+        System.out.println("Saving Cineplex");
+        List alw = new ArrayList() ;
+
+        for (int i = 0 ; i < al.size() ; i++) {
+            Cineplex cineplex = (Cineplex)al.get(i);
+            StringBuilder st =  new StringBuilder();
+            st.append(cineplex.getCineplexName().trim());
+            st.append(SEPARATOR);
+            st.append(cineplex.getCineplexId().trim());
+            st.append(SEPARATOR);
+            st.append(cineplex.getBaseTicketCost());
+            alw.add(st.toString()) ;
+        }
+        write(filename, alw, append);
+    }
+
     public static void saveReview(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
         System.out.println("Saving Review");
         List alw = new ArrayList() ;
@@ -283,64 +302,6 @@ public class DBController {
             st.append(review.getDate());
             st.append(SEPARATOR);
             st.append(review.getRating());
-            alw.add(st.toString()) ;
-        }
-        write(filename, alw, append);
-    }
-
-    public static void saveBookingHistory(String filename, List al, String email, Boolean append) throws IOException {
-        System.out.println("Saving Booking History");
-        List alw = new ArrayList() ;
-
-        for (int i = 0 ; i < al.size() ; i++) {
-            Booking book = (Booking)al.get(i);
-            StringBuilder st =  new StringBuilder();
-            st.append(email.trim());
-            st.append(SEPARATOR);
-            st.append(book.getDate().trim());
-            st.append(SEPARATOR);
-            st.append(book.getTheatreClass().trim());
-            st.append(SEPARATOR);
-            st.append(book.getTotalPrice());
-            st.append(SEPARATOR);
-            st.append(book.getCineplexId().trim());
-            st.append(SEPARATOR);
-            st.append(book.getMovieId().trim());
-            st.append(SEPARATOR);
-            st.append(book.getCinemaId().trim());
-            st.append(SEPARATOR);
-            st.append(book.getTID().trim());
-            st.append(SEPARATOR);
-            // Fazli Added Here
-
-            ArrayList<ArrayList<Integer>> chosenSeats = new ArrayList<ArrayList<Integer>>();
-            chosenSeats = book.getChosenSeats();
-            StringBuilder chosenSeatsStr = new StringBuilder();
-            for (int j = 0; j < chosenSeats.size(); j++) {
-                for (int k = 0; k < 3; k++) {
-                    chosenSeatsStr.append(String.valueOf(chosenSeats.get(j).get(k)));
-                    if (k != 2)
-                        chosenSeatsStr.append("/");
-                }
-                if (j != chosenSeats.size() - 1)
-                    chosenSeatsStr.append(",");
-            }
-            st.append(chosenSeatsStr);
-
-            // Fazli Added Here
-            alw.add(st.toString()) ;
-        }
-        write(filename, alw, append);
-    }
-
-    public static void saveHoliday(String filename, List al, Boolean append) throws IOException {
-        System.out.println("Saving Holiday");
-        List alw = new ArrayList() ;
-
-        for (int i = 0 ; i < al.size() ; i++) {
-            Holiday hol = (Holiday)al.get(i);
-            StringBuilder st =  new StringBuilder();
-            st.append(hol.getHolidayDate());
             alw.add(st.toString()) ;
         }
         write(filename, alw, append);
@@ -411,6 +372,48 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    public static void saveBookingHistory(String filename, List al, String email, Boolean append) throws IOException {
+        System.out.println("Saving Booking History");
+        List alw = new ArrayList() ;
+
+        for (int i = 0 ; i < al.size() ; i++) {
+            Booking book = (Booking)al.get(i);
+            StringBuilder st =  new StringBuilder();
+            st.append(email.trim());
+            st.append(SEPARATOR);
+            st.append(book.getDate().trim());
+            st.append(SEPARATOR);
+            st.append(book.getTheatreClass().trim());
+            st.append(SEPARATOR);
+            st.append(book.getTotalPrice());
+            st.append(SEPARATOR);
+            st.append(book.getCineplexId().trim());
+            st.append(SEPARATOR);
+            st.append(book.getMovieId().trim());
+            st.append(SEPARATOR);
+            st.append(book.getCinemaId().trim());
+            st.append(SEPARATOR);
+            st.append(book.getTID().trim());
+            st.append(SEPARATOR);
+
+            ArrayList<ArrayList<Integer>> chosenSeats = new ArrayList<ArrayList<Integer>>();
+            chosenSeats = book.getChosenSeats();
+            StringBuilder chosenSeatsStr = new StringBuilder();
+            for (int j = 0 ; j < chosenSeats.size() ; j++) {
+                for (int k = 0; k < 3; k++) {
+                    chosenSeatsStr.append(String.valueOf(chosenSeats.get(j).get(k)));
+                    if (k != 2)
+                        chosenSeatsStr.append("/");
+                }
+                if (j != chosenSeats.size() - 1)
+                    chosenSeatsStr.append(",");
+            }
+            st.append(chosenSeatsStr);
+            alw.add(st.toString()) ;
+        }
+        write(filename, alw, append);
+    }
+
     public static void saveCinema(String filename, List al, String cineplexId, Boolean append) throws IOException {
         System.out.println("Saving Cinema");
         List alw = new ArrayList() ;
@@ -423,6 +426,19 @@ public class DBController {
             st.append(cinema.getCinemaId().trim());
             st.append(SEPARATOR);
             st.append(cinema.getCinemaClass().trim());
+            alw.add(st.toString()) ;
+        }
+        write(filename, alw, append);
+    }
+
+    public static void saveHoliday(String filename, List al, Boolean append) throws IOException {
+        System.out.println("Saving Holiday");
+        List alw = new ArrayList() ;
+
+        for (int i = 0 ; i < al.size() ; i++) {
+            Holiday hol = (Holiday)al.get(i);
+            StringBuilder st =  new StringBuilder();
+            st.append(hol.getHolidayDate());
             alw.add(st.toString()) ;
         }
         write(filename, alw, append);
@@ -496,7 +512,4 @@ public class DBController {
     }
 
     private static String convertStringArrayToString(String[] array) { return String.join(",", array);}
-
-    public static void main(String[] args) {
-    }
 }
