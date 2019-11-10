@@ -265,6 +265,44 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    public static void saveBookingHistory(String filename, List al, String email, Boolean append) throws IOException {
+        List alw = new ArrayList() ;
+
+        for (int i = 0 ; i < al.size() ; i++) {
+            Booking book = (Booking)al.get(i);
+            StringBuilder st =  new StringBuilder();
+            st.append(email.trim());
+            st.append(SEPARATOR);
+            st.append(book.getDate().trim());
+            st.append(SEPARATOR);
+            st.append(book.getTheatreClass().trim());
+            st.append(SEPARATOR);
+            st.append(book.getTotalPrice());
+            st.append(SEPARATOR);
+            st.append(book.getCineplexId().trim());
+            st.append(SEPARATOR);
+            st.append(book.getMovieId().trim());
+            st.append(SEPARATOR);
+            st.append(book.getTID().trim());
+            st.append(SEPARATOR);
+            // Fazli Added Here
+            alw.add(st.toString()) ;
+        }
+        write(filename, alw, append);
+    }
+
+    public static void saveHoliday(String filename, List al, Boolean append) throws IOException {
+        List alw = new ArrayList() ;
+
+        for (int i = 0 ; i < al.size() ; i++) {
+            Holiday hol = (Holiday)al.get(i);
+            StringBuilder st =  new StringBuilder();
+            st.append(hol.getHolidayDate());
+            alw.add(st.toString()) ;
+        }
+        write(filename, alw, append);
+    }
+
     public static void saveStaff(String filename, List al, String cineplexId, Boolean append) throws IOException {
         List alw = new ArrayList() ;
 
