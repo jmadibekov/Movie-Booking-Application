@@ -1,5 +1,8 @@
 package moblima.view;
 
+import moblima.model.Holiday;
+import moblima.model.MainModel;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,13 +17,22 @@ public class AddHoliday {
         System.out.println(
                 "=====================================\n"
                         + "-----------Add Holiday Date----------\n"
-                        + "=====================================\n"
-                        + "(0) Back\n");
+                        + "=====================================\n");
 
-        getHolidayDate(navigation);
+        System.out.println("All Holiday Dates:");
+        for (int i = 0; i < MainModel.getHolidayList().size(); i++) {
+            System.out.println(MainModel.getHolidayList().get(i).getHolidayDate());
+        }
+        System.out.println("(0) Back\n");
+
+        try {
+            getHolidayDate(navigation);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
-    public void getHolidayDate(Navigation navigation) {
+    private void getHolidayDate(Navigation navigation) throws ParseException {
         Scanner sc = new Scanner(System.in);
         System.out.print("Please input holiday date in this format: dd/mm/yyyy: ");
         String date = sc.next();
@@ -29,8 +41,23 @@ public class AddHoliday {
             navigation.goBack();
         }
         else if (isThisDateValid(date)) {
-            System.out.println("Holiday date " + date + " successfully added");
-            navigation.goBack();
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date todayDate = new Date();
+            Date holidayDate = sdf.parse(date);
+            if (holidayDateExist(date)) {
+                System.out.println("Holiday date is already in database. Please enter a new date");
+                getHolidayDate(navigation);
+            }
+            else if (holidayDate.after(todayDate)) {
+                Holiday holiday = new Holiday(date);
+                MainModel.addHoliday(holiday);
+                System.out.println("Holiday date " + date + " successfully added");
+                navigation.goBack();
+            }
+            else {
+                System.out.println("Please enter future dates");
+                getHolidayDate(navigation);
+            }
         }
         else {
             System.out.println("Invalid date format. Please try again");
@@ -38,7 +65,7 @@ public class AddHoliday {
         }
     }
 
-    public boolean isThisDateValid(String dateToValidate){
+    private boolean isThisDateValid(String dateToValidate){
         if(dateToValidate == null){
             return false;
         }
@@ -50,9 +77,14 @@ public class AddHoliday {
         } catch (ParseException e) {
             return false;
         }
-        //Date inputDate = new Date(dateToValidate);
-        //Date today = new Date();
-        //if (inputDate > today)
         return true;
+    }
+
+    private boolean holidayDateExist(String date) {
+        for (int i = 0; i < MainModel.getHolidayList().size(); i++) {
+            if (date.contentEquals(MainModel.getHolidayList().get(i).getHolidayDate()))
+                return true;
+        }
+        return false;
     }
 }

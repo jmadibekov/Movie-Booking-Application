@@ -49,6 +49,8 @@ public class ChooseCineplex {
 			} else if (input > 0 && input <= curCineplex.size()) {
 				BookingController.setChosenCineplex(curCineplex.get(input - 1));
 				Top5Controller.setChosenCineplex(curCineplex.get(input - 1));
+				//Benedict, Fazli added a line below
+				StaffControllerFazli.setChosenCineplex(curCineplex.get(input - 1));
 				navigation.goTo(new StackArg(curView.getGoNextView(), curView.getUserType()));
 				break;
 			} else {

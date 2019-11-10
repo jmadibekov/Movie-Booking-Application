@@ -57,6 +57,11 @@ public class Navigation {
 		return choice;
 	}
 
+	public boolean checkTwoDecimal(double rating){
+		String str = String.valueOf(rating);
+		return str.length() - str.lastIndexOf('.') <= 3;
+	}
+
     protected void goTo(StackArg goToView) {
     	stack.push(goToView);
         MenuList.goToNext(this);

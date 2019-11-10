@@ -19,7 +19,6 @@ public class LeaveReview {
 	}
 	
 	public void display(Navigation navigation) {
-		StackArg curView = navigation.getLastView();
 		System.out.println(
 				  "=====================================\n"
 				+ "------------Leave a Review-----------\n"
@@ -54,7 +53,6 @@ public class LeaveReview {
 	}
 
 	private void getRating(Navigation navigation) {
-		Scanner sc = new Scanner(System.in);
 		double inputRating = navigation.getDouble("Please enter your desired rating (1.00 - 5.00): ");
 		if (inputRating == 0) {
 			getSubjectTitle(navigation);
@@ -63,12 +61,12 @@ public class LeaveReview {
 			System.out.println("Please input a number between 1.00 to 5.00");
 			getRating(navigation);
 		}
-		else if (checkOneDecimal(inputRating)) {
+		else if (navigation.checkTwoDecimal(inputRating)) {
 			rating = inputRating;
 			getSubjectBody(navigation);
 		}
 		else {
-			System.out.println("Please input a number with only two decimal place");
+			System.out.println("Please input a number with at most two decimal places");
 			getRating(navigation);
 		}
 	}
@@ -87,7 +85,6 @@ public class LeaveReview {
 	}
 
 	private void getConfirmation (Navigation navigation) {
-		Scanner sc = new Scanner(System.in);
 		int input = navigation.getChoice("Input 1 to confirm (0 - to go back): ");
 		if (input == 0) {
 			getSubjectBody(navigation);
@@ -104,15 +101,6 @@ public class LeaveReview {
 		else {
 			System.out.println("\nPlease enter a valid input\n");
 		}
-	}
-
-	private boolean checkOneDecimal(double rating){
-		String str = String.valueOf(rating);
-		if(str.length() - str.lastIndexOf('.')>3){
-			return false;
-		}
-		else
-			return true;
 	}
 
 }

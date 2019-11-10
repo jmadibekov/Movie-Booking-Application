@@ -1,5 +1,7 @@
 package moblima.view;
 
+import moblima.controller.StaffControllerFazli;
+
 public class EditBaseTicketPrice {
 
     public EditBaseTicketPrice() {
@@ -9,21 +11,32 @@ public class EditBaseTicketPrice {
     public void display(Navigation navigation) {
         System.out.println(
                 "=====================================\n"
-                        + "-----------Add Holiday Date----------\n"
+                        + "--------Edit Base Ticket Price-------\n"
                         + "=====================================\n"
                         + "(0) Back\n");
-
+        System.out.printf("%s\nCurrent base ticket Price: $%.2f\n\n",
+                StaffControllerFazli.getChosenCineplex().getCinemaName(),
+                StaffControllerFazli.getChosenCineplex().getBaseTicketCost());
         getNewBasePrice(navigation);
     }
 
-    public void getNewBasePrice(Navigation navigation) {
-        double newPrice = navigation.getDouble("Please input new baseTicketPrice: ");
-        if (newPrice == 0) {
+    private void getNewBasePrice(Navigation navigation) {
+        double inputPrice = navigation.getDouble("Please enter a new base ticket price (5.00 - 20.00): ");
+        if (inputPrice == 0) {
+            navigation.goBack();
+        }
+        else if (inputPrice < 5 || inputPrice > 20) {
+            System.out.println("Please input a number between 5.00 - 20.00");
+            getNewBasePrice(navigation);
+        }
+        else if (navigation.checkTwoDecimal(inputPrice)) {
+            StaffControllerFazli.getChosenCineplex().setBaseTicketCost(inputPrice);
+            System.out.println("Base ticket price successfully changed to $ " + inputPrice);
             navigation.goBack();
         }
         else {
-            System.out.println("BaseTicketPrice successfully change to $" + newPrice);
-            navigation.goBack();
+            System.out.println("Please input a number with at most two decimal places");
+            getNewBasePrice(navigation);
         }
     }
 }
