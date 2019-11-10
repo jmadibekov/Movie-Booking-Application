@@ -1,0 +1,3 @@
+Jurong Point Cinema|001|10.00
+Paya Lebar Cinema|002|8.00
+Vivo City Cinema|003|12.00

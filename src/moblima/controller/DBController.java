@@ -13,6 +13,28 @@ import java.util.stream.Stream;
 public class DBController {
     public static final String SEPARATOR = "|";
 
+    public static ArrayList readCineplex(String filename) throws IOException {
+        // read String from text file
+        ArrayList stringArray = (ArrayList)read(filename);
+        ArrayList alr = new ArrayList() ;// to store Movie data
+
+        for (int i = 0 ; i < stringArray.size() ; i++) {
+            String st = (String)stringArray.get(i);
+            // get individual 'fields' of the string separated by SEPARATOR
+            StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
+
+            String cinemaName = star.nextToken().trim();
+            String cineplexId = star.nextToken().trim();
+            double baseTicketCost = Double.parseDouble(star.nextToken().trim());
+
+            // create Cineplex object from file data
+            Cineplex cineplex = new Cineplex(cinemaName, cineplexId, baseTicketCost);
+            // add to Cineplex list
+            alr.add(cineplex) ;
+        }
+        return alr ;
+    }
+
     public static ArrayList readReview(String filename, String cineplexId, String movieId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);

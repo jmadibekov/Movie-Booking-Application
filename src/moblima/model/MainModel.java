@@ -11,14 +11,10 @@ public class MainModel {
 	private static ArrayList < Holiday > holidayList;
 	
 	public static void init() {
-		cineplexList = new ArrayList < Cineplex > ();
-		cineplexList.add(new Cineplex( "Jurong Point Cinema", "001", 10.0));
-		cineplexList.add(new Cineplex("Paya Lebar Cinema", "002", 8.0));
-		cineplexList.add(new Cineplex("Vivo City Cinema", "003", 12.0));
-
 		try {
 			customerList = DBController.readCustomer("src/moblima/data/CustomerDB.txt");
 			holidayList = DBController.readHoliday("src/moblima/data/HolidayDB.txt");
+			cineplexList = DBController.readCineplex("src/moblima/data/CineplexDB.txt");
 		} catch (IOException e) {
 			System.out.println("IOException > " + e.getMessage());
 		}
