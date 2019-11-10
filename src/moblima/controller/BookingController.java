@@ -13,6 +13,7 @@ public class BookingController {
 	private static String chosenTitle;
 	private static Movie chosenMovie;
 	private static Cineplex chosenCineplex;
+	private static Customer curCustomer;
 	private static double totalPrice = 0;
 	private static String[][] seatLayout = new String[8][9];
 	private static ArrayList < Integer > seat = new ArrayList <Integer> ();
@@ -238,4 +239,11 @@ public class BookingController {
 		return noOfSeatsLeft;
 	}
 
+	public static Customer getCurCustomer() {
+		return curCustomer;
+	}
+
+	public static void setCurCustomer(Customer curCustomer) {
+		BookingController.curCustomer = curCustomer;
+	}
 }

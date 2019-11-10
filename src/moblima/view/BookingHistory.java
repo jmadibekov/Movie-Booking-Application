@@ -1,8 +1,7 @@
 package moblima.view;
 
-import moblima.model.StackArg;
-
-import java.util.Scanner;
+import moblima.controller.*;
+import moblima.model.*;
 
 public class BookingHistory {
 	
@@ -13,9 +12,12 @@ public class BookingHistory {
 		System.out.println(
 				  "=====================================\n"
 				+ "-----------Booking History-----------\n"
-				+ "=====================================\n"
-				+ "(0) Back\n");
-		//function to get booking history
+				+ "=====================================");
+
+		Customer cur = BookingController.getCurCustomer();
+		cur.outputBookingHistory();
+
+		System.out.println("(0) Back");
 		while (true) {
 			int input = navigation.getChoice("Please select an option: ");
 			if (input == 0) {

@@ -38,7 +38,7 @@ public class ChooseCineplex {
 		int ptr = 0;
 		for (Cineplex i : curCineplex) {
 			ptr++;
-			System.out.printf("(%d) %s\n", ptr, i.getCinemaName());
+			System.out.printf("(%d) '%s'\n", ptr, i.getCineplexName());
 		}
 
 		while (true) {

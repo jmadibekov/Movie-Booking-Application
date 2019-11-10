@@ -17,7 +17,7 @@ public class ChooseShowtime{
 				  "=====================================\n"
 				+ "------Booking: Choose a Showtime-----\n"
 				+ "=====================================\n\n"
-				+ BookingController.getChosenMovie().getTitle()
+				+ "Chosen Movie: '" + BookingController.getChosenMovie().getTitle() + "'"
 				+ "\n\n(0) Back");
 
 		//function to get showtimes based on cineplex and movie and cinema chosen
@@ -28,11 +28,11 @@ public class ChooseShowtime{
 
 		HashMap<Integer, Showtime> uniqueShowtimes = new HashMap<Integer, Showtime>();
 		if (showtimesList.isEmpty()) {
-			System.out.println("No showtimes available. Please try another movie");
+			System.out.println("No showtimes available. Please try another movie.");
 			navigation.goBack();
 		}
 		for (Showtime i : showtimesList) {
-			System.out.printf("(%s) %s, %s:%s%s, CinemaClass: %s, Type: %s\n",index, i.getDate(),
+			System.out.printf("(%s) %s, %s:%s%s, Cinema Class: %s, Type: %s\n",index, i.getDate(),
 					i.getTime()/100, (i.getTime()/10)%10, i.getTime()%10,
 					BookingController.getCinemaClass(i.getCinemaId()), i.getType());
 			uniqueShowtimes.put(index, i);
@@ -67,5 +67,4 @@ public class ChooseShowtime{
 			System.out.println("\nPlease enter a valid input\n");
 		}
 	}
-	
 }

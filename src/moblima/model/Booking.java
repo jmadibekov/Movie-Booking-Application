@@ -14,6 +14,10 @@ public class Booking {
 	private String movieId;
 	private String cinemaId;
 
+	public void output() {
+		System.out.printf("Date: %s, Cinema Class: %s, Cost: %.2f, Transaction ID: %s\n", date, theatreClass, totalPrice, TID);
+	}
+
 	public Booking(String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String theatreClass,
 				   double totalPrice, String cineplexId, String movieId, String cinemaId) {
 		this.cineplexId = cineplexId;

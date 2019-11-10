@@ -16,7 +16,7 @@ public class ChooseMovie {
 				  "=====================================\n"
 				+ "-----------Choose a Movie------------\n"
 				+ "=====================================\n\n"
-				+ BookingController.getChosenCineplex().getCinemaName()
+				+ BookingController.getChosenCineplex().getCineplexName()
 				+ "\n");
 
 		ArrayList < Movie > movieList = BookingController.getMovies();
@@ -51,14 +51,14 @@ public class ChooseMovie {
 		System.out.println("(0) Back");
 		int index = 1;
 		for (Movie i : movieList) {
-			System.out.printf("(%s) %s, Rating: %s, Showing status: %s\n",
+			System.out.printf("(%s) '%s', Rating: %s, Showing status: %s\n",
 					index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
 			index++;
 		}
 	}
 
 	private boolean doMovie(Navigation navigation, StackArg curView, Movie curMovie) {
-		System.out.printf("\nChosen movie: %s\n\n", curMovie.getTitle());
+		System.out.printf("\nChosen movie: '%s'\n\n", curMovie.getTitle());
 
 		System.out.println("(0) Back");
 		System.out.println("(1) Book this movie");

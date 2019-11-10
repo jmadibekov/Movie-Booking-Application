@@ -51,7 +51,7 @@ public class Movie {
 	}
 
 	public void output() {
-		System.out.printf("Title: %s\n", title);
+		System.out.printf("Title: '%s'\n", title);
 		System.out.printf("Showing status: %s, Rating: %.2f\n", showingStatus, overallRating);
 		System.out.printf("Age requirement: %s\n", ageRequirement);
 		System.out.printf("Number of ticket sales: %d\n", ticketSales);

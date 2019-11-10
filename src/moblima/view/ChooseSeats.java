@@ -18,9 +18,9 @@ public class ChooseSeats {
 	public void display(Navigation navigation) {
 		System.out.println(
 				"=====================================\n"
-						+ "------Booking: Choose your Seat-----\n"
-						+ "=====================================\n\n");
-		System.out.printf("(%s) %s, %s:%s%s, CinemaClass: %s, Type: %s\n",
+			  + "------Booking: Choose your Seat-----\n"
+			  + "=====================================\n");
+		System.out.printf("'%s', %s, %s:%s%s, Cinema Class: %s, Type: %s\n\n",
 				BookingController.getChosenMovie().getTitle(),
 				BookingController.getChosenShowtime().getDate(),
 				BookingController.getChosenShowtime().getTime()/100,

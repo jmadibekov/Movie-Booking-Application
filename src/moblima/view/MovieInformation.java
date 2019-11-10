@@ -14,8 +14,7 @@ public class MovieInformation {
 				+ "----------Movie Information----------\n"
 				+ "=====================================\n");
 
-		if (BookingController.getChosenMovie() == null
-				|| BookingController.getChosenMovie().getTitle().compareTo(BookingController.getChosenTitle()) != 0) {
+		if (BookingController.getChosenTitle() != null) {
 			Movie actualMovie = BookingController.getChosenCineplex().getMovieWithTitle(BookingController.getChosenTitle());
 			BookingController.setChosenMovie(actualMovie);
 			ReviewController.setChosenMovie(actualMovie);

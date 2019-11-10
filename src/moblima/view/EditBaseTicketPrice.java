@@ -15,7 +15,7 @@ public class EditBaseTicketPrice {
                         + "=====================================\n"
                         + "(0) Back\n");
         System.out.printf("%s\nCurrent base ticket Price: $%.2f\n\n",
-                StaffControllerFazli.getChosenCineplex().getCinemaName(),
+                StaffControllerFazli.getChosenCineplex().getCineplexName(),
                 StaffControllerFazli.getChosenCineplex().getBaseTicketCost());
         getNewBasePrice(navigation);
     }

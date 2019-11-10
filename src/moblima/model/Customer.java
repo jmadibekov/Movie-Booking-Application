@@ -22,6 +22,13 @@ public class Customer {
 		}
 	}
 
+	public void outputBookingHistory() {
+		System.out.println("Booking(s) made:");
+		for (Booking i : bookingList) {
+			i.output();
+		}
+	}
+
 	public String getEmail() {
 		return email;
 	}
