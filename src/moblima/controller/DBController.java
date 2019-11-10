@@ -6,10 +6,9 @@ import java.io.IOException;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.io.FileInputStream;
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class DBController {
     public static final String SEPARATOR = "|";
@@ -138,16 +137,24 @@ public class DBController {
                 String movieId = star.nextToken().trim();
                 String cinemaId = star.nextToken().trim();
                 String TID = star.nextToken().trim();
-                String[][] seatLayout = new String[8][];
-                for (int j = 0; j < 8; j++) {
-                    String rowTemp = star.nextToken().trim();
-                    String[] row = convertToStringArray(rowTemp);
-                    seatLayout[j] = row;
+                String chosenSeats = star.nextToken().trim();
+                ArrayList<ArrayList<Integer>> seats = new ArrayList<ArrayList<Integer>>();
+                ArrayList<String> aList =
+                        Stream.of(chosenSeats.split(","))
+                                .collect(Collectors.toCollection(ArrayList<String>::new));
+                for (int j = 0;j<aList.size();j++) {
+                    ArrayList<String> bList =
+                            Stream.of(aList.get(j).split("/"))
+                                    .collect(Collectors.toCollection(ArrayList<String>::new));
+                    ArrayList<Integer> seat = new ArrayList<Integer>();
+                    seat.add(Integer.parseInt(bList.get(0)));
+                    seat.add(Integer.parseInt(bList.get(1)));
+                    seat.add(Integer.parseInt(bList.get(2)));
+                    seats.add(seat);
                 }
-
                 // create Showtime object from file data
                 Booking booking = new Booking(emailDB, date, theatreClass, totalPrice, cineplexId,
-                        movieId, cinemaId, TID);
+                        movieId, cinemaId, TID, seats);
                 // add to Showtime list
                 alr.add(booking) ;
             }

@@ -41,14 +41,14 @@ public class Booking {
 	}
 
 	public Booking(String email, String date, String theatreClass, double totalPrice, String cineplexId,
-				   String movieId, String cinemaId, String TID) {
+				   String movieId, String cinemaId, String TID, ArrayList<ArrayList<Integer>> chosenSeats) {
 		this.cineplexId = cineplexId;
 		this.movieId = movieId;
 		this.cinemaId = cinemaId;
 		this.TID = TID;
 		this.email = email;
 		this.date = date;
-		//this.chosenSeats = chosenSeats;
+		this.chosenSeats = chosenSeats;
 		this.theatreClass = theatreClass;
 		this.totalPrice = totalPrice;
 	}
