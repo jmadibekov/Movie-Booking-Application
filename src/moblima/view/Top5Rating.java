@@ -21,11 +21,13 @@ public class Top5Rating {
 		ArrayList < Movie > movieList = Top5Controller.getTop5MoviesRating();
 		int index = 1;
 		for (Movie i: movieList) {
-			System.out.printf("(%s) %s, Rating: %s, ShowingStatus: %s\n",
-					index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+			if (i.getShowingStatus().compareTo("End of Showing") != 0) {
+				System.out.printf("(%s) %s, Rating: %s, ShowingStatus: %s\n",
+						index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+				index++;
+			}
 			if (index == 5)
 				break;
-			index++;
 		}
 
 		StackArg curView = navigation.getLastView();
