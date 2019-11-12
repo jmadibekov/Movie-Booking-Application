@@ -62,17 +62,16 @@ public class AddMovie {
     private void setTitle(Navigation navigation, Scanner sc, String showingStatus){
         String title;
         System.out.printf("Enter the title (0 to go back): ");
-        title = sc.next();
+        title = sc.nextLine();
         if (title.contentEquals("0"))
             setShowingStatus(navigation);
-        String buffer = sc.nextLine();
         setSynopsis(navigation, sc, showingStatus, title);
     }
 
     private void setSynopsis(Navigation navigation, Scanner sc, String showingStatus, String title){
         String synopsis;
         System.out.printf("Enter the synopsis (0 to go back): ");
-        synopsis = sc.next();
+        synopsis = sc.nextLine();
         if (synopsis.contentEquals("0"))
             setTitle(navigation, sc, showingStatus);
         setDirector(navigation, sc, showingStatus, title, synopsis);
@@ -93,16 +92,14 @@ public class AddMovie {
             else if (input > 0)
                 break;
         }
-        sc.nextLine();
         directorList = new String[input];
         for (int i = 0; i < input; i++){
             System.out.printf("Enter the name of director number %d (0 to go back): ", i+1);
-            director = sc.next();
+            director = sc.nextLine();
             if (director.contentEquals("0"))
                 setSynopsis(navigation, sc, showingStatus, title);
             directorList[i] = director;
         }
-        String buffer = sc.nextLine();
         setCast(navigation, showingStatus, title, synopsis, directorList);
     }
 
@@ -123,7 +120,7 @@ public class AddMovie {
         castList = new String[input];
         for (int i = 0; i < input; i++) {
             System.out.printf("Enter the name of actor/actress number %d (0 to go back): ", i+1);
-            cast = sc.next();
+            cast = sc.nextLine();
             if (cast.contentEquals("0"))
                 setDirector(navigation, sc, showingStatus, title, synopsis);
             castList[i] = cast;
