@@ -144,7 +144,10 @@ public class ChooseSeats {
 	private void getTicketType(Navigation navigation, double price) {
 		BookingController.setTotalPrice(BookingController.getTotalPrice() - price);
 		BookingController.clearSeat();
-		System.out.println("Seat " + (index));
+		System.out.println(
+				"=====================================\n"
+						+ "-----------Booking: Seat " + index + "----------\n"
+						+ "=====================================");
 		int ticketType = navigation.getChoice("Input ticket type (0 - Back, 1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
 		if (ticketType == 0 && index == 1) {
 			getNoOfSeats(navigation);
@@ -185,7 +188,9 @@ public class ChooseSeats {
 					price = BookingController.calcPrice();
 					System.out.printf("Price for that seat: $%.2f\n", price);
 					BookingController.addSeatSelected(BookingController.getSeat());
-					System.out.println("Seat" + BookingController.getSeatSelected());
+					System.out.println("\nChosen Seats");
+					BookingController.printSeatSelected(BookingController.getSeatSelected());
+					System.out.println();
 					if (index == noOfSeats) {
 						getConfirmation(navigation);
 					}
@@ -208,9 +213,10 @@ public class ChooseSeats {
 	}
 
 	private void getConfirmation(Navigation navigation) {
-		System.out.println("The total price of booking: $" + BookingController.getTotalPrice());
+		System.out.printf("The total price of booking: $%.2f\n", BookingController.getTotalPrice());
 		int confirm = navigation.getChoice("Input 1 to confirm your booking (0 - Back): ");
 		if (confirm == 1) {
+			System.out.println();
 			navigation.goTo(new StackArg("enterParticulars", navigation.getLastView().getUserType()));
 		}
 		else {

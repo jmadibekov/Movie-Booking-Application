@@ -65,7 +65,8 @@ public class BookingController {
 				BookingController.seatLayout[i][j] = seatLayout[i][j];
 	}
 	public static void printSeatLayout() {
-		System.out.println("                Screen\n");
+	    System.out.println("-------------------------------------\n"
+                        + "                Screen\n");
 		for (int i=0;i<8;i++) {
 			System.out.print("      ");
 			for (int j=0;j<9;j++) {
@@ -75,11 +76,12 @@ public class BookingController {
 			}
 			System.out.print("  "+ (i+1) + "\n");
 		}
-		System.out.println("       1  2  3  4  5  6  7  8  9\n");
-		System.out.println("                Entrance\n");
-		System.out.println("Legend: \n"
-				+ "0 - Available Slots\n"
-				+ "1 - Occupied Slots\n");
+		System.out.println("       1  2  3  4  5  6  7  8  9\n"
+                         + "               Entrance\n"
+                         + "Legend: \n"
+                         + "0 - Available Slots\n"
+                         + "1 - Occupied Slots\n"
+                         + "-------------------------------------");
 	}
 
 	public static ArrayList < String > getAllMovies() {
@@ -246,4 +248,32 @@ public class BookingController {
 	public static void setCurCustomer(Customer curCustomer) {
 		BookingController.curCustomer = curCustomer;
 	}
+
+	public static void printSeatSelected(ArrayList<ArrayList<Integer>> chosenSeats) {
+        for (int i = 0; i < chosenSeats.size(); i++) {
+            for (int j = 0; j < 3; j++) {
+                switch (j) {
+                    case 0:
+                        switch (chosenSeats.get(i).get(j)) {
+                            case 1:
+                                System.out.printf("Ticket Type: Adult, ");
+                                break;
+                            case 2:
+                                System.out.printf("Ticket Type: Student, ");
+                                break;
+                            case 3:
+                                System.out.printf("Ticket Type: Senior Citizen, ");
+                                break;
+                        }
+                        break;
+                    case 1:
+                        System.out.printf("Row: %s, ", chosenSeats.get(i).get(j));
+                        break;
+                    case 2:
+                        System.out.printf("Column: %s\n", chosenSeats.get(i).get(j));
+                        break;
+                }
+            }
+        }
+    }
 }

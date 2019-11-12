@@ -3,7 +3,6 @@ package moblima.view;
 import moblima.controller.*;
 import moblima.model.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
