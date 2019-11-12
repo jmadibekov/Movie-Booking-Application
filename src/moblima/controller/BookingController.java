@@ -128,8 +128,8 @@ public class BookingController {
 	}
 	public static Integer[] removeSeatSelected() {
 		Integer[] oldSeat = new Integer[2];
-		oldSeat[0] = seatSelected.get(seatSelected.size() - 1).get(1);
-		oldSeat[1] = seatSelected.get(seatSelected.size() - 1).get(2);
+		oldSeat[0] = seatSelected.get(seatSelected.size() - 1).get(1) - 1;
+		oldSeat[1] = seatSelected.get(seatSelected.size() - 1).get(2) - 1;
 		seatSelected.remove(seatSelected.size() - 1);
 		return oldSeat;
 	}
