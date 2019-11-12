@@ -8,7 +8,7 @@ public class MoviegoerMenu {
 	
 	public void display(Navigation navigation) {
 		System.out.println(
-				  "=====================================\n"
+				"\n=====================================\n"
 				+ "-----------Movie-goer Menu-----------\n"
 				+ "=====================================\n"
 				+ "(0) Back\n"

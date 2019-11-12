@@ -23,14 +23,10 @@ public class Customer {
 	}
 
 	public void outputBookingHistory() {
-		System.out.println("Booking(s) made:");
-		int ptr = 0;
-		int len = bookingList.size();
+		System.out.println("Booking(s) made:\n");
 		for (Booking i : bookingList) {
 			i.output();
-			ptr++;
-			if (ptr != len)
-				System.out.println();
+			System.out.println();
 		}
 	}
 

@@ -10,7 +10,7 @@ public class BookingHistory {
 	
 	public void display(Navigation navigation) {
 		System.out.println(
-				  "=====================================\n"
+				"\n=====================================\n"
 				+ "-----------Booking History-----------\n"
 				+ "=====================================");
 
@@ -18,10 +18,14 @@ public class BookingHistory {
 		cur.outputBookingHistory();
 
 		System.out.println("(0) Back");
+		System.out.println("(1) Back to the main menu");
 		while (true) {
 			int input = navigation.getChoice("Please select an option: ");
 			if (input == 0) {
 				navigation.goBack();
+				break;
+			} else if (input == 1) {
+				navigation.goBackMainMenu();
 				break;
 			}
 			else {
@@ -29,5 +33,4 @@ public class BookingHistory {
 			}
 		}
 	}
-	
 }

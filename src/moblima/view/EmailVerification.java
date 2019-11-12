@@ -13,7 +13,7 @@ public class EmailVerification {
 	
 	public void display(Navigation navigation) {
 		System.out.println(
-				  "=====================================\n"
+				"\n=====================================\n"
 				+ "----------Email Verification---------\n"
 				+ "=====================================");
 		Scanner sc = new Scanner(System.in);

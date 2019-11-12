@@ -8,7 +8,7 @@ public class BaseMenu {
 
 	public void display(Navigation navigation) {
 		System.out.println(
-				  "=====================================\n"
+				"\n=====================================\n"
 				+ "---------Welcome to MOBLIMA!---------\n"
 				+ "=====================================\n"
 				+ "(1) Admin\n"
