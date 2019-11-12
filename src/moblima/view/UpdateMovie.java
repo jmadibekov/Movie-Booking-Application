@@ -176,7 +176,7 @@ public class UpdateMovie {
                 String[] directorList = new String[number];
                 for (int i = 0; i < number; i++){
                     System.out.printf("Enter the name of Director number %d: ", i+1);
-                    update = sc.next();
+                    update = sc.nextLine();
                     directorList[i] = update;
                 }
                 StaffController.getChosenMovie().setDirector(directorList);
@@ -206,7 +206,7 @@ public class UpdateMovie {
                 String[] castList = new String[number];
                 for (int i = 0; i < number; i++) {
                     System.out.printf("Enter the name of Cast number %d: ", i + 1);
-                    update = sc.next();
+                    update = sc.nextLine();
                     castList[i] = update;
                 }
                 StaffController.getChosenMovie().setCast(castList);
@@ -216,8 +216,6 @@ public class UpdateMovie {
             }
         }
     }
-
-
 
     private void editAgeRequirement(Navigation navigation){
         System.out.println("Select an age rating (0 to go back): ");
