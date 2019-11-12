@@ -179,8 +179,8 @@ public class ChooseSeats {
 			else if (col > 0 && row > 0 && row < 9 && col < 10) {
 				if (BookingController.getSeatLayout()[row - 1][col - 1].contentEquals("0")) {
 					BookingController.getSeatLayout()[row - 1][col - 1] = "1";
-					BookingController.addSeat(row - 1);
-					BookingController.addSeat(col - 1);
+					BookingController.addSeat(row);
+					BookingController.addSeat(col);
 					BookingController.printSeatLayout();
 					price = BookingController.calcPrice();
 					System.out.printf("Price for that seat: $%.2f\n", price);

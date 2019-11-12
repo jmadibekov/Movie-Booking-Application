@@ -16,6 +16,26 @@ public class Booking {
 
 	public void output() {
 		System.out.printf("Date: %s, Cinema Class: %s, Cost: %.2f, Transaction ID: %s\n", date, theatreClass, totalPrice, TID);
+		System.out.println("Number of s2eats booked: " + chosenSeats.size());
+		for (int i = 0;i < chosenSeats.size(); i++) {
+			for (int j = 0; j < 3; j++) {
+				switch(j) {
+					case 0: switch(chosenSeats.get(i).get(j)) {
+						case 1: System.out.printf("Ticket Type: Adult, ");
+						break;
+						case 2: System.out.printf("Ticket Type: Student, ");
+						break;
+						case 3: System.out.printf("Ticket Type: Senior Citizen, ");
+						break;
+					}
+					break;
+					case 1: System.out.printf("Row: %s, ", chosenSeats.get(i).get(j));
+					break;
+					case 2: System.out.printf("Column: %s\n", chosenSeats.get(i).get(j));
+					break;
+				}
+			}
+		}
 	}
 
 	public Booking(String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String theatreClass,
