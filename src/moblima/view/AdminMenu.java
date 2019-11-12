@@ -1,6 +1,5 @@
 package moblima.view;
 
-import moblima.controller.StaffControllerFazli;
 import moblima.model.StackArg;
 
 import java.util.Scanner;
@@ -12,17 +11,17 @@ public class AdminMenu {
     public void display(Navigation navigation) {
         boolean loop = true;
         System.out.println(
-                  "=====================================\n"
-                          + "--------------Admin Menu-------------\n"
-                          + "=====================================\n"
-                          + "(0) Back\n"
-                          + "(1) Update movie details\n"
-                          + "(2) Add movie\n"
-                          + "(3) Add showtime listing\n"
-                          + "(4) Edit baseTicketPrice\n"
-                          + "(5) Add holiday date\n"
-                          + "(6) View top 5 movies by ticket sales\n"
-                          + "(7) View top 5 movies by overall reviewers ratings\n");
+                "=====================================\n"
+                        + "--------------Admin Menu-------------\n"
+                        + "=====================================\n"
+                        + "(0) Logout\n"
+                        + "(1) Update movie details\n"
+                        + "(2) Add movie\n"
+                        + "(3) Add showtime listing\n"
+                        + "(4) Edit baseTicketPrice\n"
+                        + "(5) Add holiday date\n"
+                        + "(6) View top 5 movies by ticket sales\n"
+                        + "(7) View top 5 movies by overall reviewers ratings\n");
 
 
         StackArg curView = navigation.getLastView();
@@ -30,12 +29,12 @@ public class AdminMenu {
             int input = navigation.getChoice("Please select an option: ");
             switch (input) {
                 case 0:
-                    navigation.goBack();
+                    navigation.goBackMainMenu();
                     loop = false;
                     break;
 
                 case 1:
-                    navigation.goTo(new StackArg("chooseMovie", curView.getUserType(), "updateMovie"));
+                    navigation.goTo(new StackArg("updateMovie", curView.getUserType(), "updateMovie"));
                     loop = false;
                     break;
 

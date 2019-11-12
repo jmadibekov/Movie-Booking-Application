@@ -21,7 +21,7 @@ public class Showtime {
 		return time;
 	}
 
-	public void setTitle(int time) {
+	public void setTime(int time) {
 		this.time = time;
 	}
 

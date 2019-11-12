@@ -88,7 +88,8 @@ public class ChooseMovie {
 			} else if (input == 1) {
 				String showingStatus = curMovie.getShowingStatus();
 				if (curView.getUserType() == 0) {
-					//Benedict to add
+					StaffController.setChosenMovie(curMovie);
+					navigation.goTo(new StackArg("addShowtime", curView.getUserType()));
 				} else {
 					BookingController.setChosenMovie(curMovie);
 					navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));

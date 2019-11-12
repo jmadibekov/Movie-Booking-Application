@@ -1,7 +1,9 @@
 package moblima.view;
 
 import moblima.model.StackArg;
+import moblima.model.Staff;
 import moblima.view.Navigation;
+import moblima.controller.StaffController;
 
 import java.util.Scanner;
 
@@ -41,15 +43,17 @@ public class LoginVerification {
     }
 
     public void getPassword(Navigation navigation, String username) {
+        boolean successful;
         Scanner sc = new Scanner(System.in);
         System.out.print("Please input your password: ");
         String password = sc.next();
         sc.nextLine();
+        successful = StaffController.login(username, password);
         if (username.contentEquals("0")) {
             getUsername(navigation);
         }
-        else if (username.contentEquals("username") && password.contentEquals("password")){
-            System.out.println("Login Successful. Welcome " + username);
+        else if (successful){
+            System.out.println("\nLogin Successful. Welcome " + username);
             navigation.goTo(new StackArg("adminMenu", navigation.getLastView().getUserType()));
         }
         else {

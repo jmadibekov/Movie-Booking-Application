@@ -40,7 +40,7 @@ public class AddHoliday {
         if (date.contentEquals("0")) {
             navigation.goBack();
         }
-        else if (isThisDateValid(date)) {
+        else if (isThisDateValid(date) && date.length() == 10) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             Date todayDate = new Date();
             Date holidayDate = sdf.parse(date);

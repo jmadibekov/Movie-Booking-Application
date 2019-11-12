@@ -2,10 +2,7 @@ package moblima.controller;
 
 import moblima.model.*;
 
-import java.io.IOException;
-import java.io.FileWriter;
-import java.io.PrintWriter;
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -477,6 +474,75 @@ public class DBController {
             alw.add(st.toString()) ;
         }
         write(filename, alw, append);
+    }
+
+    public static void update(String fileName, Movie toChange, Movie toAppend) throws IOException {
+        StringBuilder st =  new StringBuilder();
+        st.append(toChange.getCineplexId().trim());
+        st.append(SEPARATOR);
+        st.append(toChange.getMovieId().trim());
+        st.append(SEPARATOR);
+        st.append(toChange.getUserCount());
+        st.append(SEPARATOR);
+        st.append(toChange.getTicketSales());
+        st.append(SEPARATOR);
+        st.append(toChange.getShowingStatus().trim());
+        st.append(SEPARATOR);
+        st.append(toChange.getTitle().trim());
+        st.append(SEPARATOR);
+        st.append(toChange.getSynopsis().trim());
+        st.append(SEPARATOR);
+        st.append(convertStringArrayToString(toChange.getDirector()));
+        st.append(SEPARATOR);
+        st.append(convertStringArrayToString(toChange.getCast()));
+        st.append(SEPARATOR);
+        st.append(toChange.getOverallRating());
+        st.append(SEPARATOR);
+        st.append(toChange.getAgeRequirement().trim());
+        st.append(SEPARATOR);
+        st.append(toChange.getDuration());
+
+        StringBuilder nt =  new StringBuilder();
+        nt.append(toAppend.getCineplexId().trim());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getMovieId().trim());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getUserCount());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getTicketSales());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getShowingStatus().trim());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getTitle().trim());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getSynopsis().trim());
+        nt.append(SEPARATOR);
+        nt.append(convertStringArrayToString(toAppend.getDirector()));
+        nt.append(SEPARATOR);
+        nt.append(convertStringArrayToString(toAppend.getCast()));
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getOverallRating());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getAgeRequirement().trim());
+        nt.append(SEPARATOR);
+        nt.append(toAppend.getDuration());
+
+        {
+            BufferedReader file = new BufferedReader(new FileReader(fileName));
+            String line;
+            String input = "";
+
+            while ((line = file.readLine()) != null)
+                input += line + System.lineSeparator();
+
+            input = input.replace(st.toString(), nt.toString());
+
+            FileOutputStream os = new FileOutputStream(fileName);
+            os.write(input.getBytes());
+
+            file.close();
+            os.close();
+        }
     }
 
     /** Read the contents of the given file. */

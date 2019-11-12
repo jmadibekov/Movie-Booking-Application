@@ -1,6 +1,6 @@
 package moblima.view;
 
-import moblima.controller.StaffControllerFazli;
+import moblima.controller.StaffController;
 
 public class EditBaseTicketPrice {
 
@@ -15,8 +15,8 @@ public class EditBaseTicketPrice {
                         + "=====================================\n"
                         + "(0) Back\n");
         System.out.printf("%s\nCurrent base ticket Price: $%.2f\n\n",
-                StaffControllerFazli.getChosenCineplex().getCineplexName(),
-                StaffControllerFazli.getChosenCineplex().getBaseTicketCost());
+                StaffController.getChosenCineplex().getCineplexName(),
+                StaffController.getChosenCineplex().getBaseTicketCost());
         getNewBasePrice(navigation);
     }
 
@@ -30,7 +30,7 @@ public class EditBaseTicketPrice {
             getNewBasePrice(navigation);
         }
         else if (navigation.checkTwoDecimal(inputPrice)) {
-            StaffControllerFazli.getChosenCineplex().setBaseTicketCost(inputPrice);
+            StaffController.getChosenCineplex().setBaseTicketCost(inputPrice);
             System.out.println("Base ticket price successfully changed to $ " + inputPrice);
             navigation.goBack();
         }
