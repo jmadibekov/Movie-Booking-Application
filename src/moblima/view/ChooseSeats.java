@@ -18,7 +18,7 @@ public class ChooseSeats {
 	public void display(Navigation navigation) {
 		System.out.println(
 				"=====================================\n"
-			  + "------Booking: Choose your Seat-----\n"
+			  + "------Booking: Choose your Seat------\n"
 			  + "=====================================\n");
 		System.out.printf("'%s', %s, %s:%s%s, Cinema Class: %s, Type: %s\n\n",
 				BookingController.getChosenMovie().getTitle(),
@@ -120,7 +120,8 @@ public class ChooseSeats {
 		BookingController.setNoOfSeats(0);
 		price = 0;
 		index = 1;
-		int input = navigation.getChoice("Input number of seats (0 - Back): ");
+		int input = navigation.getChoice("\nInput number of seats (0 - Back): ");
+		System.out.println();
 		BookingController.setNoOfSeats(input);
 
 		if (input == 0) {

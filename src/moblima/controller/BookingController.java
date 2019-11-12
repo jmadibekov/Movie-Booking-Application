@@ -74,9 +74,17 @@ public class BookingController {
 				System.out.print(seatLayout[i][j]);
 				System.out.print("]");
 			}
-			System.out.print("  "+ (i+1) + "\n");
+			System.out.print("  "+ (i+1));
+			if (i == 2)
+				System.out.printf("  R");
+			else if (i == 3)
+				System.out.printf("  O");
+			else if (i == 4)
+				System.out.printf("  W");
+			System.out.println();
 		}
 		System.out.println("       1  2  3  4  5  6  7  8  9\n"
+						 + "             C O L U M N\n"
                          + "               Entrance\n"
                          + "Legend: \n"
                          + "0 - Available Slots\n"
