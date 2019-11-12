@@ -70,6 +70,13 @@ public class MainModel {
 		}
 	}
 
+	public static Customer customerWithEmail(String email) {
+		for (Customer i : customerList)
+			if (i.getEmail().contentEquals(email))
+				return i;
+		return null;
+	}
+
 	public static void output() {
 		for (Cineplex i : cineplexList) {
 			i.output();

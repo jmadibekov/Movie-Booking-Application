@@ -36,6 +36,5 @@ public class AllMoviesList {
 				System.out.println("\nPlease enter a valid input!\n");
 			}
 		}
-	}	
-	
+	}
 }

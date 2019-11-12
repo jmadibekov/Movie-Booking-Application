@@ -26,16 +26,9 @@ public class EmailVerification {
 				break;
 			}
 
-			ArrayList < Customer > cur = MainModel.getCustomerList();
-			boolean found = false;
-			for (Customer i : cur)
-				if (i.getEmail().contentEquals(input)) {
-					found = true;
-					BookingController.setCurCustomer(i);
-					break;
-				}
-
-			if (found == true) {
+			Customer customer = MainModel.customerWithEmail(input);
+			if (customer != null) {
+				BookingController.setCurCustomer(customer);
 				navigation.goTo(new StackArg("bookingHistory", navigation.getLastView().getUserType()));
 				break;
 			} else {

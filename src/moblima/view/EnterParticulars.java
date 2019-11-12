@@ -3,6 +3,7 @@ package moblima.view;
 import moblima.controller.*;
 import moblima.model.*;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,13 +22,10 @@ public class EnterParticulars {
                   "=====================================\n"
                 + "------Booking: Enter Particulars-----\n"
                 + "=====================================\n\n"
-                + BookingController.getChosenMovie().getTitle()
+                + "Chosen movie: '" + BookingController.getChosenMovie().getTitle() + "'"
                 + "\nTotal booking price: $" + BookingController.getTotalPrice()
-                + "\n\n(0) Back");
-
+                + "\n");
         getEmail(navigation);
-
-
     }
 
     private void getEmail(Navigation navigation) {
@@ -41,13 +39,21 @@ public class EnterParticulars {
 
         if(mat.matches()) {
             email = input;
-            getName(navigation);
+            Customer existingCustomer = MainModel.customerWithEmail(email);
+            if (existingCustomer != null) {
+                System.out.println("You've already booked with us. It's good to see you again!");
+                System.out.printf("Your name: %s\n", existingCustomer.getName());
+                System.out.printf("Your phone: %s\n", existingCustomer.getPhoneNumber());
+                getConfirmation(navigation, existingCustomer);
+            } else {
+                getName(navigation);
+            }
         }
         else if (input.contentEquals("0")) {
             navigation.goBack();
         }
         else{
-            System.out.println("Not a valid email address");
+            System.out.println("Not a valid email address.");
             getEmail(navigation);
         }
         sc.close();
@@ -78,7 +84,7 @@ public class EnterParticulars {
         }
         else if (isValidPhone(input)) {
             phone = input;
-            getConfirmation(navigation);
+            getConfirmation(navigation, null);
         }
         else {
             getPhone(navigation);
@@ -97,41 +103,29 @@ public class EnterParticulars {
         if (s == null) return "";
         return s.replaceAll("\\s", "");
     }
-    private void getConfirmation(Navigation navigation) {
-        int input = navigation.getChoice("Input 1 to confirm payment, 0 to go back: ");
+    private void getConfirmation(Navigation navigation, Customer customer) {
+        int input = navigation.getChoice("Input 1 to confirm the payment, 0 to go back: ");
         if (input == 0) {
-            getPhone(navigation);
+            if (customer != null)
+                getEmail(navigation);
+            else
+                getPhone(navigation);
         }
         else if (input == 1) {
-            if (MainModel.getCustomerList() == null) {
-                Customer customer = new Customer(email, name, phone);
-                customer.addBooking(BookingController.createBooking(email));
+            if (customer == null) {
+                customer = new Customer(email, name, phone);
                 MainModel.addCustomer(customer);
             }
-            else {
-                boolean notfound = true;
-                for (int i=0;i < MainModel.getCustomerList().size();i++) {
-                    if (MainModel.getCustomerList().get(i).getEmail().contentEquals(email)) {
-                        MainModel.getCustomerList().get(i).addBooking(BookingController.createBooking(email));
-                        notfound = false;
-                        break;
-                    }
-                }
-                if (notfound) {
-                    Customer customer = new Customer(email, name, phone);
-                    customer.addBooking(BookingController.createBooking(email));
-                    MainModel.addCustomer(customer);
-                }
-            }
+            customer.addBooking(BookingController.createBooking(email));
             BookingController.getChosenMovie().addTicketSales(BookingController.getNoOfSeats());
             BookingController.getChosenShowtime().setSeatLayout(BookingController.getSeatLayout());
-            System.out.println("Thank you for your purchase. You will now be redirected to the main menu");
+            System.out.println("Thank you for your purchase. You will now be redirected to the main menu.");
             System.out.println(MainModel.getCustomerList().get(0).getBookList().get(0).getTID());
             navigation.goBackMainMenu();
         }
         else {
-            System.out.println("Please enter a valid input");
-            getConfirmation(navigation);
+            System.out.println("Please enter a valid input.");
+            getConfirmation(navigation, customer);
         }
     }
 }
