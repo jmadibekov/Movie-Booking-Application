@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChooseMovie {
+
+	private HashMap<Integer, Movie> uniqueMovies = new HashMap<Integer, Movie>();
+
 	public ChooseMovie() {
 	}
 	
@@ -33,8 +36,8 @@ public class ChooseMovie {
 			if (input == 0) {
 				navigation.goBack();
 				break;
-			} else if (input <= movieList.size()) {
-				boolean doBreak = doMovie(navigation, curView, movieList.get(input - 1));
+			} else if (input <= uniqueMovies.size()) {
+				boolean doBreak = doMovie(navigation, curView, uniqueMovies.get(input));
 				if (doBreak == true)
 					break;
 				else {
@@ -51,9 +54,20 @@ public class ChooseMovie {
 		System.out.println("(0) Back");
 		int index = 1;
 		for (Movie i : movieList) {
-			System.out.printf("(%s) '%s', Rating: %s, Showing status: %s\n",
-					index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
-			index++;
+			if (curView.getUserType() == 0) {
+				System.out.printf("(%s) '%s', Rating: %s, Showing status: %s\n",
+						index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+				uniqueMovies.put(index, i);
+				index++;
+			}
+			else {
+				if (!i.getShowingStatus().contentEquals("Coming Soon") && !i.getShowingStatus().contentEquals("End of Showing")) {
+					System.out.printf("(%s) '%s', Rating: %s, Showing status: %s\n",
+							index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+					uniqueMovies.put(index, i);
+					index++;
+				}
+			}
 		}
 	}
 
@@ -61,7 +75,10 @@ public class ChooseMovie {
 		System.out.printf("\nChosen movie: '%s'\n\n", curMovie.getTitle());
 
 		System.out.println("(0) Back");
-		System.out.println("(1) Book this movie");
+		if (curView.getUserType() == 0)
+			System.out.println("(1) Add showtime");
+		else
+			System.out.println("(1) Book this movie");
 		System.out.println("(2) Movie information");
 
 		while (true) {
@@ -70,8 +87,8 @@ public class ChooseMovie {
 				return false;
 			} else if (input == 1) {
 				String showingStatus = curMovie.getShowingStatus();
-				if (!showingStatus.contentEquals("Now Showing") && !showingStatus.contentEquals("Preview")) {
-					System.out.println("Sorry, this movie is not showing yet");
+				if (curView.getUserType() == 0) {
+					//Benedict to add
 				} else {
 					BookingController.setChosenMovie(curMovie);
 					navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));

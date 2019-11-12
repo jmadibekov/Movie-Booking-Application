@@ -40,14 +40,14 @@ public class MovieInformation {
 					break;
 
 				case 1:
-					if (BookingController.getChosenMovie().getShowingStatus().contentEquals("Coming Soon") ||
-							BookingController.getChosenMovie().getShowingStatus().contentEquals("End of Showing")) {
+					if (BookingController.getChosenMovie().getShowingStatus().contentEquals("Coming Soon"))
 						System.out.println("Sorry, this movie is not showing yet");
-						break;
+					else if (BookingController.getChosenMovie().getShowingStatus().contentEquals("End of Showing"))
+						System.out.println("Sorry, this movie is no longer showing");
+					else {
+						navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));
+						loop = false;
 					}
-
-					navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));
-					loop = false;
 					break;
 
 				case 2:
