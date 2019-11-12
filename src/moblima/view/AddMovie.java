@@ -40,17 +40,28 @@ public class AddMovie {
     private void setShowingStatus(Navigation navigation){
         Scanner sc = new Scanner(System.in);
         String showingStatus;
-        System.out.println("Enter the showing status [Now Showing, Preview, Coming Soon](0 to go back): ");
-        showingStatus = sc.next();
-        if (showingStatus.contentEquals("0"))
-            navigation.goBack();
-        String buffer = sc.nextLine();
-        setTitle(navigation, sc, showingStatus);
+        System.out.println("Select a showing status (0 to go back): ");
+        System.out.println("(1) Now Showing");
+        System.out.println("(2) Preview");
+        System.out.println("(3) Coming Soon");
+        while (true){
+            int option = navigation.getChoice("Showing Status: ");
+            if (option == 0)
+                navigation.goBack();
+            else if (option == 1)
+                setTitle(navigation, sc, "Now Showing");
+            else if (option == 2)
+                setTitle(navigation, sc, "Preview");
+            else if (option == 3)
+                setTitle(navigation, sc, "Coming Soon");
+            else
+                System.out.println("Please enter a valid input");
+        }
     }
 
     private void setTitle(Navigation navigation, Scanner sc, String showingStatus){
         String title;
-        System.out.println("Enter the title (0 to go back): ");
+        System.out.printf("Enter the title (0 to go back): ");
         title = sc.next();
         if (title.contentEquals("0"))
             setShowingStatus(navigation);
@@ -60,7 +71,7 @@ public class AddMovie {
 
     private void setSynopsis(Navigation navigation, Scanner sc, String showingStatus, String title){
         String synopsis;
-        System.out.println("Enter the synopsis (0 to go back): ");
+        System.out.printf("Enter the synopsis (0 to go back): ");
         synopsis = sc.next();
         if (synopsis.contentEquals("0"))
             setTitle(navigation, sc, showingStatus);
@@ -82,7 +93,7 @@ public class AddMovie {
             else if (input > 0)
                 break;
         }
-        String temp = sc.nextLine();
+        sc.nextLine();
         directorList = new String[input];
         for (int i = 0; i < input; i++){
             System.out.printf("Enter the name of director number %d (0 to go back): ", i+1);
@@ -110,9 +121,8 @@ public class AddMovie {
                 break;
         }
         castList = new String[input];
-        String temp = sc.nextLine();
         for (int i = 0; i < input; i++) {
-            System.out.printf("Enter the name of actor/actress number %d (0 to go back): \n", i+1);
+            System.out.printf("Enter the name of actor/actress number %d (0 to go back): ", i+1);
             cast = sc.next();
             if (cast.contentEquals("0"))
                 setDirector(navigation, sc, showingStatus, title, synopsis);
@@ -122,13 +132,26 @@ public class AddMovie {
     }
 
     private void setAgeRequirement(Navigation navigation, Scanner sc, String showingStatus, String title, String synopsis, String[] directorList, String[] castList){
-        String ageRequirement;
-        System.out.println("Enter the age requirement [PG13, NC16, M18, R21] (0 to go back): ");
-        ageRequirement = sc.next();
-        if (ageRequirement.contentEquals("0"))
-            setCast(navigation,showingStatus,title,synopsis,directorList);
-        setDuration(navigation,sc,showingStatus,title,synopsis,directorList,castList,ageRequirement);
-        String buffer = sc.nextLine();
+        System.out.println("Select an age rating (0 to go back): ");
+        System.out.println("(1) PG13");
+        System.out.println("(2) NC16");
+        System.out.println("(3) M18");
+        System.out.println("(4) R21");
+        while(true) {
+            int selected = navigation.getChoice("Movie Rating: ");
+            if (selected == 0)
+                setCast(navigation, showingStatus, title, synopsis, directorList);
+            else if (selected == 1)
+                setDuration(navigation, sc, showingStatus, title, synopsis, directorList, castList, "PG13");
+            else if (selected == 2)
+                setDuration(navigation, sc, showingStatus, title, synopsis, directorList, castList, "NC16");
+            else if (selected == 3)
+                setDuration(navigation, sc, showingStatus, title, synopsis, directorList, castList, "M18");
+            else if (selected == 4)
+                setDuration(navigation, sc, showingStatus, title, synopsis, directorList, castList, "R21");
+            else
+                System.out.println("Please enter a valid input");
+        }
     }
 
     private void setDuration(Navigation navigation, Scanner sc, String showingStatus, String title, String synopsis, String[] directorList, String[] castList, String ageRequirement){
