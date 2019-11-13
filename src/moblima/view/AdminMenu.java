@@ -2,8 +2,6 @@ package moblima.view;
 
 import moblima.model.StackArg;
 
-import java.util.Scanner;
-
 public class AdminMenu {
 
     public AdminMenu() { }

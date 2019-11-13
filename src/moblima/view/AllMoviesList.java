@@ -1,7 +1,7 @@
 package moblima.view;
 
-import moblima.controller.*;
-import moblima.model.*;
+import moblima.controller.BookingController;
+import moblima.model.StackArg;
 import java.util.ArrayList;
 
 public class AllMoviesList {

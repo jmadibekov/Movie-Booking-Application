@@ -9,10 +9,6 @@ import java.util.regex.Pattern;
 
 public class EnterParticulars {
 
-    private String email;
-    private String name;
-    private String phone;
-
     public EnterParticulars() {
     }
 
@@ -28,6 +24,7 @@ public class EnterParticulars {
     }
 
     private void getEmail(Navigation navigation) {
+        String email;
         System.out.print("Please input your email address (Input 0 to go back): ");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
@@ -43,9 +40,9 @@ public class EnterParticulars {
                 System.out.println("You've already booked with us. It's good to see you again!");
                 System.out.printf("Your name: %s\n", existingCustomer.getName());
                 System.out.printf("Your phone: %s\n", existingCustomer.getPhoneNumber());
-                getConfirmation(navigation, existingCustomer);
+                getConfirmation(navigation, existingCustomer, null, null, null);
             } else {
-                getName(navigation);
+                getName(navigation, email);
             }
         }
         else if (input.contentEquals("0")) {
@@ -58,7 +55,8 @@ public class EnterParticulars {
         sc.close();
     }
 
-    private void getName(Navigation navigation) {
+    private void getName(Navigation navigation, String email) {
+        String name;
         System.out.print("Please input your name (Input 0 to go back): ");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
@@ -68,25 +66,26 @@ public class EnterParticulars {
         }
         else{
             name = input;
-            getPhone(navigation);
+            getPhone(navigation, email, name);
         }
         sc.close();
     }
 
-    private void getPhone(Navigation navigation) {
+    private void getPhone(Navigation navigation, String email, String name) {
+        String phone;
         System.out.print("Please input your 8-digit phone number (Input 0 to go back): ");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
         sc.nextLine();
         if (input.contentEquals("0")) {
-            getName(navigation);
+            getName(navigation, email);
         }
         else if (isValidPhone(input)) {
             phone = input;
-            getConfirmation(navigation, null);
+            getConfirmation(navigation, null, email, name, phone);
         }
         else {
-            getPhone(navigation);
+            getPhone(navigation, email, name);
         }
     }
     private boolean isValidPhone(String mobile) {
@@ -102,13 +101,13 @@ public class EnterParticulars {
         if (s == null) return "";
         return s.replaceAll("\\s", "");
     }
-    private void getConfirmation(Navigation navigation, Customer customer) {
+    private void getConfirmation(Navigation navigation, Customer customer, String email, String name, String phone) {
         int input = navigation.getChoice("Input 1 to confirm the payment, 0 to go back: ");
         if (input == 0) {
             if (customer != null)
                 getEmail(navigation);
             else
-                getPhone(navigation);
+                getPhone(navigation, email, name);
         }
         else if (input == 1) {
             if (customer == null) {
@@ -124,7 +123,7 @@ public class EnterParticulars {
         }
         else {
             System.out.println("Please enter a valid input.");
-            getConfirmation(navigation, customer);
+            getConfirmation(navigation, customer, email, name, phone);
         }
     }
 }

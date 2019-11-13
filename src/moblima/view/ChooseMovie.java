@@ -1,14 +1,15 @@
 package moblima.view;
 
-import moblima.controller.*;
-import moblima.model.*;
+import moblima.controller.BookingController;
+import moblima.controller.ReviewController;
+import moblima.controller.StaffController;
+import moblima.model.Movie;
+import moblima.model.StackArg;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ChooseMovie {
-
-	private HashMap<Integer, Movie> uniqueMovies = new HashMap<Integer, Movie>();
 
 	public ChooseMovie() {
 	}
@@ -29,7 +30,9 @@ public class ChooseMovie {
 			return;
 		}
 
-		printMovies(curView, movieList);
+		HashMap<Integer, Movie> uniqueMovies = new HashMap<Integer, Movie>();
+
+		printMovies(curView, movieList, uniqueMovies);
 
 		while (true) {
 			int input = navigation.getChoice("Please select an option: ");
@@ -42,7 +45,7 @@ public class ChooseMovie {
 					break;
 				else {
 					System.out.println();
-					printMovies(curView, movieList);
+					printMovies(curView, movieList, uniqueMovies);
 				}
 			} else {
 				System.out.println("\nPlease enter a valid input\n");
@@ -50,7 +53,7 @@ public class ChooseMovie {
 		}
 	}
 
-	private void printMovies(StackArg curView, ArrayList < Movie > movieList) {
+	private void printMovies(StackArg curView, ArrayList < Movie > movieList, HashMap<Integer, Movie> uniqueMovies) {
 		System.out.println("(0) Back");
 		int index = 1;
 		for (Movie i : movieList) {
@@ -86,7 +89,6 @@ public class ChooseMovie {
 			if (input == 0) {
 				return false;
 			} else if (input == 1) {
-				String showingStatus = curMovie.getShowingStatus();
 				if (curView.getUserType() == 0) {
 					StaffController.setChosenMovie(curMovie);
 					navigation.goTo(new StackArg("addShowtime", curView.getUserType()));

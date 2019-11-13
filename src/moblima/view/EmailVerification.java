@@ -3,7 +3,6 @@ package moblima.view;
 import moblima.controller.BookingController;
 import moblima.model.*;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class EmailVerification {

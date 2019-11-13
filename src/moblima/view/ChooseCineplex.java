@@ -1,7 +1,11 @@
 package moblima.view;
 
-import moblima.controller.*;
-import moblima.model.*;
+import moblima.controller.BookingController;
+import moblima.controller.StaffController;
+import moblima.controller.Top5Controller;
+import moblima.model.Cineplex;
+import moblima.model.StackArg;
+import moblima.model.MainModel;
 
 import java.util.ArrayList;
 

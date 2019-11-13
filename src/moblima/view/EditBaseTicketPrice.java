@@ -7,7 +7,6 @@ public class EditBaseTicketPrice {
     public EditBaseTicketPrice() {
 
     }
-
     public void display(Navigation navigation) {
         System.out.println(
                 "=====================================\n"
