@@ -2,25 +2,22 @@ package moblima.view;
 
 import moblima.controller.*;
 import moblima.model.*;
-import moblima.model.StackArg;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ChooseShowtime{
+public class ChooseShowtime extends View {
 
-	public ChooseShowtime() {
+	public ChooseShowtime(int userType, View nextView) {
+		super("chooseShowtime", userType, nextView);
 	}
-	
-	public void display(Navigation navigation) {
-		System.out.println(
-				  "=====================================\n"
-				+ "------Booking: Choose a Showtime-----\n"
-				+ "=====================================\n\n"
-				+ "Chosen Movie: '" + BookingController.getChosenMovie().getTitle() + "'"
-				+ "\n\n(0) Back");
 
-		//function to get showtimes based on cineplex and movie and cinema chosen
+	public void display() {
+		outputPageName("Booking: Choose a Showtime");
+
+		System.out.println(
+				  "Chosen Movie: '" + BookingController.getChosenMovie().getTitle() + "'"
+				+ "\n\n(0) Back");
 
 		int gotShowtimes = 0;
 		int index = 1;
@@ -29,7 +26,7 @@ public class ChooseShowtime{
 		HashMap<Integer, Showtime> uniqueShowtimes = new HashMap<Integer, Showtime>();
 		if (showtimesList.isEmpty()) {
 			System.out.println("No showtimes available. Please try another movie.");
-			navigation.goBack();
+			Navigation.goBack();
 		}
 		for (Showtime i : showtimesList) {
 			System.out.printf("(%s) %s, %s:%s%s, Cinema Class: %s, Type: %s\n",index, i.getDate(),
@@ -39,22 +36,20 @@ public class ChooseShowtime{
 			index++;
 		}
 
-		StackArg curView = navigation.getLastView();
-
 		while (true) {
-			int input = navigation.getChoice("Please select an option: ");
+			int input = getChoice("Please select an option: ");
 			boolean found = false;
 			if (input == 0) {
-				navigation.goBack();
+				Navigation.goBack();
 				break;
 			}
 			else if (input <= uniqueShowtimes.size()) {
-				if (curView.getUserType() == 1 && BookingController.getNoOfSeatsLeft(uniqueShowtimes.get(input)) != 0) {
+				if (getUserType() == 1 && BookingController.getNoOfSeatsLeft(uniqueShowtimes.get(input)) != 0) {
 					BookingController.setChosenShowtime(uniqueShowtimes.get(input));
-					navigation.goTo(new StackArg("chooseSeats", curView.getUserType()));
+					Navigation.goTo(new ChooseSeats(getUserType(), null));
 					found = true;
 				}
-				else if (curView.getUserType() == 0) {
+				else if (getUserType() == 0) {
 					BookingController.setChosenShowtime(uniqueShowtimes.get(input));
 					break;
 				}

@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class ChooseCineplex extends View {
 
-	public ChooseCineplex(String menuListVal, int userType, View nextView) {
-		super(menuListVal, userType, nextView);
+	public ChooseCineplex(int userType, View nextView) {
+		super("chooseCineplex", userType, nextView);
 	}
 
 	public void display() {
@@ -48,7 +48,6 @@ public class ChooseCineplex extends View {
 				StaffController.setChosenCineplex(curCineplex.get(input - 1));
 
 				Navigation.goTo(getNextView());
-
 				break;
 			} else {
 				System.out.println("\nPlease enter a valid input!\n");

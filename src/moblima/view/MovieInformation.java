@@ -3,16 +3,13 @@ package moblima.view;
 import moblima.controller.*;
 import moblima.model.*;
 
-public class MovieInformation {
-
-	public MovieInformation() {
+public class MovieInformation extends View {
+	public MovieInformation(int userType, View nextView) {
+		super("movieInformation", userType, nextView);
 	}
-	
-	public void display(Navigation navigation) {
-		System.out.println(
-				  "=====================================\n"
-				+ "----------Movie Information----------\n"
-				+ "=====================================\n");
+
+	public void display() {
+		outputPageName("Movie Information");
 
 		if (BookingController.getChosenTitle() != null) {
 			Movie actualMovie = BookingController.getChosenCineplex().getMovieWithTitle(BookingController.getChosenTitle());
@@ -29,13 +26,12 @@ public class MovieInformation {
 		  + "(2) See all reviews\n"
 		  + "(3) Leave a review");
 
-		StackArg curView = navigation.getLastView();
 		boolean loop = true;
 		while (loop) {
-			int input = navigation.getChoice("Please select an option: ");
+			int input = getChoice("Please select an option: ");
 			switch (input) {
 				case 0:
-					navigation.goBack();
+					Navigation.goBack();
 					loop = false;
 					break;
 
@@ -45,7 +41,7 @@ public class MovieInformation {
 					else if (BookingController.getChosenMovie().getShowingStatus().contentEquals("End of Showing"))
 						System.out.println("Sorry, this movie is no longer showing");
 					else {
-						navigation.goTo(new StackArg("chooseShowtime", curView.getUserType()));
+						Navigation.goTo(new ChooseShowtime(getUserType(), null));
 						loop = false;
 					}
 					break;

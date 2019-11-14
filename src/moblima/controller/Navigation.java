@@ -39,7 +39,7 @@ public class Navigation {
     }
 
     public static void start() {
-    	goTo(new BaseMenu("baseMenu", -1, null));
+    	goTo(new BaseMenu(-1, null));
 	}
 
 	public static void exit() {

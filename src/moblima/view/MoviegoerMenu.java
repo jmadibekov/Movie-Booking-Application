@@ -3,8 +3,8 @@ package moblima.view;
 import moblima.controller.*;
 
 public class MoviegoerMenu extends View {
-	public MoviegoerMenu(String menuListVal, int userType, View nextView) {
-		super(menuListVal, userType, nextView);
+	public MoviegoerMenu(int userType, View nextView) {
+		super("moviegoerMenu", userType, nextView);
 	}
 
 	public void display() {
@@ -19,7 +19,6 @@ public class MoviegoerMenu extends View {
 				+ "(5) View top 5 movies by ticket sales\n"
 				+ "(6) View top 5 movies by overall reviewers ratings");
 
-//		View curView = Navigation.getLastView();
 		boolean loop = true;
 		while (loop) {
 			int input = getChoice("Please select an option: ");
@@ -29,10 +28,10 @@ public class MoviegoerMenu extends View {
 				 	 loop = false;
 				 	 break;
 
-//				 case 1:
-//				 	 Navigation.goTo(new View("allMoviesList", curView.getUserType()));
-//				 	 loop = false;
-//				 	 break;
+				 case 1:
+				 	 Navigation.goTo(new AllMoviesList(getUserType(), null));
+				 	 loop = false;
+				 	 break;
 //
 //				 case 2:
 //					 Navigation.goTo(new View("searchMovie", curView.getUserType()));

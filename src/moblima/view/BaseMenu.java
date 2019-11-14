@@ -3,8 +3,8 @@ package moblima.view;
 import moblima.controller.*;
 
 public class BaseMenu extends View {
-	public BaseMenu(String viewName, int userType, View nextView) {
-		super(viewName, userType, nextView);
+	public BaseMenu(int userType, View nextView) {
+		super("baseMenu", userType, nextView);
 	}
 
 	public void display() {
@@ -21,7 +21,7 @@ public class BaseMenu extends View {
 //				Navigation.goTo(new View("chooseCineplex", 0, "loginVerification"));
 				break;
 			} else if (input == 2) {
-				Navigation.goTo(new MoviegoerMenu("moviegoerMenu", 1, null));
+				Navigation.goTo(new MoviegoerMenu(1, null));
 				break;
 			} else if (input == 3) {
 				Navigation.exit();

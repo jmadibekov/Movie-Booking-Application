@@ -1,19 +1,16 @@
 package moblima.view;
 
-import moblima.controller.BookingController;
-import moblima.controller.Navigation;
-import moblima.model.StackArg;
+import moblima.controller.*;
 
-public class ChooseSeats {
-	
-	public ChooseSeats() {
+public class ChooseSeats extends View {
+
+	public ChooseSeats(int userType, View nextView) {
+		super("chooseSeats", userType, nextView);
 	}
 	
-	public void display(Navigation navigation) {
-		System.out.println(
-				"=====================================\n"
-			  + "------Booking: Choose your Seat------\n"
-			  + "=====================================\n");
+	public void display() {
+		outputPageName("Booking: Choose your Seat");
+
 		System.out.printf("'%s', %s, %s:%s%s, Cinema Class: %s, Type: %s\n\n",
 				BookingController.getChosenMovie().getTitle(),
 				BookingController.getChosenShowtime().getDate(),
@@ -23,10 +20,10 @@ public class ChooseSeats {
 				BookingController.getCinemaClass(BookingController.getChosenShowtime().getCinemaId()),
 				BookingController.getChosenShowtime().getType());
 
-		getNoOfSeats(navigation);
+		getNoOfSeats();
 	}
 
-	private void getNoOfSeats(Navigation navigation) {
+	private void getNoOfSeats() {
 		int noOfSeats;
 		BookingController.getChosenShowtime().getSeatLayout();
 		BookingController.setSeatLayout(BookingController.getChosenShowtime().getSeatLayout());
@@ -35,65 +32,65 @@ public class ChooseSeats {
 		BookingController.setTotalPrice(0);
 		BookingController.setNoOfSeats(0);
 		int index = 1;
-		int input = navigation.getChoice("\nInput number of seats (0 - Back): ");
+		int input = getChoice("\nInput number of seats (0 - Back): ");
 		System.out.println();
 		BookingController.setNoOfSeats(input);
 
 		if (input == 0) {
-			navigation.goBack();
+			Navigation.goBack();
 		}
 		else if (input > BookingController.getNoOfSeatsLeft(BookingController.getChosenShowtime())) {
 			System.out.println("Unable to book seats as number of seats exceeded number of seats left");
 			System.out.println("No. of seats left: " + BookingController.getNoOfSeatsLeft(BookingController.getChosenShowtime()));
-			getNoOfSeats(navigation);
+			getNoOfSeats();
 		}
 		else if (input > 5) {
 			System.out.println("Maximum 5 seats allowed");
-			getNoOfSeats(navigation);
+			getNoOfSeats();
 		}
 		else if (input > 0) {
 			noOfSeats = input;
-			getTicketType(navigation, 0, 0, index, noOfSeats);
+			getTicketType(0, 0, index, noOfSeats);
 		}
 	}
 
-	private void getTicketType(Navigation navigation, double prevPrice, double curPrice, int index, int noOfSeats) {
+	private void getTicketType(double prevPrice, double curPrice, int index, int noOfSeats) {
 		BookingController.setTotalPrice(BookingController.getTotalPrice() - prevPrice);
 		BookingController.clearSeat();
 		System.out.println(
 				"=====================================\n"
 						+ "-----------Booking: Seat " + index + "----------\n"
 						+ "=====================================");
-		int ticketType = navigation.getChoice("Input ticket type (0 - Back, 1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
+		int ticketType = getChoice("Input ticket type (0 - Back, 1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
 		if (ticketType == 0 && index == 1) {
-			getNoOfSeats(navigation);
+			getNoOfSeats();
 		}
 		else if (ticketType == 0) {
 			index--;
 			Integer[] oldSeat;
 			oldSeat = BookingController.removeSeatSelected();
 			BookingController.getSeatLayout()[oldSeat[0]][oldSeat[1]] = "0";
-			getTicketType(navigation, curPrice, 0, index, noOfSeats);
+			getTicketType(curPrice, 0, index, noOfSeats);
 		}
 		else if (ticketType > 3 || ticketType < 0) {
 			System.out.println("Please enter a valid input");
-			getTicketType(navigation, 0, 0, index, noOfSeats);
+			getTicketType(0, 0, index, noOfSeats);
 		} else {
 			BookingController.addSeat(ticketType);
-			getRowAndColumn(navigation, index, noOfSeats);
+			getRowAndColumn(index, noOfSeats);
 		}
 	}
 
-	private void getRowAndColumn(Navigation navigation, int index, int noOfSeats) {
+	private void getRowAndColumn(int index, int noOfSeats) {
 		System.out.println("Input 0 to go back to choosing ticket type");
-		int row = navigation.getChoice("Input row: ");
+		int row = getChoice("Input row: ");
 		if (row == 0) {
-			getTicketType(navigation, 0, 0, index, noOfSeats);
+			getTicketType(0, 0, index, noOfSeats);
 		}
 		else {
-			int col = navigation.getChoice("Input column: ");
+			int col = getChoice("Input column: ");
 			if (col == 0) {
-				getTicketType(navigation, 0, 0, index, noOfSeats);
+				getTicketType(0, 0, index, noOfSeats);
 			}
 			else if (col > 0 && row > 0 && row < 9 && col < 10) {
 				if (BookingController.getSeatLayout()[row - 1][col - 1].contentEquals("0")) {
@@ -108,38 +105,38 @@ public class ChooseSeats {
 					BookingController.printSeatSelected(BookingController.getSeatSelected());
 					System.out.println();
 					if (index == noOfSeats) {
-						getConfirmation(navigation, price, index, noOfSeats);
+						getConfirmation(price, index, noOfSeats);
 					}
 					else {
 						index++;
-						getTicketType(navigation, 0, price, index, noOfSeats);
+						getTicketType(0, price, index, noOfSeats);
 					}
 				} else if (BookingController.getSeatLayout()[row - 1][col - 1].contentEquals("1")) {
 					System.out.println("Seat is occupied. PLease input a different row and column");
-					getRowAndColumn(navigation, index, noOfSeats);
+					getRowAndColumn(index, noOfSeats);
 				} else {
 					System.out.println("Please enter a valid input");
-					getRowAndColumn(navigation, index, noOfSeats);
+					getRowAndColumn(index, noOfSeats);
 				}
 			} else {
 				System.out.println("Please enter a valid input");
-				getRowAndColumn(navigation, index, noOfSeats);
+				getRowAndColumn(index, noOfSeats);
 			}
 		}
 	}
 
-	private void getConfirmation(Navigation navigation, double price, int index, int noOfSeats) {
+	private void getConfirmation(double price, int index, int noOfSeats) {
 		System.out.printf("The total price of booking: $%.2f\n", BookingController.getTotalPrice());
-		int confirm = navigation.getChoice("Input 1 to confirm your booking (0 - Back): ");
+		int confirm = getChoice("Input 1 to confirm your booking (0 - Back): ");
 		if (confirm == 1) {
 			System.out.println();
-			navigation.goTo(new StackArg("enterParticulars", navigation.getLastView().getUserType()));
+			Navigation.goTo(new EnterParticulars(getUserType(), null));
 		}
 		else {
 			Integer[] oldSeat;
 			oldSeat = BookingController.removeSeatSelected();
 			BookingController.getSeatLayout()[oldSeat[0]][oldSeat[1]] = "0";
-			getTicketType(navigation, price, 0, index, noOfSeats);
+			getTicketType(price, 0, index, noOfSeats);
 		}
 	}
 
