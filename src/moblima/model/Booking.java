@@ -5,23 +5,61 @@ import moblima.controller.BookingController;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+/**
+ Represents a booking containing relevant booking information when customer booked seats for a showtime
+ A booking corresponds to a customer
+*/
 public class Booking {
+	/**
+	 * The email of the customer
+	 */
 	private String email;
+	/**
+	 * The date of showtime booked
+	 */
 	private String date;
+	/**
+	 * Transaction ID of booking
+	 * TID is of the format XXXYYYYMMDDhhmm (Y : year, M : month, D : day, h : hour, m : minutes, XXX : cinema code in letters).
+	 */
 	private String TID;
+	/**
+	 * 2D integer array to store the seats booked. Each seat is in the format {ticketType, row, column}
+	 */
 	private ArrayList<ArrayList<Integer>> chosenSeats;
+	/**
+	 * Cinema class (Platinum/Gold/Regular) of the showtime booked
+	 */
 	private String theatreClass;
+	/**
+	 * Total price of booking
+	 */
 	private double totalPrice;
+	/**
+	 * Cineplex ID of booked showtime to allow customer to know at which cineplex he/she booked
+	 */
 	private String cineplexId;
+	/**
+	 * Movie ID of booked showtime to allow customer to know which movie he/she booked
+	 */
 	private String movieId;
+	/**
+	 * Cinema ID to allow customer to know which cinema he/she went to watch the movie
+	 */
 	private String cinemaId;
 
-	public void output() {
-		System.out.printf("Date: %s, Cinema Class: %s, Cost: %.2f, Transaction ID: %s\n", date, theatreClass, totalPrice, TID);
-		System.out.println("Number of seats booked: " + chosenSeats.size());
-		BookingController.printSeatSelected(chosenSeats);
-	}
-
+	/**
+	 * Creates a new Booking when payment is made
+	 * TID is generated based on the date booking is made
+	 * @param email This booking's email.
+	 * @param date This booking's date
+	 * @param chosenSeats Information on seats booked.
+	 * @param theatreClass This booking's theatreClass.
+	 * @param totalPrice This booking's totalPrice
+	 * @param cineplexId This booking's cineplexId
+	 * @param movieId This booking's movieId
+	 * @param cinemaId This booking's cinemaId
+	 */
 	public Booking(String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String theatreClass,
 				   double totalPrice, String cineplexId, String movieId, String cinemaId) {
 		this.cineplexId = cineplexId;
@@ -48,6 +86,19 @@ public class Booking {
 		this.totalPrice = totalPrice;
 	}
 
+	/**
+	 * Creates a new Booking, parameters passed from database
+	 * Initialize the model based on data in database
+	 * @param email This booking's email.
+	 * @param date This booking's date
+	 * @param theatreClass This booking's theatreClass
+	 * @param totalPrice This booking's totalPrice
+	 * @param cineplexId This booking's cineplexId
+	 * @param movieId This booking's movieId
+	 * @param cinemaId This booking's cinemaId
+	 * @param TID This booking's TID
+	 * @param chosenSeats This booking's chosenSeats
+	 */
 	public Booking(String email, String date, String theatreClass, double totalPrice, String cineplexId,
 				   String movieId, String cinemaId, String TID, ArrayList<ArrayList<Integer>> chosenSeats) {
 		this.cineplexId = cineplexId;
@@ -61,6 +112,19 @@ public class Booking {
 		this.totalPrice = totalPrice;
 	}
 
+	/**
+	 * Print output information of all attributes stored in booking class
+	 */
+	public void output() {
+		System.out.printf("Date: %s, Cinema Class: %s, Cost: %.2f, Transaction ID: %s\n", date, theatreClass, totalPrice, TID);
+		System.out.println("Number of seats booked: " + chosenSeats.size());
+		BookingController.printSeatSelected(chosenSeats);
+	}
+
+	/**
+	 * Gets email of customer who made the booking.
+	 * @return this booking's email
+	 */
 	public String getEmail() {
 		return email;
 	}
@@ -109,7 +173,9 @@ public class Booking {
 	public void setCinemaId(String movieId) {
 		this.cinemaId = cinemaId;
 	}
-	public ArrayList<ArrayList<Integer>> getChosenSeats() { return chosenSeats; }
+	public ArrayList<ArrayList<Integer>> getChosenSeats() {
+		return chosenSeats;
+	}
 	public void setChosenSeats(ArrayList<ArrayList<Integer>> movieId) {
 		this.chosenSeats = chosenSeats;
 	}
