@@ -113,7 +113,7 @@ public class Booking {
 	}
 
 	/**
-	 * Print output information of all attributes stored in booking class
+	 * Print output information of all relevant attributes
 	 */
 	public void output() {
 		System.out.printf("Date: %s, Cinema Class: %s, Cost: %.2f, Transaction ID: %s\n", date, theatreClass, totalPrice, TID);
@@ -122,62 +122,168 @@ public class Booking {
 	}
 
 	/**
-	 * Gets email of customer who made the booking.
+	 * Gets email of booking.
 	 * @return this booking's email
 	 */
 	public String getEmail() {
 		return email;
 	}
+
+	/**
+	 * Sets new email of booking.
+	 *
+	 * * @param email New value of The email of booking.
+	 */
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+
+	/**
+	 * Gets The date of showtime booked.
+	 *
+	 * @return Value of The date of showtime booked.
+	 */
 	public String getDate() {
 		return date;
 	}
+
+	/**
+	 * Sets new The date of showtime booked.
+	 *
+	 * @param date New value of The date of showtime booked.
+	 */
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String getTID() {
-		return TID;
-	}
-	public void setTID(String tID) {
-		TID = tID;
-	}
-	public String getTheatreClass() {
-		return theatreClass;
-	}
-	public void setTheatreClass(String theatreClass) {
-		this.theatreClass = theatreClass;
-	}
-	public double getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(double totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-	public String getCineplexId() {
-		return cineplexId;
-	}
-	public void setCineplexId(String cineplexId) {
-		this.cineplexId = cineplexId;
-	}
-	public String getMovieId() {
-		return movieId;
-	}
-	public void setMovieId(String movieId) {
-		this.movieId = movieId;
-	}
-	public String getCinemaId() {
-		return cinemaId;
-	}
-	public void setCinemaId(String movieId) {
-		this.cinemaId = cinemaId;
-	}
-	public ArrayList<ArrayList<Integer>> getChosenSeats() {
-		return chosenSeats;
-	}
-	public void setChosenSeats(ArrayList<ArrayList<Integer>> movieId) {
+
+	/**
+	 * Sets new 2D integer array to store the seats booked. Each seat is in the format {ticketType, row, column}.
+	 *
+	 * @param chosenSeats New value of 2D integer array to store the seats booked. Each seat is in the format {ticketType, row, column}.
+	 */
+	public void setChosenSeats(ArrayList<ArrayList<Integer>> chosenSeats) {
 		this.chosenSeats = chosenSeats;
 	}
 
+	/**
+	 * Gets Total price of booking.
+	 *
+	 * @return Value of Total price of booking.
+	 */
+	public double getTotalPrice() {
+		return totalPrice;
+	}
+
+	/**
+	 * Gets Cinema class PlatinumGoldRegular of the showtime booked.
+	 *
+	 * @return Value of Cinema class PlatinumGoldRegular of the showtime booked.
+	 */
+	public String getTheatreClass() {
+		return theatreClass;
+	}
+
+	/**
+	 * Sets new Cinema class PlatinumGoldRegular of the showtime booked.
+	 *
+	 * @param theatreClass New value of Cinema class PlatinumGoldRegular of the showtime booked.
+	 */
+	public void setTheatreClass(String theatreClass) {
+		this.theatreClass = theatreClass;
+	}
+
+	/**
+	 * Sets new Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 *
+	 * @param cineplexId New value of Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 */
+	public void setCineplexId(String cineplexId) {
+		this.cineplexId = cineplexId;
+	}
+
+	/**
+	 * Gets 2D integer array to store the seats booked. Each seat is in the format {ticketType, row, column}.
+	 *
+	 * @return Value of 2D integer array to store the seats booked. Each seat is in the format {ticketType, row, column}.
+	 */
+	public ArrayList<ArrayList<Integer>> getChosenSeats() {
+		return chosenSeats;
+	}
+
+	/**
+	 * Gets Movie ID of booked showtime to allow customer to know which movie heshe booked.
+	 *
+	 * @return Value of Movie ID of booked showtime to allow customer to know which movie heshe booked.
+	 */
+	public String getMovieId() {
+		return movieId;
+	}
+
+	/**
+	 * Sets new Total price of booking.
+	 *
+	 * @param totalPrice New value of Total price of booking.
+	 */
+	public void setTotalPrice(double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	/**
+	 * Gets Cinema ID to allow customer to know which cinema heshe went to watch the movie.
+	 *
+	 * @return Value of Cinema ID to allow customer to know which cinema heshe went to watch the movie.
+	 */
+	public String getCinemaId() {
+		return cinemaId;
+	}
+
+	/**
+	 * Gets Transaction ID of booking
+	 * TID is of the format XXXYYYYMMDDhhmm Y : year, M : month, D : day, h : hour, m : minutes, XXX : cinema code in letters..
+	 *
+	 * @return Value of Transaction ID of booking
+	 * TID is of the format XXXYYYYMMDDhhmm Y : year, M : month, D : day, h : hour, m : minutes, XXX : cinema code in letters..
+	 */
+	public String getTID() {
+		return TID;
+	}
+
+	/**
+	 * Gets Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 *
+	 * @return Value of Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 */
+	public String getCineplexId() {
+		return cineplexId;
+	}
+
+	/**
+	 * Sets new Cinema ID to allow customer to know which cinema heshe went to watch the movie.
+	 *
+	 * @param cinemaId New value of Cinema ID to allow customer to know which cinema heshe went to watch the movie.
+	 */
+	public void setCinemaId(String cinemaId) {
+		this.cinemaId = cinemaId;
+	}
+
+	/**
+	 * Sets new Transaction ID of booking
+	 * TID is of the format XXXYYYYMMDDhhmm Y : year, M : month, D : day, h : hour, m : minutes, XXX : cinema code in letters..
+	 *
+	 * @param TID New value of Transaction ID of booking
+	 *            TID is of the format XXXYYYYMMDDhhmm Y : year, M : month, D : day, h : hour, m : minutes, XXX : cinema code in letters..
+	 */
+	public void setTID(String TID) {
+		this.TID = TID;
+	}
+
+	/**
+	 * Sets new Movie ID of booked showtime to allow customer to know which movie heshe booked.
+	 *
+	 * @param movieId New value of Movie ID of booked showtime to allow customer to know which movie heshe booked.
+	 */
+	public void setMovieId(String movieId) {
+		this.movieId = movieId;
+	}
 }

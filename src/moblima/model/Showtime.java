@@ -1,14 +1,39 @@
 package moblima.model;
 
+/**
+ * The type Showtime.
+ */
 public class Showtime {
+	/**
+	 * Time of showtime
+	 */
 	private int time;
+	/**
+	 * Date of showtime
+	 */
 	private String date;
+	/**
+	 * Type of showtime (IMAX/3D/Digital)
+	 */
 	private String type;
+	/**
+	 * Cinema where showtime is shown at
+	 */
 	private String cinemaId;
-	private int numRows = 8;
-	private int numCols = 9;
+	/**
+	 * 2D array to represent seating arrangement
+	 */
 	private String[][] seatLayout;
 
+	/**
+	 * Instantiates a new Showtime
+	 *
+	 * @param time       the time
+	 * @param date       the date
+	 * @param type       the type
+	 * @param cinemaId   the cinema id
+	 * @param seatLayout the seat layout
+	 */
 	public Showtime(int time, String date, String type, String cinemaId, String[][] seatLayout) {
 		this.time = time;
 		this.date = date;
@@ -17,43 +42,93 @@ public class Showtime {
 		this.seatLayout = seatLayout;
 	}
 
-	public int getTime() {
-		return time;
-	}
-
-	public void setTime(int time) {
-		this.time = time;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getCinemaId() {
-		return cinemaId;
-	}
-
+	/**
+	 * Sets new Cinema where showtime is shown at.
+	 *
+	 * @param cinemaId New value of Cinema where showtime is shown at.
+	 */
 	public void setCinemaId(String cinemaId) {
 		this.cinemaId = cinemaId;
 	}
 
+	/**
+	 * Gets Date of showtime.
+	 *
+	 * @return Value of Date of showtime.
+	 */
+	public String getDate() {
+		return date;
+	}
+
+	/**
+	 * Sets new Time of showtime.
+	 *
+	 * @param time New value of Time of showtime.
+	 */
+	public void setTime(int time) {
+		this.time = time;
+	}
+
+	/**
+	 * Sets new Date of showtime.
+	 *
+	 * @param date New value of Date of showtime.
+	 */
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	/**
+	 * Gets 2D array to represent seating arrangement.
+	 *
+	 * @return Value of 2D array to represent seating arrangement.
+	 */
 	public String[][] getSeatLayout() {
 		return seatLayout;
 	}
 
+	/**
+	 * Gets Type of showtime IMAX3DDigital.
+	 *
+	 * @return Value of Type of showtime IMAX3DDigital.
+	 */
+	public String getType() {
+		return type;
+	}
+
+	/**
+	 * Sets new 2D array to represent seating arrangement.
+	 *
+	 * @param seatLayout New value of 2D array to represent seating arrangement.
+	 */
 	public void setSeatLayout(String[][] seatLayout) {
 		this.seatLayout = seatLayout;
+	}
+
+	/**
+	 * Gets Time of showtime.
+	 *
+	 * @return Value of Time of showtime.
+	 */
+	public int getTime() {
+		return time;
+	}
+
+	/**
+	 * Sets new Type of showtime IMAX3DDigital.
+	 *
+	 * @param type New value of Type of showtime IMAX3DDigital.
+	 */
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	/**
+	 * Gets Cinema where showtime is shown at.
+	 *
+	 * @return Value of Cinema where showtime is shown at.
+	 */
+	public String getCinemaId() {
+		return cinemaId;
 	}
 }

@@ -118,7 +118,7 @@ public class EnterParticulars extends View {
             BookingController.getChosenMovie().addTicketSales(BookingController.getNoOfSeats());
             BookingController.getChosenShowtime().setSeatLayout(BookingController.getSeatLayout());
             System.out.println("Thank you for your purchase. You will now be redirected to the main menu.");
-            System.out.println(MainModel.getCustomerList().get(0).getBookList().get(0).getTID());
+            System.out.println(MainModel.getCustomerList().get(0).getBookingList().get(0).getTID());
             Navigation.goBackMainMenu();
         }
         else {

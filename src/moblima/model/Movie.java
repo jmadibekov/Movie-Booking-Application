@@ -6,26 +6,88 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Represents a Movie belonging to a particular cineplex
+ */
 public class Movie {
+	/**
+	 * Array of showtime objects belonging to the movie
+	 */
 	private ArrayList < Showtime > showtimeList;
+	/**
+	 * Array of review objects belonging to the movie
+	 */
 	private ArrayList < Review > reviewList;
+	/**
+	 * ID of the movie
+	 */
 	private String movieId;
 
 	// Specific to Cineplex
+	/**
+	 * ID of cineplex containing the movie
+	 */
 	private String cineplexId;
+	/**
+	 * No of users who left a review
+	 */
 	private int userCount;
+	/**
+	 * Total number of ticket sales of the movie
+	 */
 	private int ticketSales;
+	/**
+	 * Showing status of the movie
+	 */
 	private String showingStatus;
+	/**
+	 * Overall Rating of the movie
+	 */
 	private double overallRating;
 	// --------
 
+	/**
+	 * Title of the movie
+	 */
 	private String title;
+	/**
+	 * Synopsis of the movie
+	 */
 	private String synopsis;
+	/**
+	 * List of Directors of the movie
+	 */
 	private String[] director;
+	/**
+	 * List of the cast of the movie
+	 */
 	private String[] cast;
+	/**
+	 * Age requirement of the movie
+	 */
 	private String ageRequirement;
+	/**
+	 * Duration of the movie
+	 */
 	private int duration;
 
+	/**
+	 * Instantiates a new Movie
+	 * Includes data from database retrieved using DBController
+	 *
+	 * @param userCount      the user count
+	 * @param showingStatus  the showing status
+	 * @param title          the title
+	 * @param synopsis       the synopsis
+	 * @param director       the director
+	 * @param cast           the cast
+	 * @param overallRating  the overall rating
+	 * @param ageRequirement the age requirement
+	 * @param ticketSales    the ticket sales
+	 * @param cineplexId     the cineplex id
+	 * @param movieId        the movie id
+	 * @param duration       the duration
+	 */
 	public Movie(int userCount, String showingStatus, String title, String synopsis, String[] director, String[] cast,
 				 double overallRating, String ageRequirement, int ticketSales, String cineplexId, String movieId, int duration) {
 		this.movieId = movieId;
@@ -50,6 +112,9 @@ public class Movie {
 		this.ageRequirement = ageRequirement;
 	}
 
+	/**
+	 * Print output information of relevant attributes to the user
+	 */
 	public void output() {
 		System.out.printf("Title: '%s'\n", title);
 		System.out.printf("Showing status: %s, Rating: %.2f\n", showingStatus, overallRating);
@@ -65,119 +130,285 @@ public class Movie {
 		System.out.println(Arrays.toString(director));
 	}
 
-	public ArrayList<Showtime> getShowtimeList() {
-		return showtimeList;
-	}
 
-	public void setShowtimeList(ArrayList<Showtime> showtimeList) {
-		this.showtimeList = showtimeList;
-	}
 
+	/**
+	 * Append a new showtime to the showtimeList
+	 *
+	 * @param showtime new showtime for the movie
+	 */
 	public void addShowtime(Showtime showtime) {
 		showtimeList.add(showtime);
 	}
 
-	public ArrayList<Review> getReviewList() {
-		return reviewList;
-	}
-
-	public void setReviewList(ArrayList<Review> reviewList) {
-		this.reviewList = reviewList;
-	}
-
+	/**
+	 * Append a new review to the reviewList
+	 *
+	 * @param review new review for the movie
+	 */
 	public void addReview(Review review) {
 		reviewList.add(review);
 	}
 
-	public String getMovieId() {
-		return movieId;
-	}
-
-	public void setMovieId(String movieId) {
-		this.movieId = movieId;
-	}
-
-	public int getUserCount() {
-		return userCount;
-	}
-
-	public void setUserCount(int userCount) {
-		this.userCount = userCount;
-	}
-
-	public String getShowingStatus() {
-		return showingStatus;
-	}
-
-	public void setShowingStatus(String showingStatus) {
-		this.showingStatus = showingStatus;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getSynopsis() {
-		return synopsis;
-	}
-
-	public void setSynopsis(String synopsis) {
-		this.synopsis = synopsis;
-	}
-
-	public String[] getDirector() {
-		return director;
-	}
-
-	public void setDirector(String[] director) {
-		this.director = director;
-	}
-
-	public String[] getCast() {
-		return cast;
-	}
-
-	public void setCast(String[] cast) {
-		this.cast = cast;
-	}
-
-	public double getOverallRating() {
-		return overallRating;
-	}
-
-	public void setOverallRating(double overallRating) {
-		this.overallRating = overallRating;
-	}
-
-	public String getAgeRequirement() {
-		return ageRequirement;
-	}
-
-	public void setAgeRequirement(String ageRequirement) {
-		this.ageRequirement = ageRequirement;
-	}
-
-	public int getTicketSales() {
-		return ticketSales;
-	}
-
+	/**
+	 * Add ticket sales
+	 *
+	 * @param noOfTickets number of tickets to be added to initial total ticket sales
+	 */
 	public void addTicketSales(int noOfTickets) {
 		ticketSales = ticketSales + noOfTickets;
 	}
 
+
+	/**
+	 * Gets Title of the movie.
+	 *
+	 * @return Value of Title of the movie.
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+	/**
+	 * Gets ID of cineplex containing the movie.
+	 *
+	 * @return Value of ID of cineplex containing the movie.
+	 */
+	public String getCineplexId() {
+		return cineplexId;
+	}
+
+	/**
+	 * Gets Array of review objects belonging to the movie.
+	 *
+	 * @return Value of Array of review objects belonging to the movie.
+	 */
+	public ArrayList<Review> getReviewList() {
+		return reviewList;
+	}
+
+	/**
+	 * Sets new Showing status of the movie.
+	 *
+	 * @param showingStatus New value of Showing status of the movie.
+	 */
+	public void setShowingStatus(String showingStatus) {
+		this.showingStatus = showingStatus;
+	}
+
+	/**
+	 * Gets Age requirement of the movie.
+	 *
+	 * @return Value of Age requirement of the movie.
+	 */
+	public String getAgeRequirement() {
+		return ageRequirement;
+	}
+
+	/**
+	 * Gets Overall Rating of the movie.
+	 *
+	 * @return Value of Overall Rating of the movie.
+	 */
+	public double getOverallRating() {
+		return overallRating;
+	}
+
+	/**
+	 * Gets Total number of ticket sales of the movie.
+	 *
+	 * @return Value of Total number of ticket sales of the movie.
+	 */
+	public int getTicketSales() {
+		return ticketSales;
+	}
+
+	/**
+	 * Sets new ID of cineplex containing the movie.
+	 *
+	 * @param cineplexId New value of ID of cineplex containing the movie.
+	 */
+	public void setCineplexId(String cineplexId) {
+		this.cineplexId = cineplexId;
+	}
+
+	/**
+	 * Gets Duration of the movie.
+	 *
+	 * @return Value of Duration of the movie.
+	 */
+	public int getDuration() {
+		return duration;
+	}
+
+	/**
+	 * Sets new Array of review objects belonging to the movie.
+	 *
+	 * @param reviewList New value of Array of review objects belonging to the movie.
+	 */
+	public void setReviewList(ArrayList<Review> reviewList) {
+		this.reviewList = reviewList;
+	}
+
+	/**
+	 * Sets new No of users who left a review.
+	 *
+	 * @param userCount New value of No of users who left a review.
+	 */
+	public void setUserCount(int userCount) {
+		this.userCount = userCount;
+	}
+
+	/**
+	 * Gets List of Directors of the movie.
+	 *
+	 * @return Value of List of Directors of the movie.
+	 */
+	public String[] getDirector() {
+		return director;
+	}
+
+	/**
+	 * Gets List of the cast of the movie.
+	 *
+	 * @return Value of List of the cast of the movie.
+	 */
+	public String[] getCast() {
+		return cast;
+	}
+
+	/**
+	 * Gets ID of the movie.
+	 *
+	 * @return Value of ID of the movie.
+	 */
+	public String getMovieId() {
+		return movieId;
+	}
+
+	/**
+	 * Sets new Total number of ticket sales of the movie.
+	 *
+	 * @param ticketSales New value of Total number of ticket sales of the movie.
+	 */
 	public void setTicketSales(int ticketSales) {
 		this.ticketSales = ticketSales;
 	}
 
-	public String getCineplexId() { return cineplexId; }
+	/**
+	 * Gets Synopsis of the movie.
+	 *
+	 * @return Value of Synopsis of the movie.
+	 */
+	public String getSynopsis() {
+		return synopsis;
+	}
 
-	public void setCineplexId(String cinemaId) { this.cineplexId = cinemaId; }
+	/**
+	 * Sets new Duration of the movie.
+	 *
+	 * @param duration New value of Duration of the movie.
+	 */
+	public void setDuration(int duration) {
+		this.duration = duration;
+	}
 
-	public int getDuration() { return duration; }
+	/**
+	 * Sets new Overall Rating of the movie.
+	 *
+	 * @param overallRating New value of Overall Rating of the movie.
+	 */
+	public void setOverallRating(double overallRating) {
+		this.overallRating = overallRating;
+	}
 
-	public void setDuration(int duration) { this.duration = duration; }
+	/**
+	 * Sets new Age requirement of the movie.
+	 *
+	 * @param ageRequirement New value of Age requirement of the movie.
+	 */
+	public void setAgeRequirement(String ageRequirement) {
+		this.ageRequirement = ageRequirement;
+	}
+
+	/**
+	 * Gets Showing status of the movie.
+	 *
+	 * @return Value of Showing status of the movie.
+	 */
+	public String getShowingStatus() {
+		return showingStatus;
+	}
+
+	/**
+	 * Sets new Title of the movie.
+	 *
+	 * @param title New value of Title of the movie.
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	/**
+	 * Sets new Array of showtime objects belonging to the movie.
+	 *
+	 * @param showtimeList New value of Array of showtime objects belonging to the movie.
+	 */
+	public void setShowtimeList(ArrayList<Showtime> showtimeList) {
+		this.showtimeList = showtimeList;
+	}
+
+	/**
+	 * Sets new Synopsis of the movie.
+	 *
+	 * @param synopsis New value of Synopsis of the movie.
+	 */
+	public void setSynopsis(String synopsis) {
+		this.synopsis = synopsis;
+	}
+
+	/**
+	 * Gets Array of showtime objects belonging to the movie.
+	 *
+	 * @return Value of Array of showtime objects belonging to the movie.
+	 */
+	public ArrayList<Showtime> getShowtimeList() {
+		return showtimeList;
+	}
+
+	/**
+	 * Sets new ID of the movie.
+	 *
+	 * @param movieId New value of ID of the movie.
+	 */
+	public void setMovieId(String movieId) {
+		this.movieId = movieId;
+	}
+
+	/**
+	 * Sets new List of the cast of the movie.
+	 *
+	 * @param cast New value of List of the cast of the movie.
+	 */
+	public void setCast(String[] cast) {
+		this.cast = cast;
+	}
+
+	/**
+	 * Sets new List of Directors of the movie.
+	 *
+	 * @param director New value of List of Directors of the movie.
+	 */
+	public void setDirector(String[] director) {
+		this.director = director;
+	}
+
+	/**
+	 * Gets No of users who left a review.
+	 *
+	 * @return Value of No of users who left a review.
+	 */
+	public int getUserCount() {
+		return userCount;
+	}
 }

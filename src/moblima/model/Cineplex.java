@@ -5,14 +5,44 @@ import moblima.controller.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Represents a Cineplex consisting of staff, movies and cinemas(theatre halls)
+ */
 public class Cineplex {
+	/*
+	* Name of the cineplex
+	 */
 	private String cineplexName;
+	/**
+	 * ID of cineplex
+	 */
 	private String cineplexId;
+	/**
+	 * Array of movie objects belonging to the cineplex
+	 */
 	private ArrayList < Movie > movieList;
+	/**
+	 * Array of Cinema objects belonging to the cineplex
+	 */
 	private ArrayList < Cinema > cinemaList;
+	/**
+	 * Array of Staff objects belonging to the cineplex
+	 */
 	private ArrayList < Staff > staffList;
+	/**
+	 * Base ticket price of the cineplex
+	 */
 	private double baseTicketCost;
 
+	/**
+	 * Create a new cineplex
+	 * Reads from the database using DBController and get an arraylist of movie objects and store them to movieList
+	 * Reads from the database using DBController and get an arraylist of staff objects and store them to staffList
+	 * Reads from the database using DBController and get an arraylist of Cinema objects and store them to cinemaList
+	 * @param cineplexName
+	 * @param cineplexId
+	 * @param baseTicketCost
+	 */
 	public Cineplex(String cineplexName, String cineplexId, double baseTicketCost) {
 		this.cineplexName = cineplexName;
 		this.cineplexId = cineplexId;
@@ -27,6 +57,9 @@ public class Cineplex {
 		this.baseTicketCost = baseTicketCost;
 	}
 
+	/**
+	 * Print output information of all relevant attributes
+	 */
 	void output() {
 		System.out.printf("Name: %s, Id: %s\n", cineplexName, cineplexId);
 		System.out.printf("Movies:\n");
@@ -37,6 +70,11 @@ public class Cineplex {
 		}
 	}
 
+	/**
+	 * Return true if chosenTitle is found in the movielist of the cineplex
+	 * @param chosenTitle
+	 * @return boolean
+	 */
 	public boolean hasMovieWithTitle(String chosenTitle) {
 		for (Movie i : movieList)
 			if (i.getTitle().compareTo(chosenTitle) == 0)
@@ -44,6 +82,12 @@ public class Cineplex {
 		return false;
 	}
 
+	/**
+	 * Return movie if chosenTitle is found in the movielist of the cineplex
+	 * Otherwise, return null
+	 * @param chosenTitle
+	 * @return Movie
+	 */
 	public Movie getMovieWithTitle(String chosenTitle) {
 		for (Movie i : movieList)
 			if (i.getTitle().compareTo(chosenTitle) == 0)
@@ -51,63 +95,112 @@ public class Cineplex {
 		return null;
 	}
 
-	public String getCineplexName() {
-		return cineplexName;
+
+	/**
+	 * Gets Array of Cinema objects belonging to the cineplex.
+	 *
+	 * @return Value of Array of Cinema objects belonging to the cineplex.
+	 */
+	public ArrayList<Cinema> getCinemaList() {
+		return cinemaList;
 	}
 
-	public void setCineplexName(String cineplexName) {
-		this.cineplexName = cineplexName;
+	/**
+	 * Sets new Array of movie objects belonging to the cineplex.
+	 *
+	 * @param movieList New value of Array of movie objects belonging to the cineplex.
+	 */
+	public void setMovieList(ArrayList<Movie> movieList) {
+		this.movieList = movieList;
 	}
 
+	/**
+	 * Gets ID of cineplex.
+	 *
+	 * @return Value of ID of cineplex.
+	 */
 	public String getCineplexId() {
 		return cineplexId;
 	}
 
-	public void setCineplexId(String cineplexId) {
-		this.cineplexId = cineplexId;
-	}
-
-	public ArrayList < Movie > getMovieList() {
-		return movieList;
-	}
-
-	public void setMovieList(ArrayList < Movie > movieList) {
-		this.movieList = movieList;
-	}
-
-	public void addMovie(Movie movie) {
-		movieList.add(movie);
-	}
-
-	public ArrayList < Cinema > getCinemaList() {
-		return cinemaList;
-	}
-
-	public void setCinemaList(ArrayList < Cinema > cinemaList) {
-		this.cinemaList = cinemaList;
-	}
-
-	public void addTheatre(Cinema cinema) {
-		cinemaList.add(cinema);
-	}
-
-	public ArrayList < Staff > getStaffList() {
+	/**
+	 * Gets Array of Staff objects belonging to the cineplex.
+	 *
+	 * @return Value of Array of Staff objects belonging to the cineplex.
+	 */
+	public ArrayList<Staff> getStaffList() {
 		return staffList;
 	}
 
-	public void setStaffList(ArrayList < Staff > staffList) {
-		this.staffList = staffList;
+	/**
+	 * Sets new Array of Cinema objects belonging to the cineplex.
+	 *
+	 * @param cinemaList New value of Array of Cinema objects belonging to the cineplex.
+	 */
+	public void setCinemaList(ArrayList<Cinema> cinemaList) {
+		this.cinemaList = cinemaList;
 	}
 
-	public void addStaff(Staff staff) {
-		staffList.add(staff);
-	}
-
+	/**
+	 * Gets Base ticket price of the cineplex.
+	 *
+	 * @return Value of Base ticket price of the cineplex.
+	 */
 	public double getBaseTicketCost() {
 		return baseTicketCost;
 	}
 
+	/**
+	 * Sets new cineplexName.
+	 *
+	 * @param cineplexName New value of cineplexName.
+	 */
+	public void setCineplexName(String cineplexName) {
+		this.cineplexName = cineplexName;
+	}
+
+	/**
+	 * Sets new Base ticket price of the cineplex.
+	 *
+	 * @param baseTicketCost New value of Base ticket price of the cineplex.
+	 */
 	public void setBaseTicketCost(double baseTicketCost) {
 		this.baseTicketCost = baseTicketCost;
+	}
+
+	/**
+	 * Sets new Array of Staff objects belonging to the cineplex.
+	 *
+	 * @param staffList New value of Array of Staff objects belonging to the cineplex.
+	 */
+	public void setStaffList(ArrayList<Staff> staffList) {
+		this.staffList = staffList;
+	}
+
+	/**
+	 * Sets new ID of cineplex.
+	 *
+	 * @param cineplexId New value of ID of cineplex.
+	 */
+	public void setCineplexId(String cineplexId) {
+		this.cineplexId = cineplexId;
+	}
+
+	/**
+	 * Gets Array of movie objects belonging to the cineplex.
+	 *
+	 * @return Value of Array of movie objects belonging to the cineplex.
+	 */
+	public ArrayList<Movie> getMovieList() {
+		return movieList;
+	}
+
+	/**
+	 * Gets cineplexName.
+	 *
+	 * @return Value of cineplexName.
+	 */
+	public String getCineplexName() {
+		return cineplexName;
 	}
 }
