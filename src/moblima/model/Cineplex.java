@@ -39,9 +39,9 @@ public class Cineplex {
 	 * Reads from the database using DBController and get an arraylist of movie objects and store them to movieList
 	 * Reads from the database using DBController and get an arraylist of staff objects and store them to staffList
 	 * Reads from the database using DBController and get an arraylist of Cinema objects and store them to cinemaList
-	 * @param cineplexName
-	 * @param cineplexId
-	 * @param baseTicketCost
+	 * @param cineplexName Name of a cineplex
+	 * @param cineplexId ID of a cineplex
+	 * @param baseTicketCost Base Ticket Cost of a cineplex
 	 */
 	public Cineplex(String cineplexName, String cineplexId, double baseTicketCost) {
 		this.cineplexName = cineplexName;

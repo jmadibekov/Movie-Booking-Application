@@ -17,14 +17,12 @@ public class AddHoliday extends View{
 
     public void display() {
         outputPageName("Add Holiday Date");
-        System.out.println(
-                "=====================================\n"
-                        + "-----------Add Holiday Date----------\n"
-                        + "=====================================\n");
 
         System.out.println("All Holiday Dates:");
         for (int i = 0; i < MainModel.getHolidayList().size(); i++) {
-            System.out.println(MainModel.getHolidayList().get(i).getHolidayDate());
+            System.out.printf("%s, %s\n",
+                    MainModel.getHolidayList().get(i).getHolidayName(),
+                    MainModel.getHolidayList().get(i).getHolidayDate());
         }
         System.out.println("(0) Back\n");
 
@@ -52,10 +50,7 @@ public class AddHoliday extends View{
                 getHolidayDate();
             }
             else if (holidayDate.after(todayDate)) {
-                Holiday holiday = new Holiday(date);
-                MainModel.addHoliday(holiday);
-                System.out.println("Holiday date " + date + " successfully added");
-                Navigation.goBack();
+                getHolidayName(date);
             }
             else {
                 System.out.println("Please enter future dates");
@@ -65,6 +60,21 @@ public class AddHoliday extends View{
         else {
             System.out.println("Invalid date format. Please try again");
             getHolidayDate();
+        }
+    }
+
+    private void getHolidayName(String date) throws ParseException{
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Please input the holiday name: ");
+        String holidayName = sc.nextLine();
+        if (holidayName.contentEquals("0")) {
+            getHolidayDate();
+        }
+        else {
+            Holiday holiday = new Holiday(holidayName, date);
+            MainModel.addHoliday(holiday);
+            System.out.println("Holiday: " + holidayName + ", " + date + " was successfully added");
+            Navigation.goBack();
         }
     }
 

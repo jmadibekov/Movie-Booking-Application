@@ -1,5 +1,8 @@
 package moblima.model;
 
+/**
+ * Represents the all the holidays registered
+ */
 public class Holiday {
 
     /**
@@ -11,7 +14,8 @@ public class Holiday {
      */
     private String holidayName;
 
-    public Holiday(String holidayDate) {
+    public Holiday(String holidayName, String holidayDate) {
+        this.holidayName = holidayName;
         this.holidayDate = holidayDate;
     }
     /**

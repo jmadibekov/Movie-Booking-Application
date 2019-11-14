@@ -216,10 +216,11 @@ public class DBController {
             // get individual 'fields' of the string separated by SEPARATOR
             StringTokenizer star = new StringTokenizer(st , SEPARATOR);	// pass in the string to the string tokenizer using delimiter ","
 
+            String holidayName = star.nextToken().trim();
             String holidayDate = star.nextToken().trim();
 
             // create Holiday object from file data
-            Holiday holiday = new Holiday(holidayDate);
+            Holiday holiday = new Holiday(holidayName, holidayDate);
             // add to Holiday list
             alr.add(holiday);
         }
@@ -435,6 +436,8 @@ public class DBController {
         for (int i = 0 ; i < al.size() ; i++) {
             Holiday hol = (Holiday)al.get(i);
             StringBuilder st =  new StringBuilder();
+            st.append(hol.getHolidayName());
+            st.append(SEPARATOR);
             st.append(hol.getHolidayDate());
             alw.add(st.toString()) ;
         }
