@@ -117,7 +117,13 @@ public class Movie {
 	 */
 	public void output() {
 		System.out.printf("Title: '%s'\n", title);
-		System.out.printf("Showing status: %s, Rating: %.2f\n", showingStatus, overallRating);
+		System.out.printf("Showing status: %s, ", showingStatus);
+
+		if (userCount <= 1)
+			System.out.printf("Rating: NA\n");
+		else
+			System.out.printf("Rating: %.2f\n", overallRating);
+
 		System.out.printf("Age requirement: %s\n", ageRequirement);
 		System.out.printf("Number of ticket sales: %d\n", ticketSales);
 		System.out.printf("Duration: %d minutes\n", duration);

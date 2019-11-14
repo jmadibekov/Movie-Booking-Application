@@ -24,7 +24,7 @@ public class Customer {
 	/**
 	 * Array of booking objects belonging to the customer
 	 */
-	private ArrayList<Booking> bookingList;
+	private ArrayList < Booking > bookingList;
 
 	/**
 	 * Create a new customer
@@ -49,7 +49,9 @@ public class Customer {
 	 * Print output information of relevant attributes
 	 */
 	public void outputBookingHistory() {
-		System.out.println("Booking(s) made:\n");
+		System.out.println("Name: " + name);
+		System.out.println("Phone number: " + phoneNumber);
+		System.out.println("\nYou've made " + bookingList.size() + " booking(s):\n");
 		for (Booking i : bookingList) {
 			i.output();
 			System.out.println();
@@ -135,4 +137,5 @@ public class Customer {
 	public ArrayList<Booking> getBookingList() {
 		return bookingList;
 	}
+
 }

@@ -214,7 +214,7 @@ public class BookingController {
 
 	public static Booking createBooking(String email) {
 		Booking booking = new Booking(email, chosenShowtime.getDate(), seatSelected, getCinemaClass(chosenShowtime.getCinemaId()),
-				totalPrice, chosenCineplex.getCineplexId(), chosenMovie.getMovieId(), chosenShowtime.getCinemaId());
+				totalPrice, chosenCineplex.getCineplexName(), chosenMovie.getTitle(), chosenShowtime.getCinemaId());
 		return booking;
 	}
 
@@ -259,6 +259,7 @@ public class BookingController {
 
 	public static void printSeatSelected(ArrayList<ArrayList<Integer>> chosenSeats) {
         for (int i = 0; i < chosenSeats.size(); i++) {
+        	System.out.print("(" + (i + 1) + ") ");
             for (int j = 0; j < 3; j++) {
                 switch (j) {
                     case 0:

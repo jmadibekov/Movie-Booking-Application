@@ -12,12 +12,9 @@ public class ChooseMovie extends View {
 	}
 	
 	public void display() {
-//		StackArg curView = navigation.getLastView();
 		outputPageName("Choose a Movie");
 
-		System.out.println(
-				BookingController.getChosenCineplex().getCineplexName()
-				+ "\n");
+		System.out.println("Chosen cineplex: '" + BookingController.getChosenCineplex().getCineplexName() + "'" + "\n");
 
 		ArrayList < Movie > movieList = BookingController.getMovies();
 		if (movieList.isEmpty()) {

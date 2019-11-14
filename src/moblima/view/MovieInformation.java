@@ -38,9 +38,9 @@ public class MovieInformation extends View {
 
 				case 1:
 					if (BookingController.getChosenMovie().getShowingStatus().contentEquals("Coming Soon"))
-						System.out.println("Sorry, this movie is not showing yet");
+						System.out.println("Sorry, this movie is not showing yet.");
 					else if (BookingController.getChosenMovie().getShowingStatus().contentEquals("End of Showing"))
-						System.out.println("Sorry, this movie is no longer showing");
+						System.out.println("Sorry, this movie is no longer showing.");
 					else {
 						Navigation.goTo(new ChooseShowtime(getUserType(), null));
 						loop = false;
@@ -58,7 +58,7 @@ public class MovieInformation extends View {
 					break;
 
 				default:
-					System.out.println("\nPlease enter a valid input\n");
+					System.out.println("\nPlease enter a valid input!\n");
 			}
 		}
 	}

@@ -1,4 +1,7 @@
-alpha@email.com|31/10/2019|Platinum|24.0|001|001|001|001201910311800|1/2/3,2/4/6
-alpha@email.com|01/11/2019|Regular|21.0|001|001|001|001201910121129|3/1/1,2/1/2
-alpha@email.com|01/11/2019|Regular|34.0|001|001|001|001201910121138|1/1/3,2/1/4,2/1/5
-delta@email.com|07/11/2019|Platinum|17.0|001|003|003|003201910102059|1/0/0
+alpha@email.com|31/10/2019|Platinum|24.0|Jurong Point Cinema|Avengers: Endgame|001|001201910311800|1/2/3,2/4/6
+alpha@email.com|01/11/2019|Regular|21.0|Jurong Point Cinema|Avengers: Endgame|001|001201910121129|3/1/1,2/1/2
+alpha@email.com|01/11/2019|Regular|34.0|Jurong Point Cinema|Avengers: Endgame|001|001201910121138|1/1/3,2/1/4,2/1/5
+alpha@email.com|14/11/2019|Gold|15.0|Jurong Point Cinema|Avengers: Endgame|002|002201910142129|1/1/1
+delta@email.com|07/11/2019|Platinum|17.0|Jurong Point Cinema|Inception|003|003201910102059|1/0/0
+fazli@gmail.com|14/11/2019|Gold|30.0|Jurong Point Cinema|Abominable|002|002201910142118|1/2/1,1/2/2
+fazli@gmail.com|14/11/2019|Regular|20.0|Jurong Point Cinema|Back To The Future|001|001201910142128|3/1/1,3/1/2

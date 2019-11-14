@@ -55,7 +55,7 @@ public class LeaveReview extends View{
 			getSubjectTitle(name);
 		}
 		else if (inputRating < 1 || inputRating > 5) {
-			System.out.println("Please input a number between 1.00 to 5.00");
+			System.out.println("Please input a number between 1.00 to 5.00.");
 			getRating(name, title);
 		}
 		else if (checkTwoDecimal(inputRating)) {
@@ -63,7 +63,7 @@ public class LeaveReview extends View{
 			getSubjectBody(name, title, rating);
 		}
 		else {
-			System.out.println("Please input a number with at most two decimal places");
+			System.out.println("Please input a number with at most two decimal places.");
 			getRating(name, title);
 		}
 	}
@@ -97,7 +97,7 @@ public class LeaveReview extends View{
 			Navigation.goBack();
 		}
 		else {
-			System.out.println("\nPlease enter a valid input\n");
+			System.out.println("\nPlease enter a valid input!\n");
 		}
 	}
 

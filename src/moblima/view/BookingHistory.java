@@ -12,7 +12,6 @@ public class BookingHistory extends View{
 	
 	public void display() {
 		outputPageName("Booking History");
-		System.out.println();
 
 		Customer cur = BookingController.getCurCustomer();
 		cur.outputBookingHistory();

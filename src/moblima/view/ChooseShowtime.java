@@ -15,9 +15,9 @@ public class ChooseShowtime extends View {
 	public void display() {
 		outputPageName("Booking: Choose a Showtime");
 
-		System.out.println(
-				  "Chosen Movie: '" + BookingController.getChosenMovie().getTitle() + "'"
-				+ "\n\n(0) Back");
+		System.out.println("Chosen cineplex: '" + BookingController.getChosenCineplex().getCineplexName() + "'");
+		System.out.println("Chosen movie: '" + BookingController.getChosenMovie().getTitle() + "'");
+		System.out.println("\n(0) Back");
 
 		int gotShowtimes = 0;
 		int index = 1;

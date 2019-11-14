@@ -30,7 +30,7 @@ public class Booking {
 	/**
 	 * Cinema class (Platinum/Gold/Regular) of the showtime booked
 	 */
-	private String theatreClass;
+	private String cinemaClass;
 	/**
 	 * Total price of booking
 	 */
@@ -38,11 +38,11 @@ public class Booking {
 	/**
 	 * Cineplex ID of booked showtime to allow customer to know at which cineplex he/she booked
 	 */
-	private String cineplexId;
+	private String cineplexName;
 	/**
-	 * Movie ID of booked showtime to allow customer to know which movie he/she booked
+	 * Movie Name of booked showtime to allow customer to know which movie he/she booked
 	 */
-	private String movieId;
+	private String movieName;
 	/**
 	 * Cinema ID to allow customer to know which cinema he/she went to watch the movie
 	 */
@@ -54,16 +54,16 @@ public class Booking {
 	 * @param email This booking's email.
 	 * @param date This booking's date
 	 * @param chosenSeats Information on seats booked.
-	 * @param theatreClass This booking's theatreClass.
+	 * @param cinemaClass This booking's cinemaClass.
 	 * @param totalPrice This booking's totalPrice
-	 * @param cineplexId This booking's cineplexId
-	 * @param movieId This booking's movieId
+	 * @param cineplexName This booking's cineplexName
+	 * @param movieName This booking's movieName
 	 * @param cinemaId This booking's cinemaId
 	 */
-	public Booking(String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String theatreClass,
-				   double totalPrice, String cineplexId, String movieId, String cinemaId) {
-		this.cineplexId = cineplexId;
-		this.movieId = movieId;
+	public Booking(String email, String date, ArrayList<ArrayList<Integer>> chosenSeats, String cinemaClass,
+				   double totalPrice, String cineplexName, String movieName, String cinemaId) {
+		this.cineplexName = cineplexName;
+		this.movieName = movieName;
 		this.cinemaId = cinemaId;
 		this.email = email;
 		this.date = date;
@@ -82,7 +82,7 @@ public class Booking {
 					Integer.toString(day) + Integer.toString(hour) + Integer.toString(minute);
 		}
 		this.chosenSeats = chosenSeats;
-		this.theatreClass = theatreClass;
+		this.cinemaClass = cinemaClass;
 		this.totalPrice = totalPrice;
 	}
 
@@ -91,38 +91,40 @@ public class Booking {
 	 * Initialize the model based on data in database
 	 * @param email This booking's email.
 	 * @param date This booking's date
-	 * @param theatreClass This booking's theatreClass
+	 * @param cinemaClass This booking's cinemaClass
 	 * @param totalPrice This booking's totalPrice
-	 * @param cineplexId This booking's cineplexId
-	 * @param movieId This booking's movieId
+	 * @param cineplexName This booking's cineplexName
+	 * @param movieName This booking's movieName
 	 * @param cinemaId This booking's cinemaId
 	 * @param TID This booking's TID
 	 * @param chosenSeats This booking's chosenSeats
 	 */
-	public Booking(String email, String date, String theatreClass, double totalPrice, String cineplexId,
-				   String movieId, String cinemaId, String TID, ArrayList<ArrayList<Integer>> chosenSeats) {
-		this.cineplexId = cineplexId;
-		this.movieId = movieId;
+	public Booking(String email, String date, String cinemaClass, double totalPrice, String cineplexName,
+				   String movieName, String cinemaId, String TID, ArrayList<ArrayList<Integer>> chosenSeats) {
+		this.cineplexName = cineplexName;
+		this.movieName = movieName;
 		this.cinemaId = cinemaId;
 		this.TID = TID;
 		this.email = email;
 		this.date = date;
 		this.chosenSeats = chosenSeats;
-		this.theatreClass = theatreClass;
+		this.cinemaClass = cinemaClass;
 		this.totalPrice = totalPrice;
 	}
 
 	/**
-	 * Print output information of all relevant attributes
+	 * Print output information of all attributes stored in booking class
 	 */
 	public void output() {
-		System.out.printf("Date: %s, Cinema Class: %s, Cost: %.2f, Transaction ID: %s\n", date, theatreClass, totalPrice, TID);
+		System.out.printf("Date: %s, Transaction ID: %s\n", date, TID);
+		System.out.printf("Cineplex Name: '%s', Cinema Class: '%s'\n", cineplexName, cinemaClass);
+		System.out.printf("Movie Title: '%s', Cost: %.2f\n", movieName, totalPrice);
 		System.out.println("Number of seats booked: " + chosenSeats.size());
 		BookingController.printSeatSelected(chosenSeats);
 	}
 
 	/**
-	 * Gets email of booking.
+	 * Gets email of customer who made the booking.
 	 * @return this booking's email
 	 */
 	public String getEmail() {
@@ -180,26 +182,26 @@ public class Booking {
 	 *
 	 * @return Value of Cinema class PlatinumGoldRegular of the showtime booked.
 	 */
-	public String getTheatreClass() {
-		return theatreClass;
+	public String getCinemaClass() {
+		return cinemaClass;
 	}
 
 	/**
 	 * Sets new Cinema class PlatinumGoldRegular of the showtime booked.
 	 *
-	 * @param theatreClass New value of Cinema class PlatinumGoldRegular of the showtime booked.
+	 * @param cinemaClass New value of Cinema class PlatinumGoldRegular of the showtime booked.
 	 */
-	public void setTheatreClass(String theatreClass) {
-		this.theatreClass = theatreClass;
+	public void setCinemaClass(String cinemaClass) {
+		this.cinemaClass = cinemaClass;
 	}
 
 	/**
-	 * Sets new Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 * Sets new Cineplex Name of booked showtime to allow customer to know at which cineplex heshe booked.
 	 *
-	 * @param cineplexId New value of Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 * @param cineplexName New value of Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
 	 */
-	public void setCineplexId(String cineplexId) {
-		this.cineplexId = cineplexId;
+	public void setCineplexName(String cineplexName) {
+		this.cineplexName = cineplexName;
 	}
 
 	/**
@@ -216,8 +218,8 @@ public class Booking {
 	 *
 	 * @return Value of Movie ID of booked showtime to allow customer to know which movie heshe booked.
 	 */
-	public String getMovieId() {
-		return movieId;
+	public String getMovieName() {
+		return movieName;
 	}
 
 	/**
@@ -250,12 +252,12 @@ public class Booking {
 	}
 
 	/**
-	 * Gets Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 * Gets Cineplex Name of booked showtime to allow customer to know at which cineplex heshe booked.
 	 *
-	 * @return Value of Cineplex ID of booked showtime to allow customer to know at which cineplex heshe booked.
+	 * @return Value of Cineplex Name of booked showtime to allow customer to know at which cineplex heshe booked.
 	 */
-	public String getCineplexId() {
-		return cineplexId;
+	public String getCineplexName() {
+		return cineplexName;
 	}
 
 	/**
@@ -279,11 +281,12 @@ public class Booking {
 	}
 
 	/**
-	 * Sets new Movie ID of booked showtime to allow customer to know which movie heshe booked.
+	 * Sets new Movie Name of booked showtime to allow customer to know which movie heshe booked.
 	 *
-	 * @param movieId New value of Movie ID of booked showtime to allow customer to know which movie heshe booked.
+	 * @param movieName New value of Movie ID of booked showtime to allow customer to know which movie heshe booked.
 	 */
-	public void setMovieId(String movieId) {
-		this.movieId = movieId;
+	public void setMovieName(String movieName) {
+		this.movieName = movieName;
 	}
+
 }

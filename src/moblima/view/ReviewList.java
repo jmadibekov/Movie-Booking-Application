@@ -16,10 +16,9 @@ public class ReviewList extends View{
 
 		outputPageName("All Reviews");
 
-		//function to get booking history
 		ArrayList< Review > reviewList = ReviewController.getChosenMovie().getReviewList();
 		if (reviewList.isEmpty()) {
-			System.out.println("No reviews available. Please try another movie");
+			System.out.println("No reviews available.");
 			Navigation.goBack();
 		}
 		for (Review i : reviewList) {

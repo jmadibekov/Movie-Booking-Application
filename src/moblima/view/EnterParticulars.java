@@ -3,6 +3,8 @@ package moblima.view;
 import moblima.controller.*;
 import moblima.model.*;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -73,7 +75,7 @@ public class EnterParticulars extends View {
 
     private void getPhone(String email, String name) {
         String phone;
-        System.out.print("Please input your 8-digit phone number (Input 0 to go back): ");
+        System.out.print("Please input your 8-digit Singaporean phone number (Input 0 to go back): ");
         Scanner sc = new Scanner(System.in);
         String input = sc.next();
         sc.nextLine();
@@ -114,11 +116,14 @@ public class EnterParticulars extends View {
                 customer = new Customer(email, name, phone);
                 MainModel.addCustomer(customer);
             }
-            customer.addBooking(BookingController.createBooking(email));
+
+            Booking newBooking = BookingController.createBooking(email);
+            customer.addBooking(newBooking);
             BookingController.getChosenMovie().addTicketSales(BookingController.getNoOfSeats());
             BookingController.getChosenShowtime().setSeatLayout(BookingController.getSeatLayout());
+
+            System.out.println("\nTransaction ID: " + newBooking.getTID());
             System.out.println("Thank you for your purchase. You will now be redirected to the main menu.");
-            System.out.println(MainModel.getCustomerList().get(0).getBookingList().get(0).getTID());
             Navigation.goBackMainMenu();
         }
         else {

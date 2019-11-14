@@ -33,19 +33,18 @@ public class ChooseSeats extends View {
 		BookingController.setNoOfSeats(0);
 		int index = 1;
 		int input = getChoice("\nInput number of seats (0 - Back): ");
-		System.out.println();
 		BookingController.setNoOfSeats(input);
 
 		if (input == 0) {
 			Navigation.goBack();
 		}
 		else if (input > BookingController.getNoOfSeatsLeft(BookingController.getChosenShowtime())) {
-			System.out.println("Unable to book seats as number of seats exceeded number of seats left");
-			System.out.println("No. of seats left: " + BookingController.getNoOfSeatsLeft(BookingController.getChosenShowtime()));
+			System.out.println("Unable to book seats as number of seats exceeded number of seats left.");
+			System.out.println("Number of seats left: " + BookingController.getNoOfSeatsLeft(BookingController.getChosenShowtime()));
 			getNoOfSeats();
 		}
 		else if (input > 5) {
-			System.out.println("Maximum 5 seats allowed");
+			System.out.println("Maximum 5 seats allowed.");
 			getNoOfSeats();
 		}
 		else if (input > 0) {
@@ -57,10 +56,7 @@ public class ChooseSeats extends View {
 	private void getTicketType(double prevPrice, double curPrice, int index, int noOfSeats) {
 		BookingController.setTotalPrice(BookingController.getTotalPrice() - prevPrice);
 		BookingController.clearSeat();
-		System.out.println(
-				"=====================================\n"
-						+ "-----------Booking: Seat " + index + "----------\n"
-						+ "=====================================");
+		outputPageName("Booking: Seat " + index);
 		int ticketType = getChoice("Input ticket type (0 - Back, 1 - Adult, 2 - Student, 3 - SeniorCitizen): ");
 		if (ticketType == 0 && index == 1) {
 			getNoOfSeats();
@@ -73,7 +69,7 @@ public class ChooseSeats extends View {
 			getTicketType(curPrice, 0, index, noOfSeats);
 		}
 		else if (ticketType > 3 || ticketType < 0) {
-			System.out.println("Please enter a valid input");
+			System.out.println("Please enter a valid input!");
 			getTicketType(0, 0, index, noOfSeats);
 		} else {
 			BookingController.addSeat(ticketType);
@@ -82,7 +78,7 @@ public class ChooseSeats extends View {
 	}
 
 	private void getRowAndColumn(int index, int noOfSeats) {
-		System.out.println("Input 0 to go back to choosing ticket type");
+		System.out.println("Input 0 to go back to choosing ticket type.");
 		int row = getChoice("Input row: ");
 		if (row == 0) {
 			getTicketType(0, 0, index, noOfSeats);
@@ -99,9 +95,9 @@ public class ChooseSeats extends View {
 					BookingController.addSeat(col);
 					BookingController.printSeatLayout();
 					double price = BookingController.calcPrice();
-					System.out.printf("Price for that seat: $%.2f\n", price);
+					System.out.printf("\nPrice for that seat: $%.2f\n", price);
 					BookingController.addSeatSelected(BookingController.getSeat());
-					System.out.println("\nChosen Seats");
+					System.out.println("\nChosen Seat(s):");
 					BookingController.printSeatSelected(BookingController.getSeatSelected());
 					System.out.println();
 					if (index == noOfSeats) {
@@ -112,14 +108,14 @@ public class ChooseSeats extends View {
 						getTicketType(0, price, index, noOfSeats);
 					}
 				} else if (BookingController.getSeatLayout()[row - 1][col - 1].contentEquals("1")) {
-					System.out.println("Seat is occupied. PLease input a different row and column");
+					System.out.println("Seat is occupied. PLease input a different row and column.");
 					getRowAndColumn(index, noOfSeats);
 				} else {
-					System.out.println("Please enter a valid input");
+					System.out.println("Please enter a valid input!");
 					getRowAndColumn(index, noOfSeats);
 				}
 			} else {
-				System.out.println("Please enter a valid input");
+				System.out.println("Please enter a valid input!");
 				getRowAndColumn(index, noOfSeats);
 			}
 		}
@@ -129,7 +125,6 @@ public class ChooseSeats extends View {
 		System.out.printf("The total price of booking: $%.2f\n", BookingController.getTotalPrice());
 		int confirm = getChoice("Input 1 to confirm your booking (0 - Back): ");
 		if (confirm == 1) {
-			System.out.println();
 			Navigation.goTo(new EnterParticulars(getUserType(), null));
 		}
 		else {
