@@ -1,6 +1,7 @@
 package moblima.view;
 
 import moblima.controller.BookingController;
+import moblima.controller.Navigation;
 import moblima.model.Cineplex;
 import moblima.model.MainModel;
 import moblima.model.StackArg;

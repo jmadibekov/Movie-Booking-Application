@@ -1,6 +1,7 @@
 package moblima.view;
 
 import moblima.controller.BookingController;
+import moblima.controller.Navigation;
 import moblima.controller.ReviewController;
 import moblima.controller.StaffController;
 import moblima.model.Movie;

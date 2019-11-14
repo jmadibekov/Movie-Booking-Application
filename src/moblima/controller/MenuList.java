@@ -1,134 +1,129 @@
-/*
-Static class used for functionality
-*/
+package moblima.controller;
 
-package moblima.view;
-import moblima.model.StackArg;
+import moblima.view.*;
 
 public class MenuList {
+	/**
+	 * An extension of Navigation.
+	 * It creates a new View and calls it respectively.
+	 */
 
-	/*public enum menuView {
-		baseMenu, adminMenu, moviegoerMenu, emailVerification, bookingHistory, allMoviesList, movieInformation,
-		reviewList, leaveReview, searchMovie, top5Sales, top5Rating, chooseCineplex, chooseMovie, chooseShowtime,
-		chooseSeats, enterParticulars, loginVerification, updateMovie, addMovie, addShowtime, editBaseTicketPrice,
-		addHoliday;
-	}*/
-
-	public static void goToNext(Navigation navigation) {
-		StackArg curView = navigation.getLastView();
+	public static void goToNext() {
+		View curView = Navigation.getLastView();
 		switch (curView.getMenuListVal()) {
 		 case "baseMenu":
 			 BaseMenu baseMenu = new BaseMenu();
-			 baseMenu.display(navigation);
+			 baseMenu.display();
 			 break;
 
 		 case "adminMenu":
 		 	 AdminMenu adminMenu = new AdminMenu();
-		 	 adminMenu.display(navigation);
+		 	 adminMenu.display();
 		 	 break;
 
 		case "moviegoerMenu":
 			 MoviegoerMenu moviegoerMenu = new MoviegoerMenu();
-			 moviegoerMenu.display(navigation);
+			 moviegoerMenu.display();
 			 break;
 
 		 case "emailVerification":
 			 EmailVerification emailVerification = new EmailVerification();
-			 emailVerification.display(navigation);
+			 emailVerification.display();
 			 break;
 
 		 case "bookingHistory":
 			 BookingHistory bookingHistory = new BookingHistory();
-			 bookingHistory.display(navigation);
+			 bookingHistory.display();
 			 break;
 
 		 case "allMoviesList":
 			 AllMoviesList allMoviesList = new AllMoviesList();
-			 allMoviesList.display(navigation);
+			 allMoviesList.display();
 			 break;
 
 		 case "movieInformation":
 			 MovieInformation movieInformation = new MovieInformation();
-			 movieInformation.display(navigation);
+			 movieInformation.display();
 			 break;
 
 		 case "reviewList":
 			 ReviewList reviewList = new ReviewList();
-			 reviewList.display(navigation);
+			 reviewList.display();
 			 break;
 
 		 case "leaveReview":
 			 LeaveReview leaveReview = new LeaveReview();
-			 leaveReview.display(navigation);
+			 leaveReview.display();
 			 break;
 
 		 case "searchMovie":
 			 SearchMovie searchMovie = new SearchMovie();
-			 searchMovie.display(navigation);
+			 searchMovie.display();
 			 break;
 
 		 case "top5Sales":
 			 Top5Sales top5Sales = new Top5Sales();
-			 top5Sales.display(navigation);
+			 top5Sales.display();
 			 break;
 
 		 case "top5Rating":
 			 Top5Rating top5Rating = new Top5Rating();
-			 top5Rating.display(navigation);
+			 top5Rating.display();
 			 break;
 
 		 case "chooseCineplex":
 			 ChooseCineplex chooseCineplex = new ChooseCineplex();
-			 chooseCineplex.display(navigation);
+			 chooseCineplex.display();
 			 break;
 
 		 case "chooseMovie":
 			 ChooseMovie chooseMovie = new ChooseMovie();
-			 chooseMovie.display(navigation);
+			 chooseMovie.display();
 			 break;
 
 		 case "chooseShowtime":
 			 ChooseShowtime chooseShowtime = new ChooseShowtime();
-			 chooseShowtime.display(navigation);
+			 chooseShowtime.display();
 			 break;
 
 		 case "chooseSeats":
 			 ChooseSeats chooseSeats = new ChooseSeats();
-			 chooseSeats.display(navigation);
+			 chooseSeats.display();
 			 break;
 
 		 case "enterParticulars":
 		 	 EnterParticulars enterParticulars = new EnterParticulars();
-		 	 enterParticulars.display(navigation);
+		 	 enterParticulars.display();
 		 	 break;
 
 		 case "loginVerification":
 			 LoginVerification loginVerification = new LoginVerification();
-			 loginVerification.display(navigation);
+			 loginVerification.display();
 			 break;
 
 		 case "updateMovie":
 			 UpdateMovie updateMovie = new UpdateMovie();
-			 updateMovie.display(navigation);
+			 updateMovie.display();
 			 break;
 
 		 case "addMovie":
 			 AddMovie addMovie = new AddMovie();
-			 addMovie.display(navigation);
+			 addMovie.display();
 			 break;
 
 		 case "addShowtime":
 			 AddShowtime addShowtime = new AddShowtime();
-			 addShowtime.display(navigation);
+			 addShowtime.display();
 			 break;
 
 		 case "editBaseTicketPrice":
 			 EditBaseTicketPrice editBaseTicketPrice = new EditBaseTicketPrice();
-			 editBaseTicketPrice.display(navigation);
+			 editBaseTicketPrice.display();
 			 break;
+
 		 case "addHoliday":
 		 	 AddHoliday addHoliday = new AddHoliday();
-			 addHoliday.display(navigation);
+			 addHoliday.display();
 			 break;
 
 		 default: 

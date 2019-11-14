@@ -1,7 +1,7 @@
 package moblima;
 
+import moblima.controller.Navigation;
 import moblima.model.*;
-import moblima.view.*;
 
 public class MOBLIMA {
 	public static void main(String[] args) {

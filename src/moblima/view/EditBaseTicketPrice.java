@@ -1,5 +1,6 @@
 package moblima.view;
 
+import moblima.controller.Navigation;
 import moblima.controller.StaffController;
 
 public class EditBaseTicketPrice {
