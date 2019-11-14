@@ -2,11 +2,23 @@ package moblima.view;
 
 import moblima.controller.*;
 
+/**
+ * Represents the home page.
+ */
 public class BaseMenu extends View {
+	/**
+	 * Instantiates a new Base menu.
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public BaseMenu(int userType, View nextView) {
 		super("baseMenu", userType, nextView);
 	}
 
+	/**
+	 * Display the view.
+	 */
 	public void display() {
 		outputPageName("Welcome to MOBLIMA!");
 
