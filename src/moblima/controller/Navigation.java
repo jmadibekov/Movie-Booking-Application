@@ -16,12 +16,12 @@ public class Navigation {
 
     public static void goTo(View goToView) {
     	stack.push(goToView);
-        MenuList.goToNext();
+    	goToView.display();
     }
 
     public static void goBack() {
     	stack.pop();
-		MenuList.goToNext();
+    	getLastView().display();
     }
 
     public static View getLastView() {
@@ -31,15 +31,15 @@ public class Navigation {
     public static void goBackMainMenu() {
     	while (true) {
     		View curView = getLastView();
-    		if (curView.getMenuListVal().contentEquals("baseMenu"))
+    		if (curView.getViewName().contentEquals("baseMenu"))
     			break;
     		stack.pop();
     	}
-		MenuList.goToNext();
+    	getLastView().display();
     }
 
     public static void start() {
-    	goTo(new View("baseMenu", -1));
+    	goTo(new BaseMenu("baseMenu", -1, null));
 	}
 
 	public static void exit() {

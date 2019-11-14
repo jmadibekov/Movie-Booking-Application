@@ -1,18 +1,17 @@
 package moblima.view;
 
-import moblima.controller.Navigation;
-import moblima.model.StackArg;
+import moblima.controller.*;
 
-public class MoviegoerMenu {
-	public MoviegoerMenu() {
+public class MoviegoerMenu extends View {
+	public MoviegoerMenu(String menuListVal, int userType, View nextView) {
+		super(menuListVal, userType, nextView);
 	}
-	
-	public void display(Navigation navigation) {
+
+	public void display() {
+		outputPageName("Movie-goer Menu");
+
 		System.out.println(
-				"\n=====================================\n"
-				+ "-----------Movie-goer Menu-----------\n"
-				+ "=====================================\n"
-				+ "(0) Back\n"
+				  "(0) Back\n"
 				+ "(1) List all movies\n"
 				+ "(2) Search for a movie by title\n"
 				+ "(3) Book and purchase ticket\n"
@@ -20,45 +19,46 @@ public class MoviegoerMenu {
 				+ "(5) View top 5 movies by ticket sales\n"
 				+ "(6) View top 5 movies by overall reviewers ratings");
 
-		StackArg curView = navigation.getLastView();
+//		View curView = Navigation.getLastView();
 		boolean loop = true;
 		while (loop) {
-			int input = navigation.getChoice("Please select an option: ");
+			int input = getChoice("Please select an option: ");
 			switch (input) {
 				 case 0:
-				 	 navigation.goBack();
+				 	 Navigation.goBack();
 				 	 loop = false;
 				 	 break;
 
-				 case 1:
-				 	 navigation.goTo(new StackArg("allMoviesList", curView.getUserType()));
-				 	 loop = false;
-				 	 break;
-
-				 case 2:
-					 navigation.goTo(new StackArg("searchMovie", curView.getUserType()));
-					 loop = false;
-					 break;
-
+//				 case 1:
+//				 	 Navigation.goTo(new View("allMoviesList", curView.getUserType()));
+//				 	 loop = false;
+//				 	 break;
+//
+//				 case 2:
+//					 Navigation.goTo(new View("searchMovie", curView.getUserType()));
+//					 loop = false;
+//					 break;
+//
 				 case 3:
-					 navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "chooseMovie"));
+				 	 View nextView = new ChooseMovie("chooseMovie", getUserType(), null);
+					 Navigation.goTo(new ChooseCineplex("chooseCineplex", getUserType(), nextView));
 					 loop = false;
 					 break;
-
-				 case 5:
-					 navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "top5Sales"));
-					 loop = false;
-					 break;
-
-				 case 6:
-					 navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "top5Rating"));
-					 loop = false;
-					 break;
-
-				 case 4:
-				 	 navigation.goTo(new StackArg("emailVerification", curView.getUserType()));
-					 loop = false;
-					 break;
+//
+//				 case 5:
+//					 Navigation.goTo(new View("chooseCineplex", curView.getUserType(), "top5Sales"));
+//					 loop = false;
+//					 break;
+//
+//				 case 6:
+//					 Navigation.goTo(new View("chooseCineplex", curView.getUserType(), "top5Rating"));
+//					 loop = false;
+//					 break;
+//
+//				 case 4:
+//				 	 Navigation.goTo(new View("emailVerification", curView.getUserType()));
+//					 loop = false;
+//					 break;
 
 				 default:
 				 	System.out.println("\nPlease enter a valid input!\n");

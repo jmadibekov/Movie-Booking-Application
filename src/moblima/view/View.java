@@ -2,29 +2,21 @@ package moblima.view;
 
 import java.util.Scanner;
 
-public class View {
-	private String menuListVal;
-	private String goNextView;
+public abstract class View {
+	private String viewName;
+	private View nextView;
 	private int userType; // -1 = Null, 0 = Admin, 1 = Movie-goer
 
-	public View() {}
-
-	public View(String menuListVal, int userType) {
-		this.menuListVal = menuListVal;
+	public View(String viewName, int userType, View nextView) {
+		this.viewName = viewName;
 		this.userType = userType;
-		this.goNextView = null;
-	}
-
-	public View(String menuListVal, int userType, String goNextView) {
-		this.menuListVal = menuListVal;
-		this.userType = userType;
-		this.goNextView = goNextView;
+		this.nextView = nextView;
 	}
 
 	/**
 	 * Display method that should be overwritten by its subclasses
 	*/
-	protected void display() {}
+	public abstract void display();
 
 	protected void outputPageName(String pageName) {
 		// 37 characters
@@ -87,26 +79,28 @@ public class View {
 		String str = String.valueOf(rating);
 		return str.length() - str.lastIndexOf('.') <= 3;
 	}
-	
-	public void setMenuListVal(String menuListVal) {
-		this.menuListVal = menuListVal;
+
+	public String getViewName() {
+		return viewName;
 	}
 
-	public String getMenuListVal() { return menuListVal; }
+	public void setViewName(String viewName) {
+		this.viewName = viewName;
+	}
 
-	public void setUserType(int userType) {
-		this.userType = userType;
+	public View getNextView() {
+		return nextView;
+	}
+
+	public void setNextView(View nextView) {
+		this.nextView = nextView;
 	}
 
 	public int getUserType() {
 		return userType;
 	}
 
-	public String getGoNextView() {
-		return goNextView;
-	}
-
-	public void setGoNextView(String goNextView) {
-		this.goNextView = goNextView;
+	public void setUserType(int userType) {
+		this.userType = userType;
 	}
 }
