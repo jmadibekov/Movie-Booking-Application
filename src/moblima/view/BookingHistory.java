@@ -4,16 +4,15 @@ import moblima.controller.BookingController;
 import moblima.controller.Navigation;
 import moblima.model.Customer;
 
-public class BookingHistory {
-	
-	public BookingHistory() {
+public class BookingHistory extends View{
+
+	public BookingHistory(int userType, View nextView) {
+		super("bookingHistory", userType, nextView);
 	}
 	
-	public void display(Navigation navigation) {
-		System.out.println(
-				"\n=====================================\n"
-				+ "-----------Booking History-----------\n"
-				+ "=====================================");
+	public void display() {
+		outputPageName("Booking History");
+		System.out.println();
 
 		Customer cur = BookingController.getCurCustomer();
 		cur.outputBookingHistory();
@@ -21,12 +20,12 @@ public class BookingHistory {
 		System.out.println("(0) Back");
 		System.out.println("(1) Back to the main menu");
 		while (true) {
-			int input = navigation.getChoice("Please select an option: ");
+			int input = getChoice("Please select an option: ");
 			if (input == 0) {
-				navigation.goBack();
+				Navigation.goBack();
 				break;
 			} else if (input == 1) {
-				navigation.goBackMainMenu();
+				Navigation.goBackMainMenu();
 				break;
 			}
 			else {

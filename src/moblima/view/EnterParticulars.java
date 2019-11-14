@@ -14,13 +14,12 @@ public class EnterParticulars extends View {
     }
 
     public void display() {
-        System.out.println(
-                  "=====================================\n"
-                + "------Booking: Enter Particulars-----\n"
-                + "=====================================\n\n"
-                + "Chosen movie: '" + BookingController.getChosenMovie().getTitle() + "'"
+        outputPageName("Booking: Enter Particulars");
+
+        System.out.println("Chosen movie: '" + BookingController.getChosenMovie().getTitle() + "'"
                 + "\nTotal booking price: $" + BookingController.getTotalPrice()
                 + "\n");
+
         getEmail();
     }
 

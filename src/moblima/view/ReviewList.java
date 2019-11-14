@@ -6,21 +6,21 @@ import moblima.model.*;
 
 import java.util.ArrayList;
 
-public class ReviewList {
-	
-	public ReviewList() {
+public class ReviewList extends View{
+
+	public ReviewList(int userType, View nextView) {
+		super("reviewList", userType, nextView);
 	}
 	
-	public void display(Navigation navigation) {
-		System.out.println(
-				  "=====================================\n"
-				+ "-------------All Reviews-------------\n"
-				+ "=====================================\n");
+	public void display() {
+
+		outputPageName("All Reviews");
+
 		//function to get booking history
 		ArrayList< Review > reviewList = ReviewController.getChosenMovie().getReviewList();
 		if (reviewList.isEmpty()) {
 			System.out.println("No reviews available. Please try another movie");
-			navigation.goBack();
+			Navigation.goBack();
 		}
 		for (Review i : reviewList) {
 			i.output();
@@ -28,13 +28,13 @@ public class ReviewList {
 		while (true) {
 			System.out.println("(0) Back\n"
 			+ "(1) Leave a Review");
-			int input = navigation.getChoice("Please select an option: ");
+			int input = getChoice("Please select an option: ");
 			if (input == 0) {
-				navigation.goBack();
+				Navigation.goBack();
 				break;
 			}
 			else if (input == 1) {
-				navigation.goTo(new StackArg("leaveReview", navigation.getLastView().getUserType()));
+				Navigation.goTo(new LeaveReview(getUserType(), null));
 				break;
 			}
 		}

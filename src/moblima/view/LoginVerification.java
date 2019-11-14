@@ -1,46 +1,45 @@
 package moblima.view;
 
 import moblima.controller.Navigation;
-import moblima.model.StackArg;
 import moblima.controller.StaffController;
 
 import java.util.Scanner;
 
-public class LoginVerification {
+public class LoginVerification extends View{
 
-    public LoginVerification() {
+    public LoginVerification(int userType, View nextView) {
+        super("loginVerification", userType, nextView);
     }
 
-    public void display(Navigation navigation) {
+    private final static int maxAttempts = 3;
+
+    public void display() {
+        outputPageName("Login Verification");
+
+        System.out.println("(0) Back\n");
+
         int attempts = 0;
-        final int maxAttempts = 3;
-        System.out.println(
-                "=====================================\n"
-                        + "----------Login Verification---------\n"
-                        + "=====================================\n"
-                        + "(0) Back\n");
-
-        getUsername(navigation, attempts, maxAttempts);
+        getUsername(attempts);
     }
 
-    private void getUsername(Navigation navigation, int attempts, int maxAttempts) {
+    private void getUsername(int attempts) {
         if (attempts == maxAttempts) {
             System.out.println("You have exceeded the maximum number of attempts. You will now be redirected to the main menu");
-            navigation.goBackMainMenu();
+            Navigation.goBackMainMenu();
         }
         Scanner sc = new Scanner(System.in);
         System.out.print("Please input your username: ");
         String username = sc.next();
         sc.nextLine();
         if (username.contentEquals("0")) {
-            navigation.goBack();
+            Navigation.goBack();
         }
         else {
-            getPassword(navigation, username, attempts, maxAttempts);
+            getPassword(username, attempts);
         }
     }
 
-    private void getPassword(Navigation navigation, String username, int attempts, int maxAttempts) {
+    private void getPassword(String username, int attempts) {
         boolean successful;
         Scanner sc = new Scanner(System.in);
         System.out.print("Please input your password: ");
@@ -48,17 +47,17 @@ public class LoginVerification {
         sc.nextLine();
         successful = StaffController.login(username, password);
         if (username.contentEquals("0")) {
-            getUsername(navigation, attempts, maxAttempts);
+            getUsername(attempts);
         }
         else if (successful){
             System.out.println("\nLogin Successful. Welcome " + username);
-            navigation.goTo(new StackArg("adminMenu", navigation.getLastView().getUserType()));
+            Navigation.goTo(new AdminMenu(getUserType(), null));
         }
         else {
             System.out.println("Invalid username/password");
             attempts++;
             System.out.println("Number of attempts left: " + (maxAttempts-attempts));
-            getUsername(navigation, attempts, maxAttempts);
+            getUsername(attempts);
         }
     }
 

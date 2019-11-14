@@ -4,51 +4,47 @@ import moblima.controller.BookingController;
 import moblima.controller.Navigation;
 import moblima.controller.StaffController;
 import moblima.model.Movie;
-import moblima.model.StackArg;
 
 import java.lang.*;
 import java.util.Scanner;
 
 import java.util.ArrayList;
 
-public class UpdateMovie {
+public class UpdateMovie extends View{
 
-    public UpdateMovie() {
+    public UpdateMovie(int userType, View nextView) {
+        super("updateMovie", userType, nextView);
     }
 
-    public void display(Navigation navigation) {
-        StackArg curView = navigation.getLastView();
-        System.out.println(
-                "=====================================\n"
-                        + "----------Choose A Movie------------\n"
-                        + "=====================================\n\n"
-                        + BookingController.getChosenCineplex().getCineplexName()
-                        + "\n");
+    public void display() {
+
+        outputPageName("Choose A Movie");
+        System.out.println(BookingController.getChosenCineplex().getCineplexName() + "\n");
 
         ArrayList<Movie> movieList = BookingController.getMovies();
         if (movieList.isEmpty()) {
             System.out.println("No movies are currently showing in this cinema. Please try another cineplex\n");
-            navigation.goBack();
+            Navigation.goBack();
             return;
         }
 
-        printMovies(curView, movieList);
+        printMovies(movieList);
 
         while (true) {
-            int input = navigation.getChoice("Please select an option: ");
+            int input = getChoice("Please select an option: ");
             if (input == 0) {
-                navigation.goBack();
+                Navigation.goBack();
                 break;
             } else if (input <= movieList.size() && input > 0) {
                 StaffController.setChosenMovie(movieList.get(input - 1));
-                editWhat(navigation);
+                editWhat();
             } else {
                 System.out.println("\nPlease enter a valid input\n");
             }
         }
     }
 
-    private void printMovies(StackArg curView, ArrayList<Movie> movieList) {
+    private void printMovies(ArrayList<Movie> movieList) {
         System.out.println("(0) Back");
         int index = 1;
         for (Movie i : movieList) {
@@ -57,7 +53,7 @@ public class UpdateMovie {
         }
     }
 
-    private void editWhat(Navigation navigation){
+    private void editWhat(){
         System.out.printf("\nChoose what to edit for %s:\n", StaffController.getChosenMovie().getTitle());
         System.out.println("(0) Back");
         System.out.println("(1) Showing status");
@@ -69,48 +65,48 @@ public class UpdateMovie {
         System.out.println("(7) Duration");
 
         while(true){
-            int input = navigation.getChoice("What you would like to edit: \n");
+            int input = getChoice("What you would like to edit: \n");
             if (input < 0)
                 System.out.println("Enter a valid input");
             switch (input){
                 case 0:
-                    display(navigation);
+                    display();
                     break;
                 case 1:
-                    editShowingStatus(navigation);
+                    editShowingStatus();
                     break;
                 case 2:
-                    editTitle(navigation);
+                    editTitle();
                     break;
                 case 3:
-                    editSynopsis(navigation);
+                    editSynopsis();
                     break;
                 case 4:
-                    editDirector(navigation);
+                    editDirector();
                     break;
                 case 5:
-                    editCast(navigation);
+                    editCast();
                     break;
                 case 6:
-                    editAgeRequirement(navigation);
+                    editAgeRequirement();
                     break;
                 case 7:
-                    editDuration(navigation);
+                    editDuration();
                     break;
             }
         }
     }
 
-    private void editShowingStatus(Navigation navigation){
+    private void editShowingStatus(){
         System.out.println("Select a showing status (0 to go back): ");
         System.out.println("(1) Now Showing");
         System.out.println("(2) Preview");
         System.out.println("(3) Coming Soon");
         System.out.println("(4) End of Showing");
         while(true) {
-            int selected = navigation.getChoice("Showing Status: ");
+            int selected = getChoice("Showing Status: ");
             if (selected == 0)
-                editWhat(navigation);
+                editWhat();
             else if (selected == 1){
                 StaffController.getChosenMovie().setShowingStatus("Now Showing");
                 break;
@@ -131,34 +127,34 @@ public class UpdateMovie {
                 System.out.println("Please enter a valid input");
         }
         System.out.println("Update Successful.");
-        editWhat(navigation);
+        editWhat();
     }
 
-    private void editTitle(Navigation navigation){
+    private void editTitle(){
         Scanner sc = new Scanner(System.in);
         System.out.printf("Current Title: %s\n", StaffController.getChosenMovie().getTitle());
         System.out.println("Update Title (enter 0 to go back): ");
         String update = sc.nextLine();
         if (update.contentEquals("0"))
-            editWhat(navigation);
+            editWhat();
         StaffController.getChosenMovie().setTitle(update);
         System.out.println("Update Successful.");
-        editWhat(navigation);
+        editWhat();
     }
 
-    private void editSynopsis(Navigation navigation){
+    private void editSynopsis(){
         Scanner sc = new Scanner(System.in);
         System.out.printf("Current Synopsis: %s\n", StaffController.getChosenMovie().getSynopsis());
         System.out.println("Update Synopsis (enter 0 to go back): ");
         String update = sc.nextLine();
         if (update.contentEquals("0"))
-            editWhat(navigation);
+            editWhat();
         StaffController.getChosenMovie().setSynopsis(update);
         System.out.println("Update Successful.");
-        editWhat(navigation);
+        editWhat();
     }
 
-    private void editDirector(Navigation navigation){
+    private void editDirector(){
         String update;
         int number;
         int index = 0;
@@ -168,9 +164,9 @@ public class UpdateMovie {
             System.out.printf(StaffController.getChosenMovie().getDirector()[i] + " . ");
         System.out.printf("\n");
         while(true){
-            number = navigation.getChoice("Enter the number of directors: ");
+            number = getChoice("Enter the number of directors: ");
             if (number == 0)
-                editWhat(navigation);
+                editWhat();
             else if (number < 0)
                 System.out.println("Please enter a valid input");
             else {
@@ -182,13 +178,13 @@ public class UpdateMovie {
                 }
                 StaffController.getChosenMovie().setDirector(directorList);
                 System.out.println("Update Successful.");
-                editWhat(navigation);
+                editWhat();
                 break;
             }
         }
     }
 
-    private void editCast(Navigation navigation) {
+    private void editCast() {
         String update;
         int number;
         int index = 0;
@@ -198,9 +194,9 @@ public class UpdateMovie {
             System.out.printf(StaffController.getChosenMovie().getCast()[i] + " . ");
         System.out.printf("\n");
         while (true) {
-            number = navigation.getChoice("Enter the number of casts: ");
+            number = getChoice("Enter the number of casts: ");
             if (number == 0)
-                editWhat(navigation);
+                editWhat();
             else if (number < 0)
                 System.out.println("Please enter a valid input");
             else {
@@ -212,22 +208,22 @@ public class UpdateMovie {
                 }
                 StaffController.getChosenMovie().setCast(castList);
                 System.out.println("Update Successful.");
-                editWhat(navigation);
+                editWhat();
                 break;
             }
         }
     }
 
-    private void editAgeRequirement(Navigation navigation){
+    private void editAgeRequirement(){
         System.out.println("Select an age rating (0 to go back): ");
         System.out.println("(1) PG13");
         System.out.println("(2) NC16");
         System.out.println("(3) M18");
         System.out.println("(4) R21");
         while(true) {
-            int selected = navigation.getChoice("Movie Rating: ");
+            int selected = getChoice("Movie Rating: ");
             if (selected == 0)
-                editWhat(navigation);
+                editWhat();
             else if (selected == 1){
                 StaffController.getChosenMovie().setAgeRequirement("PG13");
                 break;
@@ -248,24 +244,24 @@ public class UpdateMovie {
                 System.out.println("Please enter a valid input");
         }
         System.out.println("Update Successful.");
-        editWhat(navigation);
+        editWhat();
     }
 
-    private void editDuration(Navigation navigation){
+    private void editDuration(){
         Scanner sc = new Scanner(System.in);
         int update;
         System.out.println("Enter 0 to go back");
         System.out.printf("Current Duration: %d\n", StaffController.getChosenMovie().getDuration());
         while(true) {
-             update = navigation.getChoice("Update duration in minutes: ");
+             update = getChoice("Update duration in minutes: ");
              if (update == 0)
-                 editWhat(navigation);
+                 editWhat();
              else if (update < 0)
                  System.out.println("Please enter a valid input");
              else {
                  StaffController.getChosenMovie().setDuration(update);
                  System.out.println("Update Successful.");
-                 editWhat(navigation);
+                 editWhat();
              }
         }
     }

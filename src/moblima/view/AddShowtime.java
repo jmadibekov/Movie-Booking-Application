@@ -8,22 +8,24 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 
-public class AddShowtime {
+public class AddShowtime extends View{
     int pos = 0;
 
-    public AddShowtime() {
+    public AddShowtime(int userType, View nextView) {
+        super("addShowtime", userType, nextView);
     }
 
-    public void display(Navigation navigation) {
+    public void display() {
+        outputPageName("Add Showtime");
         String[][] seatLayout = new String[8][9];
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 9; j++)
                 seatLayout[i][j] = "0";
         Showtime curShowtime = new Showtime(0, "", "", "", seatLayout);
-        chooseCinema(navigation, seatLayout, curShowtime);
+        chooseCinema(seatLayout, curShowtime);
     }
 
-    private void chooseCinema(Navigation navigation, String[][] seatLayout, Showtime curShowtime) {
+    private void chooseCinema(String[][] seatLayout, Showtime curShowtime) {
         ArrayList<Cinema> cinemaList = StaffController.getChosenCineplex().getCinemaList();
 
         System.out.printf("\nChosen movie: %s\n\n", StaffController.getChosenMovie().getTitle());
@@ -36,41 +38,41 @@ public class AddShowtime {
         }
 
         while (true) {
-            int input = navigation.getChoice("Please select a cinema: ");
+            int input = getChoice("Please select a cinema: ");
             if (input == 0) {
-                display(navigation);
+                display();
                 break;
             } else if (input <= cinemaList.size() && input > 0) {
                 StaffController.setChosenCinema(cinemaList.get(input - 1));
                 curShowtime.setCinemaId(cinemaList.get(input - 1).getCinemaId());
-                chooseType(navigation, seatLayout, curShowtime);
+                chooseType(seatLayout, curShowtime);
             } else {
                 System.out.println("\nPlease enter a valid input\n");
             }
         }
     }
 
-    private void chooseType(Navigation navigation, String[][] seatLayout, Showtime curShowtime){
+    private void chooseType(String[][] seatLayout, Showtime curShowtime){
         while (true) {
             System.out.println("\n(0) Back");
             System.out.println("(1) Digital");
             System.out.println("(2) 3D");
             System.out.println("(3) IMAX");
-            int input = navigation.getChoice("Choose type of movie: ");
+            int input = getChoice("Choose type of movie: ");
             switch (input){
                 case 0:
-                    chooseCinema(navigation, seatLayout, curShowtime);
+                    chooseCinema(seatLayout, curShowtime);
                 case 1:
                     curShowtime.setType("Digital");
-                    chooseDate(navigation, seatLayout, curShowtime);
+                    chooseDate(seatLayout, curShowtime);
                     break;
                 case 2:
                     curShowtime.setType("3D");
-                    chooseDate(navigation, seatLayout, curShowtime);
+                    chooseDate(seatLayout, curShowtime);
                     break;
                 case 3:
                     curShowtime.setType("IMAX");
-                    chooseDate(navigation, seatLayout, curShowtime);
+                    chooseDate(seatLayout, curShowtime);
                     break;
                 default:
                     System.out.println("\nEnter a valid input\n");
@@ -79,7 +81,7 @@ public class AddShowtime {
         }
     }
 
-    private void chooseDate(Navigation navigation, String[][] seatLayout, Showtime curShowtime){
+    private void chooseDate(String[][] seatLayout, Showtime curShowtime){
         System.out.println("\n(0) Back");
         System.out.println("Enter a date (dd/mm/yyyy): ");
         while (true) {
@@ -88,17 +90,17 @@ public class AddShowtime {
             boolean dateCheck = false;
             dateCheck = StaffController.setDate(date);
             if (date.contentEquals("0"))
-                chooseType(navigation, seatLayout, curShowtime);
+                chooseType(seatLayout, curShowtime);
             else if (dateCheck) {
                 curShowtime.setDate(date);
-                chooseShowtime(navigation, seatLayout, curShowtime);
+                chooseShowtime(seatLayout, curShowtime);
             }
             else
                 System.out.println("Please enter a valid input");
         }
     }
 
-    private void chooseShowtime(Navigation navigation, String[][] seatLayout, Showtime curShowtime) {
+    private void chooseShowtime(String[][] seatLayout, Showtime curShowtime) {
         System.out.printf("\nChosen Movie: %s\n", StaffController.getChosenMovie().getTitle());
         System.out.printf("Movie Duration: %d\n", StaffController.getChosenMovie().getDuration());
         System.out.printf("Chosen Date: %s\n", StaffController.getDate());
@@ -111,9 +113,9 @@ public class AddShowtime {
         ArrayList < Showtime > showtimeList = StaffController.getChosenMovie().getShowtimeList();
 
         while (true) {
-            int input = navigation.getChoice("Start Time (enter -1 to go back): ");
+            int input = getChoice("Start Time (enter -1 to go back): ");
             if (input == -1)
-                chooseDate(navigation, seatLayout, curShowtime);
+                chooseDate(seatLayout, curShowtime);
             else if (input < 0)
                 System.out.println("Enter a non-negative integer.");
             else{
@@ -131,7 +133,7 @@ public class AddShowtime {
         //update model for user to access if user remains in app after adding showtime
         StaffController.getChosenMovie().setShowtimeList(showtimeList);
         printShowtime();
-        navigation.goBack();
+        Navigation.goBack();
         //print all new showtime
         //return to main menu or something
     }

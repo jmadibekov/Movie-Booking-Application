@@ -9,12 +9,14 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
-public class AddHoliday {
+public class AddHoliday extends View{
 
-    public AddHoliday() {
+    public AddHoliday(int userType, View nextView) {
+        super("addHoliday", userType, nextView);
     }
 
-    public void display(Navigation navigation) {
+    public void display() {
+        outputPageName("Add Holiday Date");
         System.out.println(
                 "=====================================\n"
                         + "-----------Add Holiday Date----------\n"
@@ -27,19 +29,19 @@ public class AddHoliday {
         System.out.println("(0) Back\n");
 
         try {
-            getHolidayDate(navigation);
+            getHolidayDate();
         } catch (ParseException e) {
             e.printStackTrace();
         }
     }
 
-    private void getHolidayDate(Navigation navigation) throws ParseException {
+    private void getHolidayDate() throws ParseException {
         Scanner sc = new Scanner(System.in);
         System.out.print("Please input holiday date in this format: dd/mm/yyyy: ");
         String date = sc.next();
         sc.nextLine();
         if (date.contentEquals("0")) {
-            navigation.goBack();
+            Navigation.goBack();
         }
         else if (isThisDateValid(date) && date.length() == 10) {
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -47,22 +49,22 @@ public class AddHoliday {
             Date holidayDate = sdf.parse(date);
             if (holidayDateExist(date)) {
                 System.out.println("Holiday date is already in database. Please enter a new date");
-                getHolidayDate(navigation);
+                getHolidayDate();
             }
             else if (holidayDate.after(todayDate)) {
                 Holiday holiday = new Holiday(date);
                 MainModel.addHoliday(holiday);
                 System.out.println("Holiday date " + date + " successfully added");
-                navigation.goBack();
+                Navigation.goBack();
             }
             else {
                 System.out.println("Please enter future dates");
-                getHolidayDate(navigation);
+                getHolidayDate();
             }
         }
         else {
             System.out.println("Invalid date format. Please try again");
-            getHolidayDate(navigation);
+            getHolidayDate();
         }
     }
 

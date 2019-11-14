@@ -9,6 +9,7 @@ public class MovieInformation extends View {
 	}
 
 	public void display() {
+
 		outputPageName("Movie Information");
 
 		if (BookingController.getChosenTitle() != null) {
@@ -47,12 +48,12 @@ public class MovieInformation extends View {
 					break;
 
 				case 2:
-					navigation.goTo(new StackArg("reviewList", curView.getUserType()));
+					Navigation.goTo(new ReviewList(getUserType(), null));
 					loop = false;
 					break;
 
 				case 3:
-					navigation.goTo(new StackArg("leaveReview", curView.getUserType()));
+					Navigation.goTo(new LeaveReview(getUserType(), null));
 					loop = false;
 					break;
 

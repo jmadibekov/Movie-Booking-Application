@@ -18,7 +18,8 @@ public class BaseMenu extends View {
 		while (true) {
 			int input = getChoice("Please select an option: ");
 			if (input == 1) {
-//				Navigation.goTo(new View("chooseCineplex", 0, "loginVerification"));
+				View nextView = new LoginVerification(getUserType(), null);
+				Navigation.goTo(new ChooseCineplex(0, nextView));
 				break;
 			} else if (input == 2) {
 				Navigation.goTo(new MoviegoerMenu(1, null));

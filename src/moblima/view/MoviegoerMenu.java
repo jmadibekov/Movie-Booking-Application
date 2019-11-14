@@ -32,32 +32,34 @@ public class MoviegoerMenu extends View {
 				 	 Navigation.goTo(new AllMoviesList(getUserType(), null));
 				 	 loop = false;
 				 	 break;
-//
-//				 case 2:
-//					 Navigation.goTo(new View("searchMovie", curView.getUserType()));
-//					 loop = false;
-//					 break;
-//
-				 case 3:
-				 	 View nextView = new ChooseMovie("chooseMovie", getUserType(), null);
-					 Navigation.goTo(new ChooseCineplex("chooseCineplex", getUserType(), nextView));
+
+				 case 2:
+					 Navigation.goTo(new SearchMovie(getUserType(), null));
 					 loop = false;
 					 break;
-//
-//				 case 5:
-//					 Navigation.goTo(new View("chooseCineplex", curView.getUserType(), "top5Sales"));
-//					 loop = false;
-//					 break;
-//
-//				 case 6:
-//					 Navigation.goTo(new View("chooseCineplex", curView.getUserType(), "top5Rating"));
-//					 loop = false;
-//					 break;
-//
-//				 case 4:
-//				 	 Navigation.goTo(new View("emailVerification", curView.getUserType()));
-//					 loop = false;
-//					 break;
+
+				 case 3:
+				 	 View nextViewChooseMovie = new ChooseMovie(getUserType(), null);
+					 Navigation.goTo(new ChooseCineplex(getUserType(), nextViewChooseMovie));
+					 loop = false;
+					 break;
+
+				 case 5:
+				 	 View nextViewTop5Sales = new Top5Sales(getUserType(), null);
+					 Navigation.goTo(new ChooseCineplex(getUserType(), nextViewTop5Sales));
+					 loop = false;
+					 break;
+
+				 case 6:
+					 View nextViewTop5Rating = new Top5Rating(getUserType(), null);
+					 Navigation.goTo(new ChooseCineplex(getUserType(), nextViewTop5Rating));
+					 loop = false;
+					 break;
+
+				 case 4:
+				 	 Navigation.goTo(new EmailVerification(getUserType(), null));
+					 loop = false;
+					 break;
 
 				 default:
 				 	System.out.println("\nPlease enter a valid input!\n");

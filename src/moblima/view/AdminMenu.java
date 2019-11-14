@@ -1,19 +1,18 @@
 package moblima.view;
 
-import moblima.controller.Navigation;
-import moblima.model.StackArg;
+import moblima.controller.*;
 
-public class AdminMenu {
+public class AdminMenu extends View{
 
-    public AdminMenu() { }
+    public AdminMenu(int userType, View nextView) {
+        super("adminMenu", userType, nextView);
+    }
 
-    public void display(Navigation navigation) {
+    public void display() {
         boolean loop = true;
+        outputPageName("Admin Menu");
         System.out.println(
-                "=====================================\n"
-                        + "--------------Admin Menu-------------\n"
-                        + "=====================================\n"
-                        + "(0) Logout\n"
+                          "(0) Logout\n"
                         + "(1) Update movie details\n"
                         + "(2) Add movie\n"
                         + "(3) Add showtime listing\n"
@@ -21,49 +20,51 @@ public class AdminMenu {
                         + "(5) Add holiday date\n"
                         + "(6) View top 5 movies by ticket sales\n"
                         + "(7) View top 5 movies by overall reviewers ratings\n");
-
-
-        StackArg curView = navigation.getLastView();
+        
         while (loop) {
-            int input = navigation.getChoice("Please select an option: ");
+            int input = getChoice("Please select an option: ");
             switch (input) {
                 case 0:
-                    navigation.goBackMainMenu();
+                    Navigation.goBackMainMenu();
                     loop = false;
                     break;
 
                 case 1:
-                    navigation.goTo(new StackArg("updateMovie", curView.getUserType(), "updateMovie"));
+                    View nextView = new UpdateMovie(getUserType(), null);
+                    Navigation.goTo(new UpdateMovie(getUserType(), nextView));
                     loop = false;
                     break;
 
                 case 2:
-                    navigation.goTo(new StackArg("addMovie", curView.getUserType()));
+                    Navigation.goTo(new AddMovie(getUserType(), null));
                     loop = false;
                     break;
 
                 case 3:
-                    navigation.goTo(new StackArg("chooseMovie", curView.getUserType(), "addShowtime"));
+                    View nextViewUpdateMovie = new AddShowtime(getUserType(), null);
+                    Navigation.goTo(new ChooseMovie(getUserType(), nextViewUpdateMovie));
                     loop = false;
                     break;
 
                 case 4:
-                    navigation.goTo(new StackArg("editBaseTicketPrice", curView.getUserType()));
+                    Navigation.goTo(new EditBaseTicketPrice(getUserType(), null));
                     loop = false;
                     break;
 
                 case 5:
-                    navigation.goTo(new StackArg("addHoliday", curView.getUserType()));
+                    Navigation.goTo(new AddHoliday(getUserType(), null));
                     loop = false;
                     break;
 
                 case 6:
-                    navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "top5Sales"));
+                    View nextViewTop5Sales = new Top5Sales(getUserType(), null);
+                    Navigation.goTo(new ChooseCineplex(getUserType(), nextViewTop5Sales));
                     loop = false;
                     break;
 
                 case 7:
-                    navigation.goTo(new StackArg("chooseCineplex", curView.getUserType(), "top5Rating"));
+                    View nextViewTop5Rating = new Top5Rating(getUserType(), null);
+                    Navigation.goTo(new ChooseCineplex(getUserType(), nextViewTop5Rating));
                     loop = false;
                     break;
 
