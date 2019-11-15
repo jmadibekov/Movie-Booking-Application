@@ -10,14 +10,23 @@ import java.util.Date;
 import java.util.Scanner;
 
 /**
- *
+ * Represents the screen when staff wants to add a holiday
  */
 public class AddHoliday extends View{
 
+    /**
+     * Creates a new AddHoliday view
+     *
+     * @param userType the current user type (Admin/Staff)
+     * @param nextView the next view
+     */
     public AddHoliday(int userType, View nextView) {
         super("addHoliday", userType, nextView);
     }
 
+    /**
+     * Display the view to add holiday
+     */
     public void display() {
         outputPageName("Add Holiday Date");
 

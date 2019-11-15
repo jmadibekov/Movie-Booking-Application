@@ -41,8 +41,8 @@ public class AdminMenu extends View{
                     break;
 
                 case 3:
-                    View nextViewUpdateMovie = new AddShowtime(getUserType(), null);
-                    Navigation.goTo(new ChooseMovie(getUserType(), nextViewUpdateMovie));
+                    View nextViewAddShowtime = new AddShowtime(getUserType(), null);
+                    Navigation.goTo(new ChooseMovie(getUserType(), nextViewAddShowtime));
                     loop = false;
                     break;
 
