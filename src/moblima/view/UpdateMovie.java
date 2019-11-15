@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
-public class UpdateMovie extends View{
+public class UpdateMovie extends View {
 
     public UpdateMovie(int userType, View nextView) {
         super("updateMovie", userType, nextView);
@@ -19,7 +19,7 @@ public class UpdateMovie extends View{
     public void display() {
 
         outputPageName("Choose A Movie");
-        System.out.println(BookingController.getChosenCineplex().getCineplexName() + "\n");
+        System.out.println("The Cineplex: '" + BookingController.getChosenCineplex().getCineplexName() + "'\n");
 
         ArrayList<Movie> movieList = BookingController.getMovies();
         if (movieList.isEmpty()) {
@@ -39,7 +39,7 @@ public class UpdateMovie extends View{
                 StaffController.setChosenMovie(movieList.get(input - 1));
                 editWhat();
             } else {
-                System.out.println("\nPlease enter a valid input\n");
+                System.out.println("\nPlease enter a valid input!\n");
             }
         }
     }
@@ -48,13 +48,13 @@ public class UpdateMovie extends View{
         System.out.println("(0) Back");
         int index = 1;
         for (Movie i : movieList) {
-            System.out.printf("(%s) %s\n", index, i.getTitle());
+            System.out.printf("(%s) '%s'\n", index, i.getTitle());
             index++;
         }
     }
 
     private void editWhat(){
-        System.out.printf("\nChoose what to edit for %s:\n", StaffController.getChosenMovie().getTitle());
+        System.out.printf("\nChosen movie: '%s'\n\n", StaffController.getChosenMovie().getTitle());
         System.out.println("(0) Back");
         System.out.println("(1) Showing status");
         System.out.println("(2) Title");
@@ -65,9 +65,7 @@ public class UpdateMovie extends View{
         System.out.println("(7) Duration");
 
         while(true){
-            int input = getChoice("What you would like to edit: \n");
-            if (input < 0)
-                System.out.println("Enter a valid input");
+            int input = getChoice("What you would like to edit: ");
             switch (input){
                 case 0:
                     display();
@@ -93,12 +91,15 @@ public class UpdateMovie extends View{
                 case 7:
                     editDuration();
                     break;
+                default:
+                    System.out.println("\nPlease enter a valid input!\n");
             }
         }
     }
 
     private void editShowingStatus(){
-        System.out.println("Select a showing status (0 to go back): ");
+        System.out.printf("Current showing status: %s\n", StaffController.getChosenMovie().getShowingStatus());
+        System.out.println("Select a showing status (enter 0 to go back): ");
         System.out.println("(1) Now Showing");
         System.out.println("(2) Preview");
         System.out.println("(3) Coming Soon");
@@ -124,7 +125,7 @@ public class UpdateMovie extends View{
                 break;
             }
             else
-                System.out.println("Please enter a valid input");
+                System.out.println("\nPlease enter a valid input!\n");
         }
         System.out.println("Update Successful.");
         editWhat();
@@ -138,6 +139,7 @@ public class UpdateMovie extends View{
         if (update.contentEquals("0"))
             editWhat();
         StaffController.getChosenMovie().setTitle(update);
+        StaffController.updateAllMoviesToChosenMovie();
         System.out.println("Update Successful.");
         editWhat();
     }
@@ -150,6 +152,7 @@ public class UpdateMovie extends View{
         if (update.contentEquals("0"))
             editWhat();
         StaffController.getChosenMovie().setSynopsis(update);
+        StaffController.updateAllMoviesToChosenMovie();
         System.out.println("Update Successful.");
         editWhat();
     }
@@ -168,7 +171,7 @@ public class UpdateMovie extends View{
             if (number == 0)
                 editWhat();
             else if (number < 0)
-                System.out.println("Please enter a valid input");
+                System.out.println("\nPlease enter a valid input!\n");
             else {
                 String[] directorList = new String[number];
                 for (int i = 0; i < number; i++){
@@ -177,6 +180,7 @@ public class UpdateMovie extends View{
                     directorList[i] = update;
                 }
                 StaffController.getChosenMovie().setDirector(directorList);
+                StaffController.updateAllMoviesToChosenMovie();
                 System.out.println("Update Successful.");
                 editWhat();
                 break;
@@ -207,6 +211,7 @@ public class UpdateMovie extends View{
                     castList[i] = update;
                 }
                 StaffController.getChosenMovie().setCast(castList);
+                StaffController.updateAllMoviesToChosenMovie();
                 System.out.println("Update Successful.");
                 editWhat();
                 break;
@@ -215,6 +220,7 @@ public class UpdateMovie extends View{
     }
 
     private void editAgeRequirement(){
+        System.out.printf("Current age requirement: %s\n", StaffController.getChosenMovie().getAgeRequirement());
         System.out.println("Select an age rating (0 to go back): ");
         System.out.println("(1) PG13");
         System.out.println("(2) NC16");
@@ -241,8 +247,9 @@ public class UpdateMovie extends View{
                 break;
             }
             else
-                System.out.println("Please enter a valid input");
+                System.out.println("\nPlease enter a valid input!\n");
         }
+        StaffController.updateAllMoviesToChosenMovie();
         System.out.println("Update Successful.");
         editWhat();
     }
@@ -260,6 +267,7 @@ public class UpdateMovie extends View{
                  System.out.println("Please enter a valid input");
              else {
                  StaffController.getChosenMovie().setDuration(update);
+                 StaffController.updateAllMoviesToChosenMovie();
                  System.out.println("Update Successful.");
                  editWhat();
              }

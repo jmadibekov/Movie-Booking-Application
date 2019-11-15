@@ -11,6 +11,12 @@ import java.util.Arrays;
  */
 public class Movie {
 	/**
+	 * ID of the movie
+	 */
+	private String movieId;
+
+	// Specific to Cineplex
+	/**
 	 * Array of showtime objects belonging to the movie
 	 */
 	private ArrayList < Showtime > showtimeList;
@@ -18,12 +24,6 @@ public class Movie {
 	 * Array of review objects belonging to the movie
 	 */
 	private ArrayList < Review > reviewList;
-	/**
-	 * ID of the movie
-	 */
-	private String movieId;
-
-	// Specific to Cineplex
 	/**
 	 * ID of cineplex containing the movie
 	 */
@@ -136,7 +136,19 @@ public class Movie {
 		System.out.println(Arrays.toString(director));
 	}
 
-
+	/**
+	 * Update the movie's details according to the updated info from other Cineplexes by the admin
+	 *
+	 * @param updatedMovie updated info of the same movie
+	 */
+	public void updateTo(Movie updatedMovie) {
+		this.title = updatedMovie.getTitle();
+		this.synopsis = updatedMovie.getSynopsis();
+		this.director = updatedMovie.getDirector();
+		this.cast = updatedMovie.getCast();
+		this.ageRequirement = updatedMovie.getAgeRequirement();
+		this.duration = updatedMovie.getDuration();
+	}
 
 	/**
 	 * Append a new showtime to the showtimeList

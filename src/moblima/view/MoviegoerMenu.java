@@ -10,6 +10,10 @@ public class MoviegoerMenu extends View {
 	public void display() {
 		outputPageName("Movie-goer Menu");
 
+		BookingController.setChosenTitle(null);
+		BookingController.setChosenMovie(null);
+		BookingController.setChosenCineplex(null);
+
 		System.out.println(
 				  "(0) Back\n"
 				+ "(1) List all movies\n"

@@ -57,14 +57,12 @@ public class AdminMenu extends View{
                     break;
 
                 case 6:
-                    View nextViewTop5Sales = new Top5Sales(getUserType(), null);
-                    Navigation.goTo(new ChooseCineplex(getUserType(), nextViewTop5Sales));
+                    Navigation.goTo(new Top5Sales(getUserType(), null));
                     loop = false;
                     break;
 
                 case 7:
-                    View nextViewTop5Rating = new Top5Rating(getUserType(), null);
-                    Navigation.goTo(new ChooseCineplex(getUserType(), nextViewTop5Rating));
+                    Navigation.goTo(new Top5Rating(getUserType(), null));
                     loop = false;
                     break;
 

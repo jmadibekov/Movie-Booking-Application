@@ -24,7 +24,7 @@ public class LoginVerification extends View{
 
     private void getUsername(int attempts) {
         if (attempts == maxAttempts) {
-            System.out.println("You have exceeded the maximum number of attempts. You will now be redirected to the main menu");
+            System.out.println("\nYou have exceeded the maximum number of attempts. You will now be redirected to the main menu.");
             Navigation.goBackMainMenu();
         }
         Scanner sc = new Scanner(System.in);
@@ -50,7 +50,7 @@ public class LoginVerification extends View{
             getUsername(attempts);
         }
         else if (successful){
-            System.out.println("\nLogin Successful. Welcome " + username);
+            System.out.println("\nLogin Successful. Welcome " + username + "!");
             Navigation.goTo(new AdminMenu(getUserType(), null));
         }
         else {

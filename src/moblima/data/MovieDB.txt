@@ -6,7 +6,7 @@
 001|006|6|92|Preview|Abominable|Adorable monster on an adventure.|Benedict|Jamie, John, Jack|4.58|PG13|90
 001|007|0|0|Coming Soon|John Wick 3|Somebody killed his cat this time. Babayaga.|Michael H. John|Johnson, Jackson, Jacob|0.0|PG13|90
 001|008|0|0|Coming Soon|Terminator 12|It's a new plot, but not really.|Arnold Schwarzenegger|Nicholas Cage|0.0|M18|190
-001|009|4|160|End of Showing|Star Wars|Lightsabers go bzzt!|Wohn Jick, Arnold Achwarzenegger|Cicholas Nage|4.4|NC16|120
+001|009|4|160|Now Showing|Star Wars: The Rise of Skywalker|Lightsabers go bzzt!|Wohn Jick, Arnold Achwarzenegger|Cicholas Nage|4.4|PG13|150
 002|001|3|20|Now Showing|Avengers: Endgame|Iron Man Dies...|Fazli|Swa, James|4.3|PG13|150
 002|002|3|22|Now Showing|Back To The Future|Travel back to the past and hope you don't screw things up!|Michael Bay|Swa, James|4.4|PG13|150
 002|003|4|18|Now Showing|Inception|Dream Hacking|Christopher Nolan.|Person A, Person B|4.9|NC16|120
@@ -15,7 +15,7 @@
 002|006|5|90|Preview|Abominable|Adorable monster on an adventure.|Benedict|Jamie, John, Jack|5.0|PG13|90
 002|007|0|0|Coming Soon|John Wick 3|Somebody killed his cat this time. Babayaga.|Michael H. John|Johnson, Jackson, Jacob|0.0|PG13|90
 002|008|0|0|Coming Soon|Terminator 12|It's a new plot, but not really.|Arnold Schwarzenegger|Nicholas Cage|0.0|M18|190
-002|009|4|160|End of Showing|Star Wars|Lightsabers go bzzt!|Wohn Jick, Srnold Achwarzenegger|Cicholas Nage|4.4|NC16|120
+002|009|4|160|End of Showing|Star Wars: The Rise of Skywalker|Lightsabers go bzzt!|Wohn Jick, Arnold Achwarzenegger|Cicholas Nage|4.4|PG13|150
 003|001|3|20|Now Showing|Avengers: Endgame|Iron Man Dies...|Fazli|Swa, James|4.3|PG13|150
 003|002|3|22|Now Showing|Back To The Future|Travel back to the past and hope you don't screw things up!|Michael Bay|Swa, James|4.4|PG13|150
 003|003|4|18|Now Showing|Inception|Dream Hacking|Christopher Nolan.|Person A, Person B|4.9|NC16|120
@@ -24,4 +24,4 @@
 003|006|5|90|Preview|Abominable|Adorable monster on an adventure.|Benedict|Jamie, John, Jack|5.0|PG13|90
 003|007|0|0|Coming Soon|John Wick 3|Somebody killed his cat this time. Babayaga.|Michael H. John|Johnson, Jackson, Jacob|0.0|PG13|90
 003|008|0|0|Coming Soon|Terminator 12|It's a new plot, but not really.|Arnold Schwarzenegger|Nicholas Cage|0.0|M18|190
-003|009|4|160|End of Showing|Star Wars|Lightsabers go bzzt!|Wohn Jick, Srnold Achwarzenegger|Cicholas Nage|4.4|NC16|120
+003|009|4|160|End of Showing|Star Wars: The Rise of Skywalker|Lightsabers go bzzt!|Wohn Jick, Arnold Achwarzenegger|Cicholas Nage|4.4|PG13|150

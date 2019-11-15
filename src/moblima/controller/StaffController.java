@@ -46,6 +46,18 @@ public class StaffController {
 
     public static void setChosenMovie(Movie chosenMovie) { StaffController.chosenMovie = chosenMovie; }
 
+    public static void updateAllMoviesToChosenMovie() {
+        for (Cineplex i : MainModel.getCineplexList()) {
+            for (Movie j : i.getMovieList()) {
+                if (j.getMovieId().contentEquals(chosenMovie.getMovieId())) {
+                    j.updateTo(chosenMovie);
+//                    System.out.printf("Updated from %s\n", i.getCineplexName());
+//                    j.output();
+                }
+            }
+        }
+    }
+
     public static boolean setDate(String date) {
         Date todayDate = new Date();
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -66,8 +78,6 @@ public class StaffController {
             return false;
         }
     }
-
-
 
     public static String getDate(){
         return date;

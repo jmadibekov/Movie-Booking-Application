@@ -30,7 +30,7 @@ public class BaseMenu extends View {
 		while (true) {
 			int input = getChoice("Please select an option: ");
 			if (input == 1) {
-				View nextView = new LoginVerification(getUserType(), null);
+				View nextView = new LoginVerification(0, null);
 				Navigation.goTo(new ChooseCineplex(0, nextView));
 				break;
 			} else if (input == 2) {
