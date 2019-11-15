@@ -8,13 +8,28 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 
+/**
+ * Represents the screen for staff to add a new showtime.
+ */
 public class AddShowtime extends View{
+    /**
+     * The Pos.
+     */
     int pos = 0;
 
+    /**
+     * Instantiates a new Add showtime view.
+     *
+     * @param userType the user type
+     * @param nextView the next view
+     */
     public AddShowtime(int userType, View nextView) {
         super("addShowtime", userType, nextView);
     }
 
+    /**
+     * Display the view
+     */
     public void display() {
         outputPageName("Add Showtime");
         String[][] seatLayout = new String[8][9];
@@ -22,10 +37,15 @@ public class AddShowtime extends View{
             for (int j = 0; j < 9; j++)
                 seatLayout[i][j] = "0";
         Showtime curShowtime = new Showtime(0, "", "", "", seatLayout);
-        chooseCinema(seatLayout, curShowtime);
+        chooseCinema(curShowtime);
     }
 
-    private void chooseCinema(String[][] seatLayout, Showtime curShowtime) {
+    /**
+     * Display the view for staff to choose which cinema the new showtime will be shown
+     *
+     * @param curShowtime the new showtime
+     */
+    private void chooseCinema(Showtime curShowtime) {
         ArrayList<Cinema> cinemaList = StaffController.getChosenCineplex().getCinemaList();
 
         System.out.printf("Chosen movie: '%s'\n\n", StaffController.getChosenMovie().getTitle());
@@ -45,14 +65,19 @@ public class AddShowtime extends View{
             } else if (input <= cinemaList.size() && input > 0) {
                 StaffController.setChosenCinema(cinemaList.get(input - 1));
                 curShowtime.setCinemaId(cinemaList.get(input - 1).getCinemaId());
-                chooseType(seatLayout, curShowtime);
+                chooseType(curShowtime);
             } else {
                 System.out.println("\nPlease enter a valid input\n");
             }
         }
     }
 
-    private void chooseType(String[][] seatLayout, Showtime curShowtime){
+    /**
+     * Display the view for staff to choose the type for a new showtime
+     *
+     * @param curShowtime the new showtime
+     */
+    private void chooseType(Showtime curShowtime){
         while (true) {
             System.out.println("\n(0) Back");
             System.out.println("(1) Digital");
@@ -61,18 +86,18 @@ public class AddShowtime extends View{
             int input = getChoice("Choose type of movie: ");
             switch (input){
                 case 0:
-                    chooseCinema(seatLayout, curShowtime);
+                    chooseCinema(curShowtime);
                 case 1:
                     curShowtime.setType("Digital");
-                    chooseDate(seatLayout, curShowtime);
+                    chooseDate(curShowtime);
                     break;
                 case 2:
                     curShowtime.setType("3D");
-                    chooseDate(seatLayout, curShowtime);
+                    chooseDate(curShowtime);
                     break;
                 case 3:
                     curShowtime.setType("IMAX");
-                    chooseDate(seatLayout, curShowtime);
+                    chooseDate(curShowtime);
                     break;
                 default:
                     System.out.println("\nEnter a valid input\n");
@@ -81,7 +106,12 @@ public class AddShowtime extends View{
         }
     }
 
-    private void chooseDate(String[][] seatLayout, Showtime curShowtime){
+    /**
+     * Display the view for staff to choose the date for the a new showtime
+     *
+     * @param curShowtime the new showtime
+     */
+    private void chooseDate(Showtime curShowtime){
         System.out.println("\n(0) Back");
         System.out.println("Enter a date (dd/mm/yyyy): ");
         while (true) {
@@ -90,17 +120,22 @@ public class AddShowtime extends View{
             boolean dateCheck = false;
             dateCheck = StaffController.setDate(date);
             if (date.contentEquals("0"))
-                chooseType(seatLayout, curShowtime);
+                chooseType(curShowtime);
             else if (dateCheck) {
                 curShowtime.setDate(date);
-                chooseShowtime(seatLayout, curShowtime);
+                chooseShowtime(curShowtime);
             }
             else
                 System.out.println("Please enter a valid input");
         }
     }
 
-    private void chooseShowtime(String[][] seatLayout, Showtime curShowtime) {
+    /**
+     * Display the view to choose the start time of a new showtime
+     *
+     * @param curShowtime the new showtime
+     */
+    private void chooseShowtime(Showtime curShowtime) {
         System.out.printf("\nChosen Movie: %s\n", StaffController.getChosenMovie().getTitle());
         System.out.printf("Movie Duration: %d\n", StaffController.getChosenMovie().getDuration());
         System.out.printf("Chosen Date: %s\n", StaffController.getDate());
@@ -116,7 +151,7 @@ public class AddShowtime extends View{
         while (true) {
             int input = getChoice("Start Time in HHMM format (enter -1 to go back): ");
             if (input == -1)
-                chooseDate(seatLayout, curShowtime);
+                chooseDate(curShowtime);
             else if (input < 0)
                 System.out.println("Enter a non-negative integer.");
             else{
@@ -140,6 +175,9 @@ public class AddShowtime extends View{
         //return to main menu or something
     }
 
+    /**
+     * Print showtime
+     */
     private void printShowtime() {
         System.out.println("(0) Back");
         //get movie list to check through showtime

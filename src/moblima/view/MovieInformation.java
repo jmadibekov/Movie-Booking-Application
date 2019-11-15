@@ -3,11 +3,23 @@ package moblima.view;
 import moblima.controller.*;
 import moblima.model.*;
 
+/**
+ * Represents the screen that shows all information on a movie
+ */
 public class MovieInformation extends View {
+	/**
+	 * Instantiates a new Movie information view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public MovieInformation(int userType, View nextView) {
 		super("movieInformation", userType, nextView);
 	}
 
+	/**
+	 * Display the view
+	 */
 	public void display() {
 
 		outputPageName("Movie Information");

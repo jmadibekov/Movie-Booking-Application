@@ -4,11 +4,23 @@ import moblima.controller.*;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the screen that display all movies in all cineplexes
+ */
 public class AllMoviesList extends View {
+	/**
+	 * Creates a new AllMoviesList view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public AllMoviesList(int userType, View nextView) {
 		super("allMoviesList", userType, nextView);
 	}
-	
+
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("All Movies");
 

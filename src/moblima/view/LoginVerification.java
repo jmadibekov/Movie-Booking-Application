@@ -5,14 +5,29 @@ import moblima.controller.StaffController;
 
 import java.util.Scanner;
 
+/**
+ * Represents the screen for staff to login and henceforth verify his/her username and password
+ */
 public class LoginVerification extends View{
 
+    /**
+     * Instantiates a new Login verification view
+     *
+     * @param userType the user type
+     * @param nextView the next view
+     */
     public LoginVerification(int userType, View nextView) {
         super("loginVerification", userType, nextView);
     }
 
-    private final static int maxAttempts = 3;
+    /**
+     * Maximum number of attempts to login
+     */
+    private final static int MAX_ATTEMPTS = 3;
 
+    /**
+     * Display the view
+     */
     public void display() {
         outputPageName("Login Verification");
 
@@ -22,8 +37,13 @@ public class LoginVerification extends View{
         getUsername(attempts);
     }
 
+    /**
+     * Display the view to get username of a staff
+     *
+     * @param attempts the staff's current number of attempts at logging in
+     */
     private void getUsername(int attempts) {
-        if (attempts == maxAttempts) {
+        if (attempts == MAX_ATTEMPTS) {
             System.out.println("\nYou have exceeded the maximum number of attempts. You will now be redirected to the main menu.");
             Navigation.goBackMainMenu();
         }
@@ -39,6 +59,12 @@ public class LoginVerification extends View{
         }
     }
 
+    /**
+     * Display the view to get password of a staff
+     *
+     * @param username the staff's username
+     * @param attempts the staff's current number of attempts at logging in
+     */
     private void getPassword(String username, int attempts) {
         boolean successful;
         Scanner sc = new Scanner(System.in);
@@ -56,7 +82,7 @@ public class LoginVerification extends View{
         else {
             System.out.println("Invalid username/password");
             attempts++;
-            System.out.println("Number of attempts left: " + (maxAttempts-attempts));
+            System.out.println("Number of attempts left: " + (MAX_ATTEMPTS-attempts));
             getUsername(attempts);
         }
     }

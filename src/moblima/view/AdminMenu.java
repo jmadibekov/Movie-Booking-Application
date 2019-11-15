@@ -2,12 +2,24 @@ package moblima.view;
 
 import moblima.controller.*;
 
+/**
+ * Represents the screen for staff Menu displaying all his/her options
+ */
 public class AdminMenu extends View{
 
+    /**
+     * Instantiates a new Admin Menu
+     *
+     * @param userType the user type
+     * @param nextView the next view
+     */
     public AdminMenu(int userType, View nextView) {
         super("adminMenu", userType, nextView);
     }
 
+    /**
+     * Display the view
+     */
     public void display() {
         boolean loop = true;
         outputPageName("Admin Menu");

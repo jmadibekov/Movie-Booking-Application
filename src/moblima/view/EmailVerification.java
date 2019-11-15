@@ -6,12 +6,24 @@ import moblima.model.*;
 
 import java.util.Scanner;
 
+/**
+ * Represents the screen to verify email of a customer
+ */
 public class EmailVerification extends View{
 
+	/**
+	 * Instantiates a new Email verification view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public EmailVerification(int userType, View nextView) {
 		super("emailVerification", userType, nextView);
 	}
-	
+
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("Email Verification");
 

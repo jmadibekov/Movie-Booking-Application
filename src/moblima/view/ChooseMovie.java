@@ -6,11 +6,23 @@ import moblima.model.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Represents the screen to choose a movie
+ */
 public class ChooseMovie extends View {
+	/**
+	 * Instantiates a new Choose movie view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public ChooseMovie(int userType, View nextView) {
 		super("chooseMovie", userType, nextView);
 	}
-	
+
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("Choose a Movie");
 
@@ -46,6 +58,12 @@ public class ChooseMovie extends View {
 		}
 	}
 
+	/**
+	 * Print the movies of a cineplex
+	 *
+	 * @param movieList Array of movie instances of a cineplex
+	 * @param uniqueMovies a hashmap of movie instances
+	 */
 	private void printMovies(ArrayList < Movie > movieList, HashMap<Integer, Movie> uniqueMovies) {
 		System.out.println("(0) Back");
 		int index = 1;
@@ -67,6 +85,12 @@ public class ChooseMovie extends View {
 		}
 	}
 
+	/**
+	 * Display options associated with chosen movie
+	 *
+	 * @param curMovie the cineplex's movie
+	 * @return boolean value based on whether user choose to navigate to next menu or go back to previous menu
+	 */
 	private boolean doMovie(Movie curMovie) {
 		System.out.printf("\nChosen movie: '%s'\n\n", curMovie.getTitle());
 

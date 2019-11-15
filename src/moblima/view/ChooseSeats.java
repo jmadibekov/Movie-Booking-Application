@@ -2,12 +2,24 @@ package moblima.view;
 
 import moblima.controller.*;
 
+/**
+ * Represents the screen where user choose seats for booking
+ */
 public class ChooseSeats extends View {
 
+	/**
+	 * Instantiates a new Choose seats view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public ChooseSeats(int userType, View nextView) {
 		super("chooseSeats", userType, nextView);
 	}
-	
+
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("Booking: Choose your Seat");
 
@@ -23,6 +35,9 @@ public class ChooseSeats extends View {
 		getNoOfSeats();
 	}
 
+	/**
+	 * Display the view to get the number of seats to be booked from user
+	 */
 	private void getNoOfSeats() {
 		int noOfSeats;
 		BookingController.getChosenShowtime().getSeatLayout();
@@ -53,6 +68,14 @@ public class ChooseSeats extends View {
 		}
 	}
 
+	/**
+	 * Display the view to get the ticket type (Adult, Student, Senior Citizen) of a seat to be booked from user
+	 *
+	 * @param prevPrice the price of previous seat assuming number of seats > 1
+	 * @param curPrice the price of current seat
+	 * @param index the seat number
+	 * @param noOfSeats the number of seats
+	 */
 	private void getTicketType(double prevPrice, double curPrice, int index, int noOfSeats) {
 		BookingController.setTotalPrice(BookingController.getTotalPrice() - prevPrice);
 		BookingController.clearSeat();
@@ -77,6 +100,12 @@ public class ChooseSeats extends View {
 		}
 	}
 
+	/**
+	 * Display the view to get the row and column of a seat to be booked from user
+	 *
+	 * @param index the seat number
+	 * @param noOfSeats the number of seats
+	 */
 	private void getRowAndColumn(int index, int noOfSeats) {
 		System.out.println("Input 0 to go back to choosing ticket type.");
 		int row = getChoice("Input row: ");
@@ -121,6 +150,13 @@ public class ChooseSeats extends View {
 		}
 	}
 
+	/**
+	 * Display the view to get confirmation from user after choosing all the seats to be booked
+	 *
+	 * @param price price of last seat in case user changes his/her mind
+	 * @param index the seat number
+	 * @param noOfSeats the number of seats
+	 */
 	private void getConfirmation(double price, int index, int noOfSeats) {
 		System.out.printf("The total price of booking: $%.2f\n", BookingController.getTotalPrice());
 		int confirm = getChoice("Input 1 to confirm your booking (0 - Back): ");

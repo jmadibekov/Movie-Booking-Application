@@ -10,12 +10,24 @@ import java.util.Scanner;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the screen where staff update details of a movie
+ */
 public class UpdateMovie extends View {
 
+    /**
+     * Instantiates a new Update movie view
+     *
+     * @param userType the user type
+     * @param nextView the next view
+     */
     public UpdateMovie(int userType, View nextView) {
         super("updateMovie", userType, nextView);
     }
 
+    /**
+     * Display the  view
+     */
     public void display() {
 
         outputPageName("Choose A Movie");
@@ -44,6 +56,10 @@ public class UpdateMovie extends View {
         }
     }
 
+    /**
+     * Print all movies of a cineplex
+     * @param movieList
+     */
     private void printMovies(ArrayList<Movie> movieList) {
         System.out.println("(0) Back");
         int index = 1;
@@ -53,6 +69,9 @@ public class UpdateMovie extends View {
         }
     }
 
+    /**
+     * Display options for updating a movie
+     */
     private void editWhat(){
         System.out.printf("\nChosen movie: '%s'\n\n", StaffController.getChosenMovie().getTitle());
         System.out.println("(0) Back");
@@ -97,6 +116,9 @@ public class UpdateMovie extends View {
         }
     }
 
+    /**
+     * Display the view to update showing status of a movie
+     */
     private void editShowingStatus(){
         System.out.printf("Current showing status: %s\n", StaffController.getChosenMovie().getShowingStatus());
         System.out.println("Select a showing status (enter 0 to go back): ");
@@ -131,6 +153,9 @@ public class UpdateMovie extends View {
         editWhat();
     }
 
+    /**
+     * Display the view to update title of a movie
+     */
     private void editTitle(){
         Scanner sc = new Scanner(System.in);
         System.out.printf("Current Title: %s\n", StaffController.getChosenMovie().getTitle());
@@ -144,6 +169,9 @@ public class UpdateMovie extends View {
         editWhat();
     }
 
+    /**
+     * Display the view to update synopsis of a movie
+     */
     private void editSynopsis(){
         Scanner sc = new Scanner(System.in);
         System.out.printf("Current Synopsis: %s\n", StaffController.getChosenMovie().getSynopsis());
@@ -188,6 +216,9 @@ public class UpdateMovie extends View {
         }
     }
 
+    /**
+     * Display the view to update cast of a movie
+     */
     private void editCast() {
         String update;
         int number;
@@ -219,6 +250,9 @@ public class UpdateMovie extends View {
         }
     }
 
+    /**
+     * Display the view to update age Requirement of a movie
+     */
     private void editAgeRequirement(){
         System.out.printf("Current age requirement: %s\n", StaffController.getChosenMovie().getAgeRequirement());
         System.out.println("Select an age rating (0 to go back): ");
@@ -254,6 +288,9 @@ public class UpdateMovie extends View {
         editWhat();
     }
 
+    /**
+     * Display the view to update the duration of a movie
+     */
     private void editDuration(){
         Scanner sc = new Scanner(System.in);
         int update;

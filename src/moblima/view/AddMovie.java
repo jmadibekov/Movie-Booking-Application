@@ -7,12 +7,24 @@ import moblima.model.Movie;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents the screen for staff to add a new movie
+ */
 public class AddMovie extends View{
 
+    /**
+     * Instantiates a new Add movie view.
+     *
+     * @param userType the user type
+     * @param nextView the next view
+     */
     public AddMovie(int userType, View nextView) {
         super("addMovie", userType, nextView);
     }
 
+    /**
+     * Display the view
+     */
     public void display() {
 
         outputPageName("Add Movie");
@@ -36,6 +48,11 @@ public class AddMovie extends View{
         setShowingStatus(indexStr);
     }
 
+    /**
+     * Sets showing status for a new movie
+     *
+     * @param indexStr the staff's input
+     */
     private void setShowingStatus(String indexStr){
         Scanner sc = new Scanner(System.in);
         String showingStatus;
@@ -48,36 +65,60 @@ public class AddMovie extends View{
             if (option == 0)
                 Navigation.goBack();
             else if (option == 1)
-                setTitle(sc, "Now Showing", indexStr);
+                setTitle("Now Showing", indexStr);
             else if (option == 2)
-                setTitle(sc, "Preview", indexStr);
+                setTitle("Preview", indexStr);
             else if (option == 3)
-                setTitle(sc, "Coming Soon", indexStr);
+                setTitle("Coming Soon", indexStr);
             else
                 System.out.println("Please enter a valid input");
         }
     }
 
-    private void setTitle(Scanner sc, String showingStatus, String indexStr){
+    /**
+     * Sets title for a new movie
+     *
+     * @param showingStatus the new movie's showing status
+     * @param indexStr the staff's input
+     */
+    private void setTitle(String showingStatus, String indexStr){
+        Scanner sc = new Scanner(System.in);
         String title;
         System.out.printf("Enter the title (0 to go back): ");
         title = sc.nextLine();
         if (title.contentEquals("0"))
             setShowingStatus(indexStr);
-        setSynopsis(sc, showingStatus, title, indexStr);
+        setSynopsis(showingStatus, title, indexStr);
     }
 
-    private void setSynopsis(Scanner sc, String showingStatus, String title, String indexStr){
+    /**
+     * Sets synopsis for a new movie
+     *
+     * @param showingStatus the new movie's showing status
+     * @param title the new movie's title
+     * @param indexStr the staff's input
+     */
+    private void setSynopsis(String showingStatus, String title, String indexStr){
+        Scanner sc = new Scanner(System.in);
         String synopsis;
         System.out.printf("Enter the synopsis (0 to go back): ");
         synopsis = sc.nextLine();
         if (synopsis.contentEquals("0"))
-            setTitle(sc, showingStatus, indexStr);
-        setDirector(sc, showingStatus, title, synopsis, indexStr);
+            setTitle(showingStatus, indexStr);
+        setDirector(showingStatus, title, synopsis, indexStr);
         String buffer = sc.nextLine();
     }
 
-    private void setDirector(Scanner sc, String showingStatus, String title, String synopsis, String indexStr){
+    /**
+     * Sets director for a new movie
+     *
+     * @param showingStatus the new movie's showing status
+     * @param title the new movie's title
+     * @param synopsis the new movie's synopsis
+     * @param indexStr the staff's input
+     */
+    private void setDirector(String showingStatus, String title, String synopsis, String indexStr){
+        Scanner sc = new Scanner(System.in);
         int number;
         String director;
         String[] directorList;
@@ -87,7 +128,7 @@ public class AddMovie extends View{
             if (input < 0)
                 System.out.println("Please enter a valid input");
             else if (input == 0)
-                setSynopsis(sc, showingStatus, title, indexStr);
+                setSynopsis(showingStatus, title, indexStr);
             else if (input > 0)
                 break;
         }
@@ -96,12 +137,21 @@ public class AddMovie extends View{
             System.out.printf("Enter the name of director number %d (0 to go back): ", i+1);
             director = sc.nextLine();
             if (director.contentEquals("0"))
-                setSynopsis(sc, showingStatus, title, indexStr);
+                setSynopsis(showingStatus, title, indexStr);
             directorList[i] = director;
         }
         setCast(showingStatus, title, synopsis, directorList, indexStr);
     }
 
+    /**
+     * Sets cast for a new movie
+     *
+     * @param showingStatus the new movie's showing status
+     * @param title the new movie's title
+     * @param synopsis the new movie's synopsis
+     * @param directorList the new movie's director list
+     * @param indexStr the staff's input
+     */
     private void setCast(String showingStatus, String title, String synopsis, String[] directorList, String indexStr) {
         Scanner sc = new Scanner(System.in);
         int input;
@@ -112,7 +162,7 @@ public class AddMovie extends View{
             if (input < 0)
                 System.out.println("Please enter a valid input");
             else if (input == 0)
-                setDirector(sc, showingStatus, title, synopsis, indexStr);
+                setDirector(showingStatus, title, synopsis, indexStr);
             else
                 break;
         }
@@ -121,13 +171,24 @@ public class AddMovie extends View{
             System.out.printf("Enter the name of actor/actress number %d (0 to go back): ", i+1);
             cast = sc.nextLine();
             if (cast.contentEquals("0"))
-                setDirector(sc, showingStatus, title, synopsis, indexStr);
+                setDirector(showingStatus, title, synopsis, indexStr);
             castList[i] = cast;
         }
-        setAgeRequirement(sc,showingStatus,title,synopsis,directorList,castList, indexStr);
+        setAgeRequirement(showingStatus,title,synopsis,directorList,castList, indexStr);
     }
 
-    private void setAgeRequirement(Scanner sc, String showingStatus, String title, String synopsis, String[] directorList, String[] castList, String indexStr){
+    /**
+     * Sets age requirement for a new movie
+     *
+     * @param showingStatus the new movie's showing status
+     * @param title the new movie's title
+     * @param synopsis the new movie's synopsis
+     * @param directorList the new movie's director list
+     * @param castList the new movie's cast list
+     * @param indexStr the staff's input
+     */
+    private void setAgeRequirement(String showingStatus, String title, String synopsis, String[] directorList, String[] castList, String indexStr){
+        Scanner sc = new Scanner(System.in);
         System.out.println("Select an age rating (0 to go back): ");
         System.out.println("(1) PG13");
         System.out.println("(2) NC16");
@@ -150,6 +211,17 @@ public class AddMovie extends View{
         }
     }
 
+    /**
+     * Sets duration for a new movie
+     *
+     * @param showingStatus the new movie's showing status
+     * @param title the new movie's title
+     * @param synopsis the new movie's synopsis
+     * @param directorList the new movie's director list
+     * @param castList the new movie's cast list
+     * @param ageRequirement the new movie's age requirement
+     * @param indexStr the staff's input
+     */
     private void setDuration(Scanner sc, String showingStatus, String title, String synopsis, String[] directorList, String[] castList, String ageRequirement, String indexStr){
         int duration;
         int input;
@@ -158,7 +230,7 @@ public class AddMovie extends View{
             if (duration < 0 )
                 System.out.println("Please enter a valid input");
             else if (duration == 0)
-                setAgeRequirement(sc,showingStatus,title,synopsis,directorList,castList, indexStr);
+                setAgeRequirement(showingStatus,title,synopsis,directorList,castList, indexStr);
             else{
                 Movie toBeCreated = new Movie(0,showingStatus,title,synopsis,directorList,castList,0,ageRequirement,0,StaffController.getChosenCineplex().getCineplexId(),indexStr,duration);
                 ArrayList < Movie > movieList = StaffController.getChosenCineplex().getMovieList();
@@ -171,6 +243,10 @@ public class AddMovie extends View{
         }
     }
 
+    /**
+     * Displays the view after a new movie is added
+     * Allow staff to create a new movie or go back to main menu
+     */
     private void nextScreen(){
         while(true){
             int input = getChoice("\n(0) Return to Main Menu\n(1) Create a new movie\n ");
