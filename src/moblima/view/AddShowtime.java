@@ -9,7 +9,6 @@ import java.util.ArrayList;
 
 
 public class AddShowtime extends View{
-    int pos = 0;
 
     public AddShowtime(int userType, View nextView) {
         super("addShowtime", userType, nextView);
@@ -143,7 +142,7 @@ public class AddShowtime extends View{
     private void printShowtime() {
         System.out.println("(0) Back");
         //get movie list to check through showtime
-        int[][] startEndTime = StaffController.printShowtime(pos);
+        int[][] startEndTime = StaffController.printShowtime(0);
         for (int i = 0; i < startEndTime.length; i++)
             //check if end time exceeds 12am, print accordingly.
             if (startEndTime[i][0] != 0){

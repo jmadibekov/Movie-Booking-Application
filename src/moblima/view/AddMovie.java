@@ -14,170 +14,185 @@ public class AddMovie extends View{
     }
 
     public void display() {
-
+        Scanner sc = new Scanner(System.in);
+        int option = 0;
+        int input;
         outputPageName("Add Movie");
-        System.out.println("(0) Back\n");
-
-        String indexStr;
-
-        ArrayList< Movie > temp = StaffController.getChosenCineplex().getMovieList();
-        /*Find the latest movie index*/
-        int index = 0;
-        for (int i = 0; i < temp.size(); i++)
-            if(index < Integer.parseInt(temp.get(i).getMovieId()))
-                index = Integer.parseInt(temp.get(i).getMovieId());
-        index++;
-        if (index/100 > 0)
-            indexStr = String.valueOf(index);
-        else if (index/10 > 0)
-            indexStr = "0" + index;
-        else
-            indexStr = "00" + index;
-        setShowingStatus(indexStr);
-    }
-
-    private void setShowingStatus(String indexStr){
-        Scanner sc = new Scanner(System.in);
-        String showingStatus;
-        System.out.println("Select a showing status (0 to go back): ");
-        System.out.println("(1) Now Showing");
-        System.out.println("(2) Preview");
-        System.out.println("(3) Coming Soon");
         while (true){
-            int option = getChoice("Showing Status: ");
-            if (option == 0)
-                Navigation.goBack();
-            else if (option == 1)
-                setTitle(sc, "Now Showing", indexStr);
-            else if (option == 2)
-                setTitle(sc, "Preview", indexStr);
-            else if (option == 3)
-                setTitle(sc, "Coming Soon", indexStr);
-            else
-                System.out.println("Please enter a valid input");
-        }
-    }
-
-    private void setTitle(Scanner sc, String showingStatus, String indexStr){
-        String title;
-        System.out.printf("Enter the title (0 to go back): ");
-        title = sc.nextLine();
-        if (title.contentEquals("0"))
-            setShowingStatus(indexStr);
-        setSynopsis(sc, showingStatus, title, indexStr);
-    }
-
-    private void setSynopsis(Scanner sc, String showingStatus, String title, String indexStr){
-        String synopsis;
-        System.out.printf("Enter the synopsis (0 to go back): ");
-        synopsis = sc.nextLine();
-        if (synopsis.contentEquals("0"))
-            setTitle(sc, showingStatus, indexStr);
-        setDirector(sc, showingStatus, title, synopsis, indexStr);
-        String buffer = sc.nextLine();
-    }
-
-    private void setDirector(Scanner sc, String showingStatus, String title, String synopsis, String indexStr){
-        int number;
-        String director;
-        String[] directorList;
-        int input;
-        while(true){
-            input = getChoice("Enter the number of directors (0 to go back): ");
-            if (input < 0)
-                System.out.println("Please enter a valid input");
-            else if (input == 0)
-                setSynopsis(sc, showingStatus, title, indexStr);
-            else if (input > 0)
-                break;
-        }
-        directorList = new String[input];
-        for (int i = 0; i < input; i++){
-            System.out.printf("Enter the name of director number %d (0 to go back): ", i+1);
-            director = sc.nextLine();
-            if (director.contentEquals("0"))
-                setSynopsis(sc, showingStatus, title, indexStr);
-            directorList[i] = director;
-        }
-        setCast(showingStatus, title, synopsis, directorList, indexStr);
-    }
-
-    private void setCast(String showingStatus, String title, String synopsis, String[] directorList, String indexStr) {
-        Scanner sc = new Scanner(System.in);
-        int input;
-        String cast;
-        String[] castList;
-        while (true) {
-            input = getChoice("Enter the number of actors/actresses (0 to go back): ");
-            if (input < 0)
-                System.out.println("Please enter a valid input");
-            else if (input == 0)
-                setDirector(sc, showingStatus, title, synopsis, indexStr);
-            else
-                break;
-        }
-        castList = new String[input];
-        for (int i = 0; i < input; i++) {
-            System.out.printf("Enter the name of actor/actress number %d (0 to go back): ", i+1);
-            cast = sc.nextLine();
-            if (cast.contentEquals("0"))
-                setDirector(sc, showingStatus, title, synopsis, indexStr);
-            castList[i] = cast;
-        }
-        setAgeRequirement(sc,showingStatus,title,synopsis,directorList,castList, indexStr);
-    }
-
-    private void setAgeRequirement(Scanner sc, String showingStatus, String title, String synopsis, String[] directorList, String[] castList, String indexStr){
-        System.out.println("Select an age rating (0 to go back): ");
-        System.out.println("(1) PG13");
-        System.out.println("(2) NC16");
-        System.out.println("(3) M18");
-        System.out.println("(4) R21");
-        while(true) {
-            int selected = getChoice("Movie Rating: ");
-            if (selected == 0)
-                setCast(showingStatus, title, synopsis, directorList, indexStr);
-            else if (selected == 1)
-                setDuration(sc, showingStatus, title, synopsis, directorList, castList, "PG13", indexStr);
-            else if (selected == 2)
-                setDuration(sc, showingStatus, title, synopsis, directorList, castList, "NC16", indexStr);
-            else if (selected == 3)
-                setDuration(sc, showingStatus, title, synopsis, directorList, castList, "M18", indexStr);
-            else if (selected == 4)
-                setDuration(sc, showingStatus, title, synopsis, directorList, castList, "R21", indexStr);
-            else
-                System.out.println("Please enter a valid input");
-        }
-    }
-
-    private void setDuration(Scanner sc, String showingStatus, String title, String synopsis, String[] directorList, String[] castList, String ageRequirement, String indexStr){
-        int duration;
-        int input;
-        while(true){
-            duration = getChoice("Enter the duration (0 to go back): ");
-            if (duration < 0 )
-                System.out.println("Please enter a valid input");
-            else if (duration == 0)
-                setAgeRequirement(sc,showingStatus,title,synopsis,directorList,castList, indexStr);
-            else{
-                Movie toBeCreated = new Movie(0,showingStatus,title,synopsis,directorList,castList,0,ageRequirement,0,StaffController.getChosenCineplex().getCineplexId(),indexStr,duration);
-                ArrayList < Movie > movieList = StaffController.getChosenCineplex().getMovieList();
-                movieList.add(toBeCreated);
-                System.out.println("Creating Movie...");
-                System.out.println("Movie Created Successfully!");
-                nextScreen();
-                break;
+            switch (option) {
+                case 0: {
+                    System.out.println("\nSelect a showing status (0 to go back): ");
+                    System.out.println("(1) Now Showing");
+                    System.out.println("(2) Preview");
+                    System.out.println("(3) Coming Soon");
+                    input = getChoice("Showing Status: ");
+                    if (input == 0) {
+                        Navigation.goBack();
+                    } else if (input == 1) {
+                        StaffController.setShowingStatus("Now Showing");
+                        option = 1;
+                    } else if (input == 2) {
+                        StaffController.setShowingStatus("Preview");
+                        option = 1;
+                    } else if (input == 3) {
+                        StaffController.setShowingStatus("Coming Soon");
+                        option = 1;
+                    } else
+                        System.out.println("Please enter a valid input");
+                    break;
+                }
+                case 1: {
+                    System.out.printf("\nEnter the title (0 to go back): ");
+                    String title = sc.nextLine();
+                    if (title.contentEquals("0"))
+                        option = 0;
+                    else{
+                        StaffController.setTitle(title);
+                        option = 2;
+                    }
+                    break;
+                }
+                case 2:{
+                    System.out.printf("\nEnter the synopsis (0 to go back): ");
+                    String synopsis = sc.nextLine();
+                    if (synopsis.contentEquals("0"))
+                        option = 1;
+                    else{
+                        StaffController.setSynopsis(synopsis);
+                        option = 3;
+                    }
+                    break;
+                }
+                case 3:{
+                    int i;
+                    while (true){
+                        int num = getChoice("\nEnter the number of director (0 to go back): ");
+                        if (num < 0)
+                            System.out.println("Please enter a valid input");
+                        else if (num == 0){
+                            option = 2;
+                            break;
+                        }
+                        else {
+                            String[] directorList = new String[num];
+                            for (i = 0; i < num; i++) {
+                                System.out.printf("Enter the name of director number %d (0 to go back): ", i + 1);
+                                String director = sc.nextLine();
+                                if (director.contentEquals("0")) {
+                                    break;
+                                }
+                                else{
+                                    directorList[i] = director;
+                                }
+                            }
+                            if (i == num){
+                                StaffController.setDirector(directorList);
+                                option = 4;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 4:{
+                    int i;
+                    while (true){
+                        int num = getChoice("\nEnter the number of casts (0 to go back): ");
+                        if (num < 0)
+                            System.out.println("Please enter a valid input");
+                        else if (num == 0){
+                            option = 3;
+                            break;
+                        }
+                        else {
+                            String[] castList = new String[num];
+                            for (i = 0; i < num; i++) {
+                                System.out.printf("Enter the name of cast number %d (0 to go back): ", i + 1);
+                                String cast = sc.nextLine();
+                                if (cast.contentEquals("0"))
+                                    break;
+                                else
+                                    castList[i] = cast;
+                            }
+                            if (i == num){
+                                StaffController.setCast(castList);
+                                option = 5;
+                                break;
+                            }
+                        }
+                    }
+                    break;
+                }
+                case 5:{
+                    System.out.println("\nSelect an age rating (0 to go back): ");
+                    System.out.println("(1) PG13");
+                    System.out.println("(2) NC16");
+                    System.out.println("(3) M18");
+                    System.out.println("(4) R21");
+                    while(true) {
+                        int selected = getChoice("Movie Rating: ");
+                        if (selected == 0){
+                            option = 4;
+                            break;
+                        }
+                        else if (selected == 1){
+                            StaffController.setAgeRequirement("PG13");
+                            option = 6;
+                            break;
+                        }
+                        else if (selected == 2){
+                            StaffController.setAgeRequirement("NC16");
+                            option = 6;
+                            break;
+                        }
+                        else if (selected == 3){
+                            StaffController.setAgeRequirement("M18");
+                            option = 6;
+                            break;
+                        }
+                        else if (selected == 4){
+                            StaffController.setAgeRequirement("R21");
+                            option = 6;
+                            break;
+                        }
+                        else
+                            System.out.println("Please enter a valid input");
+                    }
+                }
+                case 6:{
+                    while(true){
+                        int duration = getChoice("\nEnter the duration (0 to go back): ");
+                        if (duration < 0 )
+                            System.out.println("Please enter a valid input");
+                        else if (duration == 0){
+                            option = 5;
+                            break;
+                        }
+                        else{
+                            StaffController.setDuration(duration);
+                            StaffController.addMovie();
+                            System.out.println("Creating Movie...");
+                            System.out.println("Movie Created Successfully!");
+                            option = 7;
+                            break;
+                        }
+                    }
+                    break;
+                }
+                case 7:{
+                    while(true){
+                        int choice = getChoice("\n(0) Return to Main Menu\n(1) Create a new movie\n ");
+                        if (choice ==  0)
+                            Navigation.goBack();
+                        else if (choice == 1){
+                            option = 0;
+                            break;
+                        }
+                        else
+                            System.out.println("Please enter a valid input");
+                    }
+                }
             }
-        }
-    }
-
-    private void nextScreen(){
-        while(true){
-            int input = getChoice("\n(0) Return to Main Menu\n(1) Create a new movie\n ");
-            if (input ==  0)
-                Navigation.goBack();
-            else if (input == 1)
-                display();
         }
     }
 }
