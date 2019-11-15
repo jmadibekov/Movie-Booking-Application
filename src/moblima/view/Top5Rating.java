@@ -18,11 +18,11 @@ public class Top5Rating extends View{
 
 		//function to get top 5 movies
 		ArrayList < Movie > movieList = Top5Controller.getTop5MoviesRating();
-		int index = 1;
+		int index = 0;
 		for (Movie i: movieList) {
 			if (i.getShowingStatus().compareTo("End of Showing") != 0) {
 				System.out.printf("(%s) '%s, Rating: %s, Showing Status: %s\n",
-						index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+						index + 1, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
 				index++;
 			}
 			if (index == 5)

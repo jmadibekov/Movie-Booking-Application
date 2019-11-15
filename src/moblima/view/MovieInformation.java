@@ -52,8 +52,8 @@ public class MovieInformation extends View {
 							Navigation.goTo(new ChooseShowtime(getUserType(), null));
 							loop = false;
 						}
-						break;
 					}
+					break;
 
 				case 2:
 					if (getUserType() == 0)
@@ -61,8 +61,8 @@ public class MovieInformation extends View {
 					else {
 						Navigation.goTo(new ReviewList(getUserType(), null));
 						loop = false;
-						break;
 					}
+					break;
 
 				case 3:
 					if (getUserType() == 0)
@@ -70,8 +70,8 @@ public class MovieInformation extends View {
 					else {
 						Navigation.goTo(new LeaveReview(getUserType(), null));
 						loop = false;
-						break;
 					}
+					break;
 
 				default:
 					System.out.println("\nPlease enter a valid input!\n");

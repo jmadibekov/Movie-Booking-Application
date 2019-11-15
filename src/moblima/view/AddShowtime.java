@@ -28,7 +28,7 @@ public class AddShowtime extends View{
     private void chooseCinema(String[][] seatLayout, Showtime curShowtime) {
         ArrayList<Cinema> cinemaList = StaffController.getChosenCineplex().getCinemaList();
 
-        System.out.printf("\nChosen movie: %s\n\n", StaffController.getChosenMovie().getTitle());
+        System.out.printf("Chosen movie: '%s'\n\n", StaffController.getChosenMovie().getTitle());
         System.out.println("(0) Back");
         int index = 1;
         for (Cinema i : cinemaList) {
@@ -109,17 +109,19 @@ public class AddShowtime extends View{
         printShowtime();
         System.out.printf("\nEnter start time of movie (duration: %d minutes): \n", StaffController.getChosenMovie().getDuration());
         System.out.println("Cinema Opening Hours: 8am to 2am");
+
         //showtimeList shall be an ArrayList of EVERY showtime, as the DBController is programmed that way.
         ArrayList < Showtime > showtimeList = StaffController.getChosenMovie().getShowtimeList();
 
         while (true) {
-            int input = getChoice("Start Time (enter -1 to go back): ");
+            int input = getChoice("Start Time in HHMM format (enter -1 to go back): ");
             if (input == -1)
                 chooseDate(seatLayout, curShowtime);
             else if (input < 0)
                 System.out.println("Enter a non-negative integer.");
             else{
                 int end = input + (((StaffController.getChosenMovie().getDuration()) / 60) * 100) + (StaffController.getChosenMovie().getDuration() % 60);
+                System.out.println("Debugging " + input + " " + end);
                 if ((end > 200 && end < 800) || (input > 200 && input < 800))
                     System.out.println("Unable to add as showtime exceeds opening hours");
                 else {

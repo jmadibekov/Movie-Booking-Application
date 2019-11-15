@@ -51,7 +51,7 @@ public class Top5Controller {
      * @return the top 5 movies of a cineplex by rating
      */
     public static ArrayList<Movie> getTop5MoviesRating() {
-        chosenCineplex.getMovieList().sort(Comparator.comparingDouble(Movie::getOverallRating).reversed());
+        chosenCineplex.getMovieList().sort(Comparator.comparingDouble(Movie::getOverallRatingInDouble).reversed());
         return chosenCineplex.getMovieList();
     }
 
