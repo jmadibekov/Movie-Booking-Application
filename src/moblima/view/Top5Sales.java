@@ -21,7 +21,7 @@ public class Top5Sales extends View{
 		int index = 1;
 		for (Movie i: movieList) {
 			if (i.getShowingStatus().compareTo("End of Showing") != 0) {
-				System.out.printf("(%s) %s, TicketSales: %s, ShowingStatus: %s\n",
+				System.out.printf("(%s) '%s', Ticket Sales: %s, Showing Status: %s\n",
 						index, i.getTitle(), i.getTicketSales(), i.getShowingStatus());
 				index++;
 			}
@@ -42,7 +42,7 @@ public class Top5Sales extends View{
 				Navigation.goTo(new MovieInformation(getUserType(), null));
 				break;
 			} else {
-				System.out.println("\nPlease enter a valid input\n");
+				System.out.println("\nPlease enter a valid input!\n");
 			}
 		}
 	}

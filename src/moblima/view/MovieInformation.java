@@ -23,7 +23,7 @@ public class MovieInformation extends View {
 
 		System.out.println(
 			"(0) Back\n"
-		  + "(1) Book movie\n"
+		  + "(1) Book this movie\n"
 		  + "(2) See all reviews\n"
 		  + "(3) Leave a review");
 
