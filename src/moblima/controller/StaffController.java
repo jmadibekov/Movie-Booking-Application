@@ -6,10 +6,26 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+/**
+ * Represents a controller that assist staff as they navigate the views specifically assigned to staff
+ */
 public class StaffController {
+
+    /**
+     * Cineplex chosen by a staff
+     */
     private static Cineplex chosenCineplex;
+    /**
+     * Cinema chosen by a staff
+     */
     public static Cinema chosenCinema;
+    /**
+     * Movie chosen by a staff
+     */
     public static Movie chosenMovie;
+    /**
+     *
+     */
     public static String date;
     private static int[][] startEndTime;
     private static int pos;

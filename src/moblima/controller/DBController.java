@@ -7,9 +7,25 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Represents a controller that helps to read/write data from and to database
+ * Assist in instantiating all instances of every classes using data stored in database
+ * Assist in saving all instances of every classes into database
+ */
 public class DBController {
+
+    /**
+     * a character to separate an attribute from another in an instance
+     * Necessary to separate data so as to know which belongs to which attribute when creating an instance of a class
+     */
     public static final String SEPARATOR = "|";
 
+    /**
+     * Read cineplex data from txt file and
+     * @param filename Path to a file containing all data on all cineplexes
+     * @return array
+     * @throws IOException
+     */
     public static ArrayList readCineplex(String filename) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
