@@ -15,16 +15,18 @@ import java.util.stream.Stream;
 public class DBController {
 
     /**
-     * a character to separate an attribute from another in an instance
+     * Char used to separate an attribute from another in an instance
      * Necessary to separate data so as to know which belongs to which attribute when creating an instance of a class
      */
     public static final String SEPARATOR = "|";
 
     /**
-     * Read cineplex data from txt file and
-     * @param filename Path to a file containing all data on all cineplexes
-     * @return array
-     * @throws IOException
+     * Read cineplex data from txt file and use the data accordingly to create new cineplex instances
+     * Store the cineplex instances into an arrayList to be passed to the MainModel to instantiate Cineplex List
+     *
+     * @param filename Path to a file containing attributes of all cineplexes
+     * @return array of cineplex instances
+     * @throws IOException the io exception
      */
     public static ArrayList readCineplex(String filename) throws IOException {
         // read String from text file
@@ -48,6 +50,17 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Read Review data from txt file and use the data accordingly to create new review instances
+     * Store the review instances into an arrayList to be passed to the Movie model to instantiate review List
+     * Cineplex ID and MovieID are necessary to know which review belongs to which movie from which cineplex
+     *
+     * @param filename   Path to a file containing attributes of all reviews
+     * @param cineplexId the cineplex id
+     * @param movieId    the movie id
+     * @return array of review instances
+     * @throws IOException the io exception
+     */
     public static ArrayList readReview(String filename, String cineplexId, String movieId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -75,6 +88,17 @@ public class DBController {
         return alr ;
     }
 
+
+    /**
+     * Read Staff data from txt file and use the data accordingly to create new Staff instances
+     * Store the Staff instances into an arrayList to be passed to the Cineplex model to instantiate staff List
+     * Cineplex ID is necessary to know which Staff belongs to which cineplex
+     *
+     * @param filename   Path to a file containing attributes of all staff
+     * @param cineplexId the cineplex id
+     * @return array of staff instances
+     * @throws IOException the io exception
+     */
     public static ArrayList readStaff(String filename, String cineplexId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -98,6 +122,14 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Read Customer data from txt file and use the data accordingly to create new Customer instances
+     * Store the Customer instances into an arrayList to be passed to the Main model to instantiate customer List
+     *
+     * @param filename Path to a file containing attributes of all customer
+     * @return array of customer instances
+     * @throws IOException the io exception
+     */
     public static ArrayList readCustomer(String filename) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -120,6 +152,17 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Read Showtime data from txt file and use the data accordingly to create new showtime instances
+     * Store the showtime instances into an arrayList to be passed to the Movie model to instantiate showtime List
+     * Cineplex ID and MovieID are necessary to know which showtime belongs to which movie from which cineplex
+     *
+     * @param filename   Path to a file containing attributes of all reviews
+     * @param cineplexId the cineplex id
+     * @param movieId    the movie id
+     * @return array of showtime instances
+     * @throws IOException the io exception
+     */
     public static ArrayList readShowtime(String filename, String cineplexId, String movieId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -153,6 +196,16 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     *  Read Booking history data from txt file and use the data accordingly to create new showtime instances
+     *  Store the booking instances into an arrayList to be passed to the Customer model to instantiate booking List
+     *  Email is necessary to know which booking history belongs to which customer
+     *
+     * @param filename the filename
+     * @param email    the email
+     * @return the array list
+     * @throws IOException the io exception
+     */
     public static ArrayList readBookingHistory(String filename, String email) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -199,6 +252,14 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Read cinema array list.
+     *
+     * @param filename   the filename
+     * @param cineplexId the cineplex id
+     * @return the array list
+     * @throws IOException the io exception
+     */
     public static ArrayList readCinema(String filename, String cineplexId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -222,6 +283,13 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Read holiday array list.
+     *
+     * @param filename the filename
+     * @return the array list
+     * @throws IOException the io exception
+     */
     public static ArrayList readHoliday(String filename) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -243,6 +311,14 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Read movies array list.
+     *
+     * @param filename   the filename
+     * @param cineplexId the cineplex id
+     * @return the array list
+     * @throws IOException the io exception
+     */
     public static ArrayList readMovies(String filename, String cineplexId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -279,6 +355,14 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Save cineplex.
+     *
+     * @param filename the filename
+     * @param al       the al
+     * @param append   the append
+     * @throws IOException the io exception
+     */
     public static void saveCineplex(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Cineplex");
         List alw = new ArrayList() ;
@@ -296,6 +380,16 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save review.
+     *
+     * @param filename   the filename
+     * @param al         the al
+     * @param cineplexId the cineplex id
+     * @param movieId    the movie id
+     * @param append     the append
+     * @throws IOException the io exception
+     */
     public static void saveReview(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
 //        System.out.println("Saving Review");
         List alw = new ArrayList() ;
@@ -321,6 +415,15 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save staff.
+     *
+     * @param filename   the filename
+     * @param al         the al
+     * @param cineplexId the cineplex id
+     * @param append     the append
+     * @throws IOException the io exception
+     */
     public static void saveStaff(String filename, List al, String cineplexId, Boolean append) throws IOException {
 //        System.out.println("Saving Staff");
         List alw = new ArrayList() ;
@@ -338,6 +441,14 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save customer.
+     *
+     * @param filename the filename
+     * @param al       the al
+     * @param append   the append
+     * @throws IOException the io exception
+     */
     public static void saveCustomer(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Customer");
         List alw = new ArrayList() ;
@@ -355,6 +466,16 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save showtime.
+     *
+     * @param filename   the filename
+     * @param al         the al
+     * @param cineplexId the cineplex id
+     * @param movieId    the movie id
+     * @param append     the append
+     * @throws IOException the io exception
+     */
     public static void saveShowtime(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
 //        System.out.println("Saving Showtime");
         List alw = new ArrayList() ;
@@ -386,6 +507,15 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save booking history.
+     *
+     * @param filename the filename
+     * @param al       the al
+     * @param email    the email
+     * @param append   the append
+     * @throws IOException the io exception
+     */
     public static void saveBookingHistory(String filename, List al, String email, Boolean append) throws IOException {
 //        System.out.println("Saving Booking History");
         List alw = new ArrayList() ;
@@ -428,6 +558,15 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save cinema.
+     *
+     * @param filename   the filename
+     * @param al         the al
+     * @param cineplexId the cineplex id
+     * @param append     the append
+     * @throws IOException the io exception
+     */
     public static void saveCinema(String filename, List al, String cineplexId, Boolean append) throws IOException {
 //        System.out.println("Saving Cinema");
         List alw = new ArrayList() ;
@@ -445,6 +584,14 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save holiday.
+     *
+     * @param filename the filename
+     * @param al       the al
+     * @param append   the append
+     * @throws IOException the io exception
+     */
     public static void saveHoliday(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Holiday");
         List alw = new ArrayList() ;
@@ -460,6 +607,14 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Save movies.
+     *
+     * @param filename the filename
+     * @param al       the al
+     * @param append   the append
+     * @throws IOException the io exception
+     */
     public static void saveMovies(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Movie");
         List alw = new ArrayList() ;
@@ -495,6 +650,14 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Update.
+     *
+     * @param fileName the file name
+     * @param toChange the to change
+     * @param toAppend the to append
+     * @throws IOException the io exception
+     */
     public static void update(String fileName, Movie toChange, Movie toAppend) throws IOException {
         StringBuilder st =  new StringBuilder();
         st.append(toChange.getCineplexId().trim());
