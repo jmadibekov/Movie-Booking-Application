@@ -21,11 +21,15 @@ public class MovieInformation extends View {
 		BookingController.getChosenMovie().output();
 		System.out.println();
 
-		System.out.println(
-			"(0) Back\n"
-		  + "(1) Book this movie\n"
-		  + "(2) See all reviews\n"
-		  + "(3) Leave a review");
+		if (getUserType() == 0)
+			System.out.println("(0) Back");
+		else {
+			System.out.println(
+					"(0) Back\n"
+							+ "(1) Book this movie\n"
+							+ "(2) See all reviews\n"
+							+ "(3) Leave a review");
+		}
 
 		boolean loop = true;
 		while (loop) {
@@ -37,25 +41,37 @@ public class MovieInformation extends View {
 					break;
 
 				case 1:
-					if (BookingController.getChosenMovie().getShowingStatus().contentEquals("Coming Soon"))
-						System.out.println("Sorry, this movie is not showing yet.");
-					else if (BookingController.getChosenMovie().getShowingStatus().contentEquals("End of Showing"))
-						System.out.println("Sorry, this movie is no longer showing.");
+					if (getUserType() == 0)
+						System.out.println("\nPlease enter a valid input!\n");
 					else {
-						Navigation.goTo(new ChooseShowtime(getUserType(), null));
-						loop = false;
+						if (BookingController.getChosenMovie().getShowingStatus().contentEquals("Coming Soon"))
+							System.out.println("Sorry, this movie is not showing yet.");
+						else if (BookingController.getChosenMovie().getShowingStatus().contentEquals("End of Showing"))
+							System.out.println("Sorry, this movie is no longer showing.");
+						else {
+							Navigation.goTo(new ChooseShowtime(getUserType(), null));
+							loop = false;
+						}
+						break;
 					}
-					break;
 
 				case 2:
-					Navigation.goTo(new ReviewList(getUserType(), null));
-					loop = false;
-					break;
+					if (getUserType() == 0)
+						System.out.println("\nPlease enter a valid input!\n");
+					else {
+						Navigation.goTo(new ReviewList(getUserType(), null));
+						loop = false;
+						break;
+					}
 
 				case 3:
-					Navigation.goTo(new LeaveReview(getUserType(), null));
-					loop = false;
-					break;
+					if (getUserType() == 0)
+						System.out.println("\nPlease enter a valid input!\n");
+					else {
+						Navigation.goTo(new LeaveReview(getUserType(), null));
+						loop = false;
+						break;
+					}
 
 				default:
 					System.out.println("\nPlease enter a valid input!\n");

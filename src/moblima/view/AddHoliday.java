@@ -9,6 +9,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ *
+ */
 public class AddHoliday extends View{
 
     public AddHoliday(int userType, View nextView) {
