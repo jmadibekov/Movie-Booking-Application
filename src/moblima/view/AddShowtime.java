@@ -156,7 +156,6 @@ public class AddShowtime extends View{
                 System.out.println("Enter a non-negative integer.");
             else{
                 int end = input + (((StaffController.getChosenMovie().getDuration()) / 60) * 100) + (StaffController.getChosenMovie().getDuration() % 60);
-                System.out.println("Debugging " + input + " " + end);
                 if ((end > 200 && end < 800) || (input > 200 && input < 800))
                     System.out.println("Unable to add as showtime exceeds opening hours");
                 else {

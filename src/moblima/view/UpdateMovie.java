@@ -24,7 +24,7 @@ public class UpdateMovie extends View{
     }
 
     /**
-     * Displays a list of movies, and check which movie is to be updated
+     * Displays a list of movies, stand check which movie is to be updated
      */
     public void display() {
         outputPageName("Choose A Movie");

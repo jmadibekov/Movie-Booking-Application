@@ -24,17 +24,44 @@ public class StaffController {
      */
     public static Movie chosenMovie;
     /**
-     *
+     * Date chosen by a staff
      */
     public static String date;
+    /**
+     * The start and end time of a showtime where Start Time[0] and End Time[1]
+     */
     private static int[][] startEndTime;
+    /**
+     * The position to print the StartEndTime
+     */
     private static int pos;
+    /**
+     * Showing Status for adding a new movie.
+     */
     private static String showingStatus;
+    /**
+     * Title for adding a new movie.
+     */
     private static String title;
+    /**
+     * Synopsis for adding a new movie.
+     */
     private static String synopsis;
+    /**
+     * Director as a String[] for adding a new movie.
+     */
     private static String[] director;
+    /**
+     * Cast as a String[] for adding a new movie.
+     */
     private static String[] cast;
+    /**
+     * ageRequirement for adding a new movie.
+     */
     private static String ageRequirement;
+    /**
+     * Duration for adding a new movie.
+     */
     private static int duration;
 
     /**
