@@ -8,12 +8,24 @@ import moblima.model.MainModel;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Represents the screen to search for any movie by title
+ */
 public class SearchMovie extends View{
 
+	/**
+	 * Instantiates a new Search movie view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public SearchMovie(int userType, View nextView) {
 		super("searchMovie", userType, nextView);
 	}
-	
+
+	/**
+	 * Display the view
+	 */
 	public void display() {
 
 		outputPageName("Search a Movie");

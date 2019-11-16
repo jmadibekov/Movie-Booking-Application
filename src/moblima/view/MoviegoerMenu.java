@@ -2,11 +2,23 @@ package moblima.view;
 
 import moblima.controller.*;
 
+/**
+ * Represents the main menu for moviegoer (customer)
+ */
 public class MoviegoerMenu extends View {
+	/**
+	 * Instantiates a new Moviegoer Menu.
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public MoviegoerMenu(int userType, View nextView) {
 		super("moviegoerMenu", userType, nextView);
 	}
 
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("Movie-goer Menu");
 

@@ -6,12 +6,24 @@ import moblima.model.*;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the screen that shows all reviews of a movie
+ */
 public class ReviewList extends View{
 
+	/**
+	 * Instantiates a new Review list.
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public ReviewList(int userType, View nextView) {
 		super("reviewList", userType, nextView);
 	}
-	
+
+	/**
+	 * Display the view
+	 */
 	public void display() {
 
 		outputPageName("All Reviews");

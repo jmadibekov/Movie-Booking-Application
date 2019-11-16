@@ -15,9 +15,9 @@ import java.util.Scanner;
 public class AddHoliday extends View{
 
     /**
-     * Creates a new AddHoliday view
+     * Instantiates a new AddHoliday view
      *
-     * @param userType the current user type (Admin/Staff)
+     * @param userType the user type
      * @param nextView the next view
      */
     public AddHoliday(int userType, View nextView) {
@@ -25,7 +25,7 @@ public class AddHoliday extends View{
     }
 
     /**
-     * Display the view to add holiday
+     * Display the view
      */
     public void display() {
         outputPageName("Add Holiday Date");
@@ -45,6 +45,9 @@ public class AddHoliday extends View{
         }
     }
 
+    /**
+     * Display the view to get holiday date
+     */
     private void getHolidayDate() throws ParseException {
         Scanner sc = new Scanner(System.in);
         System.out.print("Please input holiday date in this format: dd/mm/yyyy: ");
@@ -75,6 +78,12 @@ public class AddHoliday extends View{
         }
     }
 
+    /**
+     * Display the view to get Holiday Name
+     *
+     * @param date the holiday's date
+     * @throws ParseException
+     */
     private void getHolidayName(String date) throws ParseException{
         Scanner sc = new Scanner(System.in);
         System.out.print("Please input the holiday name: ");
@@ -90,6 +99,12 @@ public class AddHoliday extends View{
         }
     }
 
+    /**
+     * A function to test if the date entered by  a user is a valid date in the format dd/MM/yyyy
+     *
+     * @param dateToValidate
+     * @return boolean based on whether the date is valid
+     */
     private boolean isThisDateValid(String dateToValidate){
         if(dateToValidate == null){
             return false;
@@ -105,6 +120,12 @@ public class AddHoliday extends View{
         return true;
     }
 
+    /**
+     * Check whether the date entered by a staff exist in the system. If exist, return true. Otherwise, return false
+     *
+     * @param date the holiday's date
+     * @return boolean based on whether holiday date exist in system
+     */
     private boolean holidayDateExist(String date) {
         for (int i = 0; i < MainModel.getHolidayList().size(); i++) {
             if (date.contentEquals(MainModel.getHolidayList().get(i).getHolidayDate()))

@@ -6,12 +6,24 @@ import moblima.model.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Represents the screen to choose a showtime
+ */
 public class ChooseShowtime extends View {
 
+	/**
+	 * Instantiates a new Choose showtime view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public ChooseShowtime(int userType, View nextView) {
 		super("chooseShowtime", userType, nextView);
 	}
 
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("Booking: Choose a Showtime");
 

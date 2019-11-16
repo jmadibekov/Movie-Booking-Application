@@ -5,12 +5,24 @@ import moblima.model.*;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the screen to choose a cineplex
+ */
 public class ChooseCineplex extends View {
 
+	/**
+	 * Instantiates a new Choose cineplex.
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public ChooseCineplex(int userType, View nextView) {
 		super("chooseCineplex", userType, nextView);
 	}
 
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("Choose a Cineplex Location");
 

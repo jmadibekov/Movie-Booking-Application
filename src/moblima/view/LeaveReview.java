@@ -8,18 +8,33 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Scanner;
 
+/**
+ * Represents the screen to leave a review on a movie
+ */
 public class LeaveReview extends View{
 
+	/**
+	 * Instantiates a new Leave Review view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public LeaveReview(int userType, View nextView) {
 		super("leaveReview", userType, nextView);
 	}
-	
+
+	/**
+	 * Display the view
+	 */
 	public void display() {
 		outputPageName("Leave a Review");
 
 		getName();
 	}
 
+	/**
+	 * Display the view to get the name of reviewer
+	 */
 	private void getName() {
 		String name;
 		System.out.print("Please enter your name (Input 0 to go back): ");
@@ -34,6 +49,11 @@ public class LeaveReview extends View{
 		}
 	}
 
+	/**
+	 * Display the view to get the title of a review
+	 *
+	 * @param name the reviewer's name
+	 */
 	private void getSubjectTitle(String name) {
 		String title;
 		System.out.print("Please enter the subject title of your review (Input 0 to go back): ");
@@ -48,6 +68,12 @@ public class LeaveReview extends View{
 		}
 	}
 
+	/**
+	 * Display the view to get the rating of a review
+	 *
+	 * @param name the reviewer's name
+	 * @param title the review's title
+	 */
 	private void getRating(String name, String title) {
 		double rating;
 		double inputRating = getDouble("Please enter your desired rating (1.00 - 5.00): ");
@@ -68,6 +94,13 @@ public class LeaveReview extends View{
 		}
 	}
 
+	/**
+	 * Display the view to get the rating of a review
+	 *
+	 * @param name the reviewer's name
+	 * @param title the review' title
+	 * @param rating the review's rating
+	 */
 	private void getSubjectBody(String name, String title, double rating) {
 		String body;
 		System.out.print("Please enter the details of your review (Input 0 to go back): ");
@@ -82,6 +115,14 @@ public class LeaveReview extends View{
 		}
 	}
 
+	/**
+	 * Display the view to get confirmation
+	 *
+	 * @param name the reviewer's name
+	 * @param title the review's title
+	 * @param rating the review's rating
+	 * @param body the review's body details
+	 */
 	private void getConfirmation (String name, String title, double rating, String body) {
 		int input = getChoice("Input 1 to confirm (0 - to go back): ");
 		if (input == 0) {

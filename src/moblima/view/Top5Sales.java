@@ -5,12 +5,24 @@ import moblima.model.*;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the screen that shows top 5 movies by ticket sales
+ */
 public class Top5Sales extends View{
 
+	/**
+	 * Instantiates a new Top 5 sales view
+	 *
+	 * @param userType the user type
+	 * @param nextView the next view
+	 */
 	public Top5Sales(int userType, View nextView) {
 		super("top5Sales", userType, nextView);
 	}
 
+	/**
+	 * Display the view
+	 */
 	public void display() {
 
 		outputPageName("Top 5 Movies by ticket sales");
