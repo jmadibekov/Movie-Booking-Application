@@ -1,4 +1,4 @@
-001|001|4|26|Now Showing|Avengers: Endgame|Iron Man Dies...|Fazli|Swa, James|4.47|R21|150
+001|001|5|26|Now Showing|Avengers: Endgame|Iron Man Dies...|Fazli|Swa, James|4.66|R21|150
 001|002|4|24|Now Showing|Back To The Future|Travel back to the past and hope you don't screw things up!|Michael Bay|Swa, James|4.3|PG13|150
 001|003|4|19|Now Showing|Inception|Dream Hacking|Christopher Nolan.|Person A, Person B|4.9|NC16|120
 001|004|5|63|Now Showing|Lion King|Nala is Simba's sister.|Benedict|Bendict, Swa, Jamie, Nic|5.0|R21|120
@@ -6,10 +6,9 @@
 001|006|6|92|Preview|Abominable|Adorable monster on an adventure.|Benedict|Jamie, John, Jack|4.58|PG13|90
 001|007|0|0|Coming Soon|John Wick 3|Somebody killed his cat this time. Babayaga.|Michael H. John|Johnson, Jackson, Jacob|0.0|PG13|90
 001|008|0|1|Now Showing|Terminator: Dark Fate|It's a new plot|Arnold Schwarzenegger,Tim Miller|Arnold Schwarzenegger,Nicholas Cage|0.0|M18|200
-001|009|4|160|Now Showing|Star Wars: The Rise of Skywalker|Lightsabers go bzzt!|Wohn Jick, Arnold Achwarzenegger|Cicholas Nage|4.4|PG13|150
 001|010|0|4|Now Showing|Ford v Ferrari|Two people racing with each other|James Mangold|Christian Bale|0.0|PG13|200
 002|001|3|20|Now Showing|Avengers: Endgame|Iron Man Dies...|Fazli|Swa, James|4.3|PG13|150
-002|002|3|22|Now Showing|Back To The Future|Travel back to the past and hope you don't screw things up!|Michael Bay|Swa, James|4.4|PG13|150
+002|002|3|33|Now Showing|Back To The Future|Travel back to the past and hope you don't screw things up!|Michael Bay|Swa, James|4.4|PG13|150
 002|003|4|18|Now Showing|Inception|Dream Hacking|Christopher Nolan.|Person A, Person B|4.9|NC16|120
 002|004|5|63|Now Showing|Lion King|Nala is Simba's sister.|Benedict|Bendict, Swa, Jamie, Nic|5.0|R21|120
 002|005|2|34|Preview|Frozen 2|You'll get sick of the song before the movie even debuts.|Fazli|Fazli, Nic|2.5|PG13|90

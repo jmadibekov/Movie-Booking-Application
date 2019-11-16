@@ -96,7 +96,7 @@ public class ChooseMovie extends View {
 
 		System.out.println("(0) Back");
 		if (getUserType() == 0)
-			System.out.println("(1) Add showtime");
+			System.out.println("(1) Edit (Add/Remove) showtime information");
 		else
 			System.out.println("(1) Book this movie");
 		System.out.println("(2) Movie information");

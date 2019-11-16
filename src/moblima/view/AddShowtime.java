@@ -26,13 +26,29 @@ public class AddShowtime extends View {
      * Display the view
      */
     public void display() {
-        outputPageName("Add Showtime");
-        String[][] seatLayout = new String[8][9];
-        for (int i = 0; i < 8; i++)
-            for (int j = 0; j < 9; j++)
-                seatLayout[i][j] = "0";
-        Showtime curShowtime = new Showtime(0, "", "", "", seatLayout);
-        chooseCinema(curShowtime);
+        System.out.println("\n(0) Back");
+        System.out.println("(1) Remove Showtime");
+        System.out.println("(2) Add Showtime");
+        while(true){
+            int choice = getChoice("What would you like to do? ");
+            if (choice == 0)
+                Navigation.goBack();
+            else if (choice == 1 || choice == 2){
+                if(choice == 1)
+                    outputPageName("Remove Showtime");
+                else if (choice == 2)
+                    outputPageName("Add Showtime");
+                String[][] seatLayout = new String[8][9];
+                for (int i = 0; i < 8; i++)
+                    for (int j = 0; j < 9; j++)
+                        seatLayout[i][j] = "0";
+                Showtime curShowtime = new Showtime(0, "", "", "", seatLayout);
+                chooseCinema(curShowtime, choice);
+            }
+            else
+                System.out.println("Please enter a valid input");
+        }
+
     }
 
     /**
@@ -40,7 +56,7 @@ public class AddShowtime extends View {
      *
      * @param curShowtime the new showtime
      */
-    private void chooseCinema(Showtime curShowtime) {
+    private void chooseCinema(Showtime curShowtime, int choice) {
         ArrayList<Cinema> cinemaList = StaffController.getChosenCineplex().getCinemaList();
 
         System.out.printf("Chosen movie: '%s'\n\n", StaffController.getChosenMovie().getTitle());
@@ -59,13 +75,53 @@ public class AddShowtime extends View {
                 break;
             } else if (input <= cinemaList.size() && input > 0) {
                 StaffController.setChosenCinema(cinemaList.get(input - 1));
-                curShowtime.setCinemaId(cinemaList.get(input - 1).getCinemaId());
-                chooseType(curShowtime);
+                if (choice == 2) {
+                    curShowtime.setCinemaId(cinemaList.get(input - 1).getCinemaId());
+                    chooseType(curShowtime);
+                }
+                else
+                    removeShowtime();
+
             } else {
                 System.out.println("\nPlease enter a valid input\n");
             }
         }
     }
+
+    /**
+     * Removes the selected showtime.
+     */
+    private void removeShowtime(){
+        int index = 1;
+        int choice;
+        ArrayList<Showtime> showtimeList = new ArrayList<Showtime>();
+        ArrayList<Showtime> tempList = StaffController.getChosenMovie().getShowtimeList();
+
+        System.out.println("\nChosen CinemaId: " + StaffController.getChosenCinema().getCinemaId());
+        System.out.println("(0) Back");
+        for (Showtime i : tempList){
+            if (i.getCinemaId().contentEquals(StaffController.getChosenCinema().getCinemaId())){
+                showtimeList.add(i);
+                System.out.printf("(%d) %s, Start Time: %s\n", index, i.getDate(), i.getTime());
+                index++;
+            }
+        }
+        while(true){
+            choice = getChoice("Choose a showtime to remove: ");
+            if (choice == 0)
+                display();
+            else if (choice > 0 && choice <= showtimeList.size()){
+                System.out.printf("\nDate: %s, CinemaId: %s. Successfully Removed.\n", showtimeList.get(choice-1).getDate(), showtimeList.get(choice-1).getCinemaId());
+                tempList.remove(showtimeList.get(choice-1));
+                StaffController.getChosenMovie().setShowtimeList(tempList);
+                break;
+            }
+            else
+                System.out.println("Please enter a valid input");
+        }
+        Navigation.goBack();
+        }
+
 
     /**
      * Display the view for staff to choose the type for a new showtime
@@ -81,7 +137,7 @@ public class AddShowtime extends View {
             int input = getChoice("Choose type of movie: ");
             switch (input){
                 case 0:
-                    chooseCinema(curShowtime);
+                    chooseCinema(curShowtime, 2);
                 case 1:
                     curShowtime.setType("Digital");
                     chooseDate(curShowtime);

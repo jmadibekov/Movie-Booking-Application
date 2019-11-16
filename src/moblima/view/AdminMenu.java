@@ -27,7 +27,7 @@ public class AdminMenu extends View{
                           "(0) Logout\n"
                         + "(1) Update movie details\n"
                         + "(2) Add movie\n"
-                        + "(3) Add showtime listing\n"
+                        + "(3) Add/Remove showtime listing\n"
                         + "(4) Edit baseTicketPrice\n"
                         + "(5) Add holiday date\n"
                         + "(6) View top 5 movies by ticket sales\n"
