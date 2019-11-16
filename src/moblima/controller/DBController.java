@@ -7,14 +7,26 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ * Represents a controller that helps to read/write data from and to database
+ * Assist in instantiating all instances of every classes using data stored in database
+ * Assist in saving all instances of every classes into database
+ */
 public class DBController {
+
+    /**
+     * Char used to separate an attribute from another in an instance
+     * Necessary to separate data so as to know which belongs to which attribute when creating an instance of a class
+     */
     public static final String SEPARATOR = "|";
 
     /**
-     * Reads and returns all Cineplex from filename directory.
-     * @param filename The directory to access.
-     * @return Returns all Cineplex from filename directory;
-     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     * Read cineplex data from txt file and use the data accordingly to create new cineplex instances
+     * Store the cineplex instances into an arrayList to be passed to the MainModel to instantiate Cineplex List
+     *
+     * @param filename Path to a file containing attributes of all cineplexes
+     * @return array of cineplex instances
+     * @throws IOException the io exception
      */
     public static ArrayList readCineplex(String filename) throws IOException {
         // read String from text file
@@ -39,12 +51,15 @@ public class DBController {
     }
 
     /**
-     * Reads and returns all Review of the Movie shown at the Cineplex from filename directory.
-     * @param filename The directory to access.
-     * @param cineplexId The Cineplex to check for Movie.
-     * @param movieId The Movie to check for Review.
-     * @return Reads and returns all Review of the Movie shown at the Cineplex from filename directory.
-     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     * Read Review data from txt file and use the data accordingly to create new review instances
+     * Store the review instances into an arrayList to be passed to the Movie model to instantiate review List
+     * Cineplex ID and MovieID are necessary to know which review belongs to which movie from which cineplex
+     *
+     * @param filename   Path to a file containing attributes of all reviews
+     * @param cineplexId the cineplex id
+     * @param movieId    the movie id
+     * @return array of review instances
+     * @throws IOException the io exception
      */
     public static ArrayList readReview(String filename, String cineplexId, String movieId) throws IOException {
         // read String from text file

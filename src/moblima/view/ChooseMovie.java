@@ -70,14 +70,14 @@ public class ChooseMovie extends View {
 		for (Movie i : movieList) {
 			if (getUserType() == 0) {
 				System.out.printf("(%s) '%s', Rating: %s, Showing status: %s\n",
-						index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+						index, i.getTitle(), i.getOverallRatingForOutput(), i.getShowingStatus());
 				uniqueMovies.put(index, i);
 				index++;
 			}
 			else {
 				if (!i.getShowingStatus().contentEquals("Coming Soon") && !i.getShowingStatus().contentEquals("End of Showing")) {
 					System.out.printf("(%s) '%s', Rating: %s, Showing status: %s\n",
-							index, i.getTitle(), i.getOverallRating(), i.getShowingStatus());
+							index, i.getTitle(), i.getOverallRatingForOutput(), i.getShowingStatus());
 					uniqueMovies.put(index, i);
 					index++;
 				}

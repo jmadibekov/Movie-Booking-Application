@@ -118,7 +118,7 @@ public class Movie {
 	public void output() {
 		System.out.printf("Title: '%s'\n", title);
 		System.out.printf("Showing status: %s, ", showingStatus);
-		System.out.printf("Rating: %s\n", getOverallRating());
+		System.out.printf("Rating: %s\n", getOverallRatingForOutput());
 
 		System.out.printf("Age requirement: %s\n", ageRequirement);
 		System.out.printf("Number of ticket sales: %d\n", ticketSales);
@@ -220,26 +220,26 @@ public class Movie {
 	}
 
 	/**
-	 * Returns the overall rating of the movie in case there's more than one input. Otherwise, NA is returned.
+	 * Returns the overall rating.
 	 *
-	 * @return Value of Overall Rating of the movie in String.
+	 * @return Value of Overall Rating.
 	 */
-	public String getOverallRating() {
+	public double getOverallRating() {
+		return overallRating;
+	}
+
+	/**
+	 * Returns the overall rating for the output. NA is returned if userCount <= 1.
+	 *
+	 * @return Returns the overall rating in String.
+	 */
+	public String getOverallRatingForOutput() {
 		if (userCount > 1) {
 			String s = String.format("%.2f", overallRating);
 			return s;
 		} else {
-			return "0.00";
+			return "NA";
 		}
-	}
-
-	/**
-	 * Returns the overall rating in double.
-	 *
-	 * @return Returns the overall rating in double.
-	 */
-	public double getOverallRatingInDouble() {
-		return overallRating;
 	}
 
 	/**

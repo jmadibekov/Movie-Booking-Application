@@ -13,16 +13,23 @@ import java.util.ArrayList;
 
 public class UpdateMovie extends View{
 
+    /**
+     * Instantiates a new UpdateMovie
+     *
+     * @param userType the user type
+     * @param nextView the next view
+     */
     public UpdateMovie(int userType, View nextView) {
         super("updateMovie", userType, nextView);
     }
 
     /**
-    *Displays a list of movies, and check which movie is to be updated
+     * Displays a list of movies, and check which movie is to be updated
      */
     public void display() {
         outputPageName("Choose A Movie");
-        System.out.println(BookingController.getChosenCineplex().getCineplexName() + "\n");
+
+        System.out.println("Choosen cineplex: '" + BookingController.getChosenCineplex().getCineplexName() + "'\n");
 
         ArrayList<Movie> movieList = BookingController.getMovies();
         if (movieList.isEmpty()) {
