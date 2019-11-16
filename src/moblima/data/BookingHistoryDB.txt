@@ -8,3 +8,5 @@ fazli@gmail.com|14/11/2019|Regular|20.0|Jurong Point Cinema|Back To The Future|0
 fazli@gmail.com|20/01/2020|Regular|16.0|Jurong Point Cinema|Terminator: Dark Fate|001|001201910162220|2/1/1
 fazli@gmail.com|24/01/2020|Platinum|17.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162230|1/1/1
 fazli@gmail.com|25/01/2020|Platinum|20.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162231|1/1/1
+nick@gmail.com|24/01/2020|Platinum|17.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162249|1/1/2
+nick@gmail.com|25/01/2020|Platinum|20.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162251|1/1/2
