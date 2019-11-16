@@ -229,7 +229,7 @@ public class Movie {
 			String s = String.format("%.2f", overallRating);
 			return s;
 		} else {
-			return "NA";
+			return "0.00";
 		}
 	}
 

@@ -13,6 +13,11 @@ public class AddMovie extends View{
         super("addMovie", userType, nextView);
     }
 
+    /**
+     * Brings the Staff through the pipeline of adding a new Movie.
+     * Allows for going back and forth the pipeline if the Staff wishes to do so.
+     * Concludes successfully by adding a new Movie to existing ArrayList<Movie>.
+     */
     public void display() {
         Scanner sc = new Scanner(System.in);
         int option = 0;
