@@ -11,12 +11,7 @@ import java.util.ArrayList;
 /**
  * Represents the screen for staff to add a new showtime.
  */
-public class AddShowtime extends View{
-    /**
-     * The Pos.
-     */
-    int pos = 0;
-
+public class AddShowtime extends View {
     /**
      * Instantiates a new Add showtime view.
      *
@@ -60,7 +55,7 @@ public class AddShowtime extends View{
         while (true) {
             int input = getChoice("Please select a cinema: ");
             if (input == 0) {
-                display();
+                Navigation.goBack();
                 break;
             } else if (input <= cinemaList.size() && input > 0) {
                 StaffController.setChosenCinema(cinemaList.get(input - 1));
@@ -136,12 +131,14 @@ public class AddShowtime extends View{
      * @param curShowtime the new showtime
      */
     private void chooseShowtime(Showtime curShowtime) {
-        System.out.printf("\nChosen Movie: %s\n", StaffController.getChosenMovie().getTitle());
+        System.out.printf("\nChosen Movie: '%s'\n", StaffController.getChosenMovie().getTitle());
         System.out.printf("Movie Duration: %d\n", StaffController.getChosenMovie().getDuration());
         System.out.printf("Chosen Date: %s\n", StaffController.getDate());
         System.out.printf("Chosen Cinema: %s (%s)\n", StaffController.getChosenCinema().getCinemaId(), StaffController.getChosenCinema().getCinemaClass());
-        System.out.printf("\nCurrent showtime for Cinema %s (%s):\n", StaffController.getChosenCinema().getCinemaId(), StaffController.getDate());
+
+        System.out.printf("\nCurrent showtime for Cinema ID %s (%s):\n", StaffController.getChosenCinema().getCinemaId(), StaffController.getDate());
         printShowtime();
+
         System.out.printf("\nEnter start time of movie (duration: %d minutes): \n", StaffController.getChosenMovie().getDuration());
         System.out.println("Cinema Opening Hours: 8am to 2am");
 
@@ -152,22 +149,26 @@ public class AddShowtime extends View{
             int input = getChoice("Start Time in HHMM format (enter -1 to go back): ");
             if (input == -1)
                 chooseDate(curShowtime);
-            else if (input < 0)
-                System.out.println("Enter a non-negative integer.");
+            else if (input < 0 || input >= 2400)
+                System.out.println("Please enter a valid input!");
             else{
-                int end = input + (((StaffController.getChosenMovie().getDuration()) / 60) * 100) + (StaffController.getChosenMovie().getDuration() % 60);
+                curShowtime.setTime(input);
+                int end = curShowtime.calcEnd(StaffController.getChosenMovie().getDuration());
+
                 if ((end > 200 && end < 800) || (input > 200 && input < 800))
-                    System.out.println("Unable to add as showtime exceeds opening hours");
+                    System.out.println("Unable to add as showtime exceeds opening hours!");
                 else {
-                    if (StaffController.addShowtime(input, curShowtime, showtimeList))
+                    if (StaffController.addShowtime(curShowtime, showtimeList))
                         break;
                     else
-                        System.out.println("Unable to add showtime as it overlaps with an existing showtime. Please re-enter a show timing: ");
+                        System.out.println("Unable to add showtime as it overlaps with an existing showtime. Please re-enter a show timing!");
                 }
             }
         }
+
         //update model for user to access if user remains in app after adding showtime
         StaffController.getChosenMovie().setShowtimeList(showtimeList);
+        System.out.printf("\nUpdated showtime for Cinema ID %s (%s):\n", StaffController.getChosenCinema().getCinemaId(), StaffController.getDate());
         printShowtime();
         Navigation.goBack();
         //print all new showtime
@@ -178,9 +179,13 @@ public class AddShowtime extends View{
      * Print showtime
      */
     private void printShowtime() {
-        System.out.println("(0) Back");
         //get movie list to check through showtime
-        int[][] startEndTime = StaffController.printShowtime(pos);
+        int[][] startEndTime = StaffController.printShowtime();
+        if (startEndTime.length == 0) {
+            System.out.println("No showtime available on this day on this Cinema ID");
+            return;
+        }
+
         for (int i = 0; i < startEndTime.length; i++)
             //check if end time exceeds 12am, print accordingly.
             if (startEndTime[i][0] != 0){

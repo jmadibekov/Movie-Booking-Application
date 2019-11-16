@@ -5,7 +5,7 @@ package moblima.model;
  */
 public class Showtime {
 	/**
-	 * Time of showtime
+	 * Start time of showtime
 	 */
 	private int time;
 	/**
@@ -40,6 +40,35 @@ public class Showtime {
 		this.type = type;
 		this.cinemaId = cinemaId;
 		this.seatLayout = seatLayout;
+	}
+
+	/**
+	 * Calculates the ending time for the showtime
+	 *
+	 * @param duration the duration of the movie
+	 * @return the ending time
+	 */
+	public int calcEnd(int duration) {
+		int m = time % 100;
+		int h = time / 100;
+
+		int start = h * 60 + m;
+		int end = (start + duration) % 1440;
+
+		int mEnd = end % 60;
+		int hEnd = end / 60;
+
+		return hEnd * 100 + mEnd;
+	}
+
+	/**
+	 * Returns the formatted string of int time for output
+	 *
+	 * @param time the time in HHMM format
+	 * @return the formatted string
+	 */
+	public String inTimeFormat(int time) {
+		return String.format("%04d", time);
 	}
 
 	/**

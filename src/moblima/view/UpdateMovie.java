@@ -29,7 +29,7 @@ public class UpdateMovie extends View{
     public void display() {
         outputPageName("Choose A Movie");
 
-        System.out.println("Choosen cineplex: '" + BookingController.getChosenCineplex().getCineplexName() + "'\n");
+        System.out.println("The cineplex: '" + BookingController.getChosenCineplex().getCineplexName() + "'\n");
 
         ArrayList<Movie> movieList = BookingController.getMovies();
         if (movieList.isEmpty()) {
@@ -40,7 +40,7 @@ public class UpdateMovie extends View{
         System.out.println("(0) Back");
         int index = 1;
         for (Movie i : movieList) {
-            System.out.printf("(%s) %s\n", index, i.getTitle());
+            System.out.printf("(%s) '%s'\n", index, i.getTitle());
             index++;
         }
         while (true) {
@@ -53,7 +53,7 @@ public class UpdateMovie extends View{
                 editWhat();
             }
             else
-                System.out.println("\nPlease enter a valid input\n");
+                System.out.println("\nPlease enter a valid input!\n");
         }
     }
 
@@ -62,7 +62,8 @@ public class UpdateMovie extends View{
      */
     private void editWhat(){
         Scanner sc = new Scanner(System.in);
-        System.out.printf("\nChoose what to edit for %s:\n", StaffController.getChosenMovie().getTitle());
+        System.out.printf("\nChoose what to edit for '%s':\n\n", StaffController.getChosenMovie().getTitle());
+
         System.out.println("(0) Back");
         System.out.println("(1) Showing status");
         System.out.println("(2) Title");
@@ -75,7 +76,7 @@ public class UpdateMovie extends View{
         while(true){
             int input;
             String update;
-            int option = getChoice("What you would like to edit: \n");
+            int option = getChoice("What you would like to edit: ");
             switch (option){
                 case 0:
                     display();
@@ -91,15 +92,16 @@ public class UpdateMovie extends View{
                     if (input == 0)
                         editWhat();
                     else if (input == 1)
-                        StaffController.setShowingStatus("Now Showing");
+                        StaffController.getChosenMovie().setShowingStatus("Now Showing");
                     else if (input == 2)
-                        StaffController.setShowingStatus("Preview");
+                        StaffController.getChosenMovie().setShowingStatus("Preview");
                     else if (input == 3)
-                        StaffController.setShowingStatus("Coming Soon");
+                        StaffController.getChosenMovie().setShowingStatus("Coming Soon");
                     else if (input == 4)
-                        StaffController.setShowingStatus("End of Showing");
+                        StaffController.getChosenMovie().setShowingStatus("End of Showing");
                     else
                         System.out.println("Please enter a valid input");
+
                     System.out.println("Update Successful.");
                     editWhat();
                     break;
@@ -111,6 +113,7 @@ public class UpdateMovie extends View{
                         editWhat();
                     StaffController.getChosenMovie().setTitle(update);
                     System.out.println("Update Successful.");
+                    StaffController.updateAllMoviesToChosenMovie();
                     editWhat();
                     break;
                 case 3:
@@ -121,6 +124,7 @@ public class UpdateMovie extends View{
                         editWhat();
                     StaffController.getChosenMovie().setSynopsis(update);
                     System.out.println("Update Successful.");
+                    StaffController.updateAllMoviesToChosenMovie();
                     editWhat();
                     break;
                 case 4:
@@ -143,6 +147,7 @@ public class UpdateMovie extends View{
                             }
                             StaffController.getChosenMovie().setDirector(directorList);
                             System.out.println("Update Successful.");
+                            StaffController.updateAllMoviesToChosenMovie();
                             editWhat();
                             break;
                         }
@@ -168,13 +173,14 @@ public class UpdateMovie extends View{
                             }
                             StaffController.getChosenMovie().setCast(castList);
                             System.out.println("Update Successful.");
+                            StaffController.updateAllMoviesToChosenMovie();
                             editWhat();
                             break;
                         }
                     }
                     break;
                 case 6:
-                    System.out.printf("Current Age Rating: %s", StaffController.getChosenMovie().getAgeRequirement());
+                    System.out.printf("Current Age Rating: %s\n", StaffController.getChosenMovie().getAgeRequirement());
                     System.out.println("Select an age rating (0 to go back): ");
                     System.out.println("(1) PG13");
                     System.out.println("(2) NC16");
@@ -204,6 +210,7 @@ public class UpdateMovie extends View{
                             System.out.println("Please enter a valid input");
                     }
                     System.out.println("Update Successful.");
+                    StaffController.updateAllMoviesToChosenMovie();
                     editWhat();
                     break;
                 case 7:
@@ -218,6 +225,7 @@ public class UpdateMovie extends View{
                         else {
                             StaffController.getChosenMovie().setDuration(input);
                             System.out.println("Update Successful.");
+                            StaffController.updateAllMoviesToChosenMovie();
                             editWhat();
                         }
                     }

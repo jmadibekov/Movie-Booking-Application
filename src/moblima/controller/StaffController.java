@@ -24,44 +24,21 @@ public class StaffController {
      */
     public static Movie chosenMovie;
     /**
-     * Date chosen by a staff
+     *
      */
     public static String date;
-    /**
-     * The start and end time of a showtime where Start Time[0] and End Time[1]
-     */
     private static int[][] startEndTime;
+
     /**
-     * The position to print the StartEndTime
+     * Pos is the length of startEndTime
      */
     private static int pos;
-    /**
-     * Showing Status for adding a new movie.
-     */
     private static String showingStatus;
-    /**
-     * Title for adding a new movie.
-     */
     private static String title;
-    /**
-     * Synopsis for adding a new movie.
-     */
     private static String synopsis;
-    /**
-     * Director as a String[] for adding a new movie.
-     */
     private static String[] director;
-    /**
-     * Cast as a String[] for adding a new movie.
-     */
     private static String[] cast;
-    /**
-     * ageRequirement for adding a new movie.
-     */
     private static String ageRequirement;
-    /**
-     * Duration for adding a new movie.
-     */
     private static int duration;
 
     /**
@@ -211,97 +188,73 @@ public class StaffController {
      * if valid add to existing Showtime model, and return True
      * else return False.
      *
-     * @param input The start time of the showtime.
      * @param curShowtime Showtime object to be inserted if showtime is valid.
      * @param showtimeList ArrayList of the existing Showtimes.
      * @return * Checks if the entered Showtime is valid,
      * if valid add to existing Showtime model, and return True
      * else return False.
      */
-    public static boolean addShowtime (int input, Showtime curShowtime, ArrayList< Showtime > showtimeList ){
+    public static boolean addShowtime (Showtime curShowtime, ArrayList< Showtime > showtimeList ){
         int[][] time = getStartEndTime();
-        int end = input + (((getChosenMovie().getDuration()) / 60) * 100) + (getChosenMovie().getDuration() % 60);
-        if ((end - 60) % 100 == 0)
-            end = end + 40;
 
-        //if input is earlier than the earliest showtime
-        if (end <= time[0][0]){
-            if (end < 1200)
-                System.out.printf("Showtime successfully added. Start time: 0%d and end time: 0%d\n", input, end);
-            else
-                System.out.printf("Showtime successfully added. Start time: %d and end time: %d\n", input, end);
-            curShowtime.setTime(input);
-            showtimeList.add(curShowtime);
-            return true;
-        }
-        //if input is later than the latest showtime's end time
-        else if (input >= time[pos-1][1]){
-            if (end >= 2400 && end < 2500)
-                System.out.printf("Showtime successfully added. Start time: %d and end time: 00%d\n", input, end-2400);
-            else if (end >= 2500)
-                System.out.printf("Showtime successfully added. Start time: %d and end time: 0%d\n", input, end-2400);
-            else
-                System.out.printf("Showtime successfully added. Start time: %d and end time: %d\n", input, end);
-            curShowtime.setTime(input);
-            showtimeList.add(curShowtime);
-            return true;
-        }
-        //if input is somewhere between showtimes
-        else{
-            boolean successful = false;
-            for (int i = 0; i < pos-1; i++) {
-                //if input time is between the end time of a show, and the start time of a show
-                //it is valid, and slot it into that slot.
-                if (input >= time[i][1] && end <= time[i+1][0]){
-                    curShowtime.setTime(input);
-                    showtimeList.add(curShowtime);
-                    successful = true;
-                    break;
-                }
-            }
-            if (successful) {
-                if (end >= 2400 && end < 2500)
-                    System.out.printf("Showtime successfully added. Start time: %d and end time: 00%d\n", input, end - 2400);
-                else if (end >= 2500)
-                    System.out.printf("Showtime successfully added. Start time: %d and end time: 0%d\n", input, end - 2400);
-                else
-                    System.out.printf("Showtime successfully added. Start time: %d and end time: %d\n", input, end);
-                return true;
-            }
-            else
+        int end = curShowtime.calcEnd(getChosenMovie().getDuration());
+
+        for (int i = 0; i < time.length; i++) {
+            int l = curShowtime.getTime();
+            int r = end;
+            if (r < l)
+                r += 2400;
+
+            int l2 = time[i][0];
+            int r2 = time[i][1];
+            if (r2 < l2)
+                r2 += 2400;
+
+            if (r < l2 || r2 < l)
+                continue;
+            else {
+                // Overlap found
                 return false;
+            }
         }
+
+        showtimeList.add(curShowtime);
+        System.out.printf("Showtime successfully added. Start time: %s and end time: %s\n", curShowtime.inTimeFormat(curShowtime.getTime()), curShowtime.inTimeFormat(end));
+        return true;
     }
 
     /**
      * Prints all current Showtime for the selected Cinema and returns the 2-D Array of Start Time[0] and End Time[1]
-     * @param temp The index to be used for printing.
+     *
      * @return Prints all current Showtime for the selected Cinema and returns the 2-D Array of Start Time[0] and End Time[1]
      */
-    public static int[][] printShowtime(int temp){
+    public static int[][] printShowtime() {
+        int temp = 0;
         ArrayList<Movie> movieList = getChosenCineplex().getMovieList();
         int totalArraySize = 0;
         int[] tempArray = new int[3];
         for (int k = 0; k < movieList.size(); k++)
             totalArraySize += movieList.get(k).getShowtimeList().size();
+
         //create an empty array for start and end time. It must be large enough so we give it the maximum possible size.
         int[][] startEndTime = new int[totalArraySize * movieList.size()][totalArraySize * movieList.size()];
 
-        for (int i = 0; i < getChosenCineplex().getMovieList().size(); i++) {
+        for (Movie i : movieList) {
             //for each movie, create a showtimeList
-            ArrayList<Showtime> showtimeList = movieList.get(i).getShowtimeList();
-            for (int j = 0; j < showtimeList.size(); j++) {
+            ArrayList<Showtime> showtimeList = i.getShowtimeList();
+
+            for (Showtime j : showtimeList) {
                 //if cinemaId for particular showtime == chosen cinemaId AND
                 //date for that particular showtime == staff input of date
                 //add to the empty array
-                if (showtimeList.get(j).getCinemaId().contentEquals(getChosenCinema().getCinemaId()) && (showtimeList.get(j).getDate().contentEquals(getDate()))) {
-                    int start = showtimeList.get(j).getTime();
-                    int end = start + ((movieList.get(i).getDuration()) / 60) * 100 + ((movieList.get(i).getDuration()) % 60);
+                if (j.getCinemaId().contentEquals(getChosenCinema().getCinemaId()) && (j.getDate().contentEquals(getDate()))) {
+                    int start = j.getTime();
+                    int end = start + ((i.getDuration()) / 60) * 100 + ((i.getDuration()) % 60);
                     if ((end - 60) % 100 == 0)
                         end = end + 40;
                     tempArray[0] = start;
                     tempArray[1] = end;
-                    tempArray[2] = movieList.get(i).getDuration();
+                    tempArray[2] = i.getDuration();
                     startEndTime[temp][0] = tempArray[0];
                     startEndTime[temp][1] = tempArray[1];
                     startEndTime[temp][2] = tempArray[2];
