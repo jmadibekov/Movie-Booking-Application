@@ -71,7 +71,7 @@ public class ChooseSeats extends View {
 	/**
 	 * Display the view to get the ticket type (Adult, Student, Senior Citizen) of a seat to be booked from user
 	 *
-	 * @param prevPrice the price of previous seat assuming number of seats > 1
+	 * @param prevPrice the price of previous seat assuming number of seats are bigger than 1
 	 * @param curPrice the price of current seat
 	 * @param index the seat number
 	 * @param noOfSeats the number of seats
