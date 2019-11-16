@@ -10,6 +10,12 @@ import java.util.stream.Stream;
 public class DBController {
     public static final String SEPARATOR = "|";
 
+    /**
+     * Reads and returns all Cineplex from filename directory.
+     * @param filename The directory to access.
+     * @return Returns all Cineplex from filename directory;
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readCineplex(String filename) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -32,6 +38,14 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and returns all Review of the Movie shown at the Cineplex from filename directory.
+     * @param filename The directory to access.
+     * @param cineplexId The Cineplex to check for Movie.
+     * @param movieId The Movie to check for Review.
+     * @return Reads and returns all Review of the Movie shown at the Cineplex from filename directory.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readReview(String filename, String cineplexId, String movieId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -59,6 +73,13 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and returns all Staff accounts at the Cineplex from filename directory.
+     * @param filename The directory to access.
+     * @param cineplexId The Cineplex to check for Stqff.
+     * @return Returns all Staff accounts at the Cineplex from filename directory.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readStaff(String filename, String cineplexId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -82,6 +103,12 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and returns all Customer accounts from filename directory.
+     * @param filename The directory to access.
+     * @return Reads and returns all Customer accounts from filename directory.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readCustomer(String filename) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -104,6 +131,14 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and returns the ArrayList of Showtimes of the Cineplex showing the Movie, from filename directory.
+     * @param filename The directory to access.
+     * @param cineplexId The Cineplex to check for the Movie.
+     * @param movieId The Movie to check for the Showtime.
+     * @return Returns the ArrayList of Showtimes of the Cineplex showing the Movie, from filename directory.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readShowtime(String filename, String cineplexId, String movieId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -137,6 +172,13 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and return the ArrayList of Bookings using the email to find the Customer.
+     * @param filename The directory to access.
+     * @param email The email to find the Customer.
+     * @return Returns the ArrayList of Bookings of the Customer.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readBookingHistory(String filename, String email) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -183,6 +225,13 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and returns all Cinema as Cinema using the Cineplex.
+     * @param filename The directory to access.
+     * @param cineplexId The Cineplex to find the Cinema.
+     * @return Returns all Cinema belonging to Cineplex
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readCinema(String filename, String cineplexId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -206,6 +255,12 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and returns all Holiday as an ArrayList
+     * @param filename The directory to access.
+     * @return Returns all Holiday as an ArrayLIst
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readHoliday(String filename) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -227,6 +282,13 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Reads and returns all Movies belonging to a Cineplex
+     * @param filename The directory to access.
+     * @param cineplexId The Cineplex to find all Movies from.
+     * @return Returns all Movies belonging to a Cineplex
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static ArrayList readMovies(String filename, String cineplexId) throws IOException {
         // read String from text file
         ArrayList stringArray = (ArrayList)read(filename);
@@ -263,6 +325,13 @@ public class DBController {
         return alr ;
     }
 
+    /**
+     * Saves all Cineplex to directory.
+     * @param filename The directory to save to.
+     * @param al The content to be saved into directory.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveCineplex(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Cineplex");
         List alw = new ArrayList() ;
@@ -280,6 +349,15 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves all Reviews to respective Movie belonging to Cineplex.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param cineplexId The Cineplex to find the Movie.
+     * @param movieId The Movie to store the Review to.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveReview(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
 //        System.out.println("Saving Review");
         List alw = new ArrayList() ;
@@ -305,6 +383,14 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves all Staff to respective Cineplex.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param cineplexId The Cineplex to store the Staff to.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveStaff(String filename, List al, String cineplexId, Boolean append) throws IOException {
 //        System.out.println("Saving Staff");
         List alw = new ArrayList() ;
@@ -322,6 +408,13 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves all Customer.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveCustomer(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Customer");
         List alw = new ArrayList() ;
@@ -339,6 +432,15 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves all Showtime to the Movie belonging to Cineplex.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param cineplexId The Cineplex to find the Movie.
+     * @param movieId The Movie to store the Showtime.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveShowtime(String filename, List al, String cineplexId, String movieId, Boolean append) throws IOException {
 //        System.out.println("Saving Showtime");
         List alw = new ArrayList() ;
@@ -370,6 +472,14 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves all Booking.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param email The email to save to al.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveBookingHistory(String filename, List al, String email, Boolean append) throws IOException {
 //        System.out.println("Saving Booking History");
         List alw = new ArrayList() ;
@@ -412,6 +522,14 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves the Cinema to Cineplex.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param cineplexId The Cineplex to store the Cinema in.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveCinema(String filename, List al, String cineplexId, Boolean append) throws IOException {
 //        System.out.println("Saving Cinema");
         List alw = new ArrayList() ;
@@ -429,6 +547,13 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves all Holidays.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveHoliday(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Holiday");
         List alw = new ArrayList() ;
@@ -444,6 +569,13 @@ public class DBController {
         write(filename, alw, append);
     }
 
+    /**
+     * Saves all Movies.
+     * @param filename The directory to save to.
+     * @param al The content to be saved in directory.
+     * @param append If true, add List to the end of existing text, else replace all text in directory with List.
+     * @throws IOException Exception thrown if IO exception failed or interrupted.
+     */
     public static void saveMovies(String filename, List al, Boolean append) throws IOException {
 //        System.out.println("Saving Movie");
         List alw = new ArrayList() ;
@@ -507,9 +639,19 @@ public class DBController {
         }
     }
 
+    /**
+     * Converts text to an array of String[]
+     * @param text The text to be converted.
+     * @return Returns the broken down text as String[]
+     */
     private static String[] convertToStringArray(String text) {
         return text.split(",");
     }
 
+    /**
+     * Converts String[] to String
+     * @param array The array to convert to String.
+     * @return Returns the converted String[] as String.
+     */
     private static String convertStringArrayToString(String[] array) { return String.join(",", array);}
 }

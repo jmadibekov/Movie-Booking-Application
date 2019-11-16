@@ -10,56 +10,99 @@ import moblima.model.*;
 public class BookingController {
 
 	private static Showtime chosenShowtime;
+
+
 	private static String chosenTitle;
+
+
 	private static Movie chosenMovie;
+
+
 	private static Cineplex chosenCineplex;
+
+
 	private static Customer curCustomer;
+
+
 	private static double totalPrice = 0;
+
+
 	private static String[][] seatLayout = new String[8][9];
+
+
 	private static ArrayList < Integer > seat = new ArrayList <Integer> ();
+
+
 	private static ArrayList<ArrayList<Integer>>  seatSelected = new ArrayList<ArrayList<Integer>> ();
+
+
 	private static int noOfSeats;
+
 
 	public static Movie getChosenMovie() {
 		return chosenMovie;
 	}
+
+
 	public static void setChosenMovie(Movie chosenMovie) {
 		BookingController.chosenMovie = chosenMovie;
 		if (chosenMovie != null)
 			BookingController.chosenTitle = chosenMovie.getTitle();
 	}
+
+
 	public static Cineplex getChosenCineplex() {
 		return chosenCineplex;
 	}
+
+
 	public static void setChosenCineplex(Cineplex chosenCineplex) {
 		BookingController.chosenCineplex = chosenCineplex;
 	}
+
+
 	public static Showtime getChosenShowtime() {
 		return chosenShowtime;
 	}
+
+
 	public static void setChosenShowtime(Showtime chosenShowtime) {
 		BookingController.chosenShowtime = chosenShowtime;
 	}
+
+
 	public static double getTotalPrice() {
 		return totalPrice;
 	}
+
+
 	public static void setTotalPrice(double totalPrice) {
 		BookingController.totalPrice = totalPrice;
 	}
+
+
 	public static int getNoOfSeats() {
 		return noOfSeats;
 	}
+
+
 	public static void setNoOfSeats(int noOfSeats) {
 		BookingController.noOfSeats = noOfSeats;
 	}
+
+
 	public static String[][] getSeatLayout() {
 		return seatLayout;
 	}
+
+
 	public static void setSeatLayout(String[][] seatLayout) {
 		for(int i=0; i<seatLayout.length; i++)
 			for(int j=0; j<seatLayout[i].length; j++)
 				BookingController.seatLayout[i][j] = seatLayout[i][j];
 	}
+
+
 	public static void printSeatLayout() {
 	    System.out.println("-------------------------------------\n"
                         + "                Screen\n");
@@ -87,6 +130,8 @@ public class BookingController {
                          + "1 - Occupied Slots\n"
                          + "-------------------------------------");
 	}
+
+
 	public static ArrayList < String > getAllMovies() {
 		ArrayList < Cineplex > curCineplexes = MainModel.getCineplexList();
 		Map < String, Movie > tmp = new HashMap < String, Movie > ();
@@ -103,15 +148,23 @@ public class BookingController {
 		Collections.sort(res);
 		return res;
 	}
+
+
 	public static String getChosenTitle() {
 		return chosenTitle;
 	}
+
+
 	public static void setChosenTitle(String chosenTitle) {
 		BookingController.chosenTitle = chosenTitle;
 	}
+
+
 	public static ArrayList<ArrayList<Integer>> getSeatSelected() {
 		return seatSelected;
 	}
+
+
 	public static void addSeatSelected(ArrayList<Integer> seat) {
 		ArrayList<Integer> newSeat = new ArrayList<Integer>();
 		newSeat.add(seat.get(0));
@@ -119,6 +172,8 @@ public class BookingController {
 		newSeat.add(seat.get(2));
 		seatSelected.add(newSeat);
 	}
+
+
 	public static Integer[] removeSeatSelected() {
 		Integer[] oldSeat = new Integer[2];
 		oldSeat[0] = seatSelected.get(seatSelected.size() - 1).get(1) - 1;
@@ -126,27 +181,43 @@ public class BookingController {
 		seatSelected.remove(seatSelected.size() - 1);
 		return oldSeat;
 	}
+
+
 	public static void clearSeatSelected() {
 		seatSelected.clear();
 	}
+
+
 	public static ArrayList<Integer> getSeat() {
 		return seat;
 	}
+
+
 	public static void addSeat(int newSeat) {
 			seat.add(newSeat);
 	}
+
+
 	public static void removeSeat() {
 		seat.remove(seat.size() - 1);
 	}
+
+
 	public static void clearSeat() {
 		seat.clear();
 	}
+
+
 	public static ArrayList < Movie > getMovies() {
 		return chosenCineplex.getMovieList();
 	}
+
+
 	public static ArrayList < Showtime > getShowtimesList() {
 		return chosenMovie.getShowtimeList();
 	}
+
+
 	public static String getCinemaClass(String cinemaId) {
 		for (int i = 0; i< chosenCineplex.getCinemaList().size(); i++) {
 			if (cinemaId.contentEquals(chosenCineplex.getCinemaList().get(i).getCinemaId())) {
@@ -155,6 +226,8 @@ public class BookingController {
 		}
 		return "Error";
 	}
+
+
 	public static double calcPrice() {
 		double basePrice = chosenCineplex.getBaseTicketCost();
 
@@ -197,11 +270,15 @@ public class BookingController {
 		totalPrice += basePrice;
 		return basePrice;
 	}
+
+
 	public static Booking createBooking(String email) {
 		Booking booking = new Booking(email, chosenShowtime.getDate(), seatSelected, getCinemaClass(chosenShowtime.getCinemaId()),
 				totalPrice, chosenCineplex.getCineplexName(), chosenMovie.getTitle(), chosenShowtime.getCinemaId());
 		return booking;
 	}
+
+
 	public static Date getDateFormat(String dateString) {
 		DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 		Date date = null;
@@ -214,11 +291,15 @@ public class BookingController {
 		}
 		return date;
 	}
+
+
 	public static ArrayList<Showtime> getShowtimeSortedByDate() {
 		chosenMovie.getShowtimeList().sort(Comparator.comparing(Showtime::getDate).
 				thenComparingInt(Showtime::getTime).thenComparing(Showtime::getCinemaId));
 		return chosenMovie.getShowtimeList();
 	}
+
+
 	public static int getNoOfSeatsLeft(Showtime showtime) {
 		int noOfSeatsLeft = 0;
 		for (int i=0;i<8;i++) {
@@ -230,12 +311,18 @@ public class BookingController {
 		}
 		return noOfSeatsLeft;
 	}
+
+
 	public static Customer getCurCustomer() {
 		return curCustomer;
 	}
+
+
 	public static void setCurCustomer(Customer curCustomer) {
 		BookingController.curCustomer = curCustomer;
 	}
+
+
 	public static void printSeatSelected(ArrayList<ArrayList<Integer>> chosenSeats) {
         for (int i = 0; i < chosenSeats.size(); i++) {
         	System.out.print("(" + (i + 1) + ") ");
