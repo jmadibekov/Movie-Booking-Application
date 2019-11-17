@@ -208,7 +208,8 @@ public class BookingController {
 		for (Cineplex i : curCineplexes) {
 			ArrayList < Movie > curMovies = i.getMovieList();
 			for (Movie j : curMovies) {
-				tmp.put(j.getMovieId(), j);
+				if (j.getShowingStatus().compareTo("End of Showing") != 0)
+					tmp.put(j.getMovieId(), j);
 			}
 		}
 		ArrayList < String > res = new ArrayList < String > ();

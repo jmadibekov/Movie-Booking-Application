@@ -28,7 +28,7 @@ public class Showtime {
 	/**
 	 * Instantiates a new Showtime
 	 *
-	 * @param time       the time
+	 * @param time       the start time
 	 * @param date       the date
 	 * @param type       the type
 	 * @param cinemaId   the cinema id

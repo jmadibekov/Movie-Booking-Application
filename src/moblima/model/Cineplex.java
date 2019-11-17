@@ -77,7 +77,7 @@ public class Cineplex {
 	 */
 	public boolean hasMovieWithTitle(String chosenTitle) {
 		for (Movie i : movieList)
-			if (i.getTitle().equalsIgnoreCase(chosenTitle))
+			if (i.getTitle().equalsIgnoreCase(chosenTitle) && i.getShowingStatus().compareTo("End of Showing") != 0)
 				return true;
 		return false;
 	}
