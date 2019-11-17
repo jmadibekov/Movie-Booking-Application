@@ -41,11 +41,17 @@ public class ChooseShowtime extends View {
 			Navigation.goBack();
 		}
 		for (Showtime i : showtimesList) {
-			System.out.printf("(%s) %s, %s:%s%s, Cinema Class: %s, Type: %s\n",index, i.getDate(),
-					i.getTime()/100, (i.getTime()/10)%10, i.getTime()%10,
-					BookingController.getCinemaClass(i.getCinemaId()), i.getType());
-			uniqueShowtimes.put(index, i);
-			index++;
+			if (BookingController.checkShowtimeWithinWeek(i)) {
+				System.out.printf("(%s) %s, %s:%s%s, Cinema Class: %s, Type: %s\n", index, i.getDate(),
+						i.getTime() / 100, (i.getTime() / 10) % 10, i.getTime() % 10,
+						BookingController.getCinemaClass(i.getCinemaId()), i.getType());
+				uniqueShowtimes.put(index, i);
+				index++;
+			}
+		}
+		if (uniqueShowtimes.isEmpty()) {
+			System.out.println("No showtimes available. Please try another movie.");
+			Navigation.goBack();
 		}
 
 		while (true) {

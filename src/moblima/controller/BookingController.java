@@ -507,4 +507,32 @@ public class BookingController {
 			}
 		}
 	}
+
+	/**
+	 * Check if there is any showtime available within a week after today's date
+	 *
+	 * @param showtime the showtime to be checked
+	 * @return true if that showtime is available
+	 */
+	public static boolean checkShowtimeWithinWeek (Showtime showtime) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+        try {
+            Date showtimeDate = dateFormat.parse(showtime.getDate());
+            Calendar cal = Calendar.getInstance();
+			Date fromDate = cal.getTime();
+            cal.add(Calendar.DATE, 7);
+            Date toDate = cal.getTime();
+            if (showtimeDate.after(toDate) || showtimeDate.before(fromDate)) {
+                return false;
+            }
+            else
+                return true;
+        }
+        catch (ParseException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
 }
