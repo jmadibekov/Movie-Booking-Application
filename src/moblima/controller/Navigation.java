@@ -36,7 +36,7 @@ public class Navigation {
 
 	/**
 	 * A function to get the View of the previous menu
-	 * @return
+	 * @return Function to return the previous view.
 	 */
 	public static View getLastView() {
     	return stack.peek();

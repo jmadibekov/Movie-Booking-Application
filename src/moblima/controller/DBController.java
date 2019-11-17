@@ -660,7 +660,12 @@ public class DBController {
         write(filename, alw, append);
     }
 
-    /** Read the contents of the given file. */
+    /** Read the contents of the given file.
+     *
+     * @param fileName The directory to read from.
+     * @return Read the content and returns in a List.
+     * @throws IOException exception to thrown if IO interrupt or unable to read.
+     */
     private static List read(String fileName) throws IOException {
         List data = new ArrayList() ;
         Scanner scanner = new Scanner(new FileInputStream(fileName));
@@ -675,7 +680,13 @@ public class DBController {
         return data;
     }
 
-    /** Write fixed content to the given file. */
+    /** Write fixed content to the given file.
+     *
+     * @param fileName The directory to write to
+     * @param data The data to add to.
+     * @param append If true, add to end of existing database, else replace.
+     * @throws IOException exception to thrown if IO interrupt or unable to read.
+     * */
     private static void write(String fileName, List data, Boolean append) throws IOException  {
         PrintWriter out = new PrintWriter(new FileWriter(fileName, append));
         try {

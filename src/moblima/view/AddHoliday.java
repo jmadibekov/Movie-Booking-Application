@@ -47,6 +47,7 @@ public class AddHoliday extends View{
 
     /**
      * Display the view to get holiday date
+     * @throws ParseException exception to thrown if IO interrupt or unable to read.
      */
     private void getHolidayDate() throws ParseException {
         Scanner sc = new Scanner(System.in);
@@ -82,7 +83,7 @@ public class AddHoliday extends View{
      * Display the view to get Holiday Name
      *
      * @param date the holiday's date
-     * @throws ParseException
+     * @throws ParseException exception to thrown if IO interrupt or unable to read.
      */
     private void getHolidayName(String date) throws ParseException{
         Scanner sc = new Scanner(System.in);
@@ -102,7 +103,7 @@ public class AddHoliday extends View{
     /**
      * A function to test if the date entered by  a user is a valid date in the format dd/MM/yyyy
      *
-     * @param dateToValidate
+     * @param dateToValidate Date to be checked.
      * @return boolean based on whether the date is valid
      */
     private boolean isThisDateValid(String dateToValidate){

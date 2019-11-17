@@ -229,7 +229,7 @@ public class Movie {
 	}
 
 	/**
-	 * Returns the overall rating for the output. NA is returned if userCount <= 1.
+	 * Returns the overall rating for the output. NA is returned if userCount is less than or equal to 1.
 	 *
 	 * @return Returns the overall rating in String.
 	 */

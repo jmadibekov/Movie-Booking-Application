@@ -36,7 +36,7 @@ public class ReviewController {
      * Increments the number of users that left a review for the movie
      * Round up the overall rating to two decimal places
      *
-     * @param rating
+     * @param rating Rating to be adjusted.
      */
     public static void setAvgRating(double rating) {
         double totalRating = chosenMovie.getOverallRating() * chosenMovie.getUserCount() + rating;

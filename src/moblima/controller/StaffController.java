@@ -169,11 +169,11 @@ public class StaffController {
     }
 
     /**
-     * Login Verification to check if Username&&Password exists. If exists, return true, else return false
+     * Login Verification to check if Username and Password exists. Return true if it exists.
      *
      * @param username The entered username.
      * @param password The entered password.
-     * @return Login Verification to check if Username&&Password exists. If exists, return true, else return false
+     * @return Login Verification to check if Username and Password exists. If it exists true return true. Otherwise return false.
      */
     public static boolean login(String username, String password) {
         for (Staff i : chosenCineplex.getStaffList()) {
@@ -324,7 +324,7 @@ public class StaffController {
     }
 
     /**
-     * Adds a new Movie to existing ArrayList<Movie>.
+     * Adds a new Movie to existing ArrayList of Movies.
      */
     public static void addMovie() {
         String indexStr;

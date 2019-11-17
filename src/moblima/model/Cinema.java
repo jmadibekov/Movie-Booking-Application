@@ -16,8 +16,8 @@ public class Cinema {
 
 	/**
 	 * Creates a new cinema in a particular cineplex
-	 * @param cinemaId
-	 * @param cinemaClass
+	 * @param cinemaId CinemaId to be set.
+	 * @param cinemaClass CinemaClass to be set.
 	 */
 	public Cinema(String cinemaId, String cinemaClass) {
 		this.cinemaId = cinemaId;

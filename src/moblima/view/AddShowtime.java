@@ -55,6 +55,7 @@ public class AddShowtime extends View {
      * Display the view for staff to choose which cinema the new showtime will be shown
      *
      * @param curShowtime the new showtime
+     * @param choice The choice the user chose for cinema.
      */
     private void chooseCinema(Showtime curShowtime, int choice) {
         ArrayList<Cinema> cinemaList = StaffController.getChosenCineplex().getCinemaList();

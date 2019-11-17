@@ -49,7 +49,7 @@ public class Top5Rating extends View{
 				break;
 			}
 			if (input < 6) {
-				BookingController.setChosenMovie(movieList.get(input-1));
+				BookingController.setChosenMovie(movieList.get(input));
 				Top5Controller.undoTop5Movies();
 				Navigation.goTo(new MovieInformation(getUserType(), null));
 				break;

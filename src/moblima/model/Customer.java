@@ -30,9 +30,9 @@ public class Customer {
 	 * Create a new customer
 	 * Reads from the database using DBController and get an arrayList of booking objects
 	 * Store the arrayList of booking objects into bookingList
-	 * @param email
-	 * @param name
-	 * @param phoneNumber
+	 * @param email Email for a customer.
+	 * @param name Name of the customer.
+	 * @param phoneNumber Phone number of the customer.
 	 */
 	public Customer(String email, String name, String phoneNumber) {
 		this.email = email;
@@ -60,7 +60,7 @@ public class Customer {
 
 	/**
 	 * Append new booking object to the bookingList
-	 * @param booking
+	 * @param booking Booking to be added.
 	 */
 	public void addBooking(Booking booking) {
 		bookingList.add(booking);

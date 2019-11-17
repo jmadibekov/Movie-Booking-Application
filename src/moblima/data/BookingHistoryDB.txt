@@ -1,12 +1,15 @@
-alpha@email.com|31/10/2019|Platinum|24.0|Jurong Point Cinema|Avengers: Endgame|001|001201910311800|1/2/3,2/4/6
-alpha@email.com|01/11/2019|Regular|21.0|Jurong Point Cinema|Avengers: Endgame|001|001201910121129|3/1/1,2/1/2
-alpha@email.com|01/11/2019|Regular|34.0|Jurong Point Cinema|Avengers: Endgame|001|001201910121138|1/1/3,2/1/4,2/1/5
-alpha@email.com|14/11/2019|Gold|15.0|Jurong Point Cinema|Avengers: Endgame|002|002201910142129|1/1/1
-delta@email.com|07/11/2019|Platinum|17.0|Jurong Point Cinema|Inception|003|003201910102059|1/0/0
-fazli@gmail.com|14/11/2019|Gold|30.0|Jurong Point Cinema|Abominable|002|002201910142118|1/2/1,1/2/2
-fazli@gmail.com|14/11/2019|Regular|20.0|Jurong Point Cinema|Back To The Future|001|001201910142128|3/1/1,3/1/2
-fazli@gmail.com|20/01/2020|Regular|16.0|Jurong Point Cinema|Terminator: Dark Fate|001|001201910162220|2/1/1
-fazli@gmail.com|24/01/2020|Platinum|17.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162230|1/1/1
-fazli@gmail.com|25/01/2020|Platinum|20.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162231|1/1/1
-nick@gmail.com|24/01/2020|Platinum|17.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162249|1/1/2
-nick@gmail.com|25/01/2020|Platinum|20.0|Jurong Point Cinema|Ford v Ferrari|003|003201910162251|1/1/2
+alpha@email.com|31/10/2019|Platinum|24.0|Jurong Point Cineplex|Avengers: Endgame|001|001201910311800|1/2/3,2/4/6
+alpha@email.com|01/11/2019|Regular|21.0|Jurong Point Cineplex|Avengers: Endgame|001|001201910121129|3/1/1,2/1/2
+alpha@email.com|01/11/2019|Regular|34.0|Jurong Point Cineplex|Avengers: Endgame|001|001201910121138|1/1/3,2/1/4,2/1/5
+alpha@email.com|14/11/2019|Gold|15.0|Jurong Point Cineplex|Avengers: Endgame|002|002201910142129|1/1/1
+delta@email.com|07/11/2019|Platinum|17.0|Jurong Point Cineplex|Inception|003|003201910102059|1/0/0
+fazli@gmail.com|14/11/2019|Gold|30.0|Jurong Point Cineplex|Abominable|002|002201910142118|1/2/1,1/2/2
+fazli@gmail.com|14/11/2019|Regular|20.0|Jurong Point Cineplex|Back To The Future|001|001201910142128|3/1/1,3/1/2
+fazli@gmail.com|20/01/2020|Regular|16.0|Jurong Point Cineplex|Terminator: Dark Fate|001|001201910162220|2/1/1
+fazli@gmail.com|24/01/2020|Platinum|17.0|Jurong Point Cineplex|Ford v Ferrari|003|003201910162230|1/1/1
+fazli@gmail.com|25/01/2020|Platinum|20.0|Jurong Point Cineplex|Ford v Ferrari|003|003201910162231|1/1/1
+nick@gmail.com|24/01/2020|Platinum|17.0|Jurong Point Cineplex|Ford v Ferrari|003|003201910162249|1/1/2
+nick@gmail.com|25/01/2020|Platinum|20.0|Jurong Point Cineplex|Ford v Ferrari|003|003201910162251|1/1/2
+lowbenedict12@gmail.com|19/11/2019|Regular|27.0|Paya Lebar Cineplex|Back To The Future|001|001201911171841|1/5/3,2/5/4,3/5/5
+lowbenedict12@gmail.com|20/11/2019|Regular|72.0|Jurong Point Cineplex|Avengers: Bengame|001|001201911171845|1/5/3,2/5/4,3/5/5
+lowbenedict12@gmail.com|21/11/2019|Regular|48.0|Paya Lebar Cineplex|A not so cool movie|001|001201911171852|1/5/3,2/5/4,3/5/5

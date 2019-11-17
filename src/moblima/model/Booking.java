@@ -134,7 +134,7 @@ public class Booking {
 	/**
 	 * Sets new email of booking.
 	 *
-	 * * @param email New value of The email of booking.
+	 * @param email New value of The email of booking.
 	 */
 	public void setEmail(String email) {
 		this.email = email;

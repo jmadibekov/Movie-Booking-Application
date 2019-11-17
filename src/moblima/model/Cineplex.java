@@ -72,7 +72,7 @@ public class Cineplex {
 
 	/**
 	 * Return true if chosenTitle is found in the movielist of the cineplex
-	 * @param chosenTitle
+	 * @param chosenTitle Title to be checked for.
 	 * @return boolean
 	 */
 	public boolean hasMovieWithTitle(String chosenTitle) {
@@ -85,7 +85,7 @@ public class Cineplex {
 	/**
 	 * Return movie if chosenTitle is found in the movielist of the cineplex
 	 * Otherwise, return null
-	 * @param chosenTitle
+	 * @param chosenTitle Title to find with.
 	 * @return Movie
 	 */
 	public Movie getMovieWithTitle(String chosenTitle) {

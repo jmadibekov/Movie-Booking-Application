@@ -16,7 +16,7 @@ public class AddMovie extends View{
     /**
      * Brings the Staff through the pipeline of adding a new Movie.
      * Allows for going back and forth the pipeline if the Staff wishes to do so.
-     * Concludes successfully by adding a new Movie to existing ArrayList<Movie>.
+     * Concludes successfully by adding a new Movie to existing ArrayList of Movies.
      */
     public void display() {
         Scanner sc = new Scanner(System.in);
